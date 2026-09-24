@@ -1,6 +1,6 @@
 [
     {
-        "id": "",
+        "id": "ecdcdddb-d241-4060-a643-2cec05fa59be",
         "first_name": "Jayce",
         "last_name": "Campbell",
         "user_name": "jCampbell",
@@ -10,16 +10,16 @@
             {
                 "state": "North Carolina",
                 "city": "Raleigh",
-                "zip_code": 
+                "zip_code": "27601"
             }
         ]
-
-        "id": "",
+    },
+    {
+        "id": "6346f653-779f-4d65-b2cf-207727929f57",
         "first_name": "Aidan",
         "last_name": "Wood",
         "user_name": "aWood",
         "email": "aWood@outlook.com",
         "date_of_birth": "March 2, 2005"
-
     }
 ]
