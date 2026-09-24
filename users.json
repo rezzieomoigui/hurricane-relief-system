@@ -1,0 +1,25 @@
+[
+    {
+        "id": "",
+        "first_name": "Jayce",
+        "last_name": "Campbell",
+        "user_name": "jCampbell",
+        "email": "jCampbell@gmail.com",
+        "date_of_birth": "Feburary 21, 2005",
+        "location": [
+            {
+                "state": "North Carolina",
+                "city": "Raleigh",
+                "zip_code": 
+            }
+        ]
+
+        "id": "",
+        "first_name": "Aidan",
+        "last_name": "Wood",
+        "user_name": "aWood",
+        "email": "aWood@outlook.com",
+        "date_of_birth": "March 2, 2005"
+
+    }
+]
