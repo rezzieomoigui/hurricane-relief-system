@@ -5,7 +5,7 @@ The Hurricane Relief System is an application designed to help people prepare fo
 ## Documents
 
 - [Requirements Document Specification](docs/requirements.pdf)
-- [Requirements Document Spreadsheet]()
+- [Requirements Document Spreadsheet](docs/requirements-spreadsheet.pdf)
 - [UML Class Diagram](docs/uml-class-diagram.pdf)
 - [UML Sequence Diagram 1 – Submitting a Relief Request](docs/uml-sequence-diagram1.pdf)
 - [UML Sequence Diagram 2 – Volunteer Accessing a Relief Request](docs/uml-sequence-diagram2.pdf)
