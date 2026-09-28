@@ -76,5 +76,31 @@
         "zip_code": "57922",
         "language": "English",
         "isAdmin": false
+    },
+    {
+        "id": "30cc4028-c841-44da-b784-e33ad108d28e",
+        "first_name": "Kat",
+        "last_name": "Lion",
+        "user_name": "kLion",
+        "password": "plight43",
+        "email": "kLion@gmail.com",
+        "date_of_birth": "December 31, 1981",
+        "address": "824 Christmas Road",
+        "zip_code": "10265",
+        "language": "English",
+        "isAdmin": true
+    },
+    {
+        "id": "5ed57e23-e58f-4938-8f71-e3bca390f054",
+        "first_name": "Lexi",
+        "last_name": "Stargon",
+        "user_name": "lStargon",
+        "password": "4yes67!",
+        "email": "lStargon@gmail.com",
+        "date_of_birth": "October 3, 1999",
+        "address": "743 Home Street",
+        "zip_code": "57435",
+        "language": "English",
+        "isAdmin": false
     }
 ]

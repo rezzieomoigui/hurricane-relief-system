@@ -1,9 +1,8 @@
 [
     {
         "skills": [
-            "FIRST_AID",
-            "CPR",
-            "CHILDREN"
+            "WOUND_CARE",
+            "CPR"
         ],
         "firstReponder": true,
         "canSwim": false,
@@ -11,9 +10,8 @@
     },
     {
         "skills": [
-            "MEDICAL",
-            "DRIVING",
-            "PARENT"
+            "SEARCH_AND_RESCUE",
+            "FLOOD_RESCUE"
         ],
         "firstReponder": false,
         "canSwim": true,
