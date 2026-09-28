@@ -50,7 +50,7 @@
         "zip_code": "29645",
         "language": "English",
         "isAdmin": true
-    }
+    },
     {
         "id": "c1c83c9f-b35c-4f2b-899b-5d4f292f6703",
         "first_name": "Alice",
@@ -63,7 +63,7 @@
         "zip_code": "30358",
         "language": "English",
         "isAdmin": false
-    }
+    },
     {
         "id": "2707ad02-06a8-43a6-a1a9-dab1a1a2f08d",
         "first_name": "Karen",
