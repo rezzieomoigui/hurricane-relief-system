@@ -1,0 +1,22 @@
+[
+    {
+        "skills": [
+            "FIRST_AID",
+            "CPR",
+            "CHILDREN"
+        ],
+        "firstReponder": true,
+        "canSwim": false,
+        "isShelterOwner": false
+    },
+    {
+        "skills": [
+            "MEDICAL",
+            "DRIVING",
+            "PARENT"
+        ],
+        "firstReponder": false,
+        "canSwim": true,
+        "isShelterOwner": true
+    }
+]
