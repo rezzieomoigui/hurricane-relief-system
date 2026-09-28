@@ -20,7 +20,7 @@ The `json` folder contains the persistent data used by the application:
 - `volunteer.json`
 - `preparationChecklist.json`
 - `UUIDGen.json`
-- 'hurricane.json'
+- `hurricane.json`
 
 ## Team Members
 
