@@ -1,0 +1,19 @@
+# OS-generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Log files
+*.log
+
+# Sensitive environment variables 
+.env
+.env.local
+
+# Common dependency folders (uncomment if you use them)
+# node_modules/
+# __pycache__/
