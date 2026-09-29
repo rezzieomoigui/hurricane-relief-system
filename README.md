@@ -15,11 +15,12 @@ The Hurricane Relief System is an application designed to help people prepare fo
 The `json` folder contains the persistent data used by the application:
 
 - `users.json`
-- `reliefRequests.json`
-- `shelters.json`
-- `hurricanes.json`
-- `preparationGuides.json`
-- `locations.json`
+- `reliefRequest.json`
+- `shelter.json`
+- `volunteer.json`
+- `preparationChecklist.json`
+- `UUIDGen.json`
+- `hurricane.json`
 
 ## Team Members
 
