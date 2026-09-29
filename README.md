@@ -12,6 +12,9 @@ The Hurricane Relief System is an application designed with the goal of assistin
 - [UML Sequence Diagram 1 – Submitting a Relief Request](docs/uml-sequence-diagram1.pdf)
 - [UML Sequence Diagram 2 – Volunteer Accessing a Relief Request](docs/uml-sequence-diagram2.pdf)
 
+## SCRUM Board
+-[SCRUM Board]()
+
 ## Team Members
 
 - Rezzie Omoigui
