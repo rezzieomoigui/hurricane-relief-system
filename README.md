@@ -4,7 +4,7 @@ The Hurricane Relief System is an application designed with the goal of assistin
 
 ## Requirements
 
-- [Requirements Document Specification](docs/requirements-document.pdf)
+- 📄 [Requirements Document Specification](docs/requirements-document.pdf)
 - [Requirements Document Spreadsheet](docs/requirements-spreadsheet.pdf)
 
 ## Code Design
