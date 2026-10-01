@@ -16,8 +16,8 @@ The Hurricane Relief System is an application designed with the goal of assistin
 📌 [SCRUM Board](https://github.com/users/rezzieomoigui/projects/1/views/1)
 
 ## Team Members
-| Name | Username |
-| --- | --- | --- |
+| Name | Username | 
+| --- | --- |
 | Rezzie Omoigui | rezzieomoigui |
 | Abagail Greer | greer-a01 |
 | Katie Kilborn | kkilborn25 |
