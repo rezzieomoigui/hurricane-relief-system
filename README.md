@@ -4,16 +4,16 @@ The Hurricane Relief System is an application designed with the goal of assistin
 
 ## Requirements
 
-- 📄 [Requirements Document Specification](docs/requirements-document.pdf)
-- [Requirements Document Spreadsheet](docs/requirements-spreadsheet.pdf)
+📄 [Requirements Document Specification](docs/requirements-document.pdf)
+📋 [Requirements Document Spreadsheet](docs/requirements-spreadsheet.pdf)
 
 ## Code Design
-- [UML Class Diagram](docs/uml-class-diagram.pdf)
-- [UML Sequence Diagram 1 – Submitting a Relief Request](docs/uml-sequence-diagram1.pdf)
-- [UML Sequence Diagram 2 – Volunteer Accessing a Relief Request](docs/uml-sequence-diagram2.pdf)
+📑 [UML Class Diagram](docs/uml-class-diagram.pdf)
+📨 [UML Sequence Diagram 1 – Submitting a Relief Request](docs/uml-sequence-diagram1.pdf)
+🩹 [UML Sequence Diagram 2 – Volunteer Accessing a Relief Request](docs/uml-sequence-diagram2.pdf)
 
 ## SCRUM Board
--  [SCRUM Board](https://github.com/users/rezzieomoigui/projects/1/views/1)
+📌 [SCRUM Board](https://github.com/users/rezzieomoigui/projects/1/views/1)
 
 ## Team Members
 
