@@ -33,7 +33,7 @@ public class ShelterList {
         return Shelter();
     }**/
 
-    public boolean addShelter(ShelterType shelterType, String address, String zipCode, ShelterResources shelterResources, ShelterStatus shelterStatus, String visual description) {
+    public boolean addShelter(ShelterType shelterType, String address, String zipCode, ShelterResources shelterResources, ShelterStatus shelterStatus, String visualDescription) {
         return true;
     }
 
