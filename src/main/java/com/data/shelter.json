@@ -1,5 +1,6 @@
 [
     {
+        "UUID": "ea13f604-e52e-4988-908e-955481ffa8d8",
         "address": "123 Main St",
         "zipCode": "29208",
         "shelterType": "HOUSE",
@@ -12,6 +13,7 @@
         "visualDescription": "Church with large cross and green field"
     },
     {
+        "UUID": "fd1616d6-6dd4-4596-b74e-efde3fb4aaf3",
         "address": "456 Horse Road",
         "zipCode": "24735",
         "shelterType": "BUISNESS",
