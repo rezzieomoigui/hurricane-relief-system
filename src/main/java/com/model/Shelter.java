@@ -1,13 +1,8 @@
 package com.model;
-
 import java.util.ArrayList;
 import java.util.UUID;
-
-/**
- * A location volunteers or residents can offer as a hurricane shelter.
- */
 public class Shelter {
-    private UUID id;
+    private UUID uuid;
     private String address;
     private String zipCode;
     private ShelterType shelterType;
@@ -31,7 +26,7 @@ public class Shelter {
     public Shelter(UUID id, ShelterType shelterType, String address, String zipCode,
                    ShelterResources shelterResources, ShelterStatus shelterStatus,
                    String visualDescription) {
-        this.id = id;
+        this.uuid = id;
         this.shelterType = shelterType;
         this.address = address;
         this.zipCode = zipCode;
@@ -54,7 +49,7 @@ public class Shelter {
     }
 
     public UUID getId() {
-        return id;
+        return uuid;
     }
 
     public String getAddress() {
