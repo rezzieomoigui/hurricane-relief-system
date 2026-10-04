@@ -22,16 +22,16 @@ public class ShelterList {
 
     public Shelter getShelter(UUID uuid) {
         for (Shelter shelter : this.shelters) {
-            if (shelter.getUUID().equals(uuid)) {
+            if (shelter.getID().equals(uuid)) {
                 return shelter;
             }
         }
         return null;
     }
 
-    /**public ArrayList<Shelter> getShelter(String zipCode) {
-        return Shelter();
-    }**/
+    public ArrayList<Shelter> getShelter(String zipCode) {
+        return null;
+    }
 
     public boolean addShelter(ShelterType shelterType, String address, String zipCode, ShelterResources shelterResources, ShelterStatus shelterStatus, String visualDescription) {
         return true;
