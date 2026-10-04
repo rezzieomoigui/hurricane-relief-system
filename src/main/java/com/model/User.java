@@ -128,4 +128,16 @@ public class User {
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
+    public String toString() {
+        return "UUID: " + uuid + "\n" +
+                "First Name: " + firstName + "\n" +
+                "Last Name: " + lastName + "\n" +
+                "Username: " + username + "\n" +
+                "Email: " + email + "\n" +
+                "Date of Birth: " + dateOfBirth + "\n" +
+                "Address: " + address + "\n" +
+                "Zip Code: " + zipCode + "\n" +
+                "Language: " + language + "\n" +
+                "Is Admin: " + isAdmin + "\n";
+    }
 }
