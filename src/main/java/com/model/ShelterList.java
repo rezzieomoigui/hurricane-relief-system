@@ -8,11 +8,13 @@ public class ShelterList {
     private ArrayList<Shelter> shelters;
     
     private ShelterList() {
-        shelterList = new ShelterList();
         this.shelters = new ArrayList<Shelter>();
     }
 
     public static ShelterList getInstance() {
+        if (shelterList == null) {
+            shelterList = new ShelterList();
+        }
         return shelterList;
     }
 
@@ -22,7 +24,7 @@ public class ShelterList {
 
     public Shelter getShelter(UUID uuid) {
         for (Shelter shelter : this.shelters) {
-            if (shelter.getID().equals(uuid)) {
+            if (shelter.getId().equals(uuid)) {
                 return shelter;
             }
         }
@@ -33,7 +35,8 @@ public class ShelterList {
         return null;
     }
 
-    public boolean addShelter(ShelterType shelterType, String address, String zipCode, ShelterResources shelterResources, ShelterStatus shelterStatus, String visualDescription) {
+    public boolean addShelter(ShelterType shelterType, String address, String zipCode, ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus, String visualDescription) {
+        this.shelters.add(new Shelter(shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
         return true;
     }
 

@@ -1,8 +1,15 @@
 package com.model;
 
 public enum ShelterType {
-    HOUSE,
-    SCHOOL,
-    BUSINESS,
-    COMMUNITY_CENTER
+    HOUSE("House"),
+    SCHOOL("School"),
+    BUSINESS("Business"),
+    COMMUNITY_CENTER("Community center");
+
+    public String str;
+
+    private ShelterType(String str) {
+        this.str = str;
+    }
+
 }
