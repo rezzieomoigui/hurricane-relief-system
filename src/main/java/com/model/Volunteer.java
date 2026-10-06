@@ -33,7 +33,7 @@ public class Volunteer extends User {
     }
 
     public void denyRequest(ReliefRequest request) {
-        // add implementation here
+        System.out.println("Request denied: " + request.getRequestId());
     }
 
     public void markCompleteRequest(ReliefRequest request) {
