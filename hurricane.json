@@ -1,0 +1,48 @@
+[
+    {
+        "name": "Arthur",
+        "id": "fae8f434-5e8e-4367-aa3e-2c07adf8aa09",
+        "eye_of_the_storm": "Charleston",
+        "category": 3,
+        "status": "ACTIVE",
+        "affected_zip_codes": [
+           "29401",
+           "29402",
+           "29403"
+        ],
+        "preparation_guide": {
+           "tips": [
+               "Stay away from windows",
+               "Stock up on water and canned goods"
+           ],
+           "emergency_phone_numbers": ["8035649089", "9087651358"]
+        }, 
+        "wind_speed": 55.0,
+        "movement_speed": 30.0,
+        "expected_land_fall": "2026-11-01 11:30:00"
+    },
+    {
+        "name": "Maria",
+        "id": "f75871a3-a208-4add-9568-1ee5f08eee8f",
+        "eye_of_the_storm": "Houston",
+        "category": 2,
+        "status": "ACTIVE",
+        "affected_zip_codes": [
+           "47703",
+           "47704",
+           "47705"
+        ],
+        "preparation_guide": {
+           "tips": [
+               "Stay away from windows",
+               "Stock up on water and canned goods"
+           ],
+           "emergency_phone_numbers": ["6759082388", "9903478910"]
+
+        }, 
+        "wind_speed": 100.0,
+        "movement_speed": 50.0,
+        "expected_land_fall": "2026-11-02 8:12:00"
+    }
+
+]

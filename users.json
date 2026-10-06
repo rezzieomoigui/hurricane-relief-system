@@ -4,22 +4,103 @@
         "first_name": "Jayce",
         "last_name": "Campbell",
         "user_name": "jCampbell",
+        "password": "rockSOLid34$",
         "email": "jCampbell@gmail.com",
         "date_of_birth": "Feburary 21, 2005",
-        "location": [
-            {
-                "state": "North Carolina",
-                "city": "Raleigh",
-                "zip_code": "27601"
-            }
-        ]
+        "address": "123 Elmore Rd",
+        "zip_code": "27601",
+        "language": "English",
+        "isAdmin": false
     },
     {
         "id": "6346f653-779f-4d65-b2cf-207727929f57",
         "first_name": "Aidan",
-        "last_name": "Wood",
-        "user_name": "aWood",
-        "email": "aWood@outlook.com",
-        "date_of_birth": "March 2, 2005"
+        "last_name": "Montenez",
+        "user_name": "aMontenez",
+        "password": "MathIS:)",
+        "email": "aMontenez@outlook.com",
+        "date_of_birth": "November 2, 2008",
+        "address": "2659 Rocky Trail",
+        "zip_code": "92127",
+        "language": "Spanish",
+        "isAdmin": false
+    },
+    {
+        "id": "2d646572-62f4-42ae-87ea-a4c01621ad67",
+        "first_name": "Charley",
+        "last_name": "Grim",
+        "user_name": "charGrim3",
+        "password": "C0d&1n9",
+        "email": "charGrim@yahoo.com",
+        "date_of_birth": "March 14, 2000",
+        "address": "530 Snail Court",
+        "zip_code": "30303",
+        "language": "English",
+        "isAdmin": true
+    },
+    {
+        "id": "d78d4cda-e135-49dc-856c-63e5db3083ca",
+        "first_name": "Jake",
+        "last_name": "Bim",
+        "user_name": "jBim",
+        "password": "Han69",
+        "email": "jBim@gmail.com",
+        "date_of_birth": "August 8, 1987",
+        "address": "698 Mouse Street",
+        "zip_code": "29645",
+        "language": "English",
+        "isAdmin": true
+    },
+    {
+        "id": "c1c83c9f-b35c-4f2b-899b-5d4f292f6703",
+        "first_name": "Alice",
+        "last_name": "Chin",
+        "user_name": "aChin",
+        "password": "y0uRGrea1",
+        "email": "aChin@yahoo.com",
+        "date_of_birth": "February 24, 2020",
+        "address": "100 Flower Court",
+        "zip_code": "30358",
+        "language": "English",
+        "isAdmin": false
+    },
+    {
+        "id": "2707ad02-06a8-43a6-a1a9-dab1a1a2f08d",
+        "first_name": "Karen",
+        "last_name": "Plenn",
+        "user_name": "kPlenn",
+        "password": "answerMe23",
+        "email": "kPleen@gmail.com",
+        "date_of_birth": "January 1, 1970",
+        "address": "2111 Knob Creek",
+        "zip_code": "57922",
+        "language": "English",
+        "isAdmin": false
+    },
+    {
+        "id": "30cc4028-c841-44da-b784-e33ad108d28e",
+        "first_name": "Kat",
+        "last_name": "Lion",
+        "user_name": "kLion",
+        "password": "plight43",
+        "email": "kLion@gmail.com",
+        "date_of_birth": "December 31, 1981",
+        "address": "824 Christmas Road",
+        "zip_code": "10265",
+        "language": "English",
+        "isAdmin": true
+    },
+    {
+        "id": "5ed57e23-e58f-4938-8f71-e3bca390f054",
+        "first_name": "Lexi",
+        "last_name": "Stargon",
+        "user_name": "lStargon",
+        "password": "4yes67!",
+        "email": "lStargon@gmail.com",
+        "date_of_birth": "October 3, 1999",
+        "address": "743 Home Street",
+        "zip_code": "57435",
+        "language": "English",
+        "isAdmin": false
     }
 ]

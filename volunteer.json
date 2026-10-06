@@ -1,0 +1,20 @@
+[
+    {
+        "skills": [
+            "WOUND_CARE",
+            "CPR"
+        ],
+        "firstReponder": true,
+        "canSwim": false,
+        "isShelterOwner": false
+    },
+    {
+        "skills": [
+            "SEARCH_AND_RESCUE",
+            "FLOOD_RESCUE"
+        ],
+        "firstReponder": false,
+        "canSwim": true,
+        "isShelterOwner": true
+    }
+]

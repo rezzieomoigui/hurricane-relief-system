@@ -1,0 +1,26 @@
+[
+    {
+        "owner": "30cc4028-c841-44da-b784-e33ad108d28e",
+        "selectedItems": [
+            "PETS_INSIDE",
+            "FORMULA",
+            "WATER"
+        ],
+        "completedItems": [
+            "CLOSE_WINDOWS",
+            "CHARGED_DEVICES"
+        ]
+    },
+    {
+        "owner": "5ed57e23-e58f-4938-8f71-e3bca390f054",
+        "selectedItems": [
+            "FLASHLIGHT",
+            "TOILET_PAPER"
+        ],
+        "completedItems": [
+            "DOCUMENTS_LOCATED",
+            "CHARGED_DEVICES",
+            "DOORS_LOCKED"
+        ]
+    }
+]
