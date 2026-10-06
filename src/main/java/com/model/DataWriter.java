@@ -12,7 +12,7 @@ public class DataWriter extends DataConstants {
         ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
         shelterResources.add(ShelterResources.WATER);
         shelterResources.add(ShelterResources.BLANKET);
-        shelterList.addShelter(ShelterType.HOUSE, "47 Rainy Brook Dr", "29202", shelterResources, ShelterStatus.OPEN, "White house with green shutters");
+        shelterList.addShelter(ShelterType.HOUSE, "47 Green Forest Dr", "29203", shelterResources, ShelterStatus.CLOSED, "Brick house with flower boxes");
         saveShelters();
     }
     

@@ -1,1 +1,27 @@
-[{"zipCode":"29202","address":"47 Rainy Brook Dr","shelterType":"House","shelterStatus":"Open","visualDescription":"White house with green shutters","shelterResources":["Water","Blanket"]}]
+[
+    {
+        "UUID": "ea13f604-e52e-4988-908e-955481ffa8d8",
+        "address": "123 Main St",
+        "zipCode": "29208",
+        "shelterType": "HOUSE",
+        "shelterStatus": "OPEN",
+        "shelterResources": [
+            "WATER", 
+            "FOOD",
+            "BLANKET"
+        ],
+        "visualDescription": "Church with large cross and green field"
+    },
+    {
+        "UUID": "fd1616d6-6dd4-4596-b74e-efde3fb4aaf3",
+        "address": "456 Horse Road",
+        "zipCode": "24735",
+        "shelterType": "BUISNESS",
+        "shelterStatus": "NEAR_CAPACITY",
+        "shelterResources": [
+            "MEDICAL_EQUIPMENT", 
+            "WATER"
+        ],
+        "visualDescription": "Warehouse with large red sign in front of building"
+    }
+]
