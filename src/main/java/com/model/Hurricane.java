@@ -25,14 +25,16 @@ public class Hurricane {
         this.expectedLandfall = expectedLandfall;
     }
 
-    public boolean addAffectedLocation(String zipCode) {
-        // add implementation here
-        return null;
+    public boolean addAffectedLocation(String zipCode) { 
+        if (!affectedZipCodes.contains(zipCode)) {
+            affectedZipCodes.add(zipCode);
+            return true;
+        }
+        return false;
     }
 
     public boolean removeAffectedLocation(String zipCode) {
-        // add implementation here
-        return null;
+        return affectedZipCodes.remove(zipCode);
     }
 
     public boolean addReliefRequest(ReliefRequest request) {

@@ -1,5 +1,5 @@
 package com.model;
-
+ 
 public class HurricaneReliefApplication {
 
     public void createAccount(String firstName, String lastName, String username, String password,
@@ -11,6 +11,11 @@ public class HurricaneReliefApplication {
     public String login(String username, String password) {
         UserList userList = UserList.getInstance();
         User user = userList.getUser(username);
-        return user.login(username, password);
+        if (user != null) {
+            return user.login(username, password);
+        } else {
+            return "User not found.";
+        }
     }
-}
+} 
+ 
