@@ -1,0 +1,13 @@
+[
+    {
+        "zipCode": "29223",
+        "address": "47 Blue Ocean Dr",
+        "shelterType": "Business",
+        "shelterStatus": "Open",
+        "visualDescription": "Pink two-story building",
+        "shelterResources": [
+            "Water",
+            "Blanket"
+        ]
+    }
+]

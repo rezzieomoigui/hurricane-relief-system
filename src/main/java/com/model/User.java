@@ -1,7 +1,8 @@
 package com.model;
+import java.util.Scanner;
 import java.util.UUID;
 
-public abstract class User {
+public class User {
     private UUID uuid;
     private String firstName;
     private String lastName;
@@ -14,6 +15,13 @@ public abstract class User {
     private String language;
     private boolean isAdmin;
 
+    public User(UUID uuid, String username, String firstName, String lastName, String password) {
+        this.uuid = uuid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
     public User(UUID uuid, String firstName, String lastName, String username, String password,
     String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
         this.uuid = uuid;
@@ -29,16 +37,40 @@ public abstract class User {
         this.isAdmin = isAdmin;
     }
 
-    public void createAccount(String username, String password) {
+    public User(String firstName, String lastName, String username, String password,
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
+        this.uuid = UUID.randomUUID();
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.language = language;
+        this.isAdmin = isAdmin;
     }
 
-    public boolean isMatch(String username, String password) {
-        if (this.username.equals(username) && this.password.equals(password)) {
-            return true;
-        }
-        return false;
+    /**public void createAccount(String firstName, String lastName, String username, String password,
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
+        UserList userList = UserList.getInstance();
+        userList.addUser(firstName, lastName, username, password, email, 
+            dateOfBirth, address, zipCode, language, isAdmin);
+    }*/
+
+    public String login(String username, String password) {
+        if(isMatch(username, password)) 
+            return "Logged in!";
+        return "Incorrect username or password.";
+    }
+
+    private boolean isMatch(String username, String password) {
+        UserList userList = UserList.getInstance();
+        User user = userList.getUser(username);
+        if(user == null)
+            return false;
+        return user.getPassword().equals(password);
     }
 
     public void resetPassword(String passwordUpdate) {
@@ -128,16 +160,16 @@ public abstract class User {
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
     }
-    public String toString() {
-        return "UUID: " + uuid + "\n" +
-                "First Name: " + firstName + "\n" +
-                "Last Name: " + lastName + "\n" +
-                "Username: " + username + "\n" +
-                "Email: " + email + "\n" +
-                "Date of Birth: " + dateOfBirth + "\n" +
-                "Address: " + address + "\n" +
-                "Zip Code: " + zipCode + "\n" +
-                "Language: " + language + "\n" +
-                "Is Admin: " + isAdmin + "\n";
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+        System.out.println("----- Creating An Account -----");
+        System.out.println("Enter your first name: ");
+        String firstName = keyboard.nextLine();
+        System.out.println("Enter your last name: ");
+        String lastName = keyboard.nextLine();
+        System.out.println("Enter your username: ");
+        String username = keyboard.nextLine();
+
     }
 }

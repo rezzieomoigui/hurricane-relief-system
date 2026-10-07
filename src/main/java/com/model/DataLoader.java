@@ -1,4 +1,5 @@
 package com.model;
+
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -8,9 +9,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
+    public static void main(String[] args) {
+        ArrayList<User> users = getUsers();
+        for (User user : users) {
+            System.out.println(user.getUsername());
+        }
+        ArrayList<Shelter> shelters = getShelters();
+        for (Shelter shelter : shelters) {
+            System.out.println(shelter.getAddress());
+        }
+    }
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
-        try {
+        /*try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray peopleArray = (JSONArray)new JSONParser().parse(reader);
@@ -25,9 +36,19 @@ public class DataLoader extends DataConstants {
 
         return users;
 
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
         return null;
-    }   
+        */
+       users.add(new User(UUID.randomUUID(), "cBrown", "Claire", "Brown", "Cr@b156"));
+       users.add(new User(UUID.randomUUID(), "gCarlton", "Grace", "Carlton", "Gc@rl0ts!:)"));
+       return users;
+    }
+    public static ArrayList<Shelter> getShelters() {
+        ArrayList<Shelter> shelters = new ArrayList<Shelter>();
+        shelters.add(new Shelter(UUID.randomUUID(), ShelterType.SCHOOL, "374 Lincoln St", "02111", ShelterResources.WATER, ShelterStatus.OPEN, "Large brick building, neon sign on front"));
+        shelters.add(new Shelter(UUID.randomUUID(), ShelterType.HOUSE, "124 Main St", "52471", ShelterResources.FOOD, ShelterStatus.NEAR_CAPACITY, "Two story blue house with a red door"));
+        return shelters;
+    }
 }
