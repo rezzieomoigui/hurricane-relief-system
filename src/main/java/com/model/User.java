@@ -164,7 +164,6 @@ public class User {
         String lastName = keyboard.nextLine();
         System.out.println("Enter your username: ");
         String username = keyboard.nextLine();
-        
 
     }
 }

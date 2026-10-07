@@ -12,7 +12,7 @@ public class DataWriter extends DataConstants {
         ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
         shelterResources.add(ShelterResources.WATER);
         shelterResources.add(ShelterResources.BLANKET);
-        shelterList.addShelter(ShelterType.HOUSE, "47 Green Forest Dr", "29203", shelterResources, ShelterStatus.CLOSED, "Brick house with flower boxes");
+        shelterList.addShelter(ShelterType.BUSINESS, "47 Blue Ocean Dr", "29223", shelterResources, ShelterStatus.OPEN, "Pink two-story building");
         saveShelters();
     }
     
@@ -36,10 +36,7 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getShelterJSON(Shelter shelter) {
-        ArrayList<String> shelterResources = new ArrayList<String>();
-        for (int i = 0; i < shelter.getShelterResources().size(); ++i) {
-            shelterResources.add(shelter.getShelterResources().get(i).str);
-        }
+        ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
         JSONObject shelterDetails = new JSONObject();
         shelterDetails.put(SHELTER_ADDRESS, shelter.getAddress());
         shelterDetails.put(SHELTER_ZIP_CODE, shelter.getZipCode());
@@ -48,5 +45,13 @@ public class DataWriter extends DataConstants {
         shelterDetails.put(SHELTER_SHELTER_RESOURCES, shelterResources);
         shelterDetails.put(SHELTER_VISUAL_DESCRIPTION, shelter.getVisualDescription());
         return shelterDetails;
+    }
+
+    private static ArrayList<String> convertShelterResources(ArrayList<ShelterResources> shelterResources) {
+        ArrayList<String> shelterResourcesStr = new ArrayList<String>();
+        for (int i = 0; i < shelterResources.size(); ++i) {
+            shelterResourcesStr.add(shelterResources.get(i).str);
+        }
+        return shelterResourcesStr;
     }
 }
