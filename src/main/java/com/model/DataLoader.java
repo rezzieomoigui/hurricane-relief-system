@@ -1,4 +1,5 @@
 package com.model;
+
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.UUID;
@@ -39,5 +40,8 @@ public class DataLoader extends DataConstants {
        users.add(new User(UUID.randomUUID(), "cBrown", "Claire", "Brown", "Cr@b156"));
        users.add(new User(UUID.randomUUID(), "gCarlton", "Grace", "Carlton", "Gc@rl0ts!:)"));
        return users;
-    }   
+    }
+    public static ArrayList<Shelter> getShelters() {
+        ArrayList<Shelter> shelters = new ArrayList<Shelter>();
+        shelters.add(new Shelter(UUID.randomUUID(), SCHOOL, "374 Lincoln St", "02111", WATER, OPEN, "Large brick building, neon sign on front"));
 }
