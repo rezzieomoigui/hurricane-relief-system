@@ -1,11 +1,14 @@
 package com.model;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 public class UserList {
     private static UserList userList;
     private ArrayList<User> users;
 
     private UserList() {
-        users = new ArrayList<>();
+        users = new ArrayList<User>();
     }
 
     public static UserList getInstance() {
@@ -33,12 +36,18 @@ public class UserList {
         return null;
     }
 
-    public boolean addUser(String firstName, String lastName, String username, String email) {
-        if (getUser(username) == null) {
-            users.add(new User(firstName, lastName, username, email));
-            return true;
+    public ArrayList<User> getUsers() {
+        return this.users;
+    }
+
+    public boolean addUser(String firstName, String lastName, String username, String password,
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
+        if (getUser(username) != null) {
+            return false;
         }
-        return false;
+        users.add(new User(firstName, lastName, username, password, email, 
+                dateOfBirth, address, zipCode, language, isAdmin));
+        return true;
     }
 
     public boolean save() {
