@@ -43,5 +43,14 @@ public class DataLoader extends DataConstants {
     }
     public static ArrayList<Shelter> getShelters() {
         ArrayList<Shelter> shelters = new ArrayList<Shelter>();
-        shelters.add(new Shelter(UUID.randomUUID(), SCHOOL, "374 Lincoln St", "02111", WATER, OPEN, "Large brick building, neon sign on front"));
-}
+        shelters.add(new Shelter(
+                UUID.randomUUID(),
+                ShelterType.SCHOOL,
+                "374 Lincoln St",
+                "02111",
+                ShelterResources.WATER,
+                ShelterStatus.OPEN,
+                "Large brick building, neon sign on front"
+        ));
+        return shelters;
+    }
