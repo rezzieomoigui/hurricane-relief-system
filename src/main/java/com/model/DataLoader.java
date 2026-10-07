@@ -8,9 +8,15 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 public class DataLoader extends DataConstants {
+    public static void main(String[] args) {
+        ArrayList<User> users = getUsers();
+        for (User user : users) {
+            System.out.println(user.getUsername());
+        }
+    }
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
-        try {
+        /*try {
             FileReader reader = new FileReader(USER_FILE_NAME);
             JSONParser parser = new JSONParser();
             JSONArray peopleArray = (JSONArray)new JSONParser().parse(reader);
@@ -25,9 +31,13 @@ public class DataLoader extends DataConstants {
 
         return users;
 
-        } catch (Exception e) {
+        }catch (Exception e) {
             e.printStackTrace();
         }
         return null;
+        */
+       users.add(new User(UUID.randomUUID(), "cBrown", "Claire", "Brown", "Cr@b156"));
+       users.add(new User(UUID.randomUUID(), "gCarlton", "Grace", "Carlton", "Gc@rl0ts!:)"));
+       return users;
     }   
 }

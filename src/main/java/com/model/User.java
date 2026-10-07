@@ -15,6 +15,13 @@ public class User {
     private String language;
     private boolean isAdmin;
 
+    public User(UUID uuid, String username, String firstName, String lastName, String password) {
+        this.uuid = uuid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+    }
     public User(UUID uuid, String firstName, String lastName, String username, String password,
     String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
         this.uuid = uuid;
