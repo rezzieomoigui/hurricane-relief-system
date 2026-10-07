@@ -317,7 +317,10 @@ public class HurricaneReliefDriver {
         System.out.println("Added to checklist: " + item);
     }
 
-    /** Marks a selected checklist item complete or incomplete. */
+    /**  
+     * Marks a selected checklist item complete or incomplete.
+     * @param complete whether to mark the item as complete or incomplete
+     */
     private void markChecklistItem(boolean complete) {
         if (checklist.isEmpty()) {
             System.out.println("The checklist is empty. Add an item first.");
@@ -349,10 +352,10 @@ public class HurricaneReliefDriver {
     }
 
     /**
-     * Builds a safe-status message for the saved emergency contacts.
+     *  
      *
-     * @param contacts emergency contact names and phone numbers
-     * @return the message and its intended recipients
+     * @param contacts  
+     * @return  
      */
     private String safeMessage(HashMap<String, String> contacts) {
         StringBuilder message = new StringBuilder("Safe message: I am safe.\nRecipients:");
@@ -362,10 +365,10 @@ public class HurricaneReliefDriver {
     }
 
     /**
-     * Reads a nonempty answer from the user and returns it. Keeps prompting until a nonempty answer is given.
+     *  
      *
-     * @param prompt question to display
-     * @return the user's answer
+     * @param prompt  
+     * @return  
      */
     private String readText(String prompt) {
         while (true) {
