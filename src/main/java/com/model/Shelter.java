@@ -84,11 +84,11 @@ public class Shelter {
         this.shelterStatus = shelterStatus;
     }
 
-    public ArrayList<ShelterResources> getShelterResources() {
+    public ShelterResources getShelterResources() {
         return shelterResources;
     }
 
-    public void setShelterResources(ArrayList<ShelterResources> shelterResources) {
+    public void setShelterResources(ShelterResources shelterResources) {
         this.shelterResources = shelterResources;
     }
 
