@@ -24,33 +24,35 @@ public class Volunteer extends User {
     
     public void registerShelter(boolean isShelterOwner) {
         if (isShelterOwner) {
-            // add implementation here
+            System.out.println("Shelter registration successful.");
+        } else {
+            System.out.println("Shelter registration failed. You must be a shelter owner to register a shelter.");
         }
     }
 
-    public void acceptRequest(ReliefRequest request) {
-        // add implementation here
+    public void acceptRequest(ReliefRequest request) { 
+        System.out.println("Request accepted: " + request.getRequestId());
     }
 
     public void denyRequest(ReliefRequest request) {
-        System.out.println("Request denied: " + request.getRequestId());
+        System.out.println("Request denied: " + request);
     }
 
-    public void markCompleteRequest(ReliefRequest request) {
-        // add implementation here
+    public void markCompleteRequest(ReliefRequest request) { 
+        System.out.println("Request marked as complete: " + request.getRequestId());
     }
 
-    public String declineMessage(ReliefRequest request) {
-        // add implementation here
+    public String declineMessage(ReliefRequest request) { 
+        System.out.println("Request declined: " + request.getRequestId());
         return null;
     }
 
-    public void cancel(ReliefRequest request) {
-        // add implementation here
+    public void cancel(ReliefRequest request) { 
+        System.out.println("Request canceled: " + request.getRequestId());
     }
 
-    public void reopenRequest(ReliefRequest request, boolean isAdmin) {
-        // add implementation here
+    public void reopenRequest(ReliefRequest request, boolean isAdmin) { 
+        System.out.println("Request reopened: " + request.getRequestId());
     }
 
     public Skills getSkills() {

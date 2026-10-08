@@ -25,65 +25,87 @@ public class Hurricane {
         this.expectedLandfall = expectedLandfall;
     }
 
-    public boolean addAffectedLocation(String zipCode) {
-        // add implementation here
-        return null;
+    public boolean addAffectedLocation(String zipCode) { 
+        if (!affectedZipCodes.contains(zipCode)) {
+            affectedZipCodes.add(zipCode);
+            return true;
+        }
+        return false;
     }
 
     public boolean removeAffectedLocation(String zipCode) {
-        // add implementation here
-        return null;
+        return affectedZipCodes.remove(zipCode);
     }
 
     public boolean addReliefRequest(ReliefRequest request) {
-        // add implementation here
-        return null;
+        if (!reliefRequests.contains(request)) {
+            reliefRequests.add(request);
+            return true;
+        }
+        return false;
     }
 
     public boolean removeReliefRequest(ReliefRequest request) {
-        // add implementation here
-        return null;
+        return reliefRequests.remove(request);
     }
 
     public ArrayList<ReliefRequest> getRequestsByLocation() {
-        // add implementation here
-        return null;
+        ArrayList<ReliefRequest> requestsByLocation = new ArrayList<>();
+        for (ReliefRequest request : reliefRequests) {
+            if (affectedZipCodes.contains(request.getLocationZip())) {
+                requestsByLocation.add(request);
+            }
+        }
+        return requestsByLocation;
     }
 
     public ArrayList<ReliefRequest> getRequestsByStatus() {
-        // add implementation here
-        return null;
+        ArrayList<ReliefRequest> requestsByStatus = new ArrayList<>();
+        for (ReliefRequest request : reliefRequests) {
+            if (request.getStatus() == status) {
+                requestsByStatus.add(request);
+            }
+        }
+        return requestsByStatus;
     }
 
     public boolean addShelter(Shelter shelter) {
-        // add implementation here
-        return null;
+        if (!shelters.contains(shelter)) {
+            shelters.add(shelter);
+            return true;
+        }
+        return false;
     }
 
     public ArrayList<Shelter> getAvailableShelters() {
-        // add implementation here
-        return null;
+        ArrayList<Shelter> availableShelters = new ArrayList<>();
+        for (Shelter shelter : shelters) {
+            if (shelter.isAvailable()) {
+                availableShelters.add(shelter);
+            }
+        }
+        return availableShelters;
     }
 
     public void updateEyeLocation(String zipCode) {
-        // add implementation here
+        this.eyeOfStormZip = zipCode;
     }
 
     public void updateCategory(int category) {
-        // add implementation here
+        this.category = category;
     }
 
     public boolean isApproaching(String zipCode) {
-        // add implementation here
-        return null;
+        return affectedZipCodes.contains(zipCode) && !zipCode.equals(eyeOfStormZip);
     }
     
     public boolean isLeaving(String zipCode) {
-        // add implementation here
-        return null;
+        return !affectedZipCodes.contains(zipCode) && !zipCode.equals(eyeOfStormZip);
     }
 
     public void displayAffectedZipCodes() {
-        // add implementation here
+        for (String zipCode : affectedZipCodes) {
+            System.out.println(zipCode);
+        }
     }
 }

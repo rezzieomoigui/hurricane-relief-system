@@ -98,4 +98,9 @@ public class ReliefRequest {
     public boolean isStayingHome() {
         return stayingHome;
     }
+
+    public String getRequestId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getRequestId'");
+    }
 }
