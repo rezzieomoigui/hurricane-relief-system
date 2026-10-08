@@ -20,10 +20,10 @@ public class DataLoader extends DataConstants {
         }
         UUID id = UUID.randomUUID();
         System.out.println(id);
-        /*ArrayList<Shelter> shelters = getShelters();
+        ArrayList<Shelter> shelters = getShelters();
         for (Shelter shelter : shelters) {
             System.out.println(shelter.getAddress());
-        }*/
+        }
     }
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
@@ -38,6 +38,12 @@ public class DataLoader extends DataConstants {
                 String firstName = (String)personJSON.get(USER_FIRST_NAME);
                 String lastName = (String)personJSON.get(USER_LAST_NAME);
                 String password = (String)personJSON.get(USER_PASSWORD);
+                String zipCode = (String)personJSON.get(USER_ZIP_CODE);
+                String email = (String)personJSON.get(USER_EMAIL);
+                String dateOfBirth = (String)personJSON.get(USER_DATE_OF_BIRTH);
+                String language = (String)personJSON.get(USER_LANGUAGE);
+                String address = (String)personJSON.get(USER_ADDRESS);
+                Boolean isAdmin = (Boolean)personJSON.get(USER_IS_ADMIN);
                 users.add(new User(id, userName, firstName, lastName, password));
             }
 
@@ -57,29 +63,41 @@ public class DataLoader extends DataConstants {
             JSONArray shelterArray = (JSONArray)new JSONParser().parse(reader);
             for (int i = 0; i < shelterArray.size(); i++) {
                 JSONObject shelterJSON = (JSONObject)shelterArray.get(i);
-                //UUID id = UUID.fromString((String)shelterJSON.get());
+                UUID id = UUID.fromString((String)shelterJSON.get(SHELTER_UUID));
                 String address = (String)shelterJSON.get(SHELTER_ADDRESS);
                 String zipCode = (String)shelterJSON.get(SHELTER_ZIP_CODE);
                 ShelterType shelterType = ShelterType.valueOf((String)shelterJSON.get(SHELTER_SHELTER_TYPE));
                 ShelterStatus shelterStatus = ShelterStatus.valueOf((String)shelterJSON.get(SHELTER_SHELTER_STATUS));
                 ShelterResources shelterResources = ShelterResources.valueOf((String)shelterJSON.get(SHELTER_SHELTER_RESOURCES));
                 String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
-                //shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
+                shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
             }
+        return shelters;
         }catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
-        /* 
-       users.add(new User(UUID.randomUUID(), "cBrown", "Claire", "Brown", "Cr@b156"));
-       users.add(new User(UUID.randomUUID(), "gCarlton", "Grace", "Carlton", "Gc@rl0ts!:)"));
-       return users;
+
+    public static ArrayList<ReliefRequest> getReliefRequests() {
+        ArrayList<ReliefRequest> reliefRequests = new ArrayList<ReliefRequest>();
+        try {
+            FileReader reader = new FileReader(RELIEF_REQUEST_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray reliefRequestArray = (JSONArray)new JSONParser().parse(reader);
+            for (int i = 0; i < reliefRequestArray.size(); i++) {
+                JSONObject reliefRequestJSON = (JSONObject)reliefRequestArray.get(i);
+                UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
+                String description = (String)reliefRequestJSON.get(RELIEF_REQUEST_DESCRIPTION);
+                String zipCode = (String)reliefRequestJSON.get(RELIEF_REQUEST_ZIP_CODE);
+                ReliefType reliefType = ReliefType.valueOf((String)reliefRequestJSON.get(RELIEF_REQUEST_RELIEF_TYPE));
+                ReliefStatus reliefStatus = ReliefStatus.valueOf((String)reliefRequestJSON.get(RELIEF_REQUEST_RELIEF_STATUS));
+                reliefRequests.add(new ReliefRequest(id, description, zipCode, reliefType, reliefStatus));
+            }
+        return reliefRequests;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
-    public static ArrayList<Shelter> getShelters() {
-        ArrayList<Shelter> shelters = new ArrayList<Shelter>();
-        shelters.add(new Shelter(UUID.randomUUID(), ShelterType.SCHOOL, "374 Lincoln St", "02111", ShelterResources.WATER, ShelterStatus.OPEN, "Large brick building, neon sign on front"));
-        shelters.add(new Shelter(UUID.randomUUID(), ShelterType.HOUSE, "124 Main St", "52471", ShelterResources.FOOD, ShelterStatus.NEAR_CAPACITY, "Two story blue house with a red door"));
-        return shelters;
-        */
 }
