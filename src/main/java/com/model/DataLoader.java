@@ -18,6 +18,8 @@ public class DataLoader extends DataConstants {
         for (User user : users) {
             System.out.println(user.getUsername());
         }
+        UUID id = UUID.randomUUID();
+        System.out.println(id);
         /*ArrayList<Shelter> shelters = getShelters();
         for (Shelter shelter : shelters) {
             System.out.println(shelter.getAddress());
@@ -62,13 +64,13 @@ public class DataLoader extends DataConstants {
                 ShelterStatus shelterStatus = ShelterStatus.valueOf((String)shelterJSON.get(SHELTER_SHELTER_STATUS));
                 ShelterResources shelterResources = ShelterResources.valueOf((String)shelterJSON.get(SHELTER_SHELTER_RESOURCES));
                 String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
-                shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
+                //shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
             }
         }catch (Exception e) {
             e.printStackTrace();
         }
         return null;
-
+    }
         /* 
        users.add(new User(UUID.randomUUID(), "cBrown", "Claire", "Brown", "Cr@b156"));
        users.add(new User(UUID.randomUUID(), "gCarlton", "Grace", "Carlton", "Gc@rl0ts!:)"));
