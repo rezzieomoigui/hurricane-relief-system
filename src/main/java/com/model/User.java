@@ -59,10 +59,8 @@ public class User {
             dateOfBirth, address, zipCode, language, isAdmin);
     }*/
 
-    public String login(String username, String password) {
-        if(isMatch(username, password)) 
-            return "Logged in!";
-        return "Incorrect username or password.";
+    public boolean login(String username, String password) {
+        return isMatch(username, password);
     }
 
     public String logout(String username) {

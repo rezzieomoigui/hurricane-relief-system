@@ -10,14 +10,14 @@ public class HurricaneReliefApplication {
         userList.addUser(firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin);
     }
 
-    public String login(String username, String password) {
+    public boolean login(String username, String password) {
         UserList userList = UserList.getInstance();
         User user = userList.getUser(username);
         if (user != null) {
             this.currentUser = user;
             return user.login(username, password);
         } else {
-            return "User not found.";
+            return false;
         }
     }
     public void logout(String username) {
