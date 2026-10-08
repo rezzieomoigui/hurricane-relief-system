@@ -17,5 +17,12 @@ public class HurricaneReliefApplication {
             return "User not found.";
         }
     }
+    public void logout(String username) {
+        UserList userList = UserList.getInstance();
+        User user = userList.getUser(username);
+        if (user != null) {
+            user.logout();
+        }
+    }
 } 
  

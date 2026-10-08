@@ -65,6 +65,10 @@ public class User {
         return "Incorrect username or password.";
     }
 
+    public String logout(String username) {
+        return "Logged out!";
+    }
+
     private boolean isMatch(String username, String password) {
         UserList userList = UserList.getInstance();
         User user = userList.getUser(username);
