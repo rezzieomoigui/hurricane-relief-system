@@ -45,6 +45,30 @@ public class DataLoader extends DataConstants {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static ArrayList<Shelter> getShelters() {
+        ArrayList<Shelter> shelters = new ArrayList<Shelter>();
+        try {
+            FileReader reader = new FileReader(SHELTER_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray shelterArray = (JSONArray)new JSONParser().parse(reader);
+            for (int i = 0; i < shelterArray.size(); i++) {
+                JSONObject shelterJSON = (JSONObject)shelterArray.get(i);
+                //UUID id = UUID.fromString((String)shelterJSON.get());
+                String address = (String)shelterJSON.get(SHELTER_ADDRESS);
+                String zipCode = (String)shelterJSON.get(SHELTER_ZIP_CODE);
+                ShelterType shelterType = ShelterType.valueOf((String)shelterJSON.get(SHELTER_SHELTER_TYPE));
+                ShelterStatus shelterStatus = ShelterStatus.valueOf((String)shelterJSON.get(SHELTER_SHELTER_STATUS));
+                ShelterResources shelterResources = ShelterResources.valueOf((String)shelterJSON.get(SHELTER_SHELTER_RESOURCES));
+                String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
+                shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+
         /* 
        users.add(new User(UUID.randomUUID(), "cBrown", "Claire", "Brown", "Cr@b156"));
        users.add(new User(UUID.randomUUID(), "gCarlton", "Grace", "Carlton", "Gc@rl0ts!:)"));
@@ -56,5 +80,4 @@ public class DataLoader extends DataConstants {
         shelters.add(new Shelter(UUID.randomUUID(), ShelterType.HOUSE, "124 Main St", "52471", ShelterResources.FOOD, ShelterStatus.NEAR_CAPACITY, "Two story blue house with a red door"));
         return shelters;
         */
-    }
 }
