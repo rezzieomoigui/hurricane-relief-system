@@ -10,7 +10,7 @@ public class HurricaneReliefApplication {
 
     public String login(String username, String password) {
         UserList userList = UserList.getInstance();
-        User user = userList.getUser(username);
+        User user = userList.getUser(username); 
         return user.login(username, password);
     }
 }
