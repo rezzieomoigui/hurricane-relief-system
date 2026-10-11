@@ -1,8 +1,11 @@
 package com.model;
+import java.util.UUID;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ReliefRequest {
     private UUID uuid;
-    private ArrayList<Users> partyMembers;
+    private ArrayList<User> partyMembers;
     private boolean isIndoors;
     private boolean isMobile;
     private boolean isInjured;
@@ -11,7 +14,7 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-    public ReliefRequest(UUID uuid, ArrayList<Users> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    public ReliefRequest(UUID uuid, ArrayList<User> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
         this.uuid = uuid;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
@@ -29,7 +32,7 @@ public class ReliefRequest {
         this.isIndoors = false;
         this.isMobile = false;
         this.isInjured = false;
-        this.status = ReliefRequestStatus.PENDING;
+        this.status = ReliefRequestStatus.IN_PROGRESS;
         this.priority = 0;
         this.estimatedArrivalMinutes = 0;
         this.stayingHome = false;
@@ -67,7 +70,7 @@ public class ReliefRequest {
         return uuid;
     }
 
-    public ArrayList<Users> getPartyMembers() {
+    public ArrayList<User> getPartyMembers() {
         return partyMembers;
     }
 
