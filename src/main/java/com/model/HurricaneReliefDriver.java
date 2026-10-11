@@ -1,10 +1,10 @@
 package com.model;
 
-import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Scanner;
+import java.util.Set;
 
 /**
  *  
@@ -199,19 +199,27 @@ public class HurricaneReliefDriver {
      * Collects account information and passes it to the application 
      */
     private void createAccount() {
-        String userName = readText("Enter a username: ");
+        String firstName = readText("Enter your first name: ");
+        String lastName = readText("Enter your last name: ");
+        String username = readText("Enter a username: ");
         String password = readText("Enter a password: ");
+        String email = readText("Enter an email: ");
+        String dateOfBirth = readText("Enter a date of birth: ");
+        String address = readText("Enter an address: ");
+        String zipCode = readText("Enter a zip code: ");
+        String language = readText("Enter a language: ");
+
 
         application.createAccount(
-                userName,
+                firstName,
+                lastName,
+                username,
                 password,
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
-                "",
+                email,
+                dateOfBirth,
+                address,
+                zipCode,
+                language,
                 false
         );
     }
