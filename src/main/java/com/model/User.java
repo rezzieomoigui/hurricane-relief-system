@@ -2,6 +2,10 @@ package com.model;
 import java.util.Scanner;
 import java.util.UUID;
 
+/**
+ * User class creates user objects
+ * @author Fantastic Four
+ */
 public class User {
     private UUID uuid;
     private String firstName;
