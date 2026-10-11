@@ -15,6 +15,14 @@ public class User {
     private String language;
     private boolean isAdmin;
 
+    /**
+     * User constructor creates user
+     * @param uuid user id number 
+     * @param username user username
+     * @param firstName user first name
+     * @param lastName user last name
+     * @param password user password
+     */
     public User(UUID uuid, String username, String firstName, String lastName, String password) {
         this.uuid = uuid;
         this.firstName = firstName;

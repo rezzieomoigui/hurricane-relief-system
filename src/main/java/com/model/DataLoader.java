@@ -10,9 +10,12 @@ import org.json.simple.parser.JSONParser;
 
 /**
  * Loads data from JSON files into the application.
+ * @author FantasticFour
  */
 public class DataLoader extends DataConstants {
-     
+     /**
+      * main method created to test data loader
+      */
     public static void main(String[] args) {
         ArrayList<User> users = getUsers();
         for (User user : users) {
@@ -25,6 +28,11 @@ public class DataLoader extends DataConstants {
             System.out.println(shelter.getAddress());
         }
     }
+    
+    /**
+     * getUsers reads in data from the users json file and adds a user from the data that is read in
+     * @return
+     */
     public static ArrayList<User> getUsers() {
         ArrayList<User> users = new ArrayList<User>();
         try {
@@ -55,6 +63,9 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * getShelters reads in data from the shelter json file and adds a shelter from the data that is read in
+     */
     public static ArrayList<Shelter> getShelters() {
         ArrayList<Shelter> shelters = new ArrayList<Shelter>();
         try {
@@ -79,6 +90,10 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * getReliefRequests reads in data from the reliefRequest json file and adds a relief request from the data that is read in
+     * @return
+     */
     public static ArrayList<ReliefRequest> getReliefRequests() {
         ArrayList<ReliefRequest> reliefRequests = new ArrayList<ReliefRequest>();
         try {
@@ -87,7 +102,8 @@ public class DataLoader extends DataConstants {
             JSONArray reliefRequestArray = (JSONArray)new JSONParser().parse(reader);
             for (int i = 0; i < reliefRequestArray.size(); i++) {
                 JSONObject reliefRequestJSON = (JSONObject)reliefRequestArray.get(i);
-                UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
+                UUID id = UUID.fromString((String)reliefRequestJSON.get(USER_UUID));
+                UUID rrid = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_ID));
                 String description = (String)reliefRequestJSON.get(RELIEF_REQUEST_DESCRIPTION);
                 String zipCode = (String)reliefRequestJSON.get(RELIEF_REQUEST_ZIP_CODE);
                 ReliefType reliefType = ReliefType.valueOf((String)reliefRequestJSON.get(RELIEF_REQUEST_RELIEF_TYPE));
