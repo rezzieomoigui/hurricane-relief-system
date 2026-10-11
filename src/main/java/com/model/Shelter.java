@@ -7,14 +7,14 @@ public class Shelter {
     private String zipCode;
     private ShelterType shelterType;
     private ShelterStatus shelterStatus;
-    private ShelterResources shelterResources;
+    private ArrayList<ShelterResources> shelterResources;
     private String visualDescription;
 
     /**
      * Creates a brand new shelter and generates its id.
      */
     public Shelter(ShelterType shelterType, String address, String zipCode,
-                   ShelterResources shelterResources, ShelterStatus shelterStatus,
+                   ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus,
                    String visualDescription) {
         this(UUID.randomUUID(), shelterType, address, zipCode,
                 shelterResources, shelterStatus, visualDescription);
@@ -24,7 +24,7 @@ public class Shelter {
      * Recreates an existing shelter with a known id (used when loading from JSON).
      */
     public Shelter(UUID id, ShelterType shelterType, String address, String zipCode,
-                   ShelterResources shelterResources, ShelterStatus shelterStatus,
+                   ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus,
                    String visualDescription) {
         this.uuid = id;
         this.shelterType = shelterType;
@@ -84,11 +84,11 @@ public class Shelter {
         this.shelterStatus = shelterStatus;
     }
 
-    public ShelterResources getShelterResources() {
+    public ArrayList<ShelterResources> getShelterResources() {
         return shelterResources;
     }
 
-    public void setShelterResources(ShelterResources shelterResources) {
+    public void setShelterResources(ArrayList<ShelterResources> shelterResources) {
         this.shelterResources = shelterResources;
     }
 
