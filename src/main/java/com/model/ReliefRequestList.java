@@ -1,11 +1,13 @@
 package com.model;
+import java.util.ArrayList;
+import java.util.UUID;
 
 public class ReliefRequestList {
-    private ReliefRequestList reliefRequestList;
+    private static ReliefRequestList reliefRequestList;
     private ArrayList<ReliefRequest> reliefRequests;
 
     private ReliefRequestList() {
-        reliefRequests = new ArrayList<>();
+        reliefRequests = new ArrayList<ReliefRequest>();
     }
 
     public static ReliefRequestList getInstance() {
@@ -21,8 +23,7 @@ public class ReliefRequestList {
     }
 
     public ArrayList<ReliefRequest> getReliefRequests() {
-        // add implementation here
-        return null;
+        return this.reliefRequests;
     }
 
     public boolean addReliefRequest(User requestWriter, String address) {

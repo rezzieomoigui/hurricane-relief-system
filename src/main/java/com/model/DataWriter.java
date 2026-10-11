@@ -56,6 +56,22 @@ public class DataWriter extends DataConstants {
 
     }
 
+    public static void saveReliefRequests() {
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
+        JSONArray jsonRequests = new JSONArray();
+        for (int i = 0; i < reliefRequests.size(); ++i ) {
+            jsonRequests.add(getReliefRequestJSON(reliefRequests.get(i)));
+        }
+        try(FileWriter file = new FileWriter(RELIEF_REQUEST_FILE_NAME)) {
+            file.write(jsonRequests.toJSONString());
+            file.flush();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     public static JSONObject getShelterJSON(Shelter shelter) {
         ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
         JSONObject shelterDetails = new JSONObject();
@@ -90,5 +106,10 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_LANGUAGE, user.getLanguage());
         userDetails.put(USER_IS_ADMIN, user.isAdmin());
         return userDetails;
+    }
+
+    public static JSONObject getReliefRequestJSON(ReliefRequest request) {
+        JSONObject requestDetails = new JSONObject();
+        return requestDetails;
     }
 }
