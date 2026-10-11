@@ -71,7 +71,7 @@ public class ShelterList {
      * @param visualDescription shelter visual description
      * @return boolean true if shelter was added correctly
      */
-    public boolean addShelter(ShelterType shelterType, String address, String zipCode, ShelterResources shelterResources, ShelterStatus shelterStatus, String visualDescription) {
+    public boolean addShelter(ShelterType shelterType, String address, String zipCode, ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus, String visualDescription) {
         this.shelters.add(new Shelter(shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
         return true;
         // add case for if shelter doesn't exist
