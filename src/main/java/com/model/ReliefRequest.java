@@ -6,7 +6,7 @@ package com.model;
  */
 public class ReliefRequest {
     private UUID uuid;
-    private ArrayList<Users> partyMembers;
+    private ArrayList<UUID> partyMembers;
     private boolean isIndoors;
     private boolean isMobile;
     private boolean isInjured;
@@ -121,8 +121,12 @@ public class ReliefRequest {
      * getPartyMembers returns party members
      * @return arrayList of party members
      */
-    public ArrayList<Users> getPartyMembers() {
-        return partyMembers;
+    public ArrayList<UUID> getPartyMembers() {
+        String memberList;
+        for (int i = 0;  i < partyMembers.size(); i++) {
+            memberList += partyMembers[i];
+        }
+        return memberList;
     }
 
     /**
