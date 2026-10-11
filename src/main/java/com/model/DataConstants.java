@@ -22,4 +22,14 @@ public abstract class DataConstants {
     protected static final String USER_LANGUAGE = "language";
     protected static final String USER_IS_ADMIN = "isAdmin";
 
+    protected static final String RELIEF_REQUEST_FILE_NAME = "json_files/reliefRequest.json";
+    protected static final String RELIEF_REQUEST_UUID = "uuid";
+    protected static final String RELIEF_REQUEST_PARTY_MEMBERS = "partyMembers";
+    protected static final String RELIEF_REQUEST_IS_INDOORS = "isIndoors";
+    protected static final String RELIEF_REQUEST_IS_MOBILE = "isMobile";
+    protected static final String RELIEF_REQUEST_IS_INJURED = "isInjured";
+    protected static final String RELIEF_REQUEST_STATUS = "status";
+    protected static final String RELIEF_REQUEST_PRIORITY = "priority";
+    protected static final String RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES = "estimatedArrivalMinutes";
+    protected static final String RELIEF_REQUEST_STAYING_HOME = "stayingHome";
 }
