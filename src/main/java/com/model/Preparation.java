@@ -1,5 +1,9 @@
 package com.model;
 
+/**
+ * Preparation enum specifies the ways for people to prepare
+ * @author Fantastic Four
+ */
 public enum Preparation {
     PETS_INSIDE,
     PET_FOOD,

@@ -7,7 +7,8 @@ import java.util.Scanner;
 import java.util.Set;
 
 /**
- *  
+ *  HurricaneReliefDriver class runs the driver cases for application
+ * @author Fantastic Four
  */
 public class HurricaneReliefDriver {
 
@@ -19,7 +20,7 @@ public class HurricaneReliefDriver {
     private final Set<Integer> completedChecklistItems;
 
     /**
-     *  
+     *  HurricaneReliefDriver constructor creates hurricane
      */
     public HurricaneReliefDriver() {
          
@@ -32,9 +33,8 @@ public class HurricaneReliefDriver {
     }
 
     /**
-     *  
-     *
-     * @param args  
+     * main method runs driver applications
+     * @param args command line arguments
      */
     public static void main(String[] args) {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();
@@ -42,7 +42,7 @@ public class HurricaneReliefDriver {
     }
 
     /**
-     *  
+     *  run method runs cases after displaying methods and having user make a choice
      */
     public void run() {
         boolean running = true;
@@ -255,7 +255,9 @@ public class HurricaneReliefDriver {
         emergencyContacts.put(name, phoneNumber);
     }
 
-    /** Collects shelter details when registering a shelter. */
+    /** 
+     * Collects shelter details when registering a shelter.
+     */
     private void registerShelter() {
         String name = readText("Enter the shelter name: ");
         String location = readText("Enter the shelter location: ");
@@ -265,7 +267,9 @@ public class HurricaneReliefDriver {
                 + " at " + location + " (capacity: " + capacity + ").");
     }
 
-    /** Returns the shelters registered during this session. */
+    /** 
+     * Returns the shelters registered during this session. 
+     */
     private String getNearbyShelters() {
         if (shelters.isEmpty()) {
             return "No shelters are currently registered.";
@@ -273,7 +277,9 @@ public class HurricaneReliefDriver {
         return String.join(System.lineSeparator(), shelters);
     }
 
-    /** Returns the registered shelter capacity information. */
+    /** 
+     * Returns the registered shelter capacity information. 
+     */
     private String getShelterAvailability() {
         if (shelters.isEmpty()) {
             return "No shelter availability information is currently available.";
@@ -282,7 +288,9 @@ public class HurricaneReliefDriver {
                 + System.lineSeparator() + String.join(System.lineSeparator(), shelters);
     }
 
-    /** Collects and validates a donation pledge. */
+    /** 
+     * Collects and validates a donation pledge. 
+     */
     private void makeDonation() {
         String amount = readText("Enter the donation amount: ");
         try {
@@ -297,7 +305,9 @@ public class HurricaneReliefDriver {
         }
     }
 
-    /** Collects and validates an automatic donation pledge. */
+    /** 
+     * Collects and validates an automatic donation pledge. 
+     */
     private void triggerAutomaticDonation() {
         String amount = readText("Enter the automatic donation amount: ");
         try {
@@ -312,13 +322,17 @@ public class HurricaneReliefDriver {
         }
     }
 
-    /** Collects a relief inquiry without relying on the application API. */
+    /** 
+     * Collects a relief inquiry without relying on the application API. 
+     */
     private void reliefInquiry() {
         String inquiry = readText("Enter your relief inquiry: ");
         System.out.println("Relief inquiry received: " + inquiry);
     }
 
-    /** Adds a preparation task to the checklist. */
+    /** 
+     * Adds a preparation task to the checklist. 
+     */
     private void addToChecklist() {
         String item = readText("Enter a preparation checklist item: ");
         checklist.add(item);
@@ -360,10 +374,9 @@ public class HurricaneReliefDriver {
     }
 
     /**
-     *  
-     *
-     * @param contacts  
-     * @return  
+     * safeMessage sends a message to all of user emergency contacts saying that they are safe 
+     * @param contacts user emergency contacts 
+     * @return String saying that user is safe
      */
     private String safeMessage(HashMap<String, String> contacts) {
         StringBuilder message = new StringBuilder("Safe message: I am safe.\nRecipients:");
@@ -373,10 +386,9 @@ public class HurricaneReliefDriver {
     }
 
     /**
-     *  
-     *
-     * @param prompt  
-     * @return  
+     * readText method allows the user's reponse to a prompt
+     * @param prompt prompt provided for user to answer
+     * @return string answer to a prompt
      */
     private String readText(String prompt) {
         while (true) {
