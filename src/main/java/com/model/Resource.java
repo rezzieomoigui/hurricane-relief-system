@@ -1,6 +1,6 @@
 package com.model;
 
-public enum Resources {
+public enum Resource {
     WATER_BOTTLE,
     CANNED_GOODS,
     FLASHLIGHT,

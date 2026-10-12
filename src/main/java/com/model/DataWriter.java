@@ -110,6 +110,12 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
         JSONObject requestDetails = new JSONObject();
+        requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid());
+        requestDetails.put(RELIEF_REQUEST_IS_INDOORS, request.isIndoors());
+        requestDetails.put(RELIEF_REQUEST_IS_MOBILE, request.isMobile());
+        requestDetails.put(RELIEF_REQUEST_IS_INJURED, request.isInjured());
+        requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus());
+        // may need to add toString for request status enum
         return requestDetails;
     }
 }
