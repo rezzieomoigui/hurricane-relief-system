@@ -1,5 +1,9 @@
 package com.model;
 
+/**
+ * DataConstants are the data constants that are added in from the json files
+ * @author Fantastic Four
+ */
 public abstract class DataConstants {
     protected static final String SHELTER_FILE_NAME = "json_files/shelter.json";
     protected static final String SHELTER_ADDRESS = "address";
