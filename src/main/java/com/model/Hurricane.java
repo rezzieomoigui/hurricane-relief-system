@@ -1,5 +1,9 @@
 package com.model;
 
+/**
+ * Hurricane class creates a hurricane
+ * @author Fantastic Four
+ */
 public class Hurricane {
     private String name;
     private UUID id;
@@ -12,6 +16,9 @@ public class Hurricane {
     private double movementSpeed;
     private LocalDateTime expectedLandfall;
 
+    /** 
+     * Hurricane constructor creates a hurricane object
+    */
     public Hurricane(String name, UUID id, String eyeOfStormZip, int category, HurricaneStatus status, ArrayList<String> affectedZipCodes, PreparationGuide preparationGuide, double windSpeed, double movementSpeed, LocalDateTime expectedLandfall) {
         this.name = name;
         this.id = id;
@@ -25,6 +32,11 @@ public class Hurricane {
         this.expectedLandfall = expectedLandfall;
     }
 
+    /**
+     * addAffectedLocation adds locations affected by the storms
+     * @param zipCode hurricane zip code
+     * @return boolean for if the affected area was added
+     */
     public boolean addAffectedLocation(String zipCode) { 
         if (!affectedZipCodes.contains(zipCode)) {
             affectedZipCodes.add(zipCode);
@@ -33,10 +45,20 @@ public class Hurricane {
         return false;
     }
 
+    /**
+     * removeAffectedLocation removes locations that are no longer being affected by the storms
+     * @param zipCode hurricane zip code
+     * @return boolean for if the area was removed from affected areas
+     */
     public boolean removeAffectedLocation(String zipCode) {
         return affectedZipCodes.remove(zipCode);
     }
 
+    /**
+     * addReliefRequest adds relief requests 
+     * @param request relief request
+     * @return boolean for if the relief request was added
+     */
     public boolean addReliefRequest(ReliefRequest request) {
         if (!reliefRequests.contains(request)) {
             reliefRequests.add(request);
@@ -45,10 +67,19 @@ public class Hurricane {
         return false;
     }
 
+    /**
+     * removeReliefRequest removes relief requests
+     * @param request relief request
+     * @return boolean for if the relief request was removed
+     */
     public boolean removeReliefRequest(ReliefRequest request) {
         return reliefRequests.remove(request);
     }
 
+    /**
+     * getRequestsByLocation gets the requests based on their location
+     * @return arrayList of requests based on their location
+     */
     public ArrayList<ReliefRequest> getRequestsByLocation() {
         ArrayList<ReliefRequest> requestsByLocation = new ArrayList<>();
         for (ReliefRequest request : reliefRequests) {
@@ -59,6 +90,10 @@ public class Hurricane {
         return requestsByLocation;
     }
 
+    /**
+     * getRequestsByStatus gets requests based on their status
+     * @return arrayList of requests based on their status
+     */
     public ArrayList<ReliefRequest> getRequestsByStatus() {
         ArrayList<ReliefRequest> requestsByStatus = new ArrayList<>();
         for (ReliefRequest request : reliefRequests) {
@@ -69,6 +104,11 @@ public class Hurricane {
         return requestsByStatus;
     }
 
+    /**
+     * addShelter adds a shelter
+     * @param shelter relief shelter
+     * @return boolean depending on if shelter was added properly or not
+     */
     public boolean addShelter(Shelter shelter) {
         if (!shelters.contains(shelter)) {
             shelters.add(shelter);
@@ -77,6 +117,10 @@ public class Hurricane {
         return false;
     }
 
+    /**
+     * getAvailableShelters gets the available shelters
+     * @return arrayList of available shelters
+     */
     public ArrayList<Shelter> getAvailableShelters() {
         ArrayList<Shelter> availableShelters = new ArrayList<>();
         for (Shelter shelter : shelters) {
@@ -87,22 +131,43 @@ public class Hurricane {
         return availableShelters;
     }
 
+    /**
+     * updateEyeLocation updates the location of the eye of the hurricane
+     * @param zipCode hurricane zip code
+     */
     public void updateEyeLocation(String zipCode) {
         this.eyeOfStormZip = zipCode;
     }
 
+    /**
+     * updateCategory updates the hurricane category
+     * @param category hurricane category
+     */
     public void updateCategory(int category) {
         this.category = category;
     }
 
+    /**
+     * isApproaching checks if the hurricane is approaching
+     * @param zipCode hurricane zip code
+     * @return boolean based on if the hurricane is appraoching or not
+     */
     public boolean isApproaching(String zipCode) {
         return affectedZipCodes.contains(zipCode) && !zipCode.equals(eyeOfStormZip);
     }
     
+    /**
+     * isLeaving checks if the hurricane is leaving
+     * @param zipCode hurricane zip code
+     * @return boolean based on if the hurricane is leaving or not
+     */
     public boolean isLeaving(String zipCode) {
         return !affectedZipCodes.contains(zipCode) && !zipCode.equals(eyeOfStormZip);
     }
 
+    /**
+     * displayAffectedZipCodes displays the zip codes that are affected by the hurricane
+     */
     public void displayAffectedZipCodes() {
         for (String zipCode : affectedZipCodes) {
             System.out.println(zipCode);
