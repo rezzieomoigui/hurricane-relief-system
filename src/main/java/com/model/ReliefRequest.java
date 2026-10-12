@@ -9,7 +9,7 @@ import java.util.HashMap;
  */
 public class ReliefRequest {
     private UUID uuid;
-    private ArrayList<Users> partyMembers;
+    private ArrayList<UUID> partyMembers;
     private boolean isIndoors;
     private boolean isMobile;
     private boolean isInjured;
@@ -18,7 +18,7 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-    public ReliefRequest(UUID uuid, ArrayList<Users> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    public ReliefRequest(UUID uuid, ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
         this.uuid = uuid;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
@@ -36,7 +36,7 @@ public class ReliefRequest {
      */
     public ReliefRequest(String address) {
         this.uuid = UUID.randomUUID();
-        this.partyMembers = new ArrayList<>();
+        this.partyMembers = new ArrayList<UUID>();
         this.isIndoors = false;
         this.isMobile = false;
         this.isInjured = false;
@@ -108,7 +108,7 @@ public class ReliefRequest {
         return uuid;
     }
 
-    public ArrayList<Users> getPartyMembers() {
+    public ArrayList<UUID> getPartyMembers() {
         return partyMembers;
     }
 
