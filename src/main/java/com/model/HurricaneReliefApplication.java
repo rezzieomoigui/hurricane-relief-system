@@ -21,5 +21,11 @@ public class HurricaneReliefApplication {
             return "User not found.";
         }
     }
+    public static UserList getInstance() {
+        if (userList == null) {
+            userList = new UserList();
+        }
+        return userList;
+    }
 } 
  

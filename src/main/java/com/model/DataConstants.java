@@ -6,6 +6,7 @@ package com.model;
  */
 public abstract class DataConstants {
     protected static final String SHELTER_FILE_NAME = "json_files/shelter.json";
+    protected static final String SHELTER_UUID = "uuid";
     protected static final String SHELTER_ADDRESS = "address";
     protected static final String SHELTER_ZIP_CODE = "zipCode";
     protected static final String SHELTER_SHELTER_TYPE = "shelterType";
@@ -36,4 +37,10 @@ public abstract class DataConstants {
     protected static final String RELIEF_REQUEST_PRIORITY = "priority";
     protected static final String RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES = "estimatedArrivalMinutes";
     protected static final String RELIEF_REQUEST_STAYING_HOME = "stayingHome";
+
+    protected static final String VOLUNTEER_FILE_NAME = "json_files/volunteer.json";
+    protected static final String VOLUNTEER_SKILLS = "skills";
+    protected static final String VOLUNTEER_FIRST_RESPONDER = "firstResponder";
+    protected static final String VOLUNTEER_CAN_SWIM = "canSwim";
+    protected static final String VOLUNTEER_IS_SHELTER_OWNER = "isShelterOwner";
 }
