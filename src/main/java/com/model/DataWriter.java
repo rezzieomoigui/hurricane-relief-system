@@ -6,7 +6,15 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * DataWriter adds data to be used by the classes
+ * @author Fantastic Four
+ */
 public class DataWriter extends DataConstants {
+    /**
+     * main method used to test datawriter
+     * @param args command line arguments
+     */
     public static void main(String[] args) {
         ShelterList shelterList = ShelterList.getInstance();
         ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
@@ -19,6 +27,9 @@ public class DataWriter extends DataConstants {
         saveUsers();
     }
     
+    /**
+     * saveUsers saves users' data and writes it to the file
+     */
     public static void saveUsers() {
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
@@ -37,6 +48,9 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * saveShelters saves the shelter's data and writes it to the file
+     */
     public static void saveShelters() {
         ShelterList shelterList = ShelterList.getInstance();
         ArrayList<Shelter> shelters = shelterList.getShelters();
@@ -56,6 +70,9 @@ public class DataWriter extends DataConstants {
 
     }
 
+    /**
+     * saveReliefRequests saves relief request data and writes it to the file
+     */
     public static void saveReliefRequests() {
         ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
         ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
@@ -72,6 +89,11 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * getShelterJSON gets the shelter json file and adds the shelter information in
+     * @param shelter relief shelter
+     * @return json file object with new data
+     */
     public static JSONObject getShelterJSON(Shelter shelter) {
         ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
         JSONObject shelterDetails = new JSONObject();
@@ -84,6 +106,11 @@ public class DataWriter extends DataConstants {
         return shelterDetails;
     }
 
+    /**
+     * convertShelterResources convers the sheler resources from type ShelterResources to type String
+     * @param shelterResources shelter resources
+     * @return arrayList of shelter resources of type String
+     */
     private static ArrayList<String> convertShelterResources(ArrayList<ShelterResources> shelterResources) {
         ArrayList<String> shelterResourcesStr = new ArrayList<String>();
         for (int i = 0; i < shelterResources.size(); ++i) {
@@ -92,6 +119,11 @@ public class DataWriter extends DataConstants {
         return shelterResourcesStr;
     }
 
+    /**
+     * getUserJSON gets the user json file and adds the user information in
+     * @param user account user
+     * @return user json file object with new data
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put(USER_UUID, user.getUuid().toString());
@@ -108,6 +140,11 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
 
+    /**
+     * getReliefRequestJSON gets relief request json file and adds the new information
+     * @param request relief request
+     * @return relief request json file object with new data
+     */
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
         JSONObject requestDetails = new JSONObject();
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid());
