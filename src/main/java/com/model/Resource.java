@@ -1,16 +1,14 @@
 package com.model;
 
-<<<<<<< HEAD
-/**
- * Resources enum specifies the resources
- * @author Fantastic Four
- */
-public enum Resources {
-=======
 public enum Resource {
->>>>>>> branch-Abagail
-    WATER_BOTTLE,
-    CANNED_GOODS,
-    FLASHLIGHT,
-    PORTABLE_CHARGER
+    WATER_BOTTLE("Water bottle"),
+    CANNED_GOODS("Canned goods"),
+    FLASHLIGHT("Flashlight"),
+    PORTABLE_CHARGER("Portable charge");
+
+    public String str;
+
+    private Resource(String str) {
+        this.str = str;
+    }
 }
