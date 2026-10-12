@@ -158,4 +158,59 @@ public class DataLoader extends DataConstants {
         }
         return null;
     }
+
+    /**
+     * getHurricane reads in data from the hurricane json file and adds a hurricane from the data that is read in
+     * @return ArrayList of type hurricane containing hurricane data
+     */
+    public static ArrayList<Hurricane> getHurricane() {
+        ArrayList<Hurricane> hurricane = new ArrayList<Hurricane>();
+        try {
+            FileReader reader = new FileReader(HURRICANE_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray hurricaneArray = (JSONArray)new JSONParser().parse(reader);
+            for (int i = 0; i < hurricaneArray.size(); i++) {
+                JSONObject hurricaneJSON = (JSONObject)hurricaneArray.get(i);
+                UUID id = UUID.fromString((String)hurricaneJSON.get(HURRICANE_UUID));
+                String name = (String)hurricaneJSON.get(HURRICANE_NAME);
+                String eyeOfStormZip = (String)hurricaneJSON.get(HURRICANE_EYE_OF_STORM);
+                int category = (int)hurricaneJSON.get(HURRICANE_CATEGORY);
+                HurricaneStatus status = HurricaneStatus.valueOf(((String)hurricaneJSON.get(HURRICANE_STATUS)).toUpperCase());
+                JSONArray affectedZipCodes = (JSONArray)hurricaneJSON.get(HURRICANE_AFFECTED_ZIP_CODES);
+                PreparationGuide preparationGuide = PreparationGuide.valueOf(((String)hurricaneJSON.get(HURRICANE_PREPARATION_GUIDE)).toUpperCase());
+                double windSpeed = (double)hurricaneJSON.get(HURRICANE_WIND_SPEED);
+                double movementSpeed = (double)hurricaneJSON.get(HURRICANE_MOVEMENT_SPEED);
+                String expectedLandfall = (String)hurricaneJSON.get(HURRICANE_LOCAL_DATE_TIME);
+                hurricane.add(new Hurricane(name, id, eyeOfStormZip, category, status, affectedZipCodes, preparationGuide, windSpeed, movementSpeed, expectedLandfall));
+            }
+        return hurricane;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    /**
+     * getPreparationChecklist reads in data from the preparationChecklist json file and adds a preparationChecklist from the data that is read in
+     * @return ArrayList of type preparationChecklist containing preparationChecklist data
+     */
+    public static ArrayList<PreparationChecklist> getPreparationChecklist() {
+        ArrayList<PreparationChecklist> preparationChecklist = new ArrayList<PreparationChecklist>();
+        try {
+            FileReader reader = new FileReader(PREPARATION_CHECKLIST_FILE_NAME);
+            JSONParser parser = new JSONParser();
+            JSONArray preparationChecklistArray = (JSONArray)new JSONParser().parse(reader);
+            for (int i = 0; i < preparationChecklistArray.size(); i++) {
+                JSONObject preparationChecklistJSON = (JSONObject)preparationChecklistArray.get(i);
+                UUID owner = UUID.fromString((String)preparationChecklistJSON.get(PREPARATION_CHECKLIST_OWNER));
+                Preparation selectedItems = Preparation.valueOf(((String)preparationChecklistJSON.get(PREPARATION_CHECKLIST_SELECTED_ITEMS)).toUpperCase());
+                Preparation completedItems = Preparation.valueOf(((String)preparationChecklistJSON.get(PREPARATION_CHECKLIST_COMPLETED_ITEMS)).toUpperCase());
+                preparationChecklist.add(new PreparationChecklist(owner));
+            }
+        return preparationChecklist;
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

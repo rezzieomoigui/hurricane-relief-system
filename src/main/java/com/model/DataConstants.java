@@ -44,7 +44,7 @@ public abstract class DataConstants {
     protected static final String VOLUNTEER_CAN_SWIM = "canSwim";
     protected static final String VOLUNTEER_IS_SHELTER_OWNER = "isShelterOwner";
 
-    protected static final String HURRICSNE_FILE_NAME = "json_files/hurricane.json";
+    protected static final String HURRICANE_FILE_NAME = "json_files/hurricane.json";
     protected static final String HURRICANE_UUID = "uuid";
     protected static final String HURRICANE_NAME = "name";
     protected static final String HURRICANE_EYE_OF_STORM = "eyeOfStormZip";
@@ -54,7 +54,7 @@ public abstract class DataConstants {
     protected static final String HURRICANE_PREPARATION_GUIDE = "preparationGuide";
     protected static final String HURRICANE_WIND_SPEED = "windSpeed";
     protected static final String HURRICANE_MOVEMENT_SPEED = "movementSpeed";
-    protected static final String HURRICANE_LOCAL_DAT_TIME = "expectedLandfall";
+    protected static final String HURRICANE_LOCAL_DATE_TIME = "expectedLandfall";
 
     protected static final String PREPARATION_CHECKLIST_FILE_NAME = "json_files/preparationChecklist.json";
     protected static final String PREPARATION_CHECKLIST_OWNER = "owner";

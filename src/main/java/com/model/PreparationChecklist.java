@@ -1,10 +1,12 @@
 package com.model;
 
+import java.util.UUID;
+
 /**
  * PreparationChecklist creates a checklist for users to prepare with
  * @author Fantastic Four
  */
-public class PreparationChecklist {
+public class PreparationChecklist{
     private UUID owner;
     private Preparation selectedItems;
     private Preparation completedItems;
@@ -13,7 +15,7 @@ public class PreparationChecklist {
      * PreparationChecklist constructor creates the preparation checklist
      * @param owner user owner
      */
-    public PreparationChecklist(User owner) {
+    public PreparationChecklist(UUID owner) {
         this.owner = owner.getUuid();
         this.selectedItems = new Preparation();
         this.completedItems = new Preparation();
