@@ -1,4 +1,4 @@
-package com.data;
+package com.model;
 import java.util.UUID;
 
 public class UUIDGenerator {
