@@ -116,17 +116,26 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
+        ArrayList<String> partyMembers = convertPartyMembers(request.getPartyMembers());
         JSONObject requestDetails = new JSONObject();
-        requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid());
-        requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, request.getPartyMembers());
+        requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
+        requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
         requestDetails.put(RELIEF_REQUEST_IS_INDOORS, request.isIndoors());
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, request.isMobile());
         requestDetails.put(RELIEF_REQUEST_IS_INJURED, request.isInjured());
-        requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus());
+        requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus().str);
         requestDetails.put(RELIEF_REQUEST_PRIORITY, Integer.toString(request.getPriority()));
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
         requestDetails.put(RELIEF_REQUEST_STAYING_HOME, request.isStayingHome());
         return requestDetails;
+    }
+
+    private static ArrayList<String> convertPartyMembers(ArrayList<UUID> partyMembers) {
+        ArrayList<String> partyMemberStr = new ArrayList<String>();
+        for (UUID partyMember : partyMembers) {
+            partyMemberStr.add(partyMember.toString());
+        }
+        return partyMemberStr;
     }
 
 }
