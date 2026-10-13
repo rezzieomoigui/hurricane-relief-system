@@ -6,6 +6,7 @@ package com.model;
  */
 public abstract class DataConstants {
     protected static final String SHELTER_FILE_NAME = "json_files/shelter.json";
+    protected static final String SHELTER_UUID = "uuid";
     protected static final String SHELTER_ADDRESS = "address";
     protected static final String SHELTER_ZIP_CODE = "zipCode";
     protected static final String SHELTER_SHELTER_TYPE = "shelterType";
@@ -36,4 +37,27 @@ public abstract class DataConstants {
     protected static final String RELIEF_REQUEST_PRIORITY = "priority";
     protected static final String RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES = "estimatedArrivalMinutes";
     protected static final String RELIEF_REQUEST_STAYING_HOME = "stayingHome";
+
+    protected static final String VOLUNTEER_FILE_NAME = "json_files/volunteer.json";
+    protected static final String VOLUNTEER_SKILLS = "skills";
+    protected static final String VOLUNTEER_FIRST_RESPONDER = "firstResponder";
+    protected static final String VOLUNTEER_CAN_SWIM = "canSwim";
+    protected static final String VOLUNTEER_IS_SHELTER_OWNER = "isShelterOwner";
+
+    protected static final String HURRICANE_FILE_NAME = "json_files/hurricane.json";
+    protected static final String HURRICANE_UUID = "uuid";
+    protected static final String HURRICANE_NAME = "name";
+    protected static final String HURRICANE_EYE_OF_STORM = "eyeOfStormZip";
+    protected static final String HURRICANE_CATEGORY = "category";
+    protected static final String HURRICANE_STATUS = "status";
+    protected static final String HURRICANE_AFFECTED_ZIP_CODES = "affectedZipCodes";
+    protected static final String HURRICANE_PREPARATION_GUIDE = "preparationGuide";
+    protected static final String HURRICANE_WIND_SPEED = "windSpeed";
+    protected static final String HURRICANE_MOVEMENT_SPEED = "movementSpeed";
+    protected static final String HURRICANE_LOCAL_DATE_TIME = "expectedLandfall";
+
+    protected static final String PREPARATION_CHECKLIST_FILE_NAME = "json_files/preparationChecklist.json";
+    protected static final String PREPARATION_CHECKLIST_OWNER = "owner";
+    protected static final String PREPARATION_CHECKLIST_SELECTED_ITEMS = "selectedItems";
+    protected static final String PREPARATION_CHECKLIST_COMPLETED_ITEMS = "completedItems";
 }

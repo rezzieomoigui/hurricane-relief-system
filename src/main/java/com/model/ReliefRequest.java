@@ -30,6 +30,18 @@ public class ReliefRequest {
         this.stayingHome = stayingHome;
     }
 
+    public ReliefRequest(ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+        this.uuid = UUID.randomUUID();
+        this.partyMembers = partyMembers;
+        this.isIndoors = isIndoors;
+        this.isMobile = isMobile;
+        this.isInjured = isInjured;
+        this.status = status;
+        this.priority = priority;
+        this.estimatedArrivalMinutes = estimatedArrivalMinutes;
+        this.stayingHome = stayingHome;
+    }
+    
     /**
      * ReliefRequest constructor creates relief request
      * @param address user address

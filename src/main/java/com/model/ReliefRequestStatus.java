@@ -5,8 +5,14 @@ package com.model;
  * @author Fantastic Four
  */
 public enum ReliefRequestStatus {
-    SUBMITTED,
-    IN_PROGRESS,
-    COMPLETED,
-    REVIEWED
-}
+    SUBMITTED("Submitted"),
+    IN_PROGRESS("In progress"),
+    COMPLETED("Completed"),
+    REVIEWED("Reviewed");
+
+    public String str;
+
+    private ReliefRequestStatus(String str) {
+        this.str = str;
+    }
+ }

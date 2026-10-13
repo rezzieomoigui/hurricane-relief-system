@@ -52,9 +52,9 @@ public class ReliefRequestList {
      * @param address user address
      * @return boolean of if request was added or not
      */
-    public boolean addReliefRequest(User requestWriter, String address) {
-        // add implementation here
-        return null;
+    public boolean addReliefRequest(ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+        reliefRequests.add(new ReliefRequest(partyMembers, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
+        return true;
     }
 
     /**
