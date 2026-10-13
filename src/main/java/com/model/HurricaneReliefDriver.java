@@ -15,7 +15,7 @@ public class HurricaneReliefDriver {
     }
 
     /**
-     * Runs the sample scenarios.
+     * Run the scenarios.
      */
     public void run() {
         scenario1();
