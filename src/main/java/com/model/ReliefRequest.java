@@ -14,7 +14,7 @@ public class ReliefRequest {
     private boolean isMobile;
     private boolean isInjured;
     private ReliefRequestStatus status;
-    private int priority;
+    private String priority;
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
@@ -25,7 +25,7 @@ public class ReliefRequest {
         this.isMobile = isMobile;
         this.isInjured = isInjured;
         this.status = status;
-        this.priority = priority;
+        this.priority = String.valueOf(priority);
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
     }
@@ -37,7 +37,7 @@ public class ReliefRequest {
         this.isMobile = isMobile;
         this.isInjured = isInjured;
         this.status = status;
-        this.priority = priority;
+        this.priority = String.valueOf(priority);
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
     }
@@ -53,7 +53,7 @@ public class ReliefRequest {
         this.isMobile = false;
         this.isInjured = false;
         this.status = ReliefRequestStatus.IN_PROGRESS;
-        this.priority = 0;
+        this.priority = "Not Assigned";
         this.estimatedArrivalMinutes = 0;
         this.stayingHome = false;
     }
@@ -62,9 +62,9 @@ public class ReliefRequest {
      * calculatePriority calculates the priority of each request based on specific factors
      * @return priority value
      */
-    public int calculatePriority() {
-        // Implement priority calculation logic here
-        return null;
+    public String calculatePriority() {
+        // Implement logic to calculate priority based on specific factors
+        return "Not Assigned";
     }
 
     /**
@@ -74,7 +74,7 @@ public class ReliefRequest {
      */
     public boolean addPartyMember(User user) {
         // Implement logic to add a party member
-        return null;
+        return false;
     }
 
     /**
@@ -84,7 +84,7 @@ public class ReliefRequest {
      */
     public boolean removePartyMember(User user) {
         // Implement logic to remove a party member
-        return null;
+        return false;
     }
 
     /**
@@ -92,7 +92,7 @@ public class ReliefRequest {
      * @param user account user
      * @return requested supplies
      */
-    public HashMap<Resources, Integer> requestSupplies(User user) {
+    public HashMap<String, Integer> requestSupplies(User user) {
         // Implement logic to request supplies
         return null;
     }
@@ -156,7 +156,7 @@ public class ReliefRequest {
      * getPriority gets the relief request priority
      * @return relief request priority
      */
-    public int getPriority() {
+    public String getPriority() {
         return priority;
     }
 
@@ -181,6 +181,6 @@ public class ReliefRequest {
      * @return relief request id
      */
     public String getRequestId() {
-        return uuid;
+        return uuid.toString();
     }
 }
