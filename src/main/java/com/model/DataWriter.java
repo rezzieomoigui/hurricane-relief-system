@@ -22,7 +22,8 @@ public class DataWriter extends DataConstants {
         ArrayList<UUID> partyMembers = new ArrayList<UUID>();
         partyMembers.add(UUID.randomUUID());
         partyMembers.add(UUID.randomUUID());
-        reliefRequestList.addReliefRequest(new ReliefRequest(UUID.randomUUID(), partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true));
+        reliefRequestList.addReliefRequest(partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true);
+        saveReliefRequests();
     }
     
     public static void saveUsers() {

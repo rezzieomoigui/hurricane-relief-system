@@ -1,15 +1,1 @@
-[
-    {
-        "firstName": "Marie",
-        "lastName": "Collins",
-        "zipCode": "29210",
-        "password": "securePassword5",
-        "address": "42 Bluff River Rd",
-        "dateOfBirth": "07-08-1982",
-        "language": "English",
-        "isAdmin": false,
-        "uuid": "085c33fd-c4c4-4eac-84d2-ccf21e82d3f2",
-        "email": "mcollins@gmail.com",
-        "username": "mcollins"
-    }
-]
+[{"firstName":"Petra","lastName":"Robinson","zipCode":"29218","password":"goodPassword5","address":"10 Branch Road","dateOfBirth":"08-19-2000","language":"Spanish","isAdmin":false,"uuid":"a349884a-a3bb-41bc-a3c6-e5552c49f171","email":"probinson@gmail.com","username":"probinson"},{"firstName":"Mark","lastName":"Johnson","zipCode":"29211","password":"wowPassword","address":"14 Stream Dr","dateOfBirth":"12-12-02","language":"English","isAdmin":false,"uuid":"55c5310e-598e-42a3-925d-88574a6aca49","email":"mjohnson.gmail.com","username":"mjohnson"},{"firstName":"Marie","lastName":"Collins","zipCode":"29210","password":"securePassword5","address":"42 Bluff River Rd","dateOfBirth":"07-08-1982","language":"English","isAdmin":false,"uuid":"bc451296-bf57-4494-9243-319dbea9c2a3","email":"mcollins@gmail.com","username":"mcollins"}]
