@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.UUID;
+
 /**
  * HurricaneReliefApplication contains methods for the driver class
  * @author Fantastic Four
@@ -21,11 +23,13 @@ public class HurricaneReliefApplication {
             return "User not found.";
         }
     }
-    public static UserList getInstance() {
-        if (userList == null) {
-            userList = new UserList();
-        }
-        return userList;
+    public User getUser(String username) {
+        UserList userList = UserList.getInstance();
+        return userList.getUser(username);
+    }
+    public User getUser(UUID uuid) {
+        UserList userList = UserList.getInstance();
+        return userList.getUser(uuid);
     }
 } 
  
