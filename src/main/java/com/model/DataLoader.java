@@ -106,6 +106,7 @@ public class DataLoader extends DataConstants {
             for (int i = 0; i < reliefRequestArray.size(); i++) {
                 JSONObject reliefRequestJSON = (JSONObject)reliefRequestArray.get(i);
                 UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
+                User user = UserList.getUser(id);
                 JSONArray partyMembers = (JSONArray)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
                 boolean isIndoors = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS);
                 boolean isMobile = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE);
