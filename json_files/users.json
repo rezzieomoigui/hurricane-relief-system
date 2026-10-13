@@ -1,1 +1,41 @@
-[{"firstName":"Petra","lastName":"Robinson","zipCode":"29218","password":"goodPassword5","address":"10 Branch Road","dateOfBirth":"08-19-2000","language":"Spanish","isAdmin":false,"uuid":"df94d87c-3604-4d10-9d4c-473f1d89a499","email":"probinson@gmail.com","username":"probinson"},{"firstName":"Mark","lastName":"Johnson","zipCode":"29211","password":"wowPassword","address":"14 Stream Dr","dateOfBirth":"12-12-02","language":"English","isAdmin":false,"uuid":"6abf3f6e-42f4-4a37-9164-b9d94a66b796","email":"mjohnson.gmail.com","username":"mjohnson"},{"firstName":"Marie","lastName":"Collins","zipCode":"29210","password":"securePassword5","address":"42 Bluff River Rd","dateOfBirth":"07-08-1982","language":"English","isAdmin":false,"uuid":"44a0946b-c376-4d3d-9184-2ee945080a5e","email":"mcollins@gmail.com","username":"mcollins"}]
+[
+    {
+        "firstName": "Petra",
+        "lastName": "Robinson",
+        "zipCode": "29218",
+        "password": "goodPassword5",
+        "address": "10 Branch Road",
+        "dateOfBirth": "08-19-2000",
+        "language": "Spanish",
+        "isAdmin": false,
+        "uuid": "df94d87c-3604-4d10-9d4c-473f1d89a499",
+        "email": "probinson@gmail.com",
+        "username": "probinson"
+    },
+    {
+        "firstName": "Mark",
+        "lastName": "Johnson",
+        "zipCode": "29211",
+        "password": "wowPassword",
+        "address": "14 Stream Dr",
+        "dateOfBirth": "12-12-02",
+        "language": "English",
+        "isAdmin": false,
+        "uuid": "6abf3f6e-42f4-4a37-9164-b9d94a66b796",
+        "email": "mjohnson.gmail.com",
+        "username": "mjohnson"
+    },
+    {
+        "firstName": "Marie",
+        "lastName": "Collins",
+        "zipCode": "29210",
+        "password": "securePassword5",
+        "address": "42 Bluff River Rd",
+        "dateOfBirth": "07-08-1982",
+        "language": "English",
+        "isAdmin": false,
+        "uuid": "44a0946b-c376-4d3d-9184-2ee945080a5e",
+        "email": "mcollins@gmail.com",
+        "username": "mcollins"
+    }
+]
