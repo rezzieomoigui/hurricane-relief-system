@@ -1,7 +1,7 @@
 package com.model;
-
  
 public class HurricaneReliefApplication {
+    private User currentUser;
  
     public void createAccount(String firstName, String lastName,
             String username, String password, String email,
@@ -14,15 +14,42 @@ public class HurricaneReliefApplication {
                 email, dateOfBirth, address, zipCode, language, isAdmin);
     }
 
-  
+    /**
+     * Logs in and remembers the user if the credentials match.
+     * @param username the user's username
+     * @param password the user's password
+     * @return the login result
+     */
     public String login(String username, String password) {
         UserList userList = UserList.getInstance();
         User user = userList.getUser(username);
 
-        if (user != null) {
-            return String.valueOf(user.login(username, password));
+        if (user == null) {
+            return "User not found.";
         }
 
-        return "User not found.";
+        if (!user.login(username, password)) {
+            return "Incorrect password.";
+        }
+
+        currentUser = user;
+        return "Successfully logged in!";
+    }
+
+  
+    public String logout() {
+        if (currentUser == null) {
+            return "No user is currently logged in.";
+        }
+
+        String result = currentUser.logout(currentUser.getUsername());
+        currentUser = null;
+
+        return result;
+    }
+
+ 
+    public User getCurrentUser() {
+        return currentUser;
     }
 }

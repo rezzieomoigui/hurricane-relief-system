@@ -1,30 +1,19 @@
 package com.model;
-
-/**
- * Demonstrates account creation and login for the hurricane relief system.
- * @author Fantastic Four
- */
+ 
 public class HurricaneReliefDriver {
     private HurricaneReliefApplication application;
 
-    /**
-     * Creates the application used by the driver.
-     */
+ 
     public HurricaneReliefDriver() {
         application = new HurricaneReliefApplication();
     }
 
-    /**
-     * Run the scenarios.
-     */
+ 
     public void run() {
         scenario1();
         scenario2();
     }
-
-    /**
-     * Demonstrates creating a hurricane relief account.
-     */
+ 
     public void scenario1() {
         System.out.println();
         System.out.println("Scenario 1: Create an account");
@@ -45,29 +34,28 @@ public class HurricaneReliefDriver {
         System.out.println("Account information submitted for Amy Smith.");
     }
 
-    /**
-     * Demonstrates logging into the account.
-     */
+   
     public void scenario2() {
         System.out.println();
-        System.out.println("Scenario 2: Log in");
+        System.out.println("Scenario 2: Log in and log out");
 
-        String result = application.login("asmith", "12345");
+        String loginResult = application.login("asmith", "12345");
 
-        if ("User not found.".equals(result)) {
-            System.out.println("Sorry, we couldn't find that user.");
+        if (!"Successfully logged in!".equals(loginResult)) {
+            System.out.println("Sorry, we couldn't log in.");
+            System.out.println(loginResult);
             return;
         }
 
-        System.out.println("Login result for Amy Smith: " + result);
+        System.out.println("Amy Smith is now logged in.");
+
+        String logoutResult = application.logout();
+        System.out.println(logoutResult);
     }
 
-    /**
-     * Starts the driver.
-     * @param args command-line arguments
-     */
+  
     public static void main(String[] args) {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();
         driver.run();
     }
-} 
+}
