@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import java.util.UUID;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
@@ -17,6 +18,11 @@ public class DataWriter extends DataConstants {
         UserList userList = UserList.getInstance();
         userList.addUser("Marie", "Collins", "mcollins", "securePassword5", "mcollins@gmail.com", "07-08-1982", "42 Bluff River Rd", "29210", "English", false);
         saveUsers();
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<UUID> partyMembers = new ArrayList<UUID>();
+        partyMembers.add(UUID.randomUUID());
+        partyMembers.add(UUID.randomUUID());
+        reliefRequestList.addReliefRequest(new ReliefRequest(UUID.randomUUID(), partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true));
     }
     
     public static void saveUsers() {
@@ -111,6 +117,7 @@ public class DataWriter extends DataConstants {
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
         JSONObject requestDetails = new JSONObject();
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid());
+        requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, request.getPartyMembers());
         requestDetails.put(RELIEF_REQUEST_IS_INDOORS, request.isIndoors());
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, request.isMobile());
         requestDetails.put(RELIEF_REQUEST_IS_INJURED, request.isInjured());
@@ -119,4 +126,5 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
         return requestDetails;
     }
+
 }
