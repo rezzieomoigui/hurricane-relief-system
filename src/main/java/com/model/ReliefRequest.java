@@ -1,14 +1,16 @@
 package com.model;
-import java.util.UUID;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.UUID;
 
 /**
  * ReliefRequest class creates relief requests
  * @author Fantastic Four
  */
 public class ReliefRequest {
+    private User user;
     private UUID uuid;
+    private String address;
     private ArrayList<UUID> partyMembers;
     private boolean isIndoors;
     private boolean isMobile;
@@ -18,8 +20,10 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-    public ReliefRequest(UUID uuid, ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    public ReliefRequest(User user, UUID uuid, String address, ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+        this.user = user;
         this.uuid = uuid;
+        this.address = address;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
         this.isMobile = isMobile;
@@ -31,8 +35,10 @@ public class ReliefRequest {
     }
 
     // size of party, youngest in party, oldest in party
-    public ReliefRequest(ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    public ReliefRequest(User user, String address, ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+        this.user = user;
         this.uuid = UUID.randomUUID();
+        this.address = address;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
         this.isMobile = isMobile;
@@ -47,8 +53,10 @@ public class ReliefRequest {
      * ReliefRequest constructor creates relief request
      * @param address user address
      */
-    public ReliefRequest(String address) {
+    public ReliefRequest(User user, String address) {
+        this.user = user;
         this.uuid = UUID.randomUUID();
+        this.address = address;
         this.partyMembers = new ArrayList<UUID>();
         this.isIndoors = false;
         this.isMobile = false;
@@ -113,12 +121,20 @@ public class ReliefRequest {
         // Implement logic to add comments
     }
 
+    public User getUser() {
+        return this.user;
+    }
+
     /**
      * getUUID returns an id
      * @return user uuid
      */
     public UUID getUuid() {
-        return uuid;
+        return this.uuid;
+    }
+
+    public String getAddress() {
+        return this.address;
     }
 
     public ArrayList<UUID> getPartyMembers() {
