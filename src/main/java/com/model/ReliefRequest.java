@@ -30,6 +30,7 @@ public class ReliefRequest {
         this.stayingHome = stayingHome;
     }
 
+    // size of party, youngest in party, oldest in party
     public ReliefRequest(ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
         this.uuid = UUID.randomUUID();
         this.partyMembers = partyMembers;

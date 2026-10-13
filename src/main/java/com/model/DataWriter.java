@@ -79,6 +79,11 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    public static void saveHurricane() {
+        
+    }
+
+
     public static JSONObject getShelterJSON(Shelter shelter) {
         ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
         JSONObject shelterDetails = new JSONObject();
