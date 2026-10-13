@@ -1,5 +1,8 @@
 package com.model;
 
+import java.util.ArrayList;
+import java.util.UUID;
+
 /**
  * Hurricane class creates a hurricane
  * @author Fantastic Four
@@ -14,12 +17,12 @@ public class Hurricane {
     private PreparationGuide preparationGuide;
     private double windSpeed;
     private double movementSpeed;
-    private LocalDateTime expectedLandfall;
+    private String expectedLandfall;
 
     /** 
      * Hurricane constructor creates a hurricane object
     */
-    public Hurricane(String name, UUID id, String eyeOfStormZip, int category, HurricaneStatus status, ArrayList<String> affectedZipCodes, PreparationGuide preparationGuide, double windSpeed, double movementSpeed, LocalDateTime expectedLandfall) {
+    public Hurricane(String name, UUID id, String eyeOfStormZip, int category, HurricaneStatus status, ArrayList<String> affectedZipCodes, PreparationGuide preparationGuide, double windSpeed, double movementSpeed, String expectedLandfall) {
         this.name = name;
         this.id = id;
         this.eyeOfStormZip = eyeOfStormZip;
