@@ -190,28 +190,4 @@ public class DataLoader extends DataConstants {
         }
         return null;
     }
-
-    /**
-     * getPreparationChecklist reads in data from the preparationChecklist json file and adds a preparationChecklist from the data that is read in
-     * @return ArrayList of type preparationChecklist containing preparationChecklist data
-     */
-    public static ArrayList<PreparationChecklist> getPreparationChecklist() {
-        ArrayList<PreparationChecklist> preparationChecklist = new ArrayList<PreparationChecklist>();
-        try {
-            FileReader reader = new FileReader(PREPARATION_CHECKLIST_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray preparationChecklistArray = (JSONArray)new JSONParser().parse(reader);
-            for (int i = 0; i < preparationChecklistArray.size(); i++) {
-                JSONObject preparationChecklistJSON = (JSONObject)preparationChecklistArray.get(i);
-                UUID owner = UUID.fromString((String)preparationChecklistJSON.get(PREPARATION_CHECKLIST_OWNER));
-                Preparation selectedItems = Preparation.valueOf(((String)preparationChecklistJSON.get(PREPARATION_CHECKLIST_SELECTED_ITEMS)).toUpperCase());
-                Preparation completedItems = Preparation.valueOf(((String)preparationChecklistJSON.get(PREPARATION_CHECKLIST_COMPLETED_ITEMS)).toUpperCase());
-                preparationChecklist.add(new PreparationChecklist(owner));
-            }
-        return preparationChecklist;
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
 }
