@@ -129,7 +129,7 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, request.isMobile());
         requestDetails.put(RELIEF_REQUEST_IS_INJURED, request.isInjured());
         requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus().str);
-        requestDetails.put(RELIEF_REQUEST_PRIORITY, Integer.toString(request.getPriority()));
+        requestDetails.put(RELIEF_REQUEST_PRIORITY, request.getPriority());
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
         requestDetails.put(RELIEF_REQUEST_STAYING_HOME, request.isStayingHome());
         return requestDetails;

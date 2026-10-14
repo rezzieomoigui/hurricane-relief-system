@@ -11,7 +11,7 @@ public class ReliefRequest {
     private User user;
     private UUID uuid;
     private String address;
-    private ArrayList<UUID> partyMembers;
+    private ArrayList<PartyMember> partyMembers;
     private boolean isIndoors;
     private boolean isMobile;
     private boolean isInjured;
@@ -20,7 +20,7 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-    public ReliefRequest(User user, UUID uuid, String address, ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    public ReliefRequest(User user, UUID uuid, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
         this.user = user;
         this.uuid = uuid;
         this.address = address;
@@ -35,7 +35,7 @@ public class ReliefRequest {
     }
 
     // size of party, youngest in party, oldest in party
-    public ReliefRequest(User user, String address, ArrayList<UUID> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    public ReliefRequest(User user, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
         this.user = user;
         this.uuid = UUID.randomUUID();
         this.address = address;
@@ -57,7 +57,7 @@ public class ReliefRequest {
         this.user = user;
         this.uuid = UUID.randomUUID();
         this.address = address;
-        this.partyMembers = new ArrayList<UUID>();
+        this.partyMembers = new ArrayList<PartyMember>();
         this.isIndoors = false;
         this.isMobile = false;
         this.isInjured = false;
@@ -81,7 +81,7 @@ public class ReliefRequest {
      * @param user account user
      * @return boolean based on if party member was correctly added
      */
-    public boolean addPartyMember(User user) {
+    public boolean addPartyMember(PartyMember partyMember) {
         // Implement logic to add a party member
         return false;
     }
@@ -91,7 +91,7 @@ public class ReliefRequest {
      * @param user account user
      * @return boolean based on if party member was correctly removed
      */
-    public boolean removePartyMember(User user) {
+    public boolean removePartyMember(PartyMember partyMember) {
         // Implement logic to remove a party member
         return false;
     }
@@ -101,7 +101,7 @@ public class ReliefRequest {
      * @param user account user
      * @return requested supplies
      */
-    public HashMap<String, Integer> requestSupplies(User user) {
+    public HashMap<String, Integer> requestSupplies(PartyMember partyMember) {
         // Implement logic to request supplies
         return null;
     }
@@ -137,8 +137,8 @@ public class ReliefRequest {
         return this.address;
     }
 
-    public ArrayList<UUID> getPartyMembers() {
-        return partyMembers;
+    public ArrayList<PartyMember> getPartyMembers() {
+        return this.partyMembers;
     }
 
     public boolean isIndoors() {
