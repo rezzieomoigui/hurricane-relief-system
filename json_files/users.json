@@ -10,7 +10,15 @@
         "isAdmin": false,
         "uuid": "df94d87c-3604-4d10-9d4c-473f1d89a499",
         "email": "probinson@gmail.com",
-        "username": "probinson"
+        "username": "probinson",
+        "userType": "VOLUNTEER",
+        "skills": [
+            "WOUND_CARE",
+            "CPR"
+        ],
+        "firstReponder": true,
+        "canSwim": false,
+        "isShelterOwner": false
     },
     {
         "firstName": "Mark",
@@ -23,7 +31,8 @@
         "isAdmin": false,
         "uuid": "6abf3f6e-42f4-4a37-9164-b9d94a66b796",
         "email": "mjohnson.gmail.com",
-        "username": "mjohnson"
+        "username": "mjohnson",
+        "userType": "USER"
     },
     {
         "firstName": "Marie",
@@ -36,6 +45,14 @@
         "isAdmin": false,
         "uuid": "44a0946b-c376-4d3d-9184-2ee945080a5e",
         "email": "mcollins@gmail.com",
-        "username": "mcollins"
+        "username": "mcollins",
+        "userType": "VOLUNTEER",
+        "skills": [
+            "SEARCH_AND_RESCUE",
+            "FLOOD_RESCUE"
+        ],
+        "firstReponder": false,
+        "canSwim": true,
+        "isShelterOwner": true
     }
 ]

@@ -26,6 +26,11 @@ public abstract class DataConstants {
     protected static final String USER_ZIP_CODE = "zipCode";
     protected static final String USER_LANGUAGE = "language";
     protected static final String USER_IS_ADMIN = "isAdmin";
+    protected static final String USER_TYPE = "userType";
+    protected static final String VOLUNTEER_SKILLS = "skills";
+    protected static final String VOLUNTEER_FIRST_RESPONDER = "firstResponder";
+    protected static final String VOLUNTEER_CAN_SWIM = "canSwim";
+    protected static final String VOLUNTEER_IS_SHELTER_OWNER = "isShelterOwner";
 
     protected static final String RELIEF_REQUEST_FILE_NAME = "json_files/reliefRequest.json";
     protected static final String RELIEF_REQUEST_UUID = "uuid";
@@ -38,11 +43,9 @@ public abstract class DataConstants {
     protected static final String RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES = "estimatedArrivalMinutes";
     protected static final String RELIEF_REQUEST_STAYING_HOME = "stayingHome";
 
+    /*
     protected static final String VOLUNTEER_FILE_NAME = "json_files/volunteer.json";
-    protected static final String VOLUNTEER_SKILLS = "skills";
-    protected static final String VOLUNTEER_FIRST_RESPONDER = "firstResponder";
-    protected static final String VOLUNTEER_CAN_SWIM = "canSwim";
-    protected static final String VOLUNTEER_IS_SHELTER_OWNER = "isShelterOwner";
+    */
 
     protected static final String HURRICANE_FILE_NAME = "json_files/hurricane.json";
     protected static final String HURRICANE_UUID = "uuid";
@@ -56,8 +59,10 @@ public abstract class DataConstants {
     protected static final String HURRICANE_MOVEMENT_SPEED = "movementSpeed";
     protected static final String HURRICANE_LOCAL_DATE_TIME = "expectedLandfall";
 
+    /*
     protected static final String PREPARATION_CHECKLIST_FILE_NAME = "json_files/preparationChecklist.json";
     protected static final String PREPARATION_CHECKLIST_OWNER = "owner";
     protected static final String PREPARATION_CHECKLIST_SELECTED_ITEMS = "selectedItems";
     protected static final String PREPARATION_CHECKLIST_COMPLETED_ITEMS = "completedItems";
+    */
 }
