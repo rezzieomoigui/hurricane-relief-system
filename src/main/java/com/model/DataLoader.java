@@ -53,7 +53,15 @@ public class DataLoader extends DataConstants {
                 String dateOfBirth = (String)personJSON.get(USER_DATE_OF_BIRTH);
                 String language = (String)personJSON.get(USER_LANGUAGE);
                 String address = (String)personJSON.get(USER_ADDRESS);
-                Boolean isAdmin = (Boolean)personJSON.get(USER_IS_ADMIN);
+                boolean isAdmin = (Boolean)personJSON.get(USER_IS_ADMIN);
+                boolean firstResponder = (Boolean)personJSON.get(VOLUNTEER_FIRST_RESPONDER);
+                boolean canSwim = (Boolean)personJSON.get(VOLUNTEER_CAN_SWIM);
+                boolean isShelterOwner = (Boolean)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER);
+                Skills skills = Skills.valueOf(((String)personJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
+                String userType = (String)personJSON.get(USER_TYPE);
+                if (userType.equals("VOLUNTEER")) {
+                    users.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, skills, firstResponder, canSwim, isShelterOwner));
+                }
                 users.add(new User(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin));
             }
 
@@ -124,10 +132,12 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    
     /**
      * getVolunteer reads in data from the volunteer json file and adds a volunteer from the data that is read in
      * @return ArrayList of type volunteer containing volunteer data
      */
+    /*
     public static ArrayList<Volunteer> getVolunteer() {
         ArrayList<Volunteer> volunteer = new ArrayList<Volunteer>();
         try {
@@ -159,6 +169,7 @@ public class DataLoader extends DataConstants {
         }
         return null;
     }
+    */
 
     /**
      * getHurricane reads in data from the hurricane json file and adds a hurricane from the data that is read in
