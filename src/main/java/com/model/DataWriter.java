@@ -26,7 +26,7 @@ public class DataWriter extends DataConstants {
         saveReliefRequests();
     }
     
-    public static void saveUsers() {
+    public static boolean saveUsers() {
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -38,9 +38,10 @@ public class DataWriter extends DataConstants {
         try(FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
-
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 

@@ -98,6 +98,6 @@ public class UserList {
      * @return boolean true or false depending on if it saved properly
      */
     public boolean save() {
-        // add this, not sure yet
+        return DataWriter.saveUsers();
     }
 }
