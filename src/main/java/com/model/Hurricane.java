@@ -63,8 +63,11 @@ public class Hurricane {
      * @return boolean for if the relief request was added
      */
     public boolean addReliefRequest(ReliefRequest request) {
-        if (!reliefRequests.contains(request)) {
-            reliefRequests.add(request);
+        for (ReliefRequest reliefReq : reliefRequests) {
+
+        }
+        if (!ReliefRequest.contains(request)) {
+            ReliefRequest.add(request);
             return true;
         }
         return false;

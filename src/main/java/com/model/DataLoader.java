@@ -189,7 +189,7 @@ public class DataLoader extends DataConstants {
                 int category = (int)hurricaneJSON.get(HURRICANE_CATEGORY);
                 HurricaneStatus status = HurricaneStatus.valueOf(((String)hurricaneJSON.get(HURRICANE_STATUS)).toUpperCase());
                 JSONArray affectedZipCodes = (JSONArray)hurricaneJSON.get(HURRICANE_AFFECTED_ZIP_CODES);
-                // PreparationGuide preparationGuide = PreparationGuide.valueOf(((String)hurricaneJSON.get(HURRICANE_PREPARATION_GUIDE)).toUpperCase());
+                PreparationGuide preparationGuide = PreparationGuide.valueOf(((String)hurricaneJSON.get(HURRICANE_PREPARATION_GUIDE)).toUpperCase());
                 double windSpeed = (double)hurricaneJSON.get(HURRICANE_WIND_SPEED);
                 double movementSpeed = (double)hurricaneJSON.get(HURRICANE_MOVEMENT_SPEED);
                 String expectedLandfall = (String)hurricaneJSON.get(HURRICANE_LOCAL_DATE_TIME);
