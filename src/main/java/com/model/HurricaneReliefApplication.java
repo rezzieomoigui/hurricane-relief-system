@@ -6,7 +6,19 @@ import java.util.UUID;
 public class HurricaneReliefApplication {
     private User currentUser;
 
-  
+  /**
+   * creates account of individual new user
+   * @param firstName user first name
+   * @param lastName user last name
+   * @param username user username
+   * @param password user password
+   * @param email user email
+   * @param dateOfBirth user birthday
+   * @param address user address
+   * @param zipCode user zip code
+   * @param language user language
+   * @param isAdmin checks if user is an administrator
+   */
     public void createAccount(String firstName, String lastName,
             String username, String password, String email,
             String dateOfBirth, String address, String zipCode,
@@ -40,7 +52,10 @@ public class HurricaneReliefApplication {
         return "Successfully logged in!";
     }
 
-   
+   /**
+    * Logs user out of account if a current user exists
+    * @return string representing if the user was logged out properly
+    */
     public String logout() {
         if (currentUser == null) {
             return "No user is currently logged in.";
@@ -52,20 +67,21 @@ public class HurricaneReliefApplication {
         return result;
     }
 
-  
+    /**
+     * getCurrentUser gets the current user
+     * @return current user
+     */
     public User getCurrentUser() {
         return currentUser;
     }
 
-  
+    /**
+     * getUser gets the user that matches the input username
+     * @param username user username
+     * @return a user with matching username as parameter
+     */
     public User getUser(String username) {
         UserList userList = UserList.getInstance();
         return userList.getUser(username);
-    }
-
-   
-    public User getUser(UUID uuid) {
-        UserList userList = UserList.getInstance();
-        return userList.getUser(uuid);
     }
 }
