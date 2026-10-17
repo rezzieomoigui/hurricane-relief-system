@@ -81,7 +81,6 @@ public class ReliefRequestList {
      * @return boolean for if the relief requests were properly saved
      */
     public boolean save() {
-        // add implementation here
-        return null;
+        return DataWriter.saveReliefRequests();
     }
 }

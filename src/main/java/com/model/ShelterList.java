@@ -77,5 +77,9 @@ public class ShelterList {
         // add case for if shelter doesn't exist
     }
 
+    public boolean save() {
+        return DataWriter.saveShelters();
+    }
+
 
 }
