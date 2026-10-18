@@ -2,25 +2,19 @@ package com.model;
 
 public class PartyMember {
     private String name;
-    private boolean isChild;
-    private boolean isElderly;
+    private AgeCategory age;
 
-    public PartyMember(String name, boolean isChild, boolean isElderly) {
+    public PartyMember(String name, AgeCategory age) {
         this.name = name;
-        this.isChild = isChild;
-        this.isElderly = isElderly;
+        this.age = age;
     }
 
     public String getName() {
         return this.name;
     }
 
-    public boolean isChild() {
-        return this.isChild;
-    }
-
-    public boolean isElderly() {
-        return this.isElderly;
+    public AgeCategory getAge() {
+        return this.age;
     }
     
 }

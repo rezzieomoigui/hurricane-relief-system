@@ -4,12 +4,12 @@
         "stayingHome": true,
         "isMobile": true,
         "priority": "2",
-        "uuid": "7730d500-e632-4529-878b-8d6817cc4221",
+        "uuid": "7b2fb4fe-0eec-4165-8328-ff8b69dafdbd",
         "estimatedArrivalMinutes": "45",
-        "partyMembers": [
-            "d64e8f4c-01b9-4148-9493-8ffa2c0163b5",
-            "af734034-1fbe-42fb-a9a9-2af3dea11a3f"
-        ],
+        "partyMembers": {
+            "Anderson Peters": "Child",
+            "Sarah Samuels": "Adult"
+        },
         "isIndoors": false,
         "status": "Submitted"
     }
