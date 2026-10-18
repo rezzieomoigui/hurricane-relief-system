@@ -26,7 +26,7 @@ public class DataWriter extends DataConstants {
         saveReliefRequests();
     }
     
-    public static void saveUsers() {
+    public static boolean saveUsers() {
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
@@ -38,13 +38,14 @@ public class DataWriter extends DataConstants {
         try(FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
-
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 
-    public static void saveShelters() {
+    public static boolean saveShelters() {
         ShelterList shelterList = ShelterList.getInstance();
         ArrayList<Shelter> shelters = shelterList.getShelters();
         JSONArray jsonShelters = new JSONArray();
@@ -56,14 +57,15 @@ public class DataWriter extends DataConstants {
         try(FileWriter file = new FileWriter(SHELTER_FILE_NAME)) {
             file.write(jsonShelters.toJSONString());
             file.flush();
-
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
 
     }
 
-    public static void saveReliefRequests() {
+    public static boolean saveReliefRequests() {
         ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
         ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         JSONArray jsonRequests = new JSONArray();
@@ -73,9 +75,10 @@ public class DataWriter extends DataConstants {
         try(FileWriter file = new FileWriter(RELIEF_REQUEST_FILE_NAME)) {
             file.write(jsonRequests.toJSONString());
             file.flush();
-
+            return true;
         } catch (Exception e) {
             e.printStackTrace();
+            return false;
         }
     }
 

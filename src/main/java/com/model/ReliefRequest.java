@@ -8,7 +8,7 @@ import java.util.UUID;
  * @author Fantastic Four
  */
 public class ReliefRequest {
-    private User user;
+    private UUID userUUID;
     private UUID uuid;
     private String address;
     private ArrayList<PartyMember> partyMembers;
@@ -20,8 +20,8 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-    public ReliefRequest(User user, UUID uuid, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
-        this.user = user;
+    public ReliefRequest(UUID userUUID, UUID uuid, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+        this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
         this.partyMembers = partyMembers;
@@ -35,8 +35,8 @@ public class ReliefRequest {
     }
 
     // size of party, youngest in party, oldest in party
-    public ReliefRequest(User user, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
-        this.user = user;
+    public ReliefRequest(UUID userUUID, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+        this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
         this.partyMembers = partyMembers;
@@ -53,8 +53,8 @@ public class ReliefRequest {
      * ReliefRequest constructor creates relief request
      * @param address user address
      */
-    public ReliefRequest(User user, String address) {
-        this.user = user;
+    public ReliefRequest(UUID userUUID, String address) {
+        this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
         this.partyMembers = new ArrayList<PartyMember>();
@@ -121,8 +121,8 @@ public class ReliefRequest {
         // Implement logic to add comments
     }
 
-    public User getUser() {
-        return this.user;
+    public UUID getUserUUID() {
+        return this.userUUID;
     }
 
     /**

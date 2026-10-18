@@ -53,7 +53,15 @@ public class DataLoader extends DataConstants {
                 String dateOfBirth = (String)personJSON.get(USER_DATE_OF_BIRTH);
                 String language = (String)personJSON.get(USER_LANGUAGE);
                 String address = (String)personJSON.get(USER_ADDRESS);
-                Boolean isAdmin = (Boolean)personJSON.get(USER_IS_ADMIN);
+                boolean isAdmin = (Boolean)personJSON.get(USER_IS_ADMIN);
+                boolean firstResponder = (Boolean)personJSON.get(VOLUNTEER_FIRST_RESPONDER);
+                boolean canSwim = (Boolean)personJSON.get(VOLUNTEER_CAN_SWIM);
+                boolean isShelterOwner = (Boolean)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER);
+                Skills skills = Skills.valueOf(((String)personJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
+                String userType = (String)personJSON.get(USER_TYPE);
+                if (userType.equals("VOLUNTEER")) {
+                    users.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, skills, firstResponder, canSwim, isShelterOwner));
+                }
                 users.add(new User(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin));
             }
 
@@ -106,7 +114,8 @@ public class DataLoader extends DataConstants {
             for (int i = 0; i < reliefRequestArray.size(); i++) {
                 JSONObject reliefRequestJSON = (JSONObject)reliefRequestArray.get(i);
                 UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
-                User user = UserList.getUser(id);
+                UUID userUUID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_USER_UUID));
+                String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
                 JSONArray partyMembers = (JSONArray)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
                 boolean isIndoors = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS);
                 boolean isMobile = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE);
@@ -115,7 +124,7 @@ public class DataLoader extends DataConstants {
                 int priority = (int)reliefRequestJSON.get(RELIEF_REQUEST_PRIORITY);
                 int estimatedArrivalMinutes = (int)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES);
                 boolean stayingHome = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME);
-                reliefRequests.add(new ReliefRequest(id, partyMembers, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
+                reliefRequests.add(new ReliefRequest(userUUID, id, address, partyMembers, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
             }
         return reliefRequests;
         }catch (Exception e) {
@@ -124,10 +133,12 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    
     /**
      * getVolunteer reads in data from the volunteer json file and adds a volunteer from the data that is read in
      * @return ArrayList of type volunteer containing volunteer data
      */
+    /*
     public static ArrayList<Volunteer> getVolunteer() {
         ArrayList<Volunteer> volunteer = new ArrayList<Volunteer>();
         try {
@@ -159,6 +170,7 @@ public class DataLoader extends DataConstants {
         }
         return null;
     }
+    */
 
     /**
      * getHurricane reads in data from the hurricane json file and adds a hurricane from the data that is read in
@@ -178,7 +190,7 @@ public class DataLoader extends DataConstants {
                 int category = (int)hurricaneJSON.get(HURRICANE_CATEGORY);
                 HurricaneStatus status = HurricaneStatus.valueOf(((String)hurricaneJSON.get(HURRICANE_STATUS)).toUpperCase());
                 JSONArray affectedZipCodes = (JSONArray)hurricaneJSON.get(HURRICANE_AFFECTED_ZIP_CODES);
-                PreparationGuide preparationGuide = PreparationGuide.valueOf(((String)hurricaneJSON.get(HURRICANE_PREPARATION_GUIDE)).toUpperCase());
+                JSONObject preparationGuide = (JSONObject)hurricaneJSON.get(HURRICANE_PREPARATION_GUIDE);
                 double windSpeed = (double)hurricaneJSON.get(HURRICANE_WIND_SPEED);
                 double movementSpeed = (double)hurricaneJSON.get(HURRICANE_MOVEMENT_SPEED);
                 String expectedLandfall = (String)hurricaneJSON.get(HURRICANE_LOCAL_DATE_TIME);
