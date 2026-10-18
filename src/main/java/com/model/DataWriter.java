@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import java.util.UUID;
+import java.util.HashMap;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
@@ -19,10 +20,11 @@ public class DataWriter extends DataConstants {
         userList.addUser("Marie", "Collins", "mcollins", "securePassword5", "mcollins@gmail.com", "07-08-1982", "42 Bluff River Rd", "29210", "English", false);
         saveUsers();
         ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        ArrayList<UUID> partyMembers = new ArrayList<UUID>();
-        partyMembers.add(UUID.randomUUID());
-        partyMembers.add(UUID.randomUUID());
-        reliefRequestList.addReliefRequest(partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true);
+        ArrayList<PartyMember> partyMembers = new ArrayList<PartyMember>();
+        partyMembers.add(new PartyMember("Sarah Samuels", AgeCategory.ADULT));
+        partyMembers.add(new PartyMember("Anderson Peters", AgeCategory.CHILD));
+        User user = userList.getUser("mcollins");
+        reliefRequestList.addReliefRequest(user, user.getAddress(), partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true);
         saveReliefRequests();
     }
     
@@ -124,7 +126,11 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
+<<<<<<< HEAD
         ArrayList<PartyMember> partyMembers = convertPartyMembers(request.getPartyMembers());
+=======
+        HashMap<String, String> partyMembers = convertPartyMembers(request.getPartyMembers());
+>>>>>>> branch-Abagail
         JSONObject requestDetails = new JSONObject();
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
@@ -138,12 +144,12 @@ public class DataWriter extends DataConstants {
         return requestDetails;
     }
 
-    private static ArrayList<String> convertPartyMembers(ArrayList<UUID> partyMembers) {
-        ArrayList<String> partyMemberStr = new ArrayList<String>();
-        for (UUID partyMember : partyMembers) {
-            partyMemberStr.add(partyMember.toString());
+    private static HashMap<String, String> convertPartyMembers(ArrayList<PartyMember> partyMembers) {
+        HashMap<String, String> partyMembersMap = new HashMap();
+        for (PartyMember partyMember : partyMembers) {
+            partyMembersMap.put(partyMember.getName(), partyMember.getAge().str);
         }
-        return partyMemberStr;
+        return partyMembersMap;
     }
 
 }
