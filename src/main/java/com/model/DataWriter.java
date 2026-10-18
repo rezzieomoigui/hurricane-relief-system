@@ -121,7 +121,7 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
-        ArrayList<String> partyMembers = convertPartyMembers(request.getPartyMembers());
+        ArrayList<PartyMember> partyMembers = convertPartyMembers(request.getPartyMembers());
         JSONObject requestDetails = new JSONObject();
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
