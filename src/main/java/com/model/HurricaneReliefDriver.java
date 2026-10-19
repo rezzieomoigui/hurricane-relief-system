@@ -53,6 +53,11 @@ public class HurricaneReliefDriver {
         System.out.println(logoutResult);
     }
 
+
+    public void scenario3() {
+        System.out.println();
+        System.out.println("Scenario 3: ");
+    }
   
     public static void main(String[] args) {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();

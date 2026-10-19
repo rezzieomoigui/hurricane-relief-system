@@ -58,6 +58,7 @@ public class Hurricane {
     }
 
     /**
+<<<<<<< HEAD
      * addReliefRequest adds relief requests 
      * @param request relief request
      * @return boolean for if the relief request was added
@@ -83,6 +84,8 @@ public class Hurricane {
     }
 
     /**
+=======
+>>>>>>> branch-Abagail
      * getRequestsByLocation gets the requests based on their location
      * @return arrayList of requests based on their location
      */
@@ -110,18 +113,6 @@ public class Hurricane {
         return requestsByStatus;
     }
 
-    /**
-     * addShelter adds a shelter
-     * @param shelter relief shelter
-     * @return boolean depending on if shelter was added properly or not
-     */
-    public boolean addShelter(Shelter shelter) {
-        if (!shelters.contains(shelter)) {
-            shelters.add(shelter);
-            return true;
-        }
-        return false;
-    }
 
     /**
      * getAvailableShelters gets the available shelters
