@@ -14,7 +14,8 @@ public class ReliefRequestList {
      * ReliefRequestList constructor creates relief request list
      */
     private ReliefRequestList() {
-        reliefRequests = new ArrayList<ReliefRequest>();
+        ArrayList<ReliefRequest> loaded = DataLoader.getReliefRequests();
+        reliefRequests = (loaded != null) ? loaded : new ArrayList<ReliefRequest>();
     }
 
     /**
@@ -34,7 +35,11 @@ public class ReliefRequestList {
      * @return relief request associated with specific uuid
      */
     public ReliefRequest getReliefRequestById(UUID id) {
-        // add implementation here
+        for (ReliefRequest request : reliefRequests) {
+            if (request.getUuid().equals(id)) {
+                return request;
+            }
+        }
         return null;
     }
 
@@ -53,7 +58,20 @@ public class ReliefRequestList {
      * @return boolean of if request was added or not
      */
     public boolean addReliefRequest(User user, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
-        reliefRequests.add(new ReliefRequest(user, address, partyMembers, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
+        reliefRequests.add(new ReliefRequest(user.getUuid(), address, partyMembers, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
+        return true;
+    }
+
+    /**
+     * addReliefRequest adds an already-built relief request to the list
+     * @param request the relief request to add
+     * @return boolean true if the request was added (false if it was already in the list)
+     */
+    public boolean addReliefRequest(ReliefRequest request) {
+        if (request == null || getReliefRequestById(request.getUuid()) != null) {
+            return false;
+        }
+        reliefRequests.add(request);
         return true;
     }
 
@@ -63,8 +81,11 @@ public class ReliefRequestList {
      * @return boolean if request was properly removed
      */
     public boolean removeReliefRequest(UUID id) {
-        // add implementation here
-        return null;
+        ReliefRequest request = getReliefRequestById(id);
+        if (request == null) {
+            return false;
+        }
+        return reliefRequests.remove(request);
     }
 
     /**
