@@ -1,0 +1,47 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Run Relief System (JavaFX)",
+      "request": "launch",
+      "mainClass": "com.relief_system/com.relief_system.App",
+      "projectName": "hurricane-relief-system",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "java",
+      "name": "Run Console Driver",
+      "request": "launch",
+      "mainClass": "com.relief_system/com.model.HurricaneReliefDriver",
+      "projectName": "hurricane-relief-system",
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal"
+    },
+    {
+      "type": "java",
+      "name": "Test Location UI",
+      "request": "launch",
+      "mainClass": "com.relief_system/com.model.UI",
+      "projectName": "hurricane-relief-system",
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Test DataLoader",
+      "request": "launch",
+      "mainClass": "com.relief_system/com.model.DataLoader",
+      "projectName": "hurricane-relief-system",
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "type": "java",
+      "name": "Test DataWriter",
+      "request": "launch",
+      "mainClass": "com.relief_system/com.model.DataWriter",
+      "projectName": "hurricane-relief-system",
+      "cwd": "${workspaceFolder}"
+    }
+  ]
+}
