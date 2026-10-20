@@ -110,15 +110,6 @@ public class User {
     }
 
     /**
-     * logout method shows that the user logged out of their account
-     * @param username user username
-     * @return string "logged out"
-     */
-    public String logout(String username) {
-        return "Logged out!";
-    }
-
-    /**
      * isMatch method checks if the username and password match
      * @param username user username
      * @param password user password
