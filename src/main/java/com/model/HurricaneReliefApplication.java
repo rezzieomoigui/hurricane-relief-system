@@ -1,32 +1,18 @@
 package com.model;
 
-import java.util.UUID;
-
  
 public class HurricaneReliefApplication {
     private User currentUser;
 
-  /**
-   * creates account of individual new user
-   * @param firstName user first name
-   * @param lastName user last name
-   * @param username user username
-   * @param password user password
-   * @param email user email
-   * @param dateOfBirth user birthday
-   * @param address user address
-   * @param zipCode user zip code
-   * @param language user language
-   * @param isAdmin checks if user is an administrator
-   */
-    public void createAccount(String firstName, String lastName,
+  
+    public boolean createAccount(String firstName, String lastName,
             String username, String password, String email,
             String dateOfBirth, String address, String zipCode,
             String language, boolean isAdmin) {
 
         UserList userList = UserList.getInstance();
 
-        userList.addUser(firstName, lastName, username, password,
+        return userList.addUser(firstName, lastName, username, password,
                 email, dateOfBirth, address, zipCode, language, isAdmin);
     }
 
@@ -36,35 +22,24 @@ public class HurricaneReliefApplication {
      * @param password the user's password
      * @return the login result
      */
-    public String login(String username, String password) {
+    public boolean login(String username, String password) {
         UserList userList = UserList.getInstance();
         User user = userList.getUser(username);
 
         if (user == null) {
-            return "User not found.";
+            return false;
         }
 
-        if (!user.login(username, password)) {
-            return "Incorrect password.";
-        }
+        if (user.login(username, password))
+            currentUser = user;
 
-        currentUser = user;
-        return "Successfully logged in!";
+        return user.login(username, password);
     }
 
-   /**
-    * Logs user out of account if a current user exists
-    * @return string representing if the user was logged out properly
-    */
-    public String logout() {
-        if (currentUser == null) {
-            return "No user is currently logged in.";
-        }
-
-        String result = currentUser.logout(currentUser.getUsername());
+   
+    public boolean logout() {
         currentUser = null;
-
-        return result;
+        return true;
     }
 
     /**
