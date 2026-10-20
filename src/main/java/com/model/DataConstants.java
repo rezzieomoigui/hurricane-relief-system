@@ -57,6 +57,8 @@ public abstract class DataConstants {
     protected static final String HURRICANE_STATUS = "status";
     protected static final String HURRICANE_AFFECTED_ZIP_CODES = "affectedZipCodes";
     protected static final String HURRICANE_PREPARATION_GUIDE = "preparationGuide";
+    protected static final String PREPARATION_GUIDE_TIPS = "tips";
+    protected static final String PREPARATION_GUIDE_PHONE_NUMBERS = "emergencyPhoneNumbers";
     protected static final String HURRICANE_WIND_SPEED = "windSpeed";
     protected static final String HURRICANE_MOVEMENT_SPEED = "movementSpeed";
     protected static final String HURRICANE_LOCAL_DATE_TIME = "expectedLandfall";
