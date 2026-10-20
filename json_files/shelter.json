@@ -1,1 +1,27 @@
-[{"zipCode":"29223","address":"47 Blue Ocean Dr","shelterType":"Business","shelterStatus":"Open","visualDescription":"Pink two-story building","shelterResources":["Water","Blanket"]}]
+[
+    {
+        "zipCode": "29223",
+        "address": "47 Blue Ocean Dr",
+        "shelterType": "Business",
+        "shelterStatus": "Open",
+        "visualDescription": "Pink two-story building",
+        "shelterResources": [
+            "Water",
+            "Blanket"
+        ],
+        "uuid": "5c0f2a4e-8d71-4b0e-9a55-3f1d6a7b2c10"
+    },
+    {
+        "uuid": "b7d3e9a2-1c44-4f6b-8e0d-92a5c1f7d3b8",
+        "zipCode": "29401",
+        "address": "12 Meeting St",
+        "shelterType": "School",
+        "shelterStatus": "Open",
+        "visualDescription": "Brick building with a green door",
+        "shelterResources": [
+            "Food",
+            "Water",
+            "Blanket"
+        ]
+    }
+]
