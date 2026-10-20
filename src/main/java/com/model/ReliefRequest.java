@@ -61,7 +61,7 @@ public class ReliefRequest {
         this.isIndoors = false;
         this.isMobile = false;
         this.isInjured = false;
-        this.status = ReliefRequestStatus.IN_PROGRESS;
+        this.status = ReliefRequestStatus.SUBMITTED;
         this.priority = "Not Assigned";
         this.estimatedArrivalMinutes = 0;
         this.stayingHome = false;
@@ -112,6 +112,39 @@ public class ReliefRequest {
      */
     public void notifyShelter(Shelter shelter) {
         // Implement logic to notify shelter
+    }
+
+    /**
+     * getUser looks up the user who wrote this relief request
+     * @return the user that owns the request, or null if not found
+     */
+    public User getUser() {
+        return UserList.getInstance().getUser(userUUID);
+    }
+
+    /**
+     * getLocationZip gets the zip code of the user who wrote this request
+     * @return zip code of the request writer, or null if the user can't be found
+     */
+    public String getLocationZip() {
+        User user = getUser();
+        return user == null ? null : user.getZipCode();
+    }
+
+    /**
+     * setStatus updates the status of the relief request
+     * @param status new relief request status
+     */
+    public void setStatus(ReliefRequestStatus status) {
+        this.status = status;
+    }
+
+    /**
+     * setPriority updates the priority of the relief request
+     * @param priority new priority
+     */
+    public void setPriority(String priority) {
+        this.priority = priority;
     }
 
     /**
