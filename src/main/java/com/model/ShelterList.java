@@ -15,7 +15,8 @@ public class ShelterList {
      * ShelterList constructor sets the shelters into a shelterList arrayList
      */
     private ShelterList() {
-        this.shelters = new ArrayList<Shelter>();
+        ArrayList<Shelter> loaded = DataLoader.getShelters();
+        this.shelters = (loaded != null) ? loaded : new ArrayList<Shelter>();
     }
 
     /**
@@ -58,7 +59,13 @@ public class ShelterList {
      * @return array list of shelters with specific zip code
      */
     public ArrayList<Shelter> getShelter(String zipCode) {
-        return null;
+        ArrayList<Shelter> matches = new ArrayList<Shelter>();
+        for (Shelter shelter : this.shelters) {
+            if (shelter.getZipCode() != null && shelter.getZipCode().equals(zipCode)) {
+                matches.add(shelter);
+            }
+        }
+        return matches;
     }
 
     /**
