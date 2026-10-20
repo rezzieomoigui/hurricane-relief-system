@@ -52,6 +52,7 @@ public class UserList {
      * @param uuid user id
      * @return user based off of uuid
      */
+    /*
     public User getUser(UUID uuid) {
         for (User user : users) {
             if (user.getUuid().equals(uuid)) {
@@ -60,6 +61,7 @@ public class UserList {
         }
         return null;
     }
+    */
 
     /**
      * getUsers returns users
