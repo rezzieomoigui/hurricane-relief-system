@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 [
     {
         "firstName": "Petra",
@@ -57,6 +56,3 @@
         "isShelterOwner": true
     }
 ]
-=======
-[{"firstName":"Petra","lastName":"Robinson","zipCode":"29218","password":"goodPassword5","address":"10 Branch Road","dateOfBirth":"08-19-2000","language":"Spanish","isAdmin":false,"uuid":"ec7064dc-7dc5-40da-a3ae-4061e915e5ac","email":"probinson@gmail.com","username":"probinson"},{"firstName":"Mark","lastName":"Johnson","zipCode":"29211","password":"wowPassword","address":"14 Stream Dr","dateOfBirth":"12-12-02","language":"English","isAdmin":false,"uuid":"848c884c-dd72-452e-acf2-10abf557dd9f","email":"mjohnson.gmail.com","username":"mjohnson"},{"firstName":"Marie","lastName":"Collins","zipCode":"29210","password":"securePassword5","address":"42 Bluff River Rd","dateOfBirth":"07-08-1982","language":"English","isAdmin":false,"uuid":"2af44d35-feef-4760-84c6-8ee403730fc1","email":"mcollins@gmail.com","username":"mcollins"}]
->>>>>>> branch-Abagail
