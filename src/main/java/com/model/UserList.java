@@ -15,7 +15,11 @@ public class UserList {
      * UserList Constructor adds new users
      */
     private UserList() {
-        users = DataLoader.getUsers();
+        users = new ArrayList<User>();
+        users.add(new User("Petra", "Robinson", "probinson", "goodPassword5",
+        "probinson@gmail.com", "08-19-2000", "10 Branch Road", "29218", "Spanish", false));
+        users.add(new User("Mark", "Johnson", "mjohnson", "wowPassword", 
+        "mjohnson.gmail.com", "12-12-02", "14 Stream Dr", "29211", "English", false));
     }
 
     /**

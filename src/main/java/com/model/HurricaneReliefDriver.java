@@ -18,7 +18,7 @@ public class HurricaneReliefDriver {
         System.out.println();
         System.out.println("Scenario 1: Create an account");
 
-        boolean created_account = application.createAccount(
+        application.createAccount(
             "Amy",
             "Smith",
             "asmith",
@@ -31,7 +31,7 @@ public class HurricaneReliefDriver {
             false
         );
 
-        System.out.println("Created account: "+created_account);
+        System.out.println("Account information submitted for Amy Smith.");
     }
 
    
@@ -39,18 +39,18 @@ public class HurricaneReliefDriver {
         System.out.println();
         System.out.println("Scenario 2: Log in and log out");
 
-        boolean loginResult = application.login("asmith", "12345");
-        System.out.println("Logging in Amy Smith: "+loginResult);
-        boolean logout = application.logout();
-        System.out.println("Logging out: "+logout);
-        System.out.println(application.getCurrentUser());
+        String loginResult = application.login("asmith", "12345");
 
-        boolean loginResult2 = application.login("probinson", "goodPassword5");
-        System.out.println("Logging in Petra Robinson: "+loginResult2);
-        boolean logout2 = application.logout();
-        System.out.println("Logging out: "+logout2);
-        System.out.println(application.getCurrentUser());
+        if (!"Successfully logged in!".equals(loginResult)) {
+            System.out.println("Sorry, we couldn't log in.");
+            System.out.println(loginResult);
+            return;
+        }
 
+        System.out.println("Amy Smith is now logged in.");
+
+        String logoutResult = application.logout();
+        System.out.println(logoutResult);
     }
 
 
