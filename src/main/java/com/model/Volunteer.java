@@ -71,6 +71,7 @@ public class Volunteer extends User {
      * @param request relief request
      */
     public void acceptRequest(ReliefRequest request) { 
+        request.setStatus(ReliefRequestStatus.IN_PROGRESS);
         System.out.println("Request accepted: " + request.getRequestId());
     }
 
@@ -87,6 +88,7 @@ public class Volunteer extends User {
      * @param request relief request
      */
     public void markCompleteRequest(ReliefRequest request) { 
+        request.setStatus(ReliefRequestStatus.COMPLETED);
         System.out.println("Request marked as complete: " + request.getRequestId());
     }
 
