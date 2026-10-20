@@ -15,6 +15,11 @@ public class UserList {
      * UserList Constructor adds new users
      */
     private UserList() {
+        ArrayList<User> loaded = DataLoader.getUsers();
+        if (loaded != null && !loaded.isEmpty()) {
+            users = loaded;
+            return;
+        }
         users = new ArrayList<User>();
         users.add(new User("Petra", "Robinson", "probinson", "goodPassword5",
         "probinson@gmail.com", "08-19-2000", "10 Branch Road", "29218", "Spanish", false));
@@ -52,7 +57,6 @@ public class UserList {
      * @param uuid user id
      * @return user based off of uuid
      */
-    /*
     public User getUser(UUID uuid) {
         for (User user : users) {
             if (user.getUuid().equals(uuid)) {
@@ -61,7 +65,6 @@ public class UserList {
         }
         return null;
     }
-    */
 
     /**
      * getUsers returns users
