@@ -124,7 +124,7 @@ public class DataLoader extends DataConstants {
                 UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
                 UUID userUUID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_USER_UUID));
                 String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
-                JSONArray partyMembers = (JSONArray)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
+                JSONObject partyMembers = (JSONObject)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
                 ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
                 for (int j = 0; j < partyMembers.size(); ++j) {
                     JSONObject partyMemberJSON = (JSONObject)partyMembers.get(j);
@@ -132,6 +132,7 @@ public class DataLoader extends DataConstants {
                     String ageStr = (String)partyMemberJSON.get("age");
                     AgeCategory age = AgeCategory.valueOf(ageStr);
                     PartyMember partyMember = new PartyMember(name, age);
+                    partyMembersArray.add(partyMember);
                 }
                 boolean isIndoors = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS);
                 boolean isMobile = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE);
