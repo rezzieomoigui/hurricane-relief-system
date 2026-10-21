@@ -1,6 +1,7 @@
 package com.model;
 
 import java.util.UUID;
+import java.util.ArrayList;
 
 /**
  * Volunteer class creates volunteers that extend the user class
@@ -30,8 +31,8 @@ public class Volunteer extends User {
      * @param canSwim checks if user can swim
      * @param isShelterOwner checks if user is a shelter owner
      */
-    public Volunteer(UUID id, String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(id, firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin);
+    public Volunteer(UUID id, String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
+        super(id, firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType);
         this.skills = skills;
         this.firstResponder = firstResponder;
         this.canSwim = canSwim;
@@ -47,7 +48,7 @@ public class Volunteer extends User {
      * @param isShelterOwner checks if user is a shelter owner
      */
     public Volunteer(User user, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(user.getUuid(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getDateOfBirth(), user.getAddress(), user.getZipCode(), user.getLanguage(), user.isAdmin());
+        super(user.getUuid(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getDateOfBirth(), user.getAddress(), user.getZipCode(), user.getLanguage(), user.isAdmin(), "Volunteer");
         this.skills = skills;
         this.firstResponder = firstResponder;
         this.canSwim = canSwim;

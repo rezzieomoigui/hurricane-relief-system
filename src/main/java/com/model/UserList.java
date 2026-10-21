@@ -88,12 +88,12 @@ public class UserList {
      * @return boolean true if user was added and didn't already exist
      */
     public boolean addUser(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
         if (getUser(username) != null) {
             return false;
         }
         users.add(new User(firstName, lastName, username, password, email, 
-                dateOfBirth, address, zipCode, language, isAdmin));
+                dateOfBirth, address, zipCode, language, isAdmin, userType));
         return true;
     }
 

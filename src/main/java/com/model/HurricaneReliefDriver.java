@@ -1,6 +1,4 @@
 package com.model;
-
-import java.util.ArrayList;
  
 public class HurricaneReliefDriver {
     private HurricaneReliefApplication application;
@@ -14,9 +12,6 @@ public class HurricaneReliefDriver {
     public void run() {
         scenario1();
         scenario2();
-        scenario3();
-        scenario4();
-        scenario5();
     }
  
     public void scenario1() {
@@ -33,7 +28,8 @@ public class HurricaneReliefDriver {
             "123 Example Street",
             "29201",
             "English",
-            false
+            false,
+            "User"
         );
 
         System.out.println("Account information submitted for Amy Smith.");
@@ -44,25 +40,22 @@ public class HurricaneReliefDriver {
         System.out.println();
         System.out.println("Scenario 2: Log in and log out");
 
-        String loginResult = application.login("asmith", "12345");
+        boolean loginResult = application.login("asmith", "12345");
+        System.out.println("Logging in Amy Smith: "+loginResult);
+        boolean logout = application.logout();
+        System.out.println("Logging out: "+logout);
+        System.out.println(application.getCurrentUser());
 
-        if (!"Successfully logged in!".equals(loginResult)) {
-            System.out.println("Sorry, we couldn't log in.");
-            System.out.println(loginResult);
-            return;
-        }
-
-        System.out.println("Amy Smith is now logged in.");
-
-        String logoutResult = application.logout();
-        System.out.println(logoutResult);
+        boolean loginResult2 = application.login("probinson", "goodPassword5");
+        System.out.println("Logging in Petra Robinson: "+loginResult2);
+        boolean logout2 = application.logout();
+        System.out.println("Logging out: "+logout2);
+        System.out.println(application.getCurrentUser());
     }
 
 
-    /**
-     * Scenario 3: a victim in Charleston finds nearby shelters, checks hurricane alerts and asks for help
-     */
-    public void scenario3() {
+    /**This code does not work with the login and logout having a boolean return type.
+    /**public void scenario3() {
         System.out.println();
         System.out.println("Scenario 3: Find shelters, check hurricane alerts, and request relief");
 
@@ -93,7 +86,7 @@ public class HurricaneReliefDriver {
     /**
      * Scenario 4: a volunteer views the available requests and accepts one
      */
-    public void scenario4() {
+    /**public void scenario4() {
         System.out.println();
         System.out.println("Scenario 4: Volunteer views and accepts a relief request");
 
@@ -126,7 +119,7 @@ public class HurricaneReliefDriver {
     /**
      * Scenario 5: Carl removes his demo request so running the driver again starts clean
      */
-    public void scenario5() {
+    /**public void scenario5() {
         System.out.println();
         System.out.println("Scenario 5: Cancel a relief request");
 
@@ -140,7 +133,7 @@ public class HurricaneReliefDriver {
         }
 
         System.out.println(application.logout());
-    }
+    }**/
 
     public static void main(String[] args) {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();
