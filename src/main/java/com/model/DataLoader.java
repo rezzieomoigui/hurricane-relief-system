@@ -126,13 +126,18 @@ public class DataLoader extends DataConstants {
                 String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
                 JSONObject partyMembers = (JSONObject)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
                 ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
-                for (int j = 0; j < partyMembers.size(); ++j) {
-                    JSONObject partyMemberJSON = (JSONObject)partyMembers.get(j);
+                for (Object key: partyMembers.keySet()) {
+                    String name = (String) key;
+                    String ageStr = (String) partyMembers.get(key);
+                    AgeCategory age = AgeCategory.valueOf(ageStr.toUpperCase());
+                    PartyMember partyMember = new PartyMember(name, age);
+                    partyMembersArray.add(partyMember);
+                    /* JSONObject partyMemberJSON = (JSONObject)partyMembers.get(j);
                     String name = (String)partyMemberJSON.get("name");
                     String ageStr = (String)partyMemberJSON.get("age");
                     AgeCategory age = AgeCategory.valueOf(ageStr);
                     PartyMember partyMember = new PartyMember(name, age);
-                    partyMembersArray.add(partyMember);
+                    partyMembersArray.add(partyMember);*/
                 }
                 boolean isIndoors = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS);
                 boolean isMobile = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE);
