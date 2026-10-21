@@ -1,5 +1,7 @@
 package com.model;
 
+import java.util.ArrayList;
+
 /**
  * PreparationGuide class allows the user to access informational guidelines
  * @author Fantastic Four
@@ -22,16 +24,9 @@ public class PreparationGuide {
      * @return ArrayList of guidelines to follow
      */
     public ArrayList<String> searchGuidelines(String keyword) {
-        // Implement search logic here
-        return null;
-    }
+        for (int i = 0; i < tips.length(); i++) {
 
-    /**
-     * selectGuide method selects the guide to use
-     * @param category type of guide
-     */
-    public void selectGuide(GuideCategory category) {
-        // Implement guide selection logic here
+        }
     }
 
     /**
