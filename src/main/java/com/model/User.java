@@ -18,6 +18,7 @@ public class User {
     private String zipCode;
     private String language;
     private boolean isAdmin;
+    private String userType;
 
     /**
      * User constructor creates user
@@ -27,12 +28,13 @@ public class User {
      * @param lastName user last name
      * @param password user password
      */
-    public User(UUID uuid, String username, String firstName, String lastName, String password) {
+    public User(UUID uuid, String username, String firstName, String lastName, String password, String userType) {
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
         this.username = username;
         this.password = password;
+        this.userType = userType;
     }
 
     /**
@@ -50,7 +52,7 @@ public class User {
      * @param isAdmin checks if user is an administrator
      */
     public User(UUID uuid, String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -62,6 +64,7 @@ public class User {
         this.zipCode = zipCode;
         this.language = language;
         this.isAdmin = isAdmin;
+        this.userType = userType;
     }
 
     /**
@@ -78,7 +81,7 @@ public class User {
      * @param isAdmin checks if user is an administrator
      */
     public User(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
         this.uuid = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,14 +93,8 @@ public class User {
         this.zipCode = zipCode;
         this.language = language;
         this.isAdmin = isAdmin;
+        this.userType = userType;
     }
-
-    /**public void createAccount(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
-        UserList userList = UserList.getInstance();
-        userList.addUser(firstName, lastName, username, password, email, 
-            dateOfBirth, address, zipCode, language, isAdmin);
-    }*/
 
     /**
      * login method calls the isMatch method to check if the username and password match
@@ -226,6 +223,10 @@ public class User {
      */
     public boolean isAdmin() {
         return isAdmin;
+    }
+
+    public String getUserType() {
+        return this.userType;
     }
 
     /**

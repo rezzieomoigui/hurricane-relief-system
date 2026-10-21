@@ -25,31 +25,6 @@ public class HurricaneReliefApplication {
         hurricaneList = HurricaneList.getInstance();
     }
 
-    // ------------------------------------------------------------------
-    // Accounts
-    // ------------------------------------------------------------------
-
-  /**
-   * creates account of individual new user
-   * @param firstName user first name
-   * @param lastName user last name
-   * @param username user username
-   * @param password user password
-   * @param email user email
-   * @param dateOfBirth user birthday
-   * @param address user address
-   * @param zipCode user zip code
-   * @param language user language
-   * @param isAdmin checks if user is an administrator
-   */
-    public void createAccount(String firstName, String lastName,
-            String username, String password, String email,
-            String dateOfBirth, String address, String zipCode,
-            String language, boolean isAdmin) {
-
-        userList.addUser(firstName, lastName, username, password,
-                email, dateOfBirth, address, zipCode, language, isAdmin);
-    }
 
     /**
      * Logs in and remembers the user if the credentials match.
@@ -57,35 +32,28 @@ public class HurricaneReliefApplication {
      * @param password the user's password
      * @return the login result
      */
-    public String login(String username, String password) {
-        User user = userList.getUser(username);
+     public boolean createAccount(String firstName, String lastName,
+            String username, String password, String email,
+            String dateOfBirth, String address, String zipCode,
+            String language, boolean isAdmin, String userType) {
 
-        if (user == null) {
-            return "User not found.";
-        }
-
-        if (!user.login(username, password)) {
-            return "Incorrect password.";
-        }
-
-        currentUser = user;
-        return "Successfully logged in!";
+        return userList.addUser(firstName, lastName, username, password,
+                email, dateOfBirth, address, zipCode, language, isAdmin, userType);
     }
 
-   /**
-    * Logs user out of account if a current user exists, saving the user and relief request data
-    * @return string representing if the user was logged out properly
-    */
-    public String logout() {
-        if (currentUser == null) {
-            return "No user is currently logged in.";
+     public boolean login(String username, String password) {
+        User user = userList.getUser(username);
+        if (user == null) {
+            return false;
         }
+        if (user.login(username, password))
+            currentUser = user;
+        return user.login(username, password);
+    }
 
-        String result = currentUser.logout(currentUser.getUsername());
+    public boolean logout() {
         currentUser = null;
-        save();
-
-        return result;
+        return true;
     }
 
     /**
@@ -128,14 +96,11 @@ public class HurricaneReliefApplication {
      * @return boolean true if user was added and didn't already exist
      */
     public boolean addUser(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin) {
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
         return userList.addUser(firstName, lastName, username, password, email,
-                dateOfBirth, address, zipCode, language, isAdmin);
+                dateOfBirth, address, zipCode, language, isAdmin, userType);
     }
 
-    // ------------------------------------------------------------------
-    // Shelters
-    // ------------------------------------------------------------------
 
     /**
      * seeNearbyShelters finds the shelters in the logged in user's zip code

@@ -48,7 +48,7 @@ public class ReliefRequestList {
      * @return arrayList of relief requests
      */
     public ArrayList<ReliefRequest> getReliefRequests() {
-        return this.reliefRequests;
+        return DataLoader.getReliefRequests();
     }
 
     /**
