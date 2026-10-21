@@ -124,7 +124,7 @@ public class DataLoader extends DataConstants {
                 UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
                 UUID userUUID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_USER_UUID));
                 String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
-                JSONArray partyMembers = (JSONArray)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
+                JSONObject partyMembers = (JSONObject)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
                 ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
                 for (int j = 0; j < partyMembers.size(); ++j) {
                     JSONObject partyMemberJSON = (JSONObject)partyMembers.get(j);
@@ -141,7 +141,7 @@ public class DataLoader extends DataConstants {
                 int priority = (int)reliefRequestJSON.get(RELIEF_REQUEST_PRIORITY);
                 int estimatedArrivalMinutes = (int)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES);
                 boolean stayingHome = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME);
-                reliefRequests.add(new ReliefRequest(userUUID, id, address, partyMembers, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
+                reliefRequests.add(new ReliefRequest(userUUID, id, address, partyMembersArray, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
             }
         return reliefRequests;
         }catch (Exception e) {
