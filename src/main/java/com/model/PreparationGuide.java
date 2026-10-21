@@ -24,9 +24,16 @@ public class PreparationGuide {
      * @return ArrayList of guidelines to follow
      */
     public ArrayList<String> searchGuidelines(String keyword) {
-        for (int i = 0; i < tips.length(); i++) {
-
+        ArrayList<String> matchingGuidelines = new ArrayList<>();
+        for (int i = 0; i < tips.size(); i++) {
+            if (tips.get(i).toLowerCase().contains(keyword.toLowerCase())) {
+                matchingGuidelines.add(tips.get(i));
+            }
         }
+        if (matchingGuidelines.size() > 0){
+            return matchingGuidelines;
+        }
+        return null;
     }
 
     /**
