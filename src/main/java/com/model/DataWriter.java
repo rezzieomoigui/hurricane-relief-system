@@ -112,7 +112,7 @@ public class DataWriter extends DataConstants {
             String temp1 = temp.toString();
             String temp2 = temp.str;**/
 
-            shelterResourcesStr.add(shelterResources.get(i).str);
+            shelterResourcesStr.add(shelterResources.get(i).name());
         }
         return shelterResourcesStr;
     }

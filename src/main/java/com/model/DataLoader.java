@@ -95,7 +95,7 @@ public class DataLoader extends DataConstants {
                 JSONArray shelterResourcesArray = (JSONArray)shelterJSON.get(SHELTER_SHELTER_RESOURCES);
                 ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
                 for (int j = 0; j < shelterResourcesArray.size(); ++j) {
-                    String shelterResourceStr = (String)shelterResourcesArray.get(i);
+                    String shelterResourceStr = (String)shelterResourcesArray.get(j);
                     ShelterResources shelterResource = ShelterResources.valueOf(shelterResourceStr);
                     shelterResources.add(shelterResource);
                 } // draft of what I think might work for nested for-loops
@@ -125,6 +125,14 @@ public class DataLoader extends DataConstants {
                 UUID userUUID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_USER_UUID));
                 String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
                 JSONArray partyMembers = (JSONArray)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
+                ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
+                for (int j = 0; j < partyMembers.size(); ++j) {
+                    JSONObject partyMemberJSON = (JSONObject)partyMembers.get(j);
+                    String name = (String)partyMemberJSON.get("name");
+                    String ageStr = (String)partyMemberJSON.get("age");
+                    AgeCategory age = AgeCategory.valueOf(ageStr);
+                    PartyMember partyMember = new PartyMember(name, age);
+                }
                 boolean isIndoors = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS);
                 boolean isMobile = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE);
                 boolean isInjured = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INJURED);

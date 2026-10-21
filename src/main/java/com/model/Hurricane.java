@@ -65,6 +65,11 @@ public class Hurricane {
         this(name, id, eyeOfStormZip, category, status, affectedZipCodes, guideFromJSON(preparationGuide), windSpeed, movementSpeed, LocalDateTime.parse(expectedLandfall, LANDFALL_FORMAT));
     }
 
+    /**
+     * guideFromJSON converts the json object into a preperation guide object
+     * @param json json object that has preparation guide information
+     * @return PreparationGuide object with preparation data from json object
+     */
     private static PreparationGuide guideFromJSON(JSONObject json) {
         PreparationGuide guide = new PreparationGuide();
         if (json != null) {
@@ -85,7 +90,16 @@ public class Hurricane {
     }
 
     /**
-     * Hurricane constructor creates a brand new hurricane and generates its id
+     * Hurricane constructor creates a new hurricane and generates its id
+     * @param name name of hurricane
+     * @param eyeOfStormZip zip code representing location of eye of the hurricane
+     * @param category category level of hurricane
+     * @param status status of hurricane
+     * @param affectedZipCodes zip codes affected by hurricane
+     * @param preparationGuide tips for preparing for hurricane
+     * @param windSpeed hurricane wind speed
+     * @param movementSpeed hurricane movement speed
+     * @param expectedLandfall amount of time until hurricane is expected to make landfall
      */
     public Hurricane(String name, String eyeOfStormZip, int category, HurricaneStatus status, ArrayList<String> affectedZipCodes, PreparationGuide preparationGuide, double windSpeed, double movementSpeed, LocalDateTime expectedLandfall) {
         this(name, UUID.randomUUID(), eyeOfStormZip, category, status, affectedZipCodes, preparationGuide, windSpeed, movementSpeed, expectedLandfall);
