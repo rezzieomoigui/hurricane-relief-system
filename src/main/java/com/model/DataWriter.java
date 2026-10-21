@@ -148,9 +148,9 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_ADDRESS, request.getAddress());
         requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
-        requestDetails.put(RELIEF_REQUEST_IS_INDOORS, request.isIndoors());
-        requestDetails.put(RELIEF_REQUEST_IS_MOBILE, request.isMobile());
-        requestDetails.put(RELIEF_REQUEST_IS_INJURED, request.isInjured());
+        requestDetails.put(RELIEF_REQUEST_IS_INDOORS, Boolean.toString(request.isIndoors()));
+        requestDetails.put(RELIEF_REQUEST_IS_MOBILE, Boolean.toString(request.isMobile()));
+        requestDetails.put(RELIEF_REQUEST_IS_INJURED, Boolean.toString(request.isInjured()));
         requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus().str);
         requestDetails.put(RELIEF_REQUEST_PRIORITY, request.getPriority());
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
