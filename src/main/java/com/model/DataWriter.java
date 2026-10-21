@@ -154,7 +154,7 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus().str);
         requestDetails.put(RELIEF_REQUEST_PRIORITY, request.getPriority());
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
-        requestDetails.put(RELIEF_REQUEST_STAYING_HOME, request.isStayingHome());
+        requestDetails.put(RELIEF_REQUEST_STAYING_HOME, Boolean.toString(request.isStayingHome()));
         return requestDetails;
     }
 

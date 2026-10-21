@@ -139,13 +139,13 @@ public class DataLoader extends DataConstants {
                     PartyMember partyMember = new PartyMember(name, age);
                     partyMembersArray.add(partyMember);*/
                 }
-                boolean isIndoors = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS);
-                boolean isMobile = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE);
-                boolean isInjured = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_IS_INJURED);
-                ReliefRequestStatus status = ReliefRequestStatus.valueOf(((String)reliefRequestJSON.get(SHELTER_SHELTER_STATUS)).toUpperCase());
-                int priority = (int)reliefRequestJSON.get(RELIEF_REQUEST_PRIORITY);
-                int estimatedArrivalMinutes = (int)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES);
-                boolean stayingHome = (Boolean)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME);
+                boolean isIndoors = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS));
+                boolean isMobile = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE));
+                boolean isInjured = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INJURED));
+                ReliefRequestStatus status = ReliefRequestStatus.valueOf(((String)reliefRequestJSON.get(RELIEF_REQUEST_STATUS)).toUpperCase());
+                int priority = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_PRIORITY));
+                int estimatedArrivalMinutes = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES));
+                boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
                 reliefRequests.add(new ReliefRequest(userUUID, id, address, partyMembersArray, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
             }
         return reliefRequests;
