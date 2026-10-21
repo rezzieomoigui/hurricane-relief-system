@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
-        ShelterList shelterList = ShelterList.getInstance();
+        /**ShelterList shelterList = ShelterList.getInstance();
         ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
         shelterResources.add(ShelterResources.WATER);
         shelterResources.add(ShelterResources.BLANKET);
@@ -25,9 +25,14 @@ public class DataWriter extends DataConstants {
         partyMembers.add(new PartyMember("Anderson Peters", AgeCategory.CHILD));
         User user = userList.getUser("mcollins");
         reliefRequestList.addReliefRequest(user, user.getAddress(), partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true);
-        saveReliefRequests();
+        saveReliefRequests();**/
+        saveUsers();
+        //ShelterList shelterList = ShelterList.getInstance();
+        //saveShelters();
+        //ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        //saveReliefRequests();
     }
-    
+
     public static boolean saveUsers() {
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
@@ -104,6 +109,10 @@ public class DataWriter extends DataConstants {
     private static ArrayList<String> convertShelterResources(ArrayList<ShelterResources> shelterResources) {
         ArrayList<String> shelterResourcesStr = new ArrayList<String>();
         for (int i = 0; i < shelterResources.size(); ++i) {
+            /**ShelterResources temp = shelterResources.get(i);
+            String temp1 = temp.toString();
+            String temp2 = temp.str;**/
+
             shelterResourcesStr.add(shelterResources.get(i).str);
         }
         return shelterResourcesStr;
@@ -126,13 +135,11 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
-<<<<<<< HEAD
-        ArrayList<PartyMember> partyMembers = convertPartyMembers(request.getPartyMembers());
-=======
         HashMap<String, String> partyMembers = convertPartyMembers(request.getPartyMembers());
->>>>>>> branch-Abagail
         JSONObject requestDetails = new JSONObject();
+        requestDetails.put(RELIEF_REQUEST_USER_UUID, request.getUserUUID().toString());
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
+        requestDetails.put(RELIEF_REQUEST_ADDRESS, request.getAddress());
         requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
         requestDetails.put(RELIEF_REQUEST_IS_INDOORS, request.isIndoors());
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, request.isMobile());

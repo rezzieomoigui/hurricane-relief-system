@@ -90,7 +90,13 @@ public class DataLoader extends DataConstants {
                 String zipCode = (String)shelterJSON.get(SHELTER_ZIP_CODE);
                 ShelterType shelterType = ShelterType.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_TYPE)).toUpperCase());
                 ShelterStatus shelterStatus = ShelterStatus.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_STATUS)).toUpperCase());
-                JSONArray shelterResources = (JSONArray)shelterJSON.get(SHELTER_SHELTER_RESOURCES);
+                JSONArray shelterResourcesArray = (JSONArray)shelterJSON.get(SHELTER_SHELTER_RESOURCES);
+                ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
+                for (int j = 0; j < shelterResourcesArray.size(); ++j) {
+                    String shelterResourceStr = (String)shelterResourcesArray.get(i);
+                    ShelterResources shelterResource = ShelterResources.valueOf(shelterResourceStr);
+                    shelterResources.add(shelterResource);
+                }
                 String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
                 shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
             }

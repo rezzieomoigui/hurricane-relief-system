@@ -15,7 +15,7 @@ public class ReliefRequestList {
      */
     private ReliefRequestList() {
         ArrayList<ReliefRequest> loaded = DataLoader.getReliefRequests();
-        reliefRequests = (loaded != null) ? loaded : new ArrayList<ReliefRequest>();
+        //reliefRequests = (loaded != null) ? loaded : new ArrayList<ReliefRequest>();
     }
 
     /**

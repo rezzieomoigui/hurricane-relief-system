@@ -21,4 +21,5 @@ public enum ShelterResources {
     private ShelterResources(String str) {
         this.str = str;
     }
+
 }

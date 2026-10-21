@@ -17,14 +17,13 @@ public class UserList {
     private UserList() {
         ArrayList<User> loaded = DataLoader.getUsers();
         if (loaded != null && !loaded.isEmpty()) {
-            users = loaded;
-            return;
+            this.users = loaded;
         }
-        users = new ArrayList<User>();
+        /**users = new ArrayList<User>();
         users.add(new User("Petra", "Robinson", "probinson", "goodPassword5",
         "probinson@gmail.com", "08-19-2000", "10 Branch Road", "29218", "Spanish", false));
         users.add(new User("Mark", "Johnson", "mjohnson", "wowPassword", 
-        "mjohnson.gmail.com", "12-12-02", "14 Stream Dr", "29211", "English", false));
+        "mjohnson.gmail.com", "12-12-02", "14 Stream Dr", "29211", "English", false));**/
     }
 
     /**
