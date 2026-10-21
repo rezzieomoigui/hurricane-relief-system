@@ -54,15 +54,17 @@ public class DataLoader extends DataConstants {
                 String language = (String)personJSON.get(USER_LANGUAGE);
                 String address = (String)personJSON.get(USER_ADDRESS);
                 boolean isAdmin = (Boolean)personJSON.get(USER_IS_ADMIN);
-                boolean firstResponder = (Boolean)personJSON.get(VOLUNTEER_FIRST_RESPONDER);
-                boolean canSwim = (Boolean)personJSON.get(VOLUNTEER_CAN_SWIM);
-                boolean isShelterOwner = (Boolean)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER);
-                Skills skills = Skills.valueOf(((String)personJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
                 String userType = (String)personJSON.get(USER_TYPE);
-                if (userType.equals("VOLUNTEER")) {
-                    users.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, skills, firstResponder, canSwim, isShelterOwner));
+                if (userType.equalsIgnoreCase("VOLUNTEER")) {
+                    boolean firstResponder = (Boolean)personJSON.get(VOLUNTEER_FIRST_RESPONDER);
+                    boolean canSwim = (Boolean)personJSON.get(VOLUNTEER_CAN_SWIM);
+                    boolean isShelterOwner = (Boolean)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER);
+                    Skills skills = Skills.valueOf(((String)personJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
+                    users.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType, skills, firstResponder, canSwim, isShelterOwner));
                 }
-                users.add(new User(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin));
+                else {
+                    users.add(new User(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType));
+                }
             }
 
         return users;
@@ -96,7 +98,7 @@ public class DataLoader extends DataConstants {
                     String shelterResourceStr = (String)shelterResourcesArray.get(i);
                     ShelterResources shelterResource = ShelterResources.valueOf(shelterResourceStr);
                     shelterResources.add(shelterResource);
-                }
+                } // draft of what I think might work for nested for-loops
                 String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
                 shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
             }

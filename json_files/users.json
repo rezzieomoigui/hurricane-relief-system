@@ -8,6 +8,7 @@
         "dateOfBirth": "08-19-2000",
         "language": "Spanish",
         "isAdmin": false,
+        "userType": "user",
         "uuid": "5340000e-fea3-41bd-80d0-0113bff659d2",
         "email": "probinson@gmail.com",
         "username": "probinson"
@@ -21,6 +22,7 @@
         "dateOfBirth": "12-12-02",
         "language": "English",
         "isAdmin": false,
+        "userType": "user",
         "uuid": "a38f7c82-9a3a-4a91-8f07-fc3a95a702cd",
         "email": "mjohnson.gmail.com",
         "username": "mjohnson"

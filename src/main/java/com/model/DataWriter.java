@@ -26,11 +26,10 @@ public class DataWriter extends DataConstants {
         User user = userList.getUser("mcollins");
         reliefRequestList.addReliefRequest(user, user.getAddress(), partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true);
         saveReliefRequests();**/
-        saveUsers();
         //ShelterList shelterList = ShelterList.getInstance();
         //saveShelters();
         //ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        //saveReliefRequests();
+        saveReliefRequests();
     }
 
     public static boolean saveUsers() {
@@ -131,6 +130,14 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_ZIP_CODE, user.getZipCode());
         userDetails.put(USER_LANGUAGE, user.getLanguage());
         userDetails.put(USER_IS_ADMIN, user.isAdmin());
+        userDetails.put(USER_TYPE, user.getUserType());
+        if (user.getUserType().equals("Volunteer")) {
+            Volunteer volunteer = (Volunteer) user;
+            userDetails.put(VOLUNTEER_SKILLS, volunteer.getSkills().str);
+            userDetails.put(VOLUNTEER_FIRST_RESPONDER, volunteer.isFirstResponder());
+            userDetails.put(VOLUNTEER_CAN_SWIM, volunteer.canSwim());
+            userDetails.put(VOLUNTEER_IS_SHELTER_OWNER, volunteer.isShelterOwner());
+        }
         return userDetails;
     }
 
@@ -158,5 +165,6 @@ public class DataWriter extends DataConstants {
         }
         return partyMembersMap;
     }
+
 
 }
