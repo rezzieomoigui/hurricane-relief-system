@@ -124,6 +124,9 @@ public class DataLoader extends DataConstants {
                 UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
                 UUID userUUID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_USER_UUID));
                 String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
+                String city = (String)reliefRequestJSON.get(RELIEF_REQUEST_CITY);
+                String state = (String)reliefRequestJSON.get(RELIEF_REQUEST_STATE);
+                String zipCode = (String)reliefRequestJSON.get(RELIEF_REQUEST_ZIP_CODE);
                 JSONObject partyMembers = (JSONObject)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
                 ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
                 for (Object key: partyMembers.keySet()) {
@@ -137,10 +140,9 @@ public class DataLoader extends DataConstants {
                 boolean isMobile = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE));
                 boolean isInjured = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INJURED));
                 ReliefRequestStatus status = ReliefRequestStatus.valueOf(((String)reliefRequestJSON.get(RELIEF_REQUEST_STATUS)).toUpperCase());
-                int priority = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_PRIORITY));
                 int estimatedArrivalMinutes = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES));
                 boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
-                reliefRequests.add(new ReliefRequest(userUUID, id, address, partyMembersArray, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
+                reliefRequests.add(new ReliefRequest(userUUID, id, address, city, state, zipCode, partyMembersArray, isIndoors, isMobile, isInjured, status, estimatedArrivalMinutes, stayingHome));
             }
         return reliefRequests;
         }catch (Exception e) {

@@ -36,6 +36,9 @@ public abstract class DataConstants {
     protected static final String RELIEF_REQUEST_USER_UUID = "userUUID";
     protected static final String RELIEF_REQUEST_UUID = "uuid";
     protected static final String RELIEF_REQUEST_ADDRESS = "address";
+    protected static final String RELIEF_REQUEST_CITY = "city";
+    protected static final String RELIEF_REQUEST_STATE = "state";
+    protected static final String RELIEF_REQUEST_ZIP_CODE = "zipCode";
     protected static final String RELIEF_REQUEST_PARTY_MEMBERS = "partyMembers";
     protected static final String RELIEF_REQUEST_IS_INDOORS = "isIndoors";
     protected static final String RELIEF_REQUEST_IS_MOBILE = "isMobile";
