@@ -93,8 +93,12 @@ public class ReliefRequestList {
      * @param reliefRequestList list of relief requests
      * @param isAdmin checks is user is an administrator
      */
-    public void prioritizeRequests(ReliefRequestList reliefRequestList, boolean isAdmin) {
-        // add implementation here
+    public ArrayList<ReliefRequest> getOrderedRequests(String address, String userType) {
+        if (!userType.equals("Admin") && (!userType.equals("Volunteer"))) {
+            return null;
+        // create an Address object from relief request and entered address String
+        // list in order
+        }
     }
 
     /**

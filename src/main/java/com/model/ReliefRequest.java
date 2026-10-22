@@ -11,15 +11,18 @@ public class ReliefRequest {
     private UUID userUUID;
     private UUID uuid;
     private String address;
+    private String city;
+    private String state;
+    private String zipCode;
     private ArrayList<PartyMember> partyMembers;
     private boolean isIndoors;
     private boolean isMobile;
     private boolean needsMedicalAssistance;
     private ReliefRequestStatus status;
-    private String priority;
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
+<<<<<<< HEAD
     /**
      * ReliefRequest constructor creates new relief request object
      * @param userUUID user id
@@ -35,20 +38,26 @@ public class ReliefRequest {
      * @param stayingHome is user staying home
      */
     public ReliefRequest(UUID userUUID, UUID uuid, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+=======
+    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome) {
+>>>>>>> branch-Abagail
         this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
         this.isMobile = isMobile;
         this.needsMedicalAssistance = needsMedicalAssistance;
         this.status = status;
-        this.priority = String.valueOf(priority);
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
     }
 
     // size of party, youngest in party, oldest in party
+<<<<<<< HEAD
     /**
      * ReliefRequest constructor creates new relief request and generates relief request uuid
      * @param userUUID user id
@@ -63,46 +72,49 @@ public class ReliefRequest {
      * @param stayingHome is user staying home
      */
     public ReliefRequest(UUID userUUID, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+=======
+    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome) {
+>>>>>>> branch-Abagail
         this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
         this.isMobile = isMobile;
         this.needsMedicalAssistance = needsMedicalAssistance;
         this.status = status;
-        this.priority = String.valueOf(priority);
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
     }
     
     /**
+<<<<<<< HEAD
      * ReliefRequest constructor creates relief request
      * @param userUUID user id
+=======
+     * This creates a general relief request for when users have no time enter detailed information
+>>>>>>> branch-Abagail
      * @param address user address
      */
-    public ReliefRequest(UUID userUUID, String address) {
+    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode) {
         this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
         this.partyMembers = new ArrayList<PartyMember>();
         this.isIndoors = false;
         this.isMobile = false;
         this.needsMedicalAssistance = false;
         this.status = ReliefRequestStatus.SUBMITTED;
-        this.priority = "Not Assigned";
         this.estimatedArrivalMinutes = 0;
         this.stayingHome = false;
     }
 
-    /**
-     * calculatePriority calculates the priority of each request based on specific factors
-     * @return priority value
-     */
-    public String calculatePriority() {
-        // Implement logic to calculate priority based on specific factors
-        return "Not Assigned";
-    }
 
     /**
      * addPartyMember adds a user to the relief request
@@ -151,12 +163,11 @@ public class ReliefRequest {
     }
 
     /**
-     * getLocationZip gets the zip code of the user who wrote this request
-     * @return zip code of the request writer, or null if the user can't be found
+     * getZipCode gets the zip code of the user who wrote this request
+     * 
      */
-    public String getLocationZip() {
-        User user = getUser();
-        return user == null ? null : user.getZipCode();
+    public String getZipCode() {
+        return this.zipCode;
     }
 
     /**
@@ -168,22 +179,10 @@ public class ReliefRequest {
     }
 
     /**
-     * setPriority updates the priority of the relief request
-     * @param priority new priority
-     */
-    public void setPriority(String priority) {
-        this.priority = priority;
-    }
-
-    /**
      * addComments method allows the users to make comments
      */
     public void addComments() {
         // Implement logic to add comments
-    }
-
-    public UUID getUserUUID() {
-        return this.userUUID;
     }
 
     /**
@@ -196,6 +195,14 @@ public class ReliefRequest {
 
     public String getAddress() {
         return this.address;
+    }
+
+    public String getCity() {
+        return this.city;
+    }
+
+    public String getState() {
+        return this.state;
     }
 
     public ArrayList<PartyMember> getPartyMembers() {
@@ -230,13 +237,6 @@ public class ReliefRequest {
         return status;
     }
 
-    /**
-     * getPriority gets the relief request priority
-     * @return relief request priority
-     */
-    public String getPriority() {
-        return priority;
-    }
 
     /**
      * getEstimatedArrivalMinutes gets the estimated time of arrival for relief assistance
