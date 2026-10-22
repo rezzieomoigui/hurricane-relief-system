@@ -9,7 +9,7 @@ public enum Skills {
     CPR("CPR"),
     SEARCH_AND_RESCUE("SEARCH_AND_RESCUE"),
     FLOOD_RESCUE("FLOOD_RESCUE"),
-    TRANSPORTATION( "TRANSPORTATION");
+    TRANSPORTATION("TRANSPORTATION");
 
     public String str;
 

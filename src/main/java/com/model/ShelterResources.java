@@ -8,9 +8,9 @@ public enum ShelterResources {
     FOOD("FOOD"),
     WATER("WATER"),
     BLANKET("BLANKET"),
-    MEDICAL_EQUIPMENT("MEDICAL EQUIPMENT"),
+    MEDICAL_EQUIPMENT("MEDICAL_EQUIPMENT"),
     CAR("CAR"),
-    PET_FRIENDLY("PET FRIENDLY");
+    PET_FRIENDLY("PET_FRIENDLY");
 
     public String str;
 
