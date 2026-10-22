@@ -11,7 +11,10 @@ public enum ReliefRequestStatus {
     REVIEWED("Reviewed");
 
     public String str;
-
+    /**
+     * ReliefRequestStatus constructor sets the string to the enum value
+     * @param str string related to the enum value
+     */
     private ReliefRequestStatus(String str) {
         this.str = str;
     }
