@@ -14,20 +14,34 @@ public class ReliefRequest {
     private ArrayList<PartyMember> partyMembers;
     private boolean isIndoors;
     private boolean isMobile;
-    private boolean isInjured;
+    private boolean needsMedicalAssistance;
     private ReliefRequestStatus status;
     private String priority;
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-    public ReliefRequest(UUID userUUID, UUID uuid, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    /**
+     * ReliefRequest constructor creates new relief request object
+     * @param userUUID user id
+     * @param uuid relief request id
+     * @param address user address
+     * @param partyMembers party members for relief request
+     * @param isIndoors is user indoors
+     * @param isMobile is user mobile
+     * @param needsMedicalAssistance does user need medical assistance
+     * @param status relief request status
+     * @param priority priority of relief request
+     * @param estimatedArrivalMinutes time before volunteer arrival
+     * @param stayingHome is user staying home
+     */
+    public ReliefRequest(UUID userUUID, UUID uuid, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
         this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
         this.isMobile = isMobile;
-        this.isInjured = isInjured;
+        this.needsMedicalAssistance = needsMedicalAssistance;
         this.status = status;
         this.priority = String.valueOf(priority);
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
@@ -35,14 +49,27 @@ public class ReliefRequest {
     }
 
     // size of party, youngest in party, oldest in party
-    public ReliefRequest(UUID userUUID, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+    /**
+     * ReliefRequest constructor creates new relief request and generates relief request uuid
+     * @param userUUID user id
+     * @param address user address
+     * @param partyMembers party members for relief request
+     * @param isIndoors is user indoors
+     * @param isMobile is user mobile
+     * @param needsMedicalAssistance does user need medical assitance
+     * @param status relief request status
+     * @param priority relief request priority
+     * @param estimatedArrivalMinutes time before volunteer arrival
+     * @param stayingHome is user staying home
+     */
+    public ReliefRequest(UUID userUUID, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
         this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
         this.partyMembers = partyMembers;
         this.isIndoors = isIndoors;
         this.isMobile = isMobile;
-        this.isInjured = isInjured;
+        this.needsMedicalAssistance = needsMedicalAssistance;
         this.status = status;
         this.priority = String.valueOf(priority);
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
@@ -51,6 +78,7 @@ public class ReliefRequest {
     
     /**
      * ReliefRequest constructor creates relief request
+     * @param userUUID user id
      * @param address user address
      */
     public ReliefRequest(UUID userUUID, String address) {
@@ -60,7 +88,7 @@ public class ReliefRequest {
         this.partyMembers = new ArrayList<PartyMember>();
         this.isIndoors = false;
         this.isMobile = false;
-        this.isInjured = false;
+        this.needsMedicalAssistance = false;
         this.status = ReliefRequestStatus.SUBMITTED;
         this.priority = "Not Assigned";
         this.estimatedArrivalMinutes = 0;
@@ -187,11 +215,11 @@ public class ReliefRequest {
     }
 
     /**
-     * isInjured returns if the user is injured or note
-     * @return boolean based on if the user is injured or not
+     * needsMedicalAssistance returns if the user requires medical assitance or not
+     * @return boolean based on if the user requires medical assistance
      */
-    public boolean isInjured() {
-        return isInjured;
+    public boolean needsMedicalAssistance() {
+        return needsMedicalAssistance;
     }
 
     /**

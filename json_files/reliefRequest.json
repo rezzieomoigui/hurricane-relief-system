@@ -1,18 +1,1 @@
-[
-    {
-        "address": "10 Branch Road",
-        "isInjured": "false",
-        "stayingHome": "true",
-        "userUUID": "df94d87c-3604-4d10-9d4c-473f1d89a499",
-        "isMobile": "true",
-        "priority": "2",
-        "uuid": "7b2fb4fe-0eec-4165-8328-ff8b69dafdbd",
-        "estimatedArrivalMinutes": "45",
-        "partyMembers": {
-            "Anderson Peters": "Child",
-            "Sarah Samuels": "Adult"
-        },
-        "isIndoors": "false",
-        "status": "Submitted"
-    }
-]
+[{"address":"10 Branch Road","isInjured":"false","stayingHome":"true","userUUID":"df94d87c-3604-4d10-9d4c-473f1d89a499","isMobile":"true","priority":"2","uuid":"7b2fb4fe-0eec-4165-8328-ff8b69dafdbd","estimatedArrivalMinutes":"45","partyMembers":{"Anderson Peters":"Child","Sarah Samuels":"Adult"},"isIndoors":"false","status":"Submitted"}]
