@@ -7,7 +7,7 @@
         "address": "10 Branch Road",
         "dateOfBirth": "08-19-2000",
         "language": "Spanish",
-        "isAdmin": false,
+        "isAdmin": "false",
         "userType": "user",
         "uuid": "5340000e-fea3-41bd-80d0-0113bff659d2",
         "email": "probinson@gmail.com",
@@ -21,10 +21,28 @@
         "address": "14 Stream Dr",
         "dateOfBirth": "12-12-02",
         "language": "English",
-        "isAdmin": false,
+        "isAdmin": "false",
         "userType": "user",
         "uuid": "a38f7c82-9a3a-4a91-8f07-fc3a95a702cd",
         "email": "mjohnson.gmail.com",
         "username": "mjohnson"
+    },
+    {
+        "lastName": "Grey",
+        "zipCode": "29200",
+        "address": "61 Piney Grove St",
+        "dateOfBirth": "09-07-1999",
+        "language": "English",
+        "firstResponder": "false",
+        "isAdmin": "true",
+        "uuid": "b15129a3-ddd6-4fd2-90f8-ffe4f0888e2c",
+        "skills": "CPR",
+        "firstName": "Jack",
+        "password": "amazingPassword2",
+        "userType": "Volunteer",
+        "canSwim": "true",
+        "isShelterOwner": "false",
+        "email": "jgrey@gmail.com",
+        "username": "jgrey"
     }
 ]

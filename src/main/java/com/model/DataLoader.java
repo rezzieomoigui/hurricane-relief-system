@@ -53,12 +53,12 @@ public class DataLoader extends DataConstants {
                 String dateOfBirth = (String)personJSON.get(USER_DATE_OF_BIRTH);
                 String language = (String)personJSON.get(USER_LANGUAGE);
                 String address = (String)personJSON.get(USER_ADDRESS);
-                boolean isAdmin = (Boolean)personJSON.get(USER_IS_ADMIN);
+                boolean isAdmin = Boolean.parseBoolean((String)personJSON.get(USER_IS_ADMIN));
                 String userType = (String)personJSON.get(USER_TYPE);
                 if (userType.equalsIgnoreCase("VOLUNTEER")) {
-                    boolean firstResponder = (Boolean)personJSON.get(VOLUNTEER_FIRST_RESPONDER);
-                    boolean canSwim = (Boolean)personJSON.get(VOLUNTEER_CAN_SWIM);
-                    boolean isShelterOwner = (Boolean)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER);
+                    boolean firstResponder = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_FIRST_RESPONDER));
+                    boolean canSwim = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_CAN_SWIM));
+                    boolean isShelterOwner = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER));
                     Skills skills = Skills.valueOf(((String)personJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
                     users.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType, skills, firstResponder, canSwim, isShelterOwner));
                 }
@@ -90,17 +90,17 @@ public class DataLoader extends DataConstants {
                 UUID id = UUID.fromString((String)shelterJSON.get(SHELTER_UUID));
                 String address = (String)shelterJSON.get(SHELTER_ADDRESS);
                 String zipCode = (String)shelterJSON.get(SHELTER_ZIP_CODE);
-                ShelterType shelterType = ShelterType.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_TYPE)).toUpperCase());
-                ShelterStatus shelterStatus = ShelterStatus.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_STATUS)).toUpperCase());
-                JSONArray shelterResourcesArray = (JSONArray)shelterJSON.get(SHELTER_SHELTER_RESOURCES);
-                ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
-                for (int j = 0; j < shelterResourcesArray.size(); ++j) {
-                    String shelterResourceStr = (String)shelterResourcesArray.get(j);
-                    ShelterResources shelterResource = ShelterResources.valueOf(shelterResourceStr);
-                    shelterResources.add(shelterResource);
-                } // draft of what I think might work for nested for-loops
+                ShelterType shelterType = ShelterType.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_TYPE)));
+                ShelterStatus shelterStatus = ShelterStatus.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_STATUS)));
+                JSONArray shelterResources = (JSONArray)shelterJSON.get(SHELTER_SHELTER_RESOURCES);
+                ArrayList<ShelterResources> shelterResourcesArray = new ArrayList<ShelterResources>();
+                for (int j = 0; j < shelterResources.size(); ++j) {
+                    String shelterResourceStr = (String)shelterResources.get(j);
+                    ShelterResources shelterResource = ShelterResources.valueOf(shelterResourceStr); // fix
+                    shelterResourcesArray.add(shelterResource);
+                } 
                 String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
-                shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
+                shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResourcesArray, shelterStatus, visualDescription));
             }
         return shelters;
         }catch (Exception e) {
@@ -132,12 +132,6 @@ public class DataLoader extends DataConstants {
                     AgeCategory age = AgeCategory.valueOf(ageStr.toUpperCase());
                     PartyMember partyMember = new PartyMember(name, age);
                     partyMembersArray.add(partyMember);
-                    /* JSONObject partyMemberJSON = (JSONObject)partyMembers.get(j);
-                    String name = (String)partyMemberJSON.get("name");
-                    String ageStr = (String)partyMemberJSON.get("age");
-                    AgeCategory age = AgeCategory.valueOf(ageStr);
-                    PartyMember partyMember = new PartyMember(name, age);
-                    partyMembersArray.add(partyMember);*/
                 }
                 boolean isIndoors = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS));
                 boolean isMobile = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE));

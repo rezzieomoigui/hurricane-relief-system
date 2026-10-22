@@ -5,10 +5,10 @@ package com.model;
  * @author Fantastic Four
  */
 public enum Skills {
-    WOUND_CARE("Wound care"),
+    WOUND_CARE("WOUND_CARE"),
     CPR("CPR"),
-    SEARCH_AND_RESCUE("Search and rescue"),
-    FLOOD_RESCUE("Flood rescue");
+    SEARCH_AND_RESCUE("SEARCH_AND_RESCUE"),
+    FLOOD_RESCUE("FLOOD_RESCUE");
 
     public String str;
 

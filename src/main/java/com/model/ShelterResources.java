@@ -5,12 +5,12 @@ package com.model;
  * @author Fantastic Four
  */
 public enum ShelterResources {
-    FOOD("Food"),
-    WATER("Water"),
-    BLANKET("Blanket"),
-    MEDICAL_EQUIPMENT("Medical equipment"),
-    CAR("Car"),
-    PET_FRIENDLY("Pet friendly");
+    FOOD("FOOD"),
+    WATER("WATER"),
+    BLANKET("BLANKET"),
+    MEDICAL_EQUIPMENT("MEDICAL EQUIPMENT"),
+    CAR("CAR"),
+    PET_FRIENDLY("PET FRIENDLY");
 
     public String str;
 

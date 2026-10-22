@@ -5,10 +5,10 @@ package com.model;
  * @author Fantastic Four
  */
 public enum ShelterStatus {
-    FULL("Full"),
-    OPEN("Open"),
-    NEAR_CAPACITY("Near capacity"),
-    CLOSED("closed");
+    FULL("FULL"),
+    OPEN("OPEN"),
+    NEAR_CAPACITY("NEAR CAPACITY"),
+    CLOSED("CLOSED");
 
     public String str;
 

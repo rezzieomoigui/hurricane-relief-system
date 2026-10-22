@@ -10,25 +10,8 @@ import java.util.HashMap;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
-        /**ShelterList shelterList = ShelterList.getInstance();
-        ArrayList<ShelterResources> shelterResources = new ArrayList<ShelterResources>();
-        shelterResources.add(ShelterResources.WATER);
-        shelterResources.add(ShelterResources.BLANKET);
-        shelterList.addShelter(ShelterType.BUSINESS, "47 Blue Ocean Dr", "29223", shelterResources, ShelterStatus.OPEN, "Pink two-story building");
-        saveShelters();
-        UserList userList = UserList.getInstance();
-        userList.addUser("Marie", "Collins", "mcollins", "securePassword5", "mcollins@gmail.com", "07-08-1982", "42 Bluff River Rd", "29210", "English", false);
         saveUsers();
-        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        ArrayList<PartyMember> partyMembers = new ArrayList<PartyMember>();
-        partyMembers.add(new PartyMember("Sarah Samuels", AgeCategory.ADULT));
-        partyMembers.add(new PartyMember("Anderson Peters", AgeCategory.CHILD));
-        User user = userList.getUser("mcollins");
-        reliefRequestList.addReliefRequest(user, user.getAddress(), partyMembers, false, true, false, ReliefRequestStatus.SUBMITTED, 2, 45, true);
-        saveReliefRequests();**/
-        //ShelterList shelterList = ShelterList.getInstance();
-        //saveShelters();
-        //ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        saveShelters();
         saveReliefRequests();
     }
 
@@ -96,6 +79,7 @@ public class DataWriter extends DataConstants {
     public static JSONObject getShelterJSON(Shelter shelter) {
         ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
         JSONObject shelterDetails = new JSONObject();
+        shelterDetails.put(SHELTER_UUID, shelter.getId().toString());
         shelterDetails.put(SHELTER_ADDRESS, shelter.getAddress());
         shelterDetails.put(SHELTER_ZIP_CODE, shelter.getZipCode());
         shelterDetails.put(SHELTER_SHELTER_TYPE, shelter.getShelterType().str);
@@ -129,14 +113,14 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_ADDRESS, user.getAddress());
         userDetails.put(USER_ZIP_CODE, user.getZipCode());
         userDetails.put(USER_LANGUAGE, user.getLanguage());
-        userDetails.put(USER_IS_ADMIN, user.isAdmin());
+        userDetails.put(USER_IS_ADMIN, Boolean.toString(user.isAdmin()));
         userDetails.put(USER_TYPE, user.getUserType());
         if (user.getUserType().equals("Volunteer")) {
             Volunteer volunteer = (Volunteer) user;
             userDetails.put(VOLUNTEER_SKILLS, volunteer.getSkills().str);
-            userDetails.put(VOLUNTEER_FIRST_RESPONDER, volunteer.isFirstResponder());
-            userDetails.put(VOLUNTEER_CAN_SWIM, volunteer.canSwim());
-            userDetails.put(VOLUNTEER_IS_SHELTER_OWNER, volunteer.isShelterOwner());
+            userDetails.put(VOLUNTEER_FIRST_RESPONDER, Boolean.toString(volunteer.isFirstResponder()));
+            userDetails.put(VOLUNTEER_CAN_SWIM, Boolean.toString(volunteer.canSwim()));
+            userDetails.put(VOLUNTEER_IS_SHELTER_OWNER, Boolean.toString(volunteer.isShelterOwner()));
         }
         return userDetails;
     }

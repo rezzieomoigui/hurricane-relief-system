@@ -3,6 +3,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "UUIDGenerator",
+      "request": "launch",
+      "mainClass": "com.relief_system/com.model.UUIDGenerator",
+      "projectName": "hurricane-relief-system"
+    },
+    {
+      "type": "java",
       "name": "Run Relief System (JavaFX)",
       "request": "launch",
       "mainClass": "com.relief_system/com.relief_system.App",

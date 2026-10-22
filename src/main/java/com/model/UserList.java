@@ -97,6 +97,13 @@ public class UserList {
         return true;
     }
 
+    public boolean addVolunteer(String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
+        if (getUser(username) != null)
+            return false;
+        users.add(new Volunteer(firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType, skills, firstResponder, canSwim, isShelterOwner));
+        return true;
+    }
+
     /**
      * save method saves the userList
      * @return boolean true or false depending on if it saved properly

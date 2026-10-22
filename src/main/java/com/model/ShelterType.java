@@ -5,10 +5,10 @@ package com.model;
  * @author Fantastic Four
  */
 public enum ShelterType {
-    HOUSE("House"),
-    SCHOOL("School"),
-    BUSINESS("Business"),
-    COMMUNITY_CENTER("Community center");
+    HOUSE("HOUSE"),
+    SCHOOL("SCHOOL"),
+    BUSINESS("BUSINESS"),
+    COMMUNITY_CENTER("COMMUNITY_CENTER");
 
     public String str;
 
