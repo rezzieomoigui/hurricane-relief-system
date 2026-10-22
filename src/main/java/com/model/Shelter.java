@@ -1,4 +1,6 @@
+
 package com.model;
+
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -14,23 +16,57 @@ public class Shelter {
     private ShelterStatus shelterStatus;
     private ArrayList<ShelterResources> shelterResources;
     private String visualDescription;
+    private int numberOfOccupants;
+    private int maxNumberOfOccupants;
 
     /**
-     * Shelter constructor creates a brand new shelter and generates its id.
+     * Creates a new shelter and generates its id.
      */
     public Shelter(ShelterType shelterType, String address, String zipCode,
-                   ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus,
-                   String visualDescription) {
+                   ArrayList<ShelterResources> shelterResources,
+                   ShelterStatus shelterStatus, String visualDescription) {
         this(UUID.randomUUID(), shelterType, address, zipCode,
-                shelterResources, shelterStatus, visualDescription);
+                shelterResources, shelterStatus, visualDescription, 0, 10);
     }
 
     /**
-     * Shelter constructor recreates an existing shelter with a known id (used when loading from JSON).
+     * Recreates an existing shelter with a known id (used when loading from JSON).
      */
-    public Shelter(UUID id, ShelterType shelterType, String address, String zipCode,
-                   ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus,
-                   String visualDescription) {
+    public Shelter(UUID id, ShelterType shelterType, String address,
+                   String zipCode,
+                   ArrayList<ShelterResources> shelterResources,
+                   ShelterStatus shelterStatus, String visualDescription) {
+        this(id, shelterType, address, zipCode, shelterResources,
+                shelterStatus, visualDescription, 0, 10);
+    }
+
+    /**
+     * Creates a new shelter with occupant counts.
+     */
+    public Shelter(ShelterType shelterType, String address, String zipCode,
+                   ArrayList<ShelterResources> shelterResources,
+                   ShelterStatus shelterStatus, String visualDescription,
+                   int numberOfOccupants, int maxNumberOfOccupants) {
+        this(UUID.randomUUID(), shelterType, address, zipCode,
+                shelterResources, shelterStatus, visualDescription,
+                numberOfOccupants, maxNumberOfOccupants);
+    }
+
+    /**
+     * Recreates an existing shelter with its id and occupant counts.
+     */
+    public Shelter(UUID id, ShelterType shelterType, String address,
+                   String zipCode,
+                   ArrayList<ShelterResources> shelterResources,
+                   ShelterStatus shelterStatus, String visualDescription,
+                   int numberOfOccupants, int maxNumberOfOccupants) {
+
+        if (numberOfOccupants < 0 || maxNumberOfOccupants < 0
+                || numberOfOccupants > maxNumberOfOccupants) {
+            throw new IllegalArgumentException(
+                    "Invalid shelter occupancy.");
+        }
+
         this.uuid = id;
         this.shelterType = shelterType;
         this.address = address;
@@ -38,11 +74,14 @@ public class Shelter {
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
         this.visualDescription = visualDescription;
+        this.numberOfOccupants = numberOfOccupants;
+        this.maxNumberOfOccupants = maxNumberOfOccupants;
     }
 
     /**
-     * searchByZip method returns a list containing shelters in a specific zip code
-     * @return arrayList of shelters with a specific zip code
+     * Returns shelters matching a specific zip code.
+     * @param zipCode zip code to search for
+     * @return list of matching shelters
      */
     public ArrayList<Shelter> searchByZip(String zipCode) {
         ArrayList<Shelter> results = new ArrayList<>();
@@ -53,55 +92,55 @@ public class Shelter {
     }
 
     /**
-     * getID returns the user id
-     * @return user uuid
+     * Returns the shelter id.
+     * @return shelter UUID
      */
     public UUID getId() {
         return uuid;
     }
 
     /**
-     * getAddress returns the user address
-     * @return user address
+     * Returns the shelter address.
+     * @return shelter address
      */
     public String getAddress() {
         return address;
     }
 
     /**
-     * setAddress sets the address of the user
-     * @param address user address
+     * Sets the shelter address.
+     * @param address shelter address
      */
     public void setAddress(String address) {
         this.address = address;
     }
 
     /**
-     * getZipCode returns the user zip code
-     * @return user zip code
+     * Returns the shelter zip code.
+     * @return shelter zip code
      */
     public String getZipCode() {
         return zipCode;
     }
 
     /**
-     * setZipCode sets the zip code of the user
-     * @param zipCode user zip code
+     * Sets the shelter zip code.
+     * @param zipCode shelter zip code
      */
     public void setZipCode(String zipCode) {
         this.zipCode = zipCode;
     }
 
     /**
-     * getShelterType return the ShelterType of the shelter
-     * @return shelter ShelterType
+     * Returns the shelter type.
+     * @return shelter type
      */
     public ShelterType getShelterType() {
         return shelterType;
     }
 
     /**
-     * setShelterType sets the shelter type
+     * Sets the shelter type.
      * @param shelterType shelter type
      */
     public void setShelterType(ShelterType shelterType) {
@@ -109,7 +148,7 @@ public class Shelter {
     }
 
     /**
-     * getShelterStatus returns the shelter status
+     * Returns the shelter status.
      * @return shelter status
      */
     public ShelterStatus getShelterStatus() {
@@ -117,7 +156,7 @@ public class Shelter {
     }
 
     /**
-     * setShelterStatus sets the shelter status
+     * Sets the shelter status.
      * @param shelterStatus shelter status
      */
     public void setShelterStatus(ShelterStatus shelterStatus) {
@@ -125,7 +164,7 @@ public class Shelter {
     }
 
     /**
-     * getShelterResources returns shelter resources
+     * Returns shelter resources.
      * @return shelter resources
      */
     public ArrayList<ShelterResources> getShelterResources() {
@@ -133,32 +172,75 @@ public class Shelter {
     }
 
     /**
-     * setShelterResources sets shelter resources
+     * Sets shelter resources.
      * @param shelterResources shelter resources
      */
-    public void setShelterResources(ArrayList<ShelterResources> shelterResources) {
+    public void setShelterResources(
+            ArrayList<ShelterResources> shelterResources) {
         this.shelterResources = shelterResources;
     }
 
     /**
-     * getVisualDescription returns the shelter visual description
-     * @return shelter visual description
+     * Returns the shelter visual description.
+     * @return visual description
      */
     public String getVisualDescription() {
         return visualDescription;
     }
 
     /**
-     * setVisualDescription sets the visual description of the shelter
-     * @param visualDescription shelter visual description
+     * Sets the shelter visual description.
+     * @param visualDescription visual description
      */
     public void setVisualDescription(String visualDescription) {
         this.visualDescription = visualDescription;
     }
 
     /**
-     * isAvailable method checks if the shelter is available
-     * @return boolean for if the shelter is available
+     * Returns the current number of occupants.
+     * @return number of occupants
+     */
+    public int getNumberOfOccupants() {
+        return numberOfOccupants;
+    }
+
+    /**
+     * Sets the current number of occupants.
+     * @param numberOfOccupants number of occupants
+     */
+    public void setNumberOfOccupants(int numberOfOccupants) {
+        if (numberOfOccupants < 0
+                || numberOfOccupants > maxNumberOfOccupants) {
+            throw new IllegalArgumentException(
+                    "Occupants must be between 0 and maximum capacity.");
+        }
+        this.numberOfOccupants = numberOfOccupants;
+    }
+
+    /**
+     * Returns the maximum number of occupants.
+     * @return maximum capacity
+     */
+    public int getMaxNumberOfOccupants() {
+        return maxNumberOfOccupants;
+    }
+
+    /**
+     * Sets the maximum number of occupants.
+     * @param maxNumberOfOccupants maximum capacity
+     */
+    public void setMaxNumberOfOccupants(int maxNumberOfOccupants) {
+        if (maxNumberOfOccupants < 0
+                || maxNumberOfOccupants < numberOfOccupants) {
+            throw new IllegalArgumentException(
+                    "Maximum capacity cannot be below current occupancy.");
+        }
+        this.maxNumberOfOccupants = maxNumberOfOccupants;
+    }
+
+    /**
+     * Checks if the shelter is available.
+     * @return true if the shelter is open or near capacity
      */
     public boolean isAvailable() {
         return shelterStatus == ShelterStatus.OPEN
@@ -166,12 +248,15 @@ public class Shelter {
     }
 
     /**
-     * toString prints the type, address, zip code, status, and resources of the shelter
-     * @return String presenting shelter information
+     * Returns the shelter information as a string.
+     * @return string presenting shelter information
      */
     @Override
     public String toString() {
         return shelterType + " at " + address + " " + zipCode
-                + " [" + shelterStatus + ", " + shelterResources + "]";
+                + " [" + shelterStatus
+                + ", Occupants: " + numberOfOccupants
+                + "/" + maxNumberOfOccupants
+                + ", Resources: " + shelterResources + "]";
     }
 }

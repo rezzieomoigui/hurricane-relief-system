@@ -12,7 +12,10 @@ public enum Skills {
     TRANSPORTATION("TRANSPORTATION");
 
     public String str;
-
+/**
+ * Skills constructor sets the string to the enum value
+ * @param str string related to the enum value
+ */
     private Skills(String str) {
         this.str = str;
     }
