@@ -7,20 +7,20 @@ package com.model;
  */
 public class PartyMember {
     private String name;
-    private String age;
+    private String yearBorn;
     private boolean needsMedicalAssistance;
     private Being type;
 
     /**
      * PartyMember constructor instantiates a new party member
      * @param name party member name
-     * @param age party member age
+     * @param yearBorn year party member was born
      * @param needsMedicalAssistance does specific party member need medical assistance
      * @param type party member type (cat, dog, or person)
      */
-    public PartyMember(String name, String age, boolean needsMedicalAssistance, Being type) {
+    public PartyMember(String name, String yearBorn, boolean needsMedicalAssistance, Being type) {
         this.name = name;
-        this.age = age;
+        this.yearBorn = yearBorn;
         this.needsMedicalAssistance = needsMedicalAssistance;
         this.type = type;
     }
@@ -34,11 +34,11 @@ public class PartyMember {
     }
 
     /**
-     * getAge gets the age of the party member
-     * @return party member age
+     * getYearBorn gets the yer the party member was born
+     * @return year party member was born
      */
-    public String getAge() {
-        return this.age;
+    public String getYearBorn() {
+        return this.yearBorn;
     }
 
     /**
