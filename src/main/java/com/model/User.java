@@ -27,6 +27,7 @@ public class User {
      * @param firstName user first name
      * @param lastName user last name
      * @param password user password
+     * @param userType user type
      */
     public User(UUID uuid, String username, String firstName, String lastName, String password, String userType) {
         this.uuid = uuid;
@@ -50,6 +51,7 @@ public class User {
      * @param zipCode user zip code
      * @param language user language
      * @param isAdmin checks if user is an administrator
+     * @param userType user type
      */
     public User(UUID uuid, String firstName, String lastName, String username, String password,
     String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
@@ -79,6 +81,7 @@ public class User {
      * @param zipCode user zip code
      * @param language user language
      * @param isAdmin checks if user is an administrator
+     * @param userType user type
      */
     public User(String firstName, String lastName, String username, String password,
     String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
@@ -307,6 +310,14 @@ public class User {
      */
     public void setAdmin(boolean isAdmin) {
         this.isAdmin = isAdmin;
+    }
+
+    /**
+     * setUserType method sets the user type
+     * @param userType user type
+     */
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     /**
