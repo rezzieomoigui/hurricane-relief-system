@@ -1,4 +1,3 @@
-
 package com.model;
 
 import java.util.ArrayList;
@@ -40,8 +39,7 @@ public class Shelter {
                 shelterStatus, visualDescription, 0, 10);
     }
 
-    /**
-     * Creates a new shelter with occupant counts.
+    /**     * Creates a new shelter with occupant counts.
      */
     public Shelter(ShelterType shelterType, String address, String zipCode,
                    ArrayList<ShelterResources> shelterResources,
