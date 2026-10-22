@@ -8,7 +8,8 @@ public enum Skills {
     WOUND_CARE("WOUND_CARE"),
     CPR("CPR"),
     SEARCH_AND_RESCUE("SEARCH_AND_RESCUE"),
-    FLOOD_RESCUE("FLOOD_RESCUE");
+    FLOOD_RESCUE("FLOOD_RESCUE"),
+    TRANSPORTATION( "TRANSPORTATION");
 
     public String str;
 
