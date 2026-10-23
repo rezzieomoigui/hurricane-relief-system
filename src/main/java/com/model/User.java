@@ -15,27 +15,12 @@ public class User {
     private String email;
     private String dateOfBirth;
     private String address;
+    private String city;
+    private String state;
     private String zipCode;
     private String language;
     private boolean isAdmin;
     private String userType;
-
-    /**
-     * User constructor creates user
-     * @param uuid user id number 
-     * @param username user username
-     * @param firstName user first name
-     * @param lastName user last name
-     * @param password user password
-     */
-    public User(UUID uuid, String username, String firstName, String lastName, String password, String userType) {
-        this.uuid = uuid;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.userType = userType;
-    }
 
     /**
      * User constructor creates user
@@ -52,7 +37,7 @@ public class User {
      * @param isAdmin checks if user is an administrator
      */
     public User(UUID uuid, String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, String userType) {
         this.uuid = uuid;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -61,6 +46,8 @@ public class User {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
+        this.city = city;
+        this.state = state;
         this.zipCode = zipCode;
         this.language = language;
         this.isAdmin = isAdmin;
@@ -81,7 +68,7 @@ public class User {
      * @param isAdmin checks if user is an administrator
      */
     public User(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, String userType) {
         this.uuid = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -90,6 +77,8 @@ public class User {
         this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
+        this.city = city;
+        this.state = state;
         this.zipCode = zipCode;
         this.language = language;
         this.isAdmin = isAdmin;
@@ -142,7 +131,7 @@ public class User {
      * @return user UUID
      */
     public UUID getUuid() {
-        return uuid;
+        return this.uuid;
     }
 
     /**
@@ -199,6 +188,22 @@ public class User {
      */
     public String getAddress() {
         return address;
+    }
+
+    /**
+     * Provides the user's city
+     * @return user city
+     */
+    public String getCity() {
+        return this.city;
+    }
+
+    /**
+     * Provides the user's state
+     * @return user state
+     */ 
+    public String getState() {
+        return this.state;
     }
 
     /**

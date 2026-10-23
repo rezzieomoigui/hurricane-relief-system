@@ -23,6 +23,8 @@ public abstract class DataConstants {
     protected static final String USER_EMAIL = "email";
     protected static final String USER_DATE_OF_BIRTH = "dateOfBirth";
     protected static final String USER_ADDRESS = "address";
+    protected static final String USER_CITY = "city";
+    protected static final String USER_STATE = "state";
     protected static final String USER_ZIP_CODE = "zipCode";
     protected static final String USER_LANGUAGE = "language";
     protected static final String USER_IS_ADMIN = "isAdmin";

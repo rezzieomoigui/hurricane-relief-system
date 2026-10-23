@@ -53,6 +53,8 @@ public class DataLoader extends DataConstants {
                 String dateOfBirth = (String)personJSON.get(USER_DATE_OF_BIRTH);
                 String language = (String)personJSON.get(USER_LANGUAGE);
                 String address = (String)personJSON.get(USER_ADDRESS);
+                String city = (String)personJSON.get(USER_CITY);
+                String state = (String)personJSON.get(USER_STATE);
                 boolean isAdmin = Boolean.parseBoolean((String)personJSON.get(USER_IS_ADMIN));
                 String userType = (String)personJSON.get(USER_TYPE);
                 if (userType.equalsIgnoreCase("VOLUNTEER")) {
@@ -60,10 +62,10 @@ public class DataLoader extends DataConstants {
                     boolean canSwim = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_CAN_SWIM));
                     boolean isShelterOwner = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER));
                     Skills skills = Skills.valueOf(((String)personJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
-                    users.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType, skills, firstResponder, canSwim, isShelterOwner));
+                    users.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, city, state, zipCode, language, isAdmin, userType, skills, firstResponder, canSwim, isShelterOwner));
                 }
                 else {
-                    users.add(new User(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType));
+                    users.add(new User(id, firstName, lastName, userName, password, email, dateOfBirth, address, city, state, zipCode, language, isAdmin, userType));
                 }
             }
 
@@ -142,7 +144,7 @@ public class DataLoader extends DataConstants {
                 ReliefRequestStatus status = ReliefRequestStatus.valueOf(((String)reliefRequestJSON.get(RELIEF_REQUEST_STATUS)).toUpperCase());
                 int estimatedArrivalMinutes = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES));
                 boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
-                reliefRequests.add(new ReliefRequest(userUUID, id, address, city, state, zipCode, partyMembersArray, isIndoors, isMobile, isInjured, status, estimatedArrivalMinutes, stayingHome));
+                reliefRequests.add(new ReliefRequest(userUUID, address, city, state, zipCode, partyMembersArray, isIndoors, isMobile, isInjured, status, estimatedArrivalMinutes, estimatedArrivalMinutes, stayingHome));
             }
         return reliefRequests;
         }catch (Exception e) {

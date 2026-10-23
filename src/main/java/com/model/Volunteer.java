@@ -22,6 +22,8 @@ public class Volunteer extends User {
      * @param email user email
      * @param dateOfBirth user birthday
      * @param address user address
+     * @param city user city
+     * @param state user state
      * @param zipCode user zip code
      * @param language user language
      * @param isAdmin checks if user is an administrator
@@ -30,8 +32,8 @@ public class Volunteer extends User {
      * @param canSwim checks if user can swim
      * @param isShelterOwner checks if user is a shelter owner
      */
-    public Volunteer(UUID id, String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(id, firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType);
+    public Volunteer(UUID id, String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
+        super(id, firstName, lastName, username, password, email, dateOfBirth, address, city, state, zipCode, language, isAdmin, userType);
         this.skills = skills;
         this.firstResponder = firstResponder;
         this.canSwim = canSwim;
@@ -55,8 +57,8 @@ public class Volunteer extends User {
      * @param canSwim checks if user can swim
      * @param isShelterOwner checks if user is a shelter owner
      */
-    public Volunteer(String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType);
+    public Volunteer(String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
+        super(firstName, lastName, username, password, email, dateOfBirth, address, city, state, zipCode, language, isAdmin, userType);
         this.skills = skills;
         this.firstResponder = firstResponder;
         this.canSwim = canSwim;
@@ -72,7 +74,7 @@ public class Volunteer extends User {
      * @param isShelterOwner checks if user is a shelter owner
      */
     public Volunteer(User user, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(user.getUuid(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getDateOfBirth(), user.getAddress(), user.getZipCode(), user.getLanguage(), user.isAdmin(), "Volunteer");
+        super(user.getUuid(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getDateOfBirth(), user.getAddress(), user.getCity(), user.getState(), user.getZipCode(), user.getLanguage(), user.isAdmin(), "Volunteer");
         this.skills = skills;
         this.firstResponder = firstResponder;
         this.canSwim = canSwim;

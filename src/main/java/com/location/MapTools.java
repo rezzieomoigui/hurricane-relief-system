@@ -1,8 +1,5 @@
 package com.location;
 
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.ArrayList;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -11,6 +8,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
+import java.util.ArrayList;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * 
@@ -217,6 +218,22 @@ public class MapTools {
         JsonNode route = getRoute(start, end);
 
         return route.path("summary").path("duration").asDouble();
+    }
+
+    /**
+     * Calculates the driving time in seconds between two addresses
+     * @param from Starting address
+     * @param to Ending address
+     * @return The number of seconds
+     * @throws IOException
+     * @throws InterruptedException
+     */
+    public double getDrivingTime(Address from, Address to) 
+            throws IOException, InterruptedException {
+            Coordinates start = from.getCoordinates();
+            Coordinates end = to.getCoordinates();
+            return getDrivingTime(start, end);
+
     }
 
     /**
