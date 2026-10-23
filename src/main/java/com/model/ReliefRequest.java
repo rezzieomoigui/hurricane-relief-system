@@ -22,25 +22,7 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-<<<<<<< HEAD
-    /**
-     * ReliefRequest constructor creates new relief request object
-     * @param userUUID user id
-     * @param uuid relief request id
-     * @param address user address
-     * @param partyMembers party members for relief request
-     * @param isIndoors is user indoors
-     * @param isMobile is user mobile
-     * @param needsMedicalAssistance does user need medical assistance
-     * @param status relief request status
-     * @param priority priority of relief request
-     * @param estimatedArrivalMinutes time before volunteer arrival
-     * @param stayingHome is user staying home
-     */
-    public ReliefRequest(UUID userUUID, UUID uuid, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
-=======
     public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome) {
->>>>>>> branch-Abagail
         this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
@@ -57,24 +39,7 @@ public class ReliefRequest {
     }
 
     // size of party, youngest in party, oldest in party
-<<<<<<< HEAD
-    /**
-     * ReliefRequest constructor creates new relief request and generates relief request uuid
-     * @param userUUID user id
-     * @param address user address
-     * @param partyMembers party members for relief request
-     * @param isIndoors is user indoors
-     * @param isMobile is user mobile
-     * @param needsMedicalAssistance does user need medical assitance
-     * @param status relief request status
-     * @param priority relief request priority
-     * @param estimatedArrivalMinutes time before volunteer arrival
-     * @param stayingHome is user staying home
-     */
-    public ReliefRequest(UUID userUUID, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
-=======
     public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome) {
->>>>>>> branch-Abagail
         this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
