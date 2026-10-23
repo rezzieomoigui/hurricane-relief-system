@@ -15,6 +15,8 @@ public class User extends Person{
     private String email;
     private String dateOfBirth;
     private String address;
+    private String city;
+    private String state;
     private String zipCode;
     private String language;
     private boolean isAdmin;
@@ -27,6 +29,7 @@ public class User extends Person{
      * @param firstName user first name
      * @param lastName user last name
      * @param password user password
+<<<<<<< HEAD
      * @param personType person type
      */
     public User(UUID uuid, String username, String firstName, String lastName, String password, String email, PersonType personType) {
@@ -42,6 +45,8 @@ public class User extends Person{
      * @param firstName user first name
      * @param lastName user last name
      * @param password user password
+=======
+>>>>>>> branch-Abagail
      * @param email user email
      * @param dateOfBirth user birthday
      * @param address user address
@@ -57,9 +62,43 @@ public class User extends Person{
         this.password = password;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
+        this.city = city;
+        this.state = state;
         this.zipCode = zipCode;
         this.language = language;
         this.isAdmin = isAdmin;
+        this.userType = userType;
+    }
+
+    /**
+     * User constructor creates user 
+     * @param username user username
+     * @param firstName user first name
+     * @param lastName user last name
+     * @param password user password
+     * @param email user email
+     * @param dateOfBirth user birthday
+     * @param address user address
+     * @param zipCode user zip code
+     * @param language user language
+     * @param isAdmin checks if user is an administrator
+     */
+    public User(String firstName, String lastName, String username, String password,
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, String userType) {
+        this.uuid = UUID.randomUUID();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.dateOfBirth = dateOfBirth;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zipCode = zipCode;
+        this.language = language;
+        this.isAdmin = isAdmin;
+        this.userType = userType;
     }
 
     /**
@@ -113,7 +152,7 @@ public class User extends Person{
      * @return user UUID
      */
     public UUID getUuid() {
-        return uuid;
+        return this.uuid;
     }
 
     /**
@@ -170,6 +209,22 @@ public class User extends Person{
      */
     public String getAddress() {
         return address;
+    }
+
+    /**
+     * Provides the user's city
+     * @return user city
+     */
+    public String getCity() {
+        return this.city;
+    }
+
+    /**
+     * Provides the user's state
+     * @return user state
+     */ 
+    public String getState() {
+        return this.state;
     }
 
     /**

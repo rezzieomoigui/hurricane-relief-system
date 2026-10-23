@@ -1,6 +1,12 @@
 package com.model;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
+import java.util.HashMap;
+
+import com.location.Address;
+import com.location.MapTools;
+
 
 /**
  * ReliefRequestList class contains a list of the relief requests
@@ -57,8 +63,8 @@ public class ReliefRequestList {
      * @param address user address
      * @return boolean of if request was added or not
      */
-    public boolean addReliefRequest(User user, String address, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean isInjured, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
-        reliefRequests.add(new ReliefRequest(user.getUuid(), address, partyMembers, isIndoors, isMobile, isInjured, status, priority, estimatedArrivalMinutes, stayingHome));
+    public boolean addReliefRequest(User user, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
+        reliefRequests.add(new ReliefRequest(user.getUuid(), address, city, state, zipCode, partyMembers, isIndoors, isMobile, needsMedicalAssistance, status, priority, estimatedArrivalMinutes, stayingHome));
         return true;
     }
 
@@ -93,12 +99,43 @@ public class ReliefRequestList {
      * @param reliefRequestList list of relief requests
      * @param isAdmin checks is user is an administrator
      */
-    public ArrayList<ReliefRequest> getOrderedRequests(String address, String userType) {
-        if (!userType.equals("Admin") && (!userType.equals("Volunteer"))) {
+    /**public ArrayList<ReliefRequest> getOrderedRequests(User user) 
+            throws IOException, InterruptedException {
+        String address = user.getAddress();
+        String city = user.getCity();
+        String state = user.getState();
+        String zipCode = user.getZipCode();
+        String userType = user.getUsername();
+        // get user's skills. how to manage this since admin can also access this method?
+        if (!userType.equals("Admin") && (!userType.equals("Volunteer"))) 
             return null;
+        Address userAddress = new Address(address, city, state, zipCode);
+        HashMap<ReliefRequest, Integer> requestPriorityPoints = new HashMap<ReliefRequest, Integer>();
+        for (int i = 0; i < this.reliefRequests.size(); ++i) {
+            int priorityPoints = 0;
+            ReliefRequest request = reliefRequests.get(i);
+            Address requestAddress = new Address(request.getAddress(), request.getCity(), request.getState(), request.getZipCode());
+            MapTools mapTools = MapTools.getInstance();
+            Double drivingTime = mapTools.getDrivingTime(userAddress, requestAddress);
+            if (drivingTime <= 900) // 15 minutes
+                priorityPoints += 10;
+            if (user.hasAttribute(Skills))
+            
+        }*/
+       // Address requestAddress = new Address(String this)
         // create an Address object from relief request and entered address String
         // list in order
-        }
+
+
+        // alternative logic: create copy of reliefRequests
+        // find closest shelter
+        // if this shelter matches with skills, 
+        // put this shelter at top of list 
+        // otherwise, remove the shelter from the arraylist copy and
+        // try the next closest shelter
+        // list length gets to 0? just return the closest shelter
+        // may need one version for isAdmin, another for isVolunteer
+        
     }
 
     /**

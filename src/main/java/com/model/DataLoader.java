@@ -158,7 +158,7 @@ public class DataLoader extends DataConstants {
                 ReliefRequestStatus status = ReliefRequestStatus.valueOf(((String)reliefRequestJSON.get(RELIEF_REQUEST_STATUS)).toUpperCase());
                 int estimatedArrivalMinutes = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES));
                 boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
-                reliefRequests.add(new ReliefRequest(userUUID, id, address, city, state, zipCode, partyMembersArray, isIndoors, isMobile, isInjured, status, estimatedArrivalMinutes, stayingHome));
+                reliefRequests.add(new ReliefRequest(userUUID, address, city, state, zipCode, partyMembersArray, isIndoors, isMobile, isInjured, status, estimatedArrivalMinutes, estimatedArrivalMinutes, stayingHome));
             }
         return reliefRequests;
         }catch (Exception e) {
