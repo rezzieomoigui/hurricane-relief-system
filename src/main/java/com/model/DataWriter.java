@@ -10,21 +10,21 @@ import java.util.HashMap;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
-        saveUsers();
+        savePeople();
         saveShelters();
         saveReliefRequests();
     }
 
-    public static boolean saveUsers() {
-        UserList userList = UserList.getInstance();
-        ArrayList<User> users = userList.getUsers();
+    public static boolean savePeople() {
+        PersonList personList = PersonList.getInstance();
+        ArrayList<Person> people = personList.getPeople();
         JSONArray jsonUsers = new JSONArray();
 
-        for (int i = 0; i < users.size(); i++) {
-            jsonUsers.add(getUserJSON(users.get(i)));
+        for (int i = 0; i < people.size(); i++) {
+            jsonUsers.add(getPersonJSON(people.get(i)));
         }
 
-        try(FileWriter file = new FileWriter(USER_FILE_NAME)) {
+        try(FileWriter file = new FileWriter(PERSON_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
             return true;
@@ -137,7 +137,7 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
         requestDetails.put(RELIEF_REQUEST_IS_INDOORS, Boolean.toString(request.isIndoors()));
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, Boolean.toString(request.isMobile()));
-        requestDetails.put(RELIEF_REQUEST_IS_INJURED, Boolean.toString(request.isInjured()));
+        requestDetails.put(RELIEF_REQUEST_NEEDS_MEDICAL_ASSISTANCE, Boolean.toString(request.needsMedicalAssistance()));
         requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus().str);
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
         requestDetails.put(RELIEF_REQUEST_STAYING_HOME, Boolean.toString(request.isStayingHome()));

@@ -14,65 +14,25 @@ public class Volunteer extends User {
 
     /**
      * Volunteer Constructor creates a volunteer
-     * @param id user id
-     * @param firstName user first name
-     * @param lastName user last name
-     * @param username user username
-     * @param password user password
-     * @param email user email
-     * @param dateOfBirth user birthday
-     * @param address user address
-     * @param zipCode user zip code
-     * @param language user language
-     * @param isAdmin checks if user is an administrator
-     * @param skills user skills
-     * @param firstResponder checks if user is a first responder
-     * @param canSwim checks if user can swim
-     * @param isShelterOwner checks if user is a shelter owner
+     * @param id volunteer id
+     * @param firstName volunteer first name
+     * @param lastName volunteer last name
+     * @param username volunteer username
+     * @param password volunteer password
+     * @param email volunteer email
+     * @param dateOfBirth volunteer birthday
+     * @param address volunteer address
+     * @param zipCode volunteer zip code
+     * @param language volunteer language
+     * @param isAdmin checks if volunteer is an administrator
+     * @param personType person type
+     * @param skills volunteer skills
+     * @param firstResponder checks if volunteer is a first responder
+     * @param canSwim checks if volunteer can swim
+     * @param isShelterOwner checks if volunteer is a shelter owner
      */
-    public Volunteer(UUID id, String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(id, firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType);
-        this.skills = skills;
-        this.firstResponder = firstResponder;
-        this.canSwim = canSwim;
-        this.isShelterOwner = isShelterOwner;
-    }
-
-     /**
-     * Volunteer Constructor creates a volunteer
-     * @param firstName user first name
-     * @param lastName user last name
-     * @param username user username
-     * @param password user password
-     * @param email user email
-     * @param dateOfBirth user birthday
-     * @param address user address
-     * @param zipCode user zip code
-     * @param language user language
-     * @param isAdmin checks if user is an administrator
-     * @param skills user skills
-     * @param firstResponder checks if user is a first responder
-     * @param canSwim checks if user can swim
-     * @param isShelterOwner checks if user is a shelter owner
-     */
-    public Volunteer(String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType);
-        this.skills = skills;
-        this.firstResponder = firstResponder;
-        this.canSwim = canSwim;
-        this.isShelterOwner = isShelterOwner;
-    }
-
-    /**
-     * Volunteer constructor creates a volunteer
-     * @param user user object
-     * @param skills user skills
-     * @param firstResponder checks if user is a first responder
-     * @param canSwim checks if user can swim
-     * @param isShelterOwner checks if user is a shelter owner
-     */
-    public Volunteer(User user, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(user.getUuid(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getDateOfBirth(), user.getAddress(), user.getZipCode(), user.getLanguage(), user.isAdmin(), "Volunteer");
+    public Volunteer(UUID id, String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, PersonType personType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
+        super(id, firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, personType);
         this.skills = skills;
         this.firstResponder = firstResponder;
         this.canSwim = canSwim;
