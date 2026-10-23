@@ -38,47 +38,6 @@ public class Volunteer extends User {
         this.canSwim = canSwim;
         this.isShelterOwner = isShelterOwner;
     }
-
-     /**
-     * Volunteer Constructor creates a volunteer
-     * @param firstName user first name
-     * @param lastName user last name
-     * @param username user username
-     * @param password user password
-     * @param email user email
-     * @param dateOfBirth user birthday
-     * @param address user address
-     * @param zipCode user zip code
-     * @param language user language
-     * @param isAdmin checks if user is an administrator
-     * @param skills user skills
-     * @param firstResponder checks if user is a first responder
-     * @param canSwim checks if user can swim
-     * @param isShelterOwner checks if user is a shelter owner
-     */
-    public Volunteer(String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType);
-        this.skills = skills;
-        this.firstResponder = firstResponder;
-        this.canSwim = canSwim;
-        this.isShelterOwner = isShelterOwner;
-    }
-
-    /**
-     * Volunteer constructor creates a volunteer
-     * @param user user object
-     * @param skills user skills
-     * @param firstResponder checks if user is a first responder
-     * @param canSwim checks if user can swim
-     * @param isShelterOwner checks if user is a shelter owner
-     */
-    public Volunteer(User user, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        super(user.getUuid(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getPassword(), user.getEmail(), user.getDateOfBirth(), user.getAddress(), user.getZipCode(), user.getLanguage(), user.isAdmin(), "Volunteer");
-        this.skills = skills;
-        this.firstResponder = firstResponder;
-        this.canSwim = canSwim;
-        this.isShelterOwner = isShelterOwner;
-    }
     
     /**
      * registerShelter registers the shelter

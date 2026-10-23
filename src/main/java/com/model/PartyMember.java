@@ -25,9 +25,10 @@ public class PartyMember extends Person {
      * @param needsMedicalAssistance does specific party member need medical assistance
      * @param type party member type (cat, dog, or person)
      * @param email party member email
+     * @param personType person Type
      */
-    public PartyMember(UUID personID, String firstName, String lastName, String yearBorn, boolean needsMedicalAssistance, Being type, String email) {
-        super(personID, firstName, lastName, email);
+    public PartyMember(UUID personID, String firstName, String lastName, String yearBorn, boolean needsMedicalAssistance, Being type, String email, PersonType personType) {
+        super(personID, firstName, lastName, email, personType);
         this.yearBorn = yearBorn;
         this.needsMedicalAssistance = needsMedicalAssistance;
         this.type = type;

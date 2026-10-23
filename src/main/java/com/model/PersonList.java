@@ -15,7 +15,7 @@ public class PersonList {
      * PersonList Constructor adds new person
      */
     private PersonList() {
-        ArrayList<Person> loaded = DataLoader.getPerson();
+        ArrayList<Person> loaded = DataLoader.getPeople();
         if (loaded != null && !loaded.isEmpty()) {
             this.people = loaded;
         }

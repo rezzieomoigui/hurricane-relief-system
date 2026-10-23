@@ -68,9 +68,11 @@ public class User extends Person{
      * @param password user password
      * @return boolean if username and password match
      */
+    /*
     public boolean login(String username, String password) {
         return isMatch(username, password);
     }
+    */
 
     /**
      * logout method shows that the user logged out of their account

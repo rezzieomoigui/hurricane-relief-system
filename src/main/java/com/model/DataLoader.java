@@ -17,9 +17,9 @@ public class DataLoader extends DataConstants {
       * main method created to test data loader
       */
     public static void main(String[] args) {
-        ArrayList<User> users = getUsers();
-        for (User user : users) {
-            System.out.println(user.getUsername());
+        ArrayList<Person> people = getPeople();
+        for (Person person : people) {
+            System.out.println(person.getEmail());
         }
         ArrayList<Shelter> shelters = getShelters();
         for (Shelter shelter : shelters) {
@@ -141,14 +141,14 @@ public class DataLoader extends DataConstants {
                 UUID userUUID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_USER_UUID));
                 String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
                 JSONObject partyMembers = (JSONObject)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
-                ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
+                /*ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
                 for (Object key: partyMembers.keySet()) {
                     String name = (String) key;
                     String ageStr = (String) partyMembers.get(key);
                     AgeCategory age = AgeCategory.valueOf(ageStr.toUpperCase());
                     PartyMember partyMember = new PartyMember(name, age);
                     partyMembersArray.add(partyMember);
-                }
+                }*/
                 boolean isIndoors = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS));
                 boolean isMobile = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE));
                 boolean isInjured = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INJURED));

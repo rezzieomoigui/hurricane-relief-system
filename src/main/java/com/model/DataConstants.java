@@ -42,7 +42,7 @@ public abstract class DataConstants {
     protected static final String RELIEF_REQUEST_PARTY_MEMBERS = "partyMembers";
     protected static final String RELIEF_REQUEST_IS_INDOORS = "isIndoors";
     protected static final String RELIEF_REQUEST_IS_MOBILE = "isMobile";
-    protected static final String RELIEF_REQUEST_IS_INJURED = "isInjured";
+    protected static final String RELIEF_REQUEST_NEEDS_MEDICAL_ASSISTANCE = "needsMedicalAssistance";
     protected static final String RELIEF_REQUEST_STATUS = "status";
     protected static final String RELIEF_REQUEST_PRIORITY = "priority";
     protected static final String RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES = "estimatedArrivalMinutes";
