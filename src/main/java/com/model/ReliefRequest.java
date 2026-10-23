@@ -56,12 +56,7 @@ public class ReliefRequest {
     }
     
     /**
-<<<<<<< HEAD
-     * ReliefRequest constructor creates relief request
-     * @param userUUID user id
-=======
      * This creates a general relief request for when users have no time enter detailed information
->>>>>>> branch-Abagail
      * @param address user address
      */
     public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode) {
