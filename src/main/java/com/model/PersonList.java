@@ -33,13 +33,13 @@ public class PersonList {
     }
 
     /**
-     * getPerson method finds person in personList based of of UUID
-     * @param uuid person id
-     * @return person based off of uuid
+     * getPerson method finds person in personList based on their email address
+     * @param email person email
+     * @return person relating to email address
      */
-    public Person getPerson(UUID uuid) {
+    public Person getPerson(String email) {
         for (Person person : people) {
-            if (person.getPersonID().equals(uuid)) {
+            if (person.getEmail().equals(email)) {
                 return person;
             }
         }
@@ -59,13 +59,14 @@ public class PersonList {
      * @param personID person id
      * @param firstName person first name
      * @param lastName person last name
+     * @param email person email
      * @return boolean true if person was added and didn't already exist
      */
-    public boolean addPerson(UUID personID, String firstName, String lastName) {
-        if (getPerson(personID) != null) {
+    public boolean addPerson(UUID personID, String firstName, String lastName, String email, PersonType personType) {
+        if (getPerson(email) != null) {
             return false;
         }
-        people.add(new Person(personID, firstName, lastName));
+        people.add(new Person(personID, firstName, lastName, email, personType));
         return true;
     }
     /**
@@ -80,16 +81,16 @@ public class PersonList {
      * @param zipCode user zip code
      * @param language user language
      * @param isAdmin checks if user is an administrator
-     * @param userType user type
+     * @param personType person type
      * @return boolean true if user was added and didn't already exist
      */
     public boolean addUser(UUID id, String username, String firstName, String lastName, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
-        if (getPerson(id) != null) {
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, PersonType personType) {
+        if (getPerson(email) != null) {
             return false;
         }
         people.add(new User(id, username, firstName, lastName, password, email, 
-                dateOfBirth, address, zipCode, language, isAdmin, userType));
+                dateOfBirth, address, zipCode, language, isAdmin, personType));
         return true;
     }
 
@@ -112,17 +113,17 @@ public class PersonList {
      * @param isShelterOwner checks if volunteer is a shelter owner
      * @return boolean true if volunteer was added and didn't already exist
      */
-    public boolean addVolunteer(String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
-        if (getPerson(id) != null)
+    public boolean addVolunteer(UUID uuid, String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, PersonType personType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
+        if (getPerson(email) != null)
             return false;
-        people.add(new Volunteer(firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, userType, skills, firstResponder, canSwim, isShelterOwner));
+        people.add(new Volunteer(uuid, firstName, lastName, username, password, email, dateOfBirth, address, zipCode, language, isAdmin, personType, skills, firstResponder, canSwim, isShelterOwner));
         return true;
     }
 
-    public boolean addPartyMember(String name, String yearBorn, boolean needsMedicalAssistance, Being type) {
-        if (getPerson(id) != null)
+    public boolean addPartyMember(UUID partyMemberID, String firstName, String lastName, String yearBorn, boolean needsMedicalAssistance, Being type, String email, PersonType personType) {
+        if (getPerson(email) != null)
             return false;
-        people.add(new PartyMember(name, yearBorn, needsMedicalAssistance, type));
+        people.add(new PartyMember(partyMemberID, firstName, lastName, yearBorn, needsMedicalAssistance, type, email, personType));
         return true;
     }
 

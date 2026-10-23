@@ -11,17 +11,23 @@ public class Person {
     private UUID personID;
     private String firstName;
     private String lastName;
+    private String email;
+    private PersonType personType;
 
     /**
      * Person constructor initializes person object
      * @param personID person id
      * @param firstName person first name
      * @param lastName person last name
+     * @param email person email
+     * @param personType person type
      */
-    public Person(UUID personID, String firstName, String lastName) {
+    public Person(UUID personID, String firstName, String lastName, String email, PersonType personType) {
         this.personID = personID;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.email = email;
+        this.personType = personType;
     }
 
     /**
@@ -46,5 +52,21 @@ public class Person {
      */
     public String getLastName() {
         return lastName;
+    }
+    
+    /**
+     * getEmail gets the email of the person
+     * @return String representing email of person
+     */
+    public String getEmail() {
+        return email;
+    }
+
+    /**
+     * getPersonType gets the person type
+     * @return person type
+     */
+    public PersonType getPersonType() {
+        return personType;
     }
 }

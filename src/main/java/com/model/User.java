@@ -6,7 +6,7 @@ import java.util.UUID;
  * User class creates user objects
  * @author Fantastic Four
  */
-public class User {
+public class User extends Person{
     private UUID uuid;
     private String firstName;
     private String lastName;
@@ -18,7 +18,7 @@ public class User {
     private String zipCode;
     private String language;
     private boolean isAdmin;
-    private String userType;
+    private PersonType personType;
 
     /**
      * User constructor creates user
@@ -27,15 +27,12 @@ public class User {
      * @param firstName user first name
      * @param lastName user last name
      * @param password user password
-     * @param userType user type
+     * @param personType person type
      */
-    public User(UUID uuid, String username, String firstName, String lastName, String password, String userType) {
-        this.uuid = uuid;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public User(UUID uuid, String username, String firstName, String lastName, String password, String email, PersonType personType) {
+        super(uuid, firstName, lastName, email, personType);
         this.username = username;
         this.password = password;
-        this.userType = userType;
     }
 
     /**
@@ -51,52 +48,18 @@ public class User {
      * @param zipCode user zip code
      * @param language user language
      * @param isAdmin checks if user is an administrator
-     * @param userType user type
+     * @param personType person type
      */
     public User(UUID uuid, String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
-        this.uuid = uuid;
-        this.firstName = firstName;
-        this.lastName = lastName;
+    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, PersonType personType) {
+        super(uuid, firstName, lastName, email, personType);
         this.username = username;
         this.password = password;
-        this.email = email;
         this.dateOfBirth = dateOfBirth;
         this.address = address;
         this.zipCode = zipCode;
         this.language = language;
         this.isAdmin = isAdmin;
-        this.userType = userType;
-    }
-
-    /**
-     * User constructor creates user 
-     * @param username user username
-     * @param firstName user first name
-     * @param lastName user last name
-     * @param password user password
-     * @param email user email
-     * @param dateOfBirth user birthday
-     * @param address user address
-     * @param zipCode user zip code
-     * @param language user language
-     * @param isAdmin checks if user is an administrator
-     * @param userType user type
-     */
-    public User(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
-        this.uuid = UUID.randomUUID();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.password = password;
-        this.email = email;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.zipCode = zipCode;
-        this.language = language;
-        this.isAdmin = isAdmin;
-        this.userType = userType;
     }
 
     /**
@@ -118,12 +81,14 @@ public class User {
         return "Logged out!";
     }
 
+    
     /**
      * isMatch method checks if the username and password match
      * @param username user username
      * @param password user password
      * @return boolean based on whether or not username and password match
      */
+    /*
     private boolean isMatch(String username, String password) {
         UserList userList = UserList.getInstance();
         User user = userList.getUser(username);
@@ -131,6 +96,7 @@ public class User {
             return false;
         return user.getPassword().equals(password);
     }
+    */
 
     /**
      * resetPassword method changes the current password to a new password
@@ -228,8 +194,8 @@ public class User {
         return isAdmin;
     }
 
-    public String getUserType() {
-        return this.userType;
+    public PersonType getPersonType() {
+        return this.personType;
     }
 
     /**
@@ -316,8 +282,8 @@ public class User {
      * setUserType method sets the user type
      * @param userType user type
      */
-    public void setUserType(String userType) {
-        this.userType = userType;
+    public void setPersonType(PersonType personType) {
+        this.personType = personType;
     }
 
     /**
