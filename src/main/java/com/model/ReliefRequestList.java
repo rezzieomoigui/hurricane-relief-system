@@ -61,8 +61,8 @@ public class ReliefRequestList {
      * @param address user address
      * @return boolean of if request was added or not
      */
-    public boolean addReliefRequest(User user, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet) {
-        reliefRequests.add(new ReliefRequest(user.getUuid(), address, city, state, zipCode, partyMembers, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet));
+    public boolean addReliefRequest(User user, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
+        reliefRequests.add(new ReliefRequest(user.getUuid(), address, city, state, zipCode, partyMembers, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet, skillsNeed));
         return true;
     }
 
@@ -99,7 +99,7 @@ public class ReliefRequestList {
     public ReliefRequest getSuggestedRequest(User user) 
             throws IOException, InterruptedException {
         String userType = user.getUserType().str;
-        if (!userType.equals("ADMIN") && (!userType.equals("VOLUNTEER"))) 
+        if (!user.isAdmin() && (!userType.equals("VOLUNTEER"))) 
             return null;
         String address = user.getAddress();
         String city = user.getCity();

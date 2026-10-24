@@ -50,6 +50,7 @@ public abstract class DataConstants {
     protected static final String RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES = "estimatedArrivalMinutes";
     protected static final String RELIEF_REQUEST_STAYING_HOME = "stayingHome";
     protected static final String RELIEF_REQUEST_HAS_PET = "hasPet";
+    protected static final String RELIEF_REQUEST_SKILLS_NEED = "skillsNeed";
     protected static final String PARTY_MEMBER_NAME = "name";
     protected static final String PARTY_MEMBER_YEAR_BORN = "yearBorn";
     protected static final String PARTY_MEMBER_NEEDS_MEDICAL_ASSISTANCE = "needsMedicalAssistance";

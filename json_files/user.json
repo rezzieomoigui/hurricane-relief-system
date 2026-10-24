@@ -38,7 +38,7 @@
         "city": "Charleston",
         "dateOfBirth": "09-07-1999",
         "language": "English",
-        "firstResponder": "falses",
+        "firstResponder": "false",
         "isAdmin": "true",
         "uuid": "b15129a3-ddd6-4fd2-90f8-ffe4f0888e2c",
         "skills": "TRANSPORTATION",

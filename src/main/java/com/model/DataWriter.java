@@ -12,7 +12,7 @@ public class DataWriter extends DataConstants {
     public static void main(String[] args) {
         saveUsers();
         //saveShelters();
-        //saveReliefRequests();
+        saveReliefRequests();
     }
 
     public static boolean saveUsers() {
@@ -145,6 +145,7 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
         requestDetails.put(RELIEF_REQUEST_STAYING_HOME, Boolean.toString(request.getIsStayingHome()));
         requestDetails.put(RELIEF_REQUEST_HAS_PET, Boolean.toString(request.getHasPet()));
+        requestDetails.put(RELIEF_REQUEST_SKILLS_NEED, request.getSkillsNeed().str);
         return requestDetails;
     }
 

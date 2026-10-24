@@ -131,14 +131,6 @@ public class DataLoader extends DataConstants {
                 String zipCode = (String)reliefRequestJSON.get(RELIEF_REQUEST_ZIP_CODE);
                 JSONArray partyMembers = (JSONArray)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
                 ArrayList<PartyMember> partyMemberArr = convertPartyMembers(partyMembers);
-                /*ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
-                for (Object key: partyMembers.keySet()) {
-                    String name = (String) key;
-                    String ageStr = (String) partyMembers.get(key);
-                    AgeCategory age = AgeCategory.valueOf(ageStr.toUpperCase());
-                    PartyMember partyMember = new PartyMember(name, age);
-                    partyMembersArray.add(partyMember);
-                }*/
                 boolean isIndoors = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS));
                 boolean isMobile = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE));
                 boolean needsMedicalAssistance = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_NEEDS_MEDICAL_ASSISTANCE));
@@ -146,7 +138,8 @@ public class DataLoader extends DataConstants {
                 int estimatedArrivalMinutes = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES));
                 boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
                 boolean hasPet = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_HAS_PET));
-                reliefRequests.add(new ReliefRequest(userUUID, uuid, address, city, state, zipCode, partyMemberArr, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet));
+                Skills skillsNeed = Skills.valueOf((String)reliefRequestJSON.get(RELIEF_REQUEST_SKILLS_NEED));
+                reliefRequests.add(new ReliefRequest(userUUID, uuid, address, city, state, zipCode, partyMemberArr, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet, skillsNeed));
             }
         return reliefRequests;
         }catch (Exception e) {

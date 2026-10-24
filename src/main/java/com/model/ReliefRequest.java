@@ -22,6 +22,7 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
     private boolean hasPet;
+    private Skills skillsNeed;
 
     /**
      * ReliefRequest constructor creates an instance of a relief request object
@@ -40,7 +41,7 @@ public class ReliefRequest {
      * @param stayingHome checks if user is staying home
      * @param hasPet checks if user has a pet
      */
-    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet) {
+    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
         this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
@@ -55,6 +56,7 @@ public class ReliefRequest {
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
         this.hasPet = hasPet;
+        this.skillsNeed = skillsNeed;
     }
 
     /**
@@ -73,7 +75,7 @@ public class ReliefRequest {
      * @param stayingHome checks if user is staying home
      * @param hasPet checks if user has a pet
      */
-    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet) {
+    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
         this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
@@ -88,6 +90,7 @@ public class ReliefRequest {
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
         this.hasPet = hasPet;
+        this.skillsNeed = skillsNeed;
     }
     
     /**
@@ -113,6 +116,7 @@ public class ReliefRequest {
         this.estimatedArrivalMinutes = 0;
         this.stayingHome = false;
         this.hasPet = false;
+        this.skillsNeed = Skills.NONE;
     }
 
 
@@ -277,6 +281,10 @@ public class ReliefRequest {
      */
     public boolean getHasPet() {
         return hasPet;
+    }
+
+    public Skills getSkillsNeed() {
+        return this.skillsNeed;
     }
 
     /**
