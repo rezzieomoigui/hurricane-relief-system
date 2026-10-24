@@ -21,8 +21,26 @@ public class ReliefRequest {
     private ReliefRequestStatus status;
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
+    private boolean hasPet;
 
-    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, int estimatedArrivalMinutes1, boolean stayingHome) {
+    /**
+     * ReliefRequest constructor creates an instance of a relief request object
+     * @param userUUID user id
+     * @param uuid relief request id
+     * @param address user address
+     * @param city city of user location
+     * @param state state of user location
+     * @param zipCode zip code of user location
+     * @param partyMembers party members included in relief request
+     * @param isIndoors checks if user is indoors
+     * @param isMobile checks if user is mobile
+     * @param needsMedicalAssistance checks if user needs medical assistance
+     * @param status status of relief request
+     * @param estimatedArrivalMinutes estimated time for volunteer to get to user
+     * @param stayingHome checks if user is staying home
+     * @param hasPet checks if user has a pet
+     */
+    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet) {
         this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
@@ -36,9 +54,26 @@ public class ReliefRequest {
         this.status = status;
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
+        this.hasPet = hasPet;
     }
 
-    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome) {
+    /**
+     * ReliefRequest constructor creates an instance of a relief request object and generates new uuid
+     * @param userUUID user id
+     * @param address user address
+     * @param city city of user location
+     * @param state state of user location
+     * @param zipCode zip code of user location
+     * @param partyMembers party members included in relief request
+     * @param isIndoors checks if user is indoors
+     * @param isMobile checks if user is mobile
+     * @param needsMedicalAssistance checks if user needs medical assistance
+     * @param status status of relief request
+     * @param estimatedArrivalMinutes estimated time for volunteer to get to user
+     * @param stayingHome checks if user is staying home
+     * @param hasPet checks if user has a pet
+     */
+    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet) {
         this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
@@ -52,11 +87,16 @@ public class ReliefRequest {
         this.status = status;
         this.estimatedArrivalMinutes = estimatedArrivalMinutes;
         this.stayingHome = stayingHome;
+        this.hasPet = hasPet;
     }
     
     /**
      * This creates a general relief request for when users have no time enter detailed information
+     * @param userUUID user id
      * @param address user address
+     * @param city city of user location
+     * @param state state of user location
+     * @param zipCode zip code of user location
      */
     public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode) {
         this.userUUID = userUUID;
@@ -72,6 +112,7 @@ public class ReliefRequest {
         this.status = ReliefRequestStatus.SUBMITTED;
         this.estimatedArrivalMinutes = 0;
         this.stayingHome = false;
+        this.hasPet = false;
     }
 
 
@@ -121,9 +162,13 @@ public class ReliefRequest {
         return UserList.getInstance().getUser(userUUID);
     }
 
+    public UUID getUserUUID() {
+        return this.userUUID;
+    }
+
     /**
      * getZipCode gets the zip code of the user who wrote this request
-     * 
+     * @return zip code of user location
      */
     public String getZipCode() {
         return this.zipCode;
@@ -138,13 +183,6 @@ public class ReliefRequest {
     }
 
     /**
-     * addComments method allows the users to make comments
-     */
-    public void addComments() {
-        // Implement logic to add comments
-    }
-
-    /**
      * getUUID returns an id
      * @return user uuid
      */
@@ -152,23 +190,43 @@ public class ReliefRequest {
         return this.uuid;
     }
 
+    /**
+     * getAddress gets the user address
+     * @return user address
+     */
     public String getAddress() {
         return this.address;
     }
 
+    /**
+     * getCity gets the user city
+     * @return city of user location
+     */
     public String getCity() {
         return this.city;
     }
 
+    /**
+     * getState gets the user state
+     * @return state of user location
+     */
     public String getState() {
         return this.state;
     }
 
+    /**
+     * getPartyMembers gets the party members of the relief request
+     * @return arrayList of other members of the party
+     */
     public ArrayList<PartyMember> getPartyMembers() {
         return this.partyMembers;
     }
 
-    public boolean isIndoors() {
+    /**
+     * getIsIndoors gets if the user is indoors
+     * @return boolean depending on if the user is indoors or not
+     */
+    public boolean getIsIndoors() {
         return isIndoors;
     }
 
@@ -176,7 +234,7 @@ public class ReliefRequest {
      * isMobile returns if the user is mobile
      * @return boolean based on if the user is mobile
      */
-    public boolean isMobile() {
+    public boolean getIsMobile() {
         return isMobile;
     }
 
@@ -184,7 +242,7 @@ public class ReliefRequest {
      * needsMedicalAssistance returns if the user requires medical assitance or not
      * @return boolean based on if the user requires medical assistance
      */
-    public boolean needsMedicalAssistance() {
+    public boolean getNeedsMedicalAssistance() {
         return needsMedicalAssistance;
     }
 
@@ -209,8 +267,16 @@ public class ReliefRequest {
      * isStayingHome returns if the user is planning on staying home or not
      * @return boolean based on if the user is planning on staying home
      */
-    public boolean isStayingHome() {
+    public boolean getIsStayingHome() {
         return stayingHome;
+    }
+
+    /**
+     * getHasPet gets if the user has a pet
+     * @return boolean based on if the user has a pet or not
+     */
+    public boolean getHasPet() {
+        return hasPet;
     }
 
     /**

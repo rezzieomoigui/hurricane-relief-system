@@ -61,7 +61,7 @@ public class DataLoader extends DataConstants {
                     boolean firstResponder = Boolean.parseBoolean((String)userJSON.get(VOLUNTEER_FIRST_RESPONDER));
                     boolean canSwim = Boolean.parseBoolean((String)userJSON.get(VOLUNTEER_CAN_SWIM));
                     boolean isShelterOwner = Boolean.parseBoolean((String)userJSON.get(VOLUNTEER_IS_SHELTER_OWNER));
-                    Skills skills = Skills.valueOf(((String)userJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
+                    Skills skills = Skills.valueOf(((String)userJSON.get(VOLUNTEER_SKILLS)));
                     users.add(new Volunteer(uuid, firstName, lastName, userName, password, email, dateOfBirth, address, city, state, zipCode, language, isAdmin, userType, skills, firstResponder, canSwim, isShelterOwner));
                 }
                 else {
@@ -145,7 +145,8 @@ public class DataLoader extends DataConstants {
                 ReliefRequestStatus status = ReliefRequestStatus.valueOf(((String)reliefRequestJSON.get(RELIEF_REQUEST_STATUS)).toUpperCase());
                 int estimatedArrivalMinutes = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES));
                 boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
-                reliefRequests.add(new ReliefRequest(userUUID, uuid, address, city, state, zipCode, partyMemberArr, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, estimatedArrivalMinutes, stayingHome));
+                boolean hasPet = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_HAS_PET));
+                reliefRequests.add(new ReliefRequest(userUUID, uuid, address, city, state, zipCode, partyMemberArr, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet));
             }
         return reliefRequests;
         }catch (Exception e) {
