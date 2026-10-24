@@ -22,6 +22,8 @@ public class Volunteer extends User {
      * @param email volunteer email
      * @param dateOfBirth volunteer birthday
      * @param address volunteer address
+     * @param city volunteer city
+     * @param state volunteer state
      * @param zipCode volunteer zip code
      * @param language volunteer language
      * @param isAdmin checks if volunteer is an administrator
@@ -48,6 +50,8 @@ public class Volunteer extends User {
      * @param email volunteer email
      * @param dateOfBirth volunteer birthday
      * @param address volunteer address
+     * @param city volunteer city
+     * @param state volunteer state
      * @param zipCode volunteer zip code
      * @param language volunteer language
      * @param isAdmin checks if volunteer is an administrator

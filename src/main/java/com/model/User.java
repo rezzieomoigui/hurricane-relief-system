@@ -32,6 +32,8 @@ public class User {
      * @param email user email
      * @param dateOfBirth user birthday
      * @param address user address
+     * @param city user city
+     * @param state user state
      * @param zipCode user zip code
      * @param language user language
      * @param userType user type
@@ -64,9 +66,11 @@ public class User {
      * @param email user email
      * @param dateOfBirth user birthday
      * @param address user address
+     * @param city user city
+     * @param state user state
      * @param zipCode user zip code
      * @param language user language
-     * @param isAdmin
+     * @param isAdmin whether user is an admin
      */
     public User(String firstName, String lastName, String username, String password,
     String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, UserType userType) {
@@ -92,11 +96,9 @@ public class User {
      * @param password user password
      * @return boolean if username and password match
      */
-    /*
     public boolean login(String username, String password) {
         return isMatch(username, password);
     }
-    */
 
     /**
      * logout method shows that the user logged out of their account
@@ -113,8 +115,8 @@ public class User {
      * @param username user username
      * @param password user password
      * @return boolean based on whether or not username and password match
+     *
      */
-    /*
     private boolean isMatch(String username, String password) {
         UserList userList = UserList.getInstance();
         User user = userList.getUser(username);
@@ -122,7 +124,6 @@ public class User {
             return false;
         return user.getPassword().equals(password);
     }
-    */
 
     /**
      * resetPassword method changes the current password to a new password
@@ -294,6 +295,22 @@ public class User {
      */
     public void setAddress(String address) {
         this.address = address;
+    }
+    
+    /**
+     * setCity sets the city
+     * @param city user city
+     */
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    /**
+     * setState sets the state
+     * @param state user state
+     */
+    public void setState(String state) {
+        this.state = state;
     }
 
     /**
