@@ -10,21 +10,21 @@ import java.util.HashMap;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
-        //savePeople();
+        saveUsers();
         //saveShelters();
         saveReliefRequests();
     }
 
-    public static boolean savePeople() {
-        PersonList personList = PersonList.getInstance();
-        ArrayList<Person> people = personList.getPeople();
+    public static boolean saveUsers() {
+        UserList userList = UserList.getInstance();
+        ArrayList<User> people = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
         for (int i = 0; i < people.size(); i++) {
-            jsonUsers.add(getPersonJSON(people.get(i)));
+            jsonUsers.add(getUserJSON(people.get(i)));
         }
 
-        try(FileWriter file = new FileWriter(PERSON_FILE_NAME)) {
+        try(FileWriter file = new FileWriter(USER_FILE_NAME)) {
             file.write(jsonUsers.toJSONString());
             file.flush();
             return true;
@@ -92,10 +92,6 @@ public class DataWriter extends DataConstants {
     private static ArrayList<String> convertShelterResources(ArrayList<ShelterResources> shelterResources) {
         ArrayList<String> shelterResourcesStr = new ArrayList<String>();
         for (int i = 0; i < shelterResources.size(); ++i) {
-            /**ShelterResources temp = shelterResources.get(i);
-            String temp1 = temp.toString();
-            String temp2 = temp.str;**/
-
             shelterResourcesStr.add(shelterResources.get(i).name());
         }
         return shelterResourcesStr;
@@ -103,11 +99,18 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-        userDetails.put(PERSON_UUID, user.getUuid().toString());
-        userDetails.put(PERSON_FIRST_NAME, user.getFirstName());
-        userDetails.put(PERSON_LAST_NAME, user.getLastName());
-        userDetails.put(PERSON_EMAIL, user.getEmail());
-        userDetails.put(PERSON_TYPE, user.getPersonType());
+        if (user.getUserType() == UserType.VOLUNTEER) {
+            Volunteer volunteer = (Volunteer) user;
+            userDetails.put(VOLUNTEER_SKILLS, volunteer.getSkills().str);
+            userDetails.put(VOLUNTEER_FIRST_RESPONDER, Boolean.toString(volunteer.isFirstResponder()));
+            userDetails.put(VOLUNTEER_CAN_SWIM, Boolean.toString(volunteer.canSwim()));
+            userDetails.put(VOLUNTEER_IS_SHELTER_OWNER, Boolean.toString(volunteer.isShelterOwner()));
+        }
+        userDetails.put(USER_UUID, user.getUuid().toString());
+        userDetails.put(USER_FIRST_NAME, user.getFirstName());
+        userDetails.put(USER_LAST_NAME, user.getLastName());
+        userDetails.put(USER_EMAIL, user.getEmail());
+        userDetails.put(USER_USER_TYPE, user.getUserType().str);
         userDetails.put(USER_USERNAME, user.getUsername());
         userDetails.put(USER_PASSWORD, user.getPassword());
         userDetails.put(USER_DATE_OF_BIRTH, user.getDateOfBirth());
@@ -117,13 +120,6 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_ZIP_CODE, user.getZipCode());
         userDetails.put(USER_LANGUAGE, user.getLanguage());
         userDetails.put(USER_IS_ADMIN, Boolean.toString(user.isAdmin()));
-        if (user.getUserType().equals("Volunteer")) {
-            Volunteer volunteer = (Volunteer) user;
-            userDetails.put(VOLUNTEER_SKILLS, volunteer.getSkills().str);
-            userDetails.put(VOLUNTEER_FIRST_RESPONDER, Boolean.toString(volunteer.isFirstResponder()));
-            userDetails.put(VOLUNTEER_CAN_SWIM, Boolean.toString(volunteer.canSwim()));
-            userDetails.put(VOLUNTEER_IS_SHELTER_OWNER, Boolean.toString(volunteer.isShelterOwner()));
-        }
         return userDetails;
     }
 
