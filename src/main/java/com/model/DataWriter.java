@@ -11,17 +11,17 @@ import java.util.HashMap;
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
         saveUsers();
-        //saveShelters();
+        saveShelters();
         saveReliefRequests();
     }
 
     public static boolean saveUsers() {
         UserList userList = UserList.getInstance();
-        ArrayList<User> people = userList.getUsers();
+        ArrayList<User> users = userList.getUsers();
         JSONArray jsonUsers = new JSONArray();
 
-        for (int i = 0; i < people.size(); i++) {
-            jsonUsers.add(getUserJSON(people.get(i)));
+        for (int i = 0; i < users.size(); i++) {
+            jsonUsers.add(getUserJSON(users.get(i)));
         }
 
         try(FileWriter file = new FileWriter(USER_FILE_NAME)) {
@@ -92,6 +92,10 @@ public class DataWriter extends DataConstants {
     private static ArrayList<String> convertShelterResources(ArrayList<ShelterResources> shelterResources) {
         ArrayList<String> shelterResourcesStr = new ArrayList<String>();
         for (int i = 0; i < shelterResources.size(); ++i) {
+            /**ShelterResources temp = shelterResources.get(i);
+            String temp1 = temp.toString();
+            String temp2 = temp.str;**/
+
             shelterResourcesStr.add(shelterResources.get(i).name());
         }
         return shelterResourcesStr;
@@ -99,49 +103,40 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-        if (user.getUserType() == UserType.VOLUNTEER) {
+        userDetails.put(USER_UUID, user.getUuid().toString());
+        userDetails.put(USER_FIRST_NAME, user.getFirstName());
+        userDetails.put(USER_LAST_NAME, user.getLastName());
+        userDetails.put(USER_USERNAME, user.getUsername());
+        userDetails.put(USER_PASSWORD, user.getPassword());
+        userDetails.put(USER_EMAIL, user.getEmail());
+        userDetails.put(USER_DATE_OF_BIRTH, user.getDateOfBirth());
+        userDetails.put(USER_ADDRESS, user.getAddress());
+        userDetails.put(USER_ZIP_CODE, user.getZipCode());
+        userDetails.put(USER_LANGUAGE, user.getLanguage());
+        userDetails.put(USER_IS_ADMIN, Boolean.toString(user.isAdmin()));
+        userDetails.put(USER_USER_TYPE, user.getUserType());
+        if (user.getUserType().equals("Volunteer")) {
             Volunteer volunteer = (Volunteer) user;
             userDetails.put(VOLUNTEER_SKILLS, volunteer.getSkills().str);
             userDetails.put(VOLUNTEER_FIRST_RESPONDER, Boolean.toString(volunteer.isFirstResponder()));
             userDetails.put(VOLUNTEER_CAN_SWIM, Boolean.toString(volunteer.canSwim()));
             userDetails.put(VOLUNTEER_IS_SHELTER_OWNER, Boolean.toString(volunteer.isShelterOwner()));
         }
-        userDetails.put(USER_UUID, user.getUuid().toString());
-        userDetails.put(USER_FIRST_NAME, user.getFirstName());
-        userDetails.put(USER_LAST_NAME, user.getLastName());
-        userDetails.put(USER_EMAIL, user.getEmail());
-        userDetails.put(USER_USER_TYPE, user.getUserType().str);
-        userDetails.put(USER_USERNAME, user.getUsername());
-        userDetails.put(USER_PASSWORD, user.getPassword());
-        userDetails.put(USER_DATE_OF_BIRTH, user.getDateOfBirth());
-        userDetails.put(USER_ADDRESS, user.getAddress());
-        userDetails.put(USER_CITY, user.getCity());
-        userDetails.put(USER_STATE, user.getState());
-        userDetails.put(USER_ZIP_CODE, user.getZipCode());
-        userDetails.put(USER_LANGUAGE, user.getLanguage());
-        userDetails.put(USER_IS_ADMIN, Boolean.toString(user.isAdmin()));
         return userDetails;
     }
 
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
+        HashMap<String, String> partyMembers = convertPartyMembers(request.getPartyMembers());
         JSONObject requestDetails = new JSONObject();
-        //HashMap<String, String> partyMembers = convertPartyMembers(request.getPartyMembers());
-        JSONArray partyMemberArr = new JSONArray();
-        ArrayList<PartyMember> partyMembers = request.getPartyMembers();
-        for (int i = 0; i < partyMembers.size(); ++i) {
-            partyMemberArr.add(getPartyMemberJSON(partyMembers.get(i)));
-        }
-        requestDetails.put(RELIEF_REQUEST_USER_UUID, request.getUuid().toString());
+        requestDetails.put(RELIEF_REQUEST_USER_UUID, request.getUser().toString());
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_ADDRESS, request.getAddress());
-        requestDetails.put(RELIEF_REQUEST_CITY, request.getCity());
-        requestDetails.put(RELIEF_REQUEST_STATE, request.getState());
-        requestDetails.put(RELIEF_REQUEST_ZIP_CODE, request.getZipCode());
-        requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMemberArr);
+        requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
         requestDetails.put(RELIEF_REQUEST_IS_INDOORS, Boolean.toString(request.isIndoors()));
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, Boolean.toString(request.isMobile()));
         requestDetails.put(RELIEF_REQUEST_NEEDS_MEDICAL_ASSISTANCE, Boolean.toString(request.needsMedicalAssistance()));
         requestDetails.put(RELIEF_REQUEST_STATUS, request.getStatus().str);
+        requestDetails.put(RELIEF_REQUEST_PRIORITY, request.getPriority());
         requestDetails.put(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES, Integer.toString(request.getEstimatedArrivalMinutes()));
         requestDetails.put(RELIEF_REQUEST_STAYING_HOME, Boolean.toString(request.isStayingHome()));
         return requestDetails;
@@ -150,17 +145,10 @@ public class DataWriter extends DataConstants {
     private static HashMap<String, String> convertPartyMembers(ArrayList<PartyMember> partyMembers) {
         HashMap<String, String> partyMembersMap = new HashMap();
         for (PartyMember partyMember : partyMembers) {
-            partyMembersMap.put(partyMember.getName(), partyMember.getAge().str);
+            partyMembersMap.put(partyMember.getName(), partyMember.getYearBorn().strip());
         }
         return partyMembersMap;
     }
 
-    private static JSONObject getPartyMemberJSON(PartyMember partyMember) {
-        JSONObject partyMemberDetails = new JSONObject();
-        partyMemberDetails.put(PARTY_MEMBER_NAME, partyMember.getName());
-        partyMemberDetails.put(PARTY_MEMBER_YEAR_BORN, partyMember.getYearBorn());
-        partyMemberDetails.put(PARTY_MEMBER_NEEDS_MEDICAL_ASSISTANCE, Boolean.toString(partyMember.needsMedicalAssistance()));
-        partyMemberDetails.put(PARTY_MEMBER_TYPE, partyMember.getType().str);
-        return partyMemberDetails;
-    }
+
 }
