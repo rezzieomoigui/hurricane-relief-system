@@ -25,7 +25,7 @@ public class ReliefRequest {
     private Skills skillsNeed;
 
     /**
-     * ReliefRequest constructor creates an instance of a relief request object
+     * ReliefRequest constructor creates an instance of a relief request object from DataLoader
      * @param userUUID user id
      * @param uuid relief request id
      * @param address user address
@@ -75,14 +75,14 @@ public class ReliefRequest {
      * @param stayingHome checks if user is staying home
      * @param hasPet checks if user has a pet
      */
-    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
+    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
         this.userUUID = userUUID;
         this.uuid = UUID.randomUUID();
         this.address = address;
         this.city = city;
         this.state = state;
         this.zipCode = zipCode;
-        this.partyMembers = partyMembers;
+        this.partyMembers = new ArrayList<PartyMember>();
         this.isIndoors = isIndoors;
         this.isMobile = isMobile;
         this.needsMedicalAssistance = needsMedicalAssistance;
@@ -119,17 +119,6 @@ public class ReliefRequest {
         this.skillsNeed = Skills.NONE;
     }
 
-
-    /**
-     * addPartyMember adds a user to the relief request
-     * @param user account user
-     * @return boolean based on if party member was correctly added
-     */
-    public boolean addPartyMember(PartyMember partyMember) {
-        // Implement logic to add a party member
-        return false;
-    }
-
     /**
      * removePartyMember removes a user from the relief request
      * @param user account user
@@ -140,15 +129,6 @@ public class ReliefRequest {
         return false;
     }
 
-    /**
-     * requestSupplies requests supplies in the relief request
-     * @param user account user
-     * @return requested supplies
-     */
-    public HashMap<String, Integer> requestSupplies(PartyMember partyMember) {
-        // Implement logic to request supplies
-        return null;
-    }
 
     /**
      * notifyShelter method lets the shelter know when a relief request has been made
@@ -184,6 +164,10 @@ public class ReliefRequest {
      */
     public void setStatus(ReliefRequestStatus status) {
         this.status = status;
+    }
+
+    public void setPartyMembers(ArrayList<PartyMember> partyMembers) {
+        this.partyMembers = partyMembers;
     }
 
     /**
@@ -293,5 +277,23 @@ public class ReliefRequest {
      */
     public String getRequestId() {
         return uuid.toString();
+    }
+
+    @Override
+    public String toString() {
+        String partyMemberStr = partyMembersToString();
+        return "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" +
+        "Indoors? "+this.isIndoors + "\n" + "Able to move from location? " + this.isMobile + "\n" +
+        "Need medical assistance? " + this.needsMedicalAssistance + "\n" + "Staying home? " + this.stayingHome + "\n" + "Have a pet? " + this.hasPet + partyMemberStr;
+    }
+
+    private String partyMembersToString() {
+        String str = "\nPARTY MEMBERS\n";
+        int age;
+        for ( PartyMember partyMember : this.partyMembers ) {
+            age = 2026 - Integer.parseInt(partyMember.getYearBorn());
+            str += "----------------------------------------------" + "\nname: "+partyMember.getName()+"\nage: "+age+"\nneeds medical assistance? "+partyMember.needsMedicalAssistance()+"\nI am a: "+partyMember.getType().str+"\n";
+        }
+        return str;
     }
 }

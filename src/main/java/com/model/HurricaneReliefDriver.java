@@ -1,5 +1,6 @@
 package com.model;
- 
+import java.util.ArrayList; 
+
 public class HurricaneReliefDriver {
     private HurricaneReliefApplication application;
 
@@ -14,7 +15,7 @@ public class HurricaneReliefDriver {
         scenario2();
     }
  
-    public void scenario1() {
+    /**public void scenario1() {
         System.out.println();
         System.out.println("Scenario 1: Create an account");
 
@@ -33,6 +34,22 @@ public class HurricaneReliefDriver {
         );
 
         System.out.println("Account information submitted for Amy Smith.");
+    }*/
+
+    public void scenario1() {
+        System.out.println();
+        System.out.println("Scenario 1");
+        boolean accountCreated = application.createAccount("Collin", "Carter", "ccollin", "7snailBrook&", "ccollin@gmail.com", "04-09-1978", "1735 Vassar Dr", "Charleston", "South Carolina", "29407", "English", false, UserType.USER);
+        System.out.println("Collin Carter's account created? "+accountCreated);
+        boolean loggedIn = application.login("ccollin", "7snailBrook&");
+        System.out.println("Collin Carter logged in? "+loggedIn);
+        ArrayList<PartyMember> collinFamily = new ArrayList<PartyMember>();
+        ReliefRequest request = application.createReliefRequest(application.getCurrentUser(), true, false, true, true, true, Skills.TRANSPORTATION);
+        application.addPartyMember(request, "Collin Carter", "1978", false, Being.PERSON);
+        application.addPartyMember(request, "Sophie Carter", "2012", true, Being.PERSON);
+        application.addPartyMember(request, "Connie Carter", "1979", false, Being.PERSON);
+        application.addPartyMember(request, "Spot", "2023", false, Being.DOG);
+        System.out.println(request.toString());
     }
 
    
@@ -52,6 +69,8 @@ public class HurricaneReliefDriver {
         System.out.println("Logging out: "+logout2);
         System.out.println(application.getCurrentUser());
     }
+
+
 
     public static void main(String[] args) {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();

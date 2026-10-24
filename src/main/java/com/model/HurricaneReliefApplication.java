@@ -1,5 +1,6 @@
 package com.model;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -54,6 +55,14 @@ public class HurricaneReliefApplication {
         return true;
     }
 
+    public ReliefRequest createReliefRequest(User user, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
+        return reliefRequestList.addReliefRequest(user, isIndoors, isMobile, needsMedicalAssistance, stayingHome, hasPet, skillsNeed);
+    }
+
+    public void addPartyMember(ReliefRequest request, String name, String yearBorn, boolean needsMedicalAssistance, Being type) {
+        reliefRequestList.addPartyMember(request, name, yearBorn, needsMedicalAssistance, type);
+    }
+
     /**
      * getCurrentUser gets the current user
      * @return current user, or null if nobody is logged in
@@ -100,6 +109,11 @@ public class HurricaneReliefApplication {
     }
 
 
+    public ReliefRequest getSuggestedRequest(Volunteer volunteer) 
+    throws IOException, InterruptedException {
+        return reliefRequestList.getSuggestedRequest(volunteer);
+    }
+
     /**
      * seeNearbyShelters finds the shelters in the logged in user's zip code
      * @return ArrayList of shelters in the user's zip code (empty if nobody is logged in)
@@ -139,22 +153,6 @@ public class HurricaneReliefApplication {
         return request;
     }
 
-    /**
-     * getMyReliefRequests gets the relief requests the logged in user has made
-     * @return ArrayList of the user's relief requests (empty if nobody is logged in)
-     */
-    public ArrayList<ReliefRequest> getMyReliefRequests() {
-        ArrayList<ReliefRequest> mine = new ArrayList<ReliefRequest>();
-        if (currentUser == null) {
-            return mine;
-        }
-        for (ReliefRequest request : reliefRequestList.getReliefRequests()) {
-            if (request.getUserUUID().equals(currentUser.getUuid())) {
-                mine.add(request);
-            }
-        }
-        return mine;
-    }
 
     /**
      * cancelReliefRequest removes one of the logged in user's own relief requests (administrators can remove any)
@@ -256,98 +254,8 @@ public class HurricaneReliefApplication {
         return currentUser instanceof Volunteer || (currentUser != null && currentUser.isAdmin());
     }
 
-    // ------------------------------------------------------------------
-    // Hurricanes
-    // ------------------------------------------------------------------
 
-    /**
-     * getHurricanes gets every hurricane the application tracks
-     * @return ArrayList of hurricanes
-     */
-    public ArrayList<Hurricane> getHurricanes() {
-        return hurricaneList.getHurricanes();
-    }
-
-    /**
-     * getHurricanesAffecting gets the hurricanes that affect a zip code
-     * @param zipCode zip code to check
-     * @return ArrayList of hurricanes affecting that zip code
-     */
-    public ArrayList<Hurricane> getHurricanesAffecting(String zipCode) {
-        return hurricaneList.getHurricanesAffecting(zipCode);
-    }
-
-    /**
-     * hurricaneIncoming tells the logged in user about hurricanes that are approaching their zip code
-     * @return message describing approaching hurricanes
-     */
-    public String hurricaneIncoming() {
-        if (currentUser == null) {
-            return "Log in to see hurricane alerts for your area.";
-        }
-        String zip = currentUser.getZipCode();
-        StringBuilder message = new StringBuilder();
-        for (Hurricane hurricane : hurricaneList.getHurricanesAffecting(zip)) {
-            if (hurricane.isApproaching(zip)) {
-                message.append(describe(hurricane, "is approaching")).append("\n");
-            }
-        }
-        return message.length() == 0 ? "No hurricanes are approaching your area." : message.toString().trim();
-    }
-
-    /**
-     * hurricaneLeaving tells the logged in user about hurricanes that are leaving their zip code
-     * @return message describing hurricanes that are moving away
-     */
-    public String hurricaneLeaving() {
-        if (currentUser == null) {
-            return "Log in to see hurricane alerts for your area.";
-        }
-        String zip = currentUser.getZipCode();
-        StringBuilder message = new StringBuilder();
-        for (Hurricane hurricane : hurricaneList.getHurricanesAffecting(zip)) {
-            if (hurricane.isLeaving(zip)) {
-                message.append(describe(hurricane, "is leaving")).append("\n");
-            }
-        }
-        return message.length() == 0 ? "No hurricanes are leaving your area." : message.toString().trim();
-    }
-
-    /**
-     * getHurricaneAlerts tells the logged in user about every hurricane affecting their zip code
-     * @return ArrayList of alert messages (empty if none or nobody is logged in)
-     */
-    public ArrayList<String> getHurricaneAlerts() {
-        ArrayList<String> alerts = new ArrayList<String>();
-        if (currentUser == null) {
-            return alerts;
-        }
-        String zip = currentUser.getZipCode();
-        for (Hurricane hurricane : hurricaneList.getHurricanesAffecting(zip)) {
-            String state;
-            if (hurricane.getStatus() == HurricaneStatus.APPROACHING) {
-                state = "is approaching";
-            } else if (hurricane.getStatus() == HurricaneStatus.LEAVING) {
-                state = "is leaving";
-            } else {
-                state = "is currently affecting";
-            }
-            alerts.add(describe(hurricane, state));
-        }
-        return alerts;
-    }
-
-    /**
-     * getPreparationGuide gets the preparation guide of a hurricane
-     * @param hurricaneName name of the hurricane
-     * @return the hurricane's preparation guide, or null if there is no hurricane with that name
-     */
-    public PreparationGuide getPreparationGuide(String hurricaneName) {
-        Hurricane hurricane = hurricaneList.getHurricane(hurricaneName);
-        return hurricane == null ? null : hurricane.getPreparationGuide();
-    }
-
-    private String describe(Hurricane hurricane, String state) {
+    private String describeHurricane(Hurricane hurricane, String state) {
         return "Hurricane " + hurricane.getName() + " (Category " + hurricane.getCategory() + ") "
                 + state + " your area. Expected landfall: "
                 + hurricane.getExpectedLandfall().format(Hurricane.LANDFALL_FORMAT) + ".";
@@ -365,7 +273,6 @@ public class HurricaneReliefApplication {
         boolean saved = userList.save();
         saved = shelterList.save() && saved;
         saved = reliefRequestList.save() && saved;
-        saved = hurricaneList.save() && saved;
         return saved;
     }
 }

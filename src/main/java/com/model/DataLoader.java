@@ -102,7 +102,7 @@ public class DataLoader extends DataConstants {
                     shelterResourcesArray.add(shelterResource);
                 } 
                 String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
-                shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResourcesArray, shelterStatus, visualDescription));
+               // shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResourcesArray, shelterStatus, visualDescription, numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable));
             }
         return shelters;
         }catch (Exception e) {

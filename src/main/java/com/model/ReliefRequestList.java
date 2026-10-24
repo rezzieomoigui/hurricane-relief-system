@@ -59,9 +59,12 @@ public class ReliefRequestList {
      * @param address user address
      * @return boolean of if request was added or not
      */
-    public boolean addReliefRequest(User user, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
-        reliefRequests.add(new ReliefRequest(user.getUuid(), address, city, state, zipCode, partyMembers, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet, skillsNeed));
-        return true;
+    public ReliefRequest addReliefRequest(User user, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
+        ReliefRequest request = new ReliefRequest(user.getUuid(), user.getAddress(), user.getCity(), user.getState(), user.getZipCode(), isIndoors, isMobile, needsMedicalAssistance, ReliefRequestStatus.SUBMITTED, 0, stayingHome, hasPet, skillsNeed);
+        reliefRequests.add(request);
+        return request;
     }
 
     /**
@@ -70,6 +73,8 @@ public class ReliefRequestList {
      * @return boolean true if the request was added (false if it was already in the list)
      */
     public boolean addReliefRequest(ReliefRequest request) {
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         if (request == null || getReliefRequestById(request.getUuid()) != null) {
             return false;
         }
@@ -88,6 +93,17 @@ public class ReliefRequestList {
             return false;
         }
         return reliefRequests.remove(request);
+    }
+
+    /**
+     * addPartyMember adds a user to the relief request
+     * @param user account user
+     * @return boolean based on if party member was correctly added
+     */
+    public void addPartyMember(ReliefRequest request, String name, String yearBorn, boolean needsMedicalAssistance, Being type) {
+        ArrayList<PartyMember> partyMembers = request.getPartyMembers();
+        partyMembers.add(new PartyMember(name, yearBorn, needsMedicalAssistance, type));
+        request.setPartyMembers(partyMembers);
     }
 
     /**
