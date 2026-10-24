@@ -22,7 +22,6 @@ public class Hurricane {
     private int category;
     private HurricaneStatus status;
     private ArrayList<String> affectedZipCodes;
-    private PreparationGuide preparationGuide;
     private double windSpeed;
     private double movementSpeed;
     private LocalDateTime expectedLandfall;
@@ -125,22 +124,6 @@ public class Hurricane {
      */
     public boolean removeAffectedLocation(String zipCode) {
         return affectedZipCodes.remove(zipCode);
-    }
-
-    /**
-     * getRequestsByLocation gets the requests that were made from a specific zip code
-     * @param zipCode zip code to look for
-     * @return arrayList of requests made from that zip code
-     */
-    public ArrayList<ReliefRequest> getRequestsByLocation(String zipCode) {
-        ArrayList<ReliefRequest> requestsByLocation = new ArrayList<>();
-        for (ReliefRequest request : reliefRequests) {
-            String requestZip = request.getLocationZip();
-            if (requestZip != null && requestZip.equals(zipCode)) {
-                requestsByLocation.add(request);
-            }
-        }
-        return requestsByLocation;
     }
 
     /**

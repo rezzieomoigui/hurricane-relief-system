@@ -12,7 +12,6 @@ public class HurricaneReliefApplication {
     private UserList userList;
     private ShelterList shelterList;
     private ReliefRequestList reliefRequestList;
-    private HurricaneList hurricaneList;
     private User currentUser;
 
     /**
@@ -22,7 +21,6 @@ public class HurricaneReliefApplication {
         userList = UserList.getInstance();
         shelterList = ShelterList.getInstance();
         reliefRequestList = ReliefRequestList.getInstance();
-        hurricaneList = HurricaneList.getInstance();
     }
 
 
@@ -34,14 +32,14 @@ public class HurricaneReliefApplication {
      */
      public boolean createAccount(String firstName, String lastName,
             String username, String password, String email,
-            String dateOfBirth, String address, String zipCode,
-            String language, boolean isAdmin, String userType) {
+            String dateOfBirth, String address, String city, String state, 
+            String zipCode, String language, boolean isAdmin, UserType userType) {
 
         return userList.addUser(firstName, lastName, username, password,
-                email, dateOfBirth, address, zipCode, language, isAdmin, userType);
+                email, dateOfBirth, address, city, state, zipCode, language, isAdmin, userType);
     }
 
-     public boolean login(String username, String password) {
+    public boolean login(String username, String password) {
         User user = userList.getUser(username);
         if (user == null) {
             return false;
@@ -96,9 +94,9 @@ public class HurricaneReliefApplication {
      * @return boolean true if user was added and didn't already exist
      */
     public boolean addUser(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, String userType) {
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, UserType userType) {
         return userList.addUser(firstName, lastName, username, password, email,
-                dateOfBirth, address, zipCode, language, isAdmin, userType);
+                dateOfBirth, address, city, state, zipCode, language, isAdmin, userType);
     }
 
 

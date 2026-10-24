@@ -6,7 +6,7 @@ import java.util.UUID;
  * User class creates user objects
  * @author Fantastic Four
  */
-public class User extends Person{
+public class User {
     private UUID uuid;
     private String firstName;
     private String lastName;
@@ -20,7 +20,7 @@ public class User extends Person{
     private String zipCode;
     private String language;
     private boolean isAdmin;
-    private PersonType personType;
+    private UserType userType;
 
     /**
      * User constructor creates user from DataLoader
@@ -34,12 +34,15 @@ public class User extends Person{
      * @param address user address
      * @param zipCode user zip code
      * @param language user language
-     * @param personType person type
+     * @param userType user type
      * @param isAdmin Whether the user is an admin
      */
     public User(UUID uuid, String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, PersonType personType, boolean isAdmin) {
-        super(uuid, firstName, lastName, email, personType);
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, UserType userType) {
+        this.uuid = uuid;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
         this.username = username;
         this.password = password;
         this.dateOfBirth = dateOfBirth;
@@ -48,8 +51,8 @@ public class User extends Person{
         this.state = state;
         this.zipCode = zipCode;
         this.language = language;
-        this.personType = personType;
         this.isAdmin = isAdmin;
+        this.userType = userType;
     }
 
     /**
@@ -66,8 +69,7 @@ public class User extends Person{
      * @param isAdmin
      */
     public User(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, PersonType personType, boolean isAdmin) {
-        super(firstName, lastName, email, personType);
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, UserType userType) {
         this.uuid = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -80,7 +82,7 @@ public class User extends Person{
         this.state = state;
         this.zipCode = zipCode;
         this.language = language;
-        this.personType = personType;
+        this.userType = userType;
         this.isAdmin = isAdmin;
     }
 
@@ -138,7 +140,6 @@ public class User extends Person{
         return this.uuid;
     }
 
-    @Override
     /**
      * getFirstName returns the first name
      * @return user first name
@@ -147,7 +148,6 @@ public class User extends Person{
         return firstName;
     }
 
-    @Override
     /**
      * getLastName returns the last name    
      * @return user last name
@@ -172,7 +172,6 @@ public class User extends Person{
         return password;
     }
 
-    @Override
     /** 
      * getEmail returns the email
      * @return user email
@@ -237,9 +236,8 @@ public class User extends Person{
         return isAdmin;
     }
 
-    @Override 
-    public PersonType getPersonType() {
-        return this.personType;
+    public UserType getUserType() {
+        return this.userType;
     }
 
     /**
@@ -326,8 +324,8 @@ public class User extends Person{
      * setUserType method sets the user type
      * @param userType user type
      */
-    public void setPersonType(PersonType personType) {
-        this.personType = personType;
+    public void setUserType(UserType userType) {
+        this.userType = userType;
     }
 
     /**
