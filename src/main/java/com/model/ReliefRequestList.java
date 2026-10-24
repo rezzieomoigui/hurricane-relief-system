@@ -14,8 +14,6 @@ import com.location.MapTools;
 public class ReliefRequestList {
     private static ReliefRequestList reliefRequestList;
 
-    //private static MapTools mapTools; 
-
     private ArrayList<ReliefRequest> reliefRequests;
 
     /**
@@ -96,18 +94,20 @@ public class ReliefRequestList {
      * Gives suggested request based on location
      * @param User the user who needs a suggested request
      */
-    public ReliefRequest getSuggestedRequest(User user) 
+    public ReliefRequest getSuggestedRequest(Volunteer volunteer) // only Volunteers need a suggested request
             throws IOException, InterruptedException {
-        String userType = user.getUserType().str;
-        if (!user.isAdmin() && (!userType.equals("VOLUNTEER"))) 
-            return null;
-        String address = user.getAddress();
-        String city = user.getCity();
-        String state = user.getState();
-        String zipCode = user.getZipCode();
+        String address = volunteer.getAddress();
+        String city = volunteer.getCity();
+        String state = volunteer.getState();
+        String zipCode = volunteer.getZipCode();
         Address userAddress = new Address(address, city, state, zipCode);
-        Address[] addresses = ReliefRequestAddresses();
+        // first select requests with needed Skills that match the Volunteer's 
+        ArrayList<ReliefRequest> matchingRequests = matchingSkillReliefRequest(volunteer.getSkills());
+        if (matchingRequests.isEmpty())
+            matchingRequests = reliefRequests;
+        Address[] addresses = ReliefRequestAddresses(matchingRequests);
         MapTools mapTools = MapTools.getInstance();
+        // then select the closest address out of the matching requests
         Address closestAddress = mapTools.findClosestAddress(userAddress, addresses);
         ReliefRequest matchingRequest = getReliefRequest(closestAddress);
         return matchingRequest;
@@ -122,8 +122,18 @@ public class ReliefRequestList {
         return DataWriter.saveReliefRequests();
     }
 
-    private Address[] ReliefRequestAddresses() {
-        reliefRequests = getReliefRequests();
+    private ArrayList<ReliefRequest> matchingSkillReliefRequest(Skills skill) {
+        ArrayList<ReliefRequest> matchingRequests = new ArrayList<ReliefRequest>();
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
+        for( ReliefRequest reliefRequest : reliefRequests ) {
+            if ( reliefRequest.getSkillsNeed() == skill )
+                matchingRequests.add(reliefRequest);
+        }
+        return matchingRequests;
+    }
+
+    private Address[] ReliefRequestAddresses(ArrayList<ReliefRequest> reliefRequests) {
         Address[] addresses = new Address[reliefRequests.size()];
         for (int i = 0; i < reliefRequests.size(); ++i) {
             ReliefRequest reliefRequest = reliefRequests.get(i);
@@ -133,6 +143,8 @@ public class ReliefRequestList {
     }
 
     private ReliefRequest getReliefRequest(Address address) {
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         for ( ReliefRequest reliefRequest : reliefRequests ) {
             if ( reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
                 return reliefRequest;
@@ -144,11 +156,13 @@ public class ReliefRequestList {
         ReliefRequestList reliefRequestList = new ReliefRequestList();
         UserList userList = UserList.getInstance();
         User user = userList.getUser("jgrey");
+        Volunteer volunteer = (Volunteer) user;
         try {
-            ReliefRequest r = reliefRequestList.getSuggestedRequest(user);
+            ReliefRequest r = reliefRequestList.getSuggestedRequest(volunteer);
             System.out.println(r.getAddress());
         } catch (Exception e) {
-            System.out.print("Error: "+e);
+            System.out.println(e);
+            System.out.print(e.getStackTrace()[0].getLineNumber());
         }
     }
 }

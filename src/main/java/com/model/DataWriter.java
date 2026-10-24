@@ -137,6 +137,9 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_USER_UUID, request.getUserUUID().toString());
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_ADDRESS, request.getAddress());
+        requestDetails.put(RELIEF_REQUEST_CITY, request.getCity());
+        requestDetails.put(RELIEF_REQUEST_STATE, request.getState());
+        requestDetails.put(RELIEF_REQUEST_ZIP_CODE, request.getZipCode());
         requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMemberArr);
         requestDetails.put(RELIEF_REQUEST_IS_INDOORS, Boolean.toString(request.getIsIndoors()));
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, Boolean.toString(request.getIsMobile()));
