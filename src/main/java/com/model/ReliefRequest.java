@@ -179,13 +179,6 @@ public class ReliefRequest {
     }
 
     /**
-     * addComments method allows the users to make comments
-     */
-    public void addComments() {
-        // Implement logic to add comments
-    }
-
-    /**
      * getUUID returns an id
      * @return user uuid
      */
