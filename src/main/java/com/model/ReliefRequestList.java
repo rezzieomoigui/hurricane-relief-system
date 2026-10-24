@@ -1,6 +1,8 @@
 package com.model;
 import java.util.ArrayList;
 import java.util.UUID;
+import com.location.Address;
+import com.location.MapTools;
 
 
 /**
@@ -91,7 +93,7 @@ public class ReliefRequestList {
      * @param reliefRequestList list of relief requests
      * @param isAdmin checks is user is an administrator
      */
-    /**public ArrayList<ReliefRequest> getOrderedRequests(User user) 
+    public ArrayList<ReliefRequest> getOrderedRequests(User user) 
             throws IOException, InterruptedException {
         String address = user.getAddress();
         String city = user.getCity();
@@ -101,22 +103,10 @@ public class ReliefRequestList {
         // get user's skills. how to manage this since admin can also access this method?
         if (!userType.equals("Admin") && (!userType.equals("Volunteer"))) 
             return null;
-        Address userAddress = new Address(address, city, state, zipCode);
-        HashMap<ReliefRequest, Integer> requestPriorityPoints = new HashMap<ReliefRequest, Integer>();
-        for (int i = 0; i < this.reliefRequests.size(); ++i) {
-            int priorityPoints = 0;
-            ReliefRequest request = reliefRequests.get(i);
-            Address requestAddress = new Address(request.getAddress(), request.getCity(), request.getState(), request.getZipCode());
-            MapTools mapTools = MapTools.getInstance();
-            Double drivingTime = mapTools.getDrivingTime(userAddress, requestAddress);
-            if (drivingTime <= 900) // 15 minutes
-                priorityPoints += 10;
-            if (user.hasAttribute(Skills))
+        
             
-        }*/
-       // Address requestAddress = new Address(String this)
-        // create an Address object from relief request and entered address String
-        // list in order
+    }
+    
 
 
         // alternative logic: create copy of reliefRequests
@@ -136,5 +126,14 @@ public class ReliefRequestList {
      */
     public boolean save() {
         return DataWriter.saveReliefRequests();
+    }
+
+    private ArrayList<Address> ReliefRequestAddresses(ArrayList<ReliefRequest> reliefRequests) {
+        ArrayList<Address> addresses = new ArrayList<Address>();
+        for (int i = 0; i < reliefRequests.size(); ++i) {
+            ReliefRequest reliefRequest = reliefRequests.get(i);
+            addresses.add(new Address(reliefRequest.getAddress(), reliefRequest.getCity(), reliefRequest.getState(), reliefRequest.getZipCode()));
+        }
+        return addresses;
     }
 }
