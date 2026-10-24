@@ -1,6 +1,8 @@
 package com.model;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
+
 import com.location.Address;
 import com.location.MapTools;
 
@@ -11,6 +13,8 @@ import com.location.MapTools;
  */
 public class ReliefRequestList {
     private static ReliefRequestList reliefRequestList;
+
+    //private static MapTools mapTools; 
 
     private ArrayList<ReliefRequest> reliefRequests;
 
@@ -57,8 +61,8 @@ public class ReliefRequestList {
      * @param address user address
      * @return boolean of if request was added or not
      */
-    public boolean addReliefRequest(User user, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome) {
-        reliefRequests.add(new ReliefRequest(user.getUuid(), address, city, state, zipCode, partyMembers, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome));
+    public boolean addReliefRequest(User user, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int priority, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet) {
+        reliefRequests.add(new ReliefRequest(user.getUuid(), address, city, state, zipCode, partyMembers, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet));
         return true;
     }
 
@@ -89,36 +93,26 @@ public class ReliefRequestList {
     }
 
     /**
-     * prioritizeRequests adjusts order of requests based on priority level
-     * @param reliefRequestList list of relief requests
-     * @param isAdmin checks is user is an administrator
+     * Gives suggested request based on location
+     * @param User the user who needs a suggested request
      */
-    public ArrayList<ReliefRequest> getOrderedRequests(User user) 
+    public ReliefRequest getSuggestedRequest(User user) 
             throws IOException, InterruptedException {
+        String userType = user.getUserType().str;
+        if (!userType.equals("ADMIN") && (!userType.equals("VOLUNTEER"))) 
+            return null;
         String address = user.getAddress();
         String city = user.getCity();
         String state = user.getState();
         String zipCode = user.getZipCode();
-        String userType = user.getUsername();
-        // get user's skills. how to manage this since admin can also access this method?
-        if (!userType.equals("Admin") && (!userType.equals("Volunteer"))) 
-            return null;
-        
-            
+        Address userAddress = new Address(address, city, state, zipCode);
+        Address[] addresses = ReliefRequestAddresses();
+        MapTools mapTools = MapTools.getInstance();
+        Address closestAddress = mapTools.findClosestAddress(userAddress, addresses);
+        ReliefRequest matchingRequest = getReliefRequest(closestAddress);
+        return matchingRequest;
     }
     
-
-
-        // alternative logic: create copy of reliefRequests
-        // find closest shelter
-        // if this shelter matches with skills, 
-        // put this shelter at top of list 
-        // otherwise, remove the shelter from the arraylist copy and
-        // try the next closest shelter
-        // list length gets to 0? just return the closest shelter
-        // may need one version for isAdmin, another for isVolunteer
-        
-  //  }
 
     /**
      * save method saves the relief requests
@@ -128,12 +122,33 @@ public class ReliefRequestList {
         return DataWriter.saveReliefRequests();
     }
 
-    private ArrayList<Address> ReliefRequestAddresses(ArrayList<ReliefRequest> reliefRequests) {
-        ArrayList<Address> addresses = new ArrayList<Address>();
+    private Address[] ReliefRequestAddresses() {
+        reliefRequests = getReliefRequests();
+        Address[] addresses = new Address[reliefRequests.size()];
         for (int i = 0; i < reliefRequests.size(); ++i) {
             ReliefRequest reliefRequest = reliefRequests.get(i);
-            addresses.add(new Address(reliefRequest.getAddress(), reliefRequest.getCity(), reliefRequest.getState(), reliefRequest.getZipCode()));
+            addresses[i] = new Address(reliefRequest.getAddress(), reliefRequest.getCity(), reliefRequest.getState(), reliefRequest.getZipCode());
         }
         return addresses;
+    }
+
+    private ReliefRequest getReliefRequest(Address address) {
+        for ( ReliefRequest reliefRequest : reliefRequests ) {
+            if ( reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
+                return reliefRequest;
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        ReliefRequestList reliefRequestList = new ReliefRequestList();
+        UserList userList = UserList.getInstance();
+        User user = userList.getUser("jgrey");
+        try {
+            ReliefRequest r = reliefRequestList.getSuggestedRequest(user);
+            System.out.println(r.getAddress());
+        } catch (Exception e) {
+            System.out.print("Error: "+e);
+        }
     }
 }

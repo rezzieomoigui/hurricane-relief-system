@@ -3,10 +3,18 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ReliefRequestList",
+      "request": "launch",
+      "mainClass": "com.relief_system/com.model.ReliefRequestList",
+      "projectName": "hurricane-relief-system",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
       "name": "UUIDGenerator",
       "request": "launch",
       "mainClass": "com.relief_system/com.model.UUIDGenerator",
-      "projectName": "hurricane-relief-system"
+      "projectName": "hurricane-relief-system",
     },
     {
       "type": "java",
@@ -14,7 +22,8 @@
       "request": "launch",
       "mainClass": "com.relief_system/com.relief_system.App",
       "projectName": "hurricane-relief-system",
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "java",
@@ -23,7 +32,8 @@
       "mainClass": "com.relief_system/com.model.HurricaneReliefDriver",
       "projectName": "hurricane-relief-system",
       "cwd": "${workspaceFolder}",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "java",
@@ -40,7 +50,8 @@
       "request": "launch",
       "mainClass": "com.relief_system/com.model.DataLoader",
       "projectName": "hurricane-relief-system",
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "java",
@@ -48,7 +59,8 @@
       "request": "launch",
       "mainClass": "com.relief_system/com.model.DataWriter",
       "projectName": "hurricane-relief-system",
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}",
+      "envFile": "${workspaceFolder}/.env"
     }
   ]
 }

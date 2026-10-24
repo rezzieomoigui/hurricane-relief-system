@@ -1,1 +1,205 @@
-[{"hasPet":"false","needsMedicalAssistance":"false","address":"10 Branch Road","stayingHome":"true","userUUID":"7b2fb4fe-0eec-4165-8328-ff8b69dafdbd","isMobile":"true","uuid":"7b2fb4fe-0eec-4165-8328-ff8b69dafdbd","estimatedArrivalMinutes":"45","partyMembers":[{"needsMedicalAssistance":"false","name":"Sam Coulter","yearBorn":"2007","type":"PERSON"},{"needsMedicalAssistance":"false","name":"Elijah Brown","yearBorn":"1967","type":"PERSON"}],"isIndoors":"false","status":"SUBMITTED"},{"hasPet":"true","needsMedicalAssistance":"false","address":"11 Hopkins Road","stayingHome":"true","userUUID":"5fd7a87f-4d67-43a3-90e5-cb80c4e632e3","isMobile":"true","uuid":"5fd7a87f-4d67-43a3-90e5-cb80c4e632e3","estimatedArrivalMinutes":"31","partyMembers":[{"needsMedicalAssistance":"false","name":"Mitchell O'Connor","yearBorn":"2001","type":"PERSON"},{"needsMedicalAssistance":"false","name":"Sparky","yearBorn":"2023","type":"DOG"}],"isIndoors":"true","status":"IN_PROGRESS"}]
+[
+    {
+        "hasPet": "false",
+        "needsMedicalAssistance": "false",
+        "address": "360 Meeting Street",
+        "city": "Charleston",
+        "state": "South Carolina",
+        "zipCode": "29403",
+        "stayingHome": "false",
+        "userUUID": "8e49a701-12b3-4c5d-9e6f-71a2b3c4d501",
+        "isMobile": "true",
+        "uuid": "8e49a701-12b3-4c5d-9e6f-71a2b3c4d501",
+        "estimatedArrivalMinutes": "20",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Avery Mitchell",
+                "yearBorn": "1994",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Jordan Mitchell",
+                "yearBorn": "2015",
+                "type": "PERSON"
+            }
+        ],
+        "isIndoors": "true",
+        "status": "SUBMITTED"
+    },
+    {
+        "hasPet": "true",
+        "needsMedicalAssistance": "false",
+        "address": "135 Meeting Street",
+        "city": "Charleston",
+        "state": "South Carolina",
+        "zipCode": "29401",
+        "stayingHome": "false",
+        "userUUID": "2b7c8d92-34e5-4f60-a781-92b3c4d5e602",
+        "isMobile": "true",
+        "uuid": "2b7c8d92-34e5-4f60-a781-92b3c4d5e602",
+        "estimatedArrivalMinutes": "35",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Morgan Hayes",
+                "yearBorn": "1988",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Cooper",
+                "yearBorn": "2021",
+                "type": "DOG"
+            }
+        ],
+        "isIndoors": "false",
+        "status": "IN_PROGRESS"
+    },
+    {
+        "hasPet": "false",
+        "needsMedicalAssistance": "true",
+        "address": "188 Meeting Street", 
+        "city": "Charleston",
+        "state": "South Carolina", 
+        "zipCode": "29401",
+        "stayingHome": "false",
+        "userUUID": "3c8d9ea3-45f6-4071-b892-a3c4d5e6f703",
+        "isMobile": "false",
+        "uuid": "3c8d9ea3-45f6-4071-b892-a3c4d5e6f703",
+        "estimatedArrivalMinutes": "50",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "true",
+                "name": "Patricia Ellis",
+                "yearBorn": "1952",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Cameron Ellis",
+                "yearBorn": "1980",
+                "type": "PERSON"
+            }
+        ],
+        "isIndoors": "true",
+        "status": "SUBMITTED"
+    },
+    {
+        "hasPet": "true",
+        "needsMedicalAssistance": "false",
+        "address": "48 Elizabeth Street",
+        "city": "Charleston", 
+        "state": "South Carolina",
+        "zipCode": "29403",
+        "stayingHome": "false",
+        "userUUID": "4d9eafb4-5607-4182-89a3-b4d5e6f70804",
+        "isMobile": "true",
+        "uuid": "4d9eafb4-5607-4182-89a3-b4d5e6f70804",
+        "estimatedArrivalMinutes": "15",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Taylor Brooks",
+                "yearBorn": "1999",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Bailey",
+                "yearBorn": "2022",
+                "type": "DOG"
+            }
+        ],
+        "isIndoors": "false",
+        "status": "IN_PROGRESS"
+    },
+    {
+        "hasPet": "false",
+        "needsMedicalAssistance": "false",
+        "address": "79 Cumberland Street",
+        "city": "Charleston",
+        "state": "South Carolina", 
+        "zipCode": "29401",
+        "stayingHome": "false",
+        "userUUID": "5eafb0c5-6718-4293-9ab4-c5e6f7081905",
+        "isMobile": "true",
+        "uuid": "5eafb0c5-6718-4293-9ab4-c5e6f7081905",
+        "estimatedArrivalMinutes": "25",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Devon Carter",
+                "yearBorn": "1985",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Riley Carter",
+                "yearBorn": "2012",
+                "type": "PERSON"
+            }
+        ],
+        "isIndoors": "true",
+        "status": "SUBMITTED"
+    },
+    {
+        "hasPet": "false",
+        "needsMedicalAssistance": "true",
+        "address": "6 Chalmers Street",
+        "city": "Charleston", 
+        "state": "South Carolina",
+        "zipCode": "29401",
+        "stayingHome": "false",
+        "userUUID": "6fb0c1d6-7829-43a4-abc5-d6f708192a06",
+        "isMobile": "true",
+        "uuid": "6fb0c1d6-7829-43a4-abc5-d6f708192a06",
+        "estimatedArrivalMinutes": "40",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "true",
+                "name": "Leslie Bennett",
+                "yearBorn": "1963",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Jamie Bennett",
+                "yearBorn": "1961",
+                "type": "PERSON"
+            }
+        ],
+        "isIndoors": "true",
+        "status": "IN_PROGRESS"
+    },
+    {
+        "hasPet": "true",
+        "needsMedicalAssistance": "false",
+        "address": "80 Broad Street",
+        "city": "Charleston",
+        "South Carolina": "South Carolina",
+        "zipCode": "29401",
+        "stayingHome": "false",
+        "userUUID": "70c1d2e7-893a-44b5-bcd6-e708192a3b07",
+        "isMobile": "true",
+        "uuid": "70c1d2e7-893a-44b5-bcd6-e708192a3b07",
+        "estimatedArrivalMinutes": "30",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Alex Parker",
+                "yearBorn": "1991",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Scout",
+                "yearBorn": "2020",
+                "type": "DOG"
+            }
+        ],
+        "isIndoors": "false",
+        "status": "SUBMITTED"
+    }
+]

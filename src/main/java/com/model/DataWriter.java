@@ -12,7 +12,7 @@ public class DataWriter extends DataConstants {
     public static void main(String[] args) {
         saveUsers();
         //saveShelters();
-        saveReliefRequests();
+        //saveReliefRequests();
     }
 
     public static boolean saveUsers() {
@@ -112,6 +112,8 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_DATE_OF_BIRTH, user.getDateOfBirth());
         userDetails.put(USER_ADDRESS, user.getAddress());
         userDetails.put(USER_ZIP_CODE, user.getZipCode());
+        userDetails.put(USER_CITY, user.getCity());
+        userDetails.put(USER_STATE, user.getState());
         userDetails.put(USER_LANGUAGE, user.getLanguage());
         userDetails.put(USER_IS_ADMIN, Boolean.toString(user.isAdmin()));
         userDetails.put(USER_USER_TYPE, user.getUserType().str);
