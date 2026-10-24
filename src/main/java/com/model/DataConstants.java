@@ -14,12 +14,12 @@ public abstract class DataConstants {
     protected static final String SHELTER_SHELTER_RESOURCES = "shelterResources";
     protected static final String SHELTER_VISUAL_DESCRIPTION = "visualDescription";
 
-    protected static final String PERSON_FILE_NAME = "json_files/person.json";
-    protected static final String PERSON_UUID = "uuid";
-    protected static final String PERSON_FIRST_NAME = "firstName";
-    protected static final String PERSON_LAST_NAME = "lastName";
-    protected static final String PERSON_EMAIL = "email";
-    protected static final String PERSON_TYPE = "personType";
+    protected static final String USER_FILE_NAME = "json_files/user.json";
+    protected static final String USER_UUID = "uuid";
+    protected static final String USER_FIRST_NAME = "firstName";
+    protected static final String USER_LAST_NAME = "lastName";
+    protected static final String USER_EMAIL = "email";
+    protected static final String USER_TYPE = "userType";
     protected static final String USER_USERNAME = "username";
     protected static final String USER_PASSWORD = "password";
     protected static final String USER_DATE_OF_BIRTH = "dateOfBirth";

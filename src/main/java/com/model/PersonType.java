@@ -1,6 +1,6 @@
 package com.model;
 
-public enum PersonType {
+public enum UserType {
    VOLUNTEER("VOLUNTEER"), // Volunteers are also Users and People
    USER("USER"), // Users are also people
    PARTY_MEMBER("PARTY_MEMBER"); // PartyMembers are also People
@@ -9,7 +9,7 @@ public enum PersonType {
 
     public String str;  
 
-    private PersonType(String str) {
+    private UserType(String str) {
         this.str = str;
     } 
 }
