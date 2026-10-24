@@ -164,7 +164,7 @@ public class ReliefRequest {
 
     /**
      * getZipCode gets the zip code of the user who wrote this request
-     * 
+     * @return zip code of user location
      */
     public String getZipCode() {
         return this.zipCode;
@@ -193,22 +193,42 @@ public class ReliefRequest {
         return this.uuid;
     }
 
+    /**
+     * getAddress gets the user address
+     * @return user address
+     */
     public String getAddress() {
         return this.address;
     }
 
+    /**
+     * getCity gets the user city
+     * @return city of user location
+     */
     public String getCity() {
         return this.city;
     }
 
+    /**
+     * getState gets the user state
+     * @return state of user location
+     */
     public String getState() {
         return this.state;
     }
 
+    /**
+     * getPartyMembers gets the party members of the relief request
+     * @return arrayList of other members of the party
+     */
     public ArrayList<PartyMember> getPartyMembers() {
         return this.partyMembers;
     }
 
+    /**
+     * getIsIndoors gets if the user is indoors
+     * @return boolean depending on if the user is indoors or not
+     */
     public boolean getIsIndoors() {
         return isIndoors;
     }
@@ -254,6 +274,10 @@ public class ReliefRequest {
         return stayingHome;
     }
 
+    /**
+     * getHasPet gets if the user has a pet
+     * @return boolean based on if the user has a pet or not
+     */
     public boolean getHasPet() {
         return hasPet;
     }
