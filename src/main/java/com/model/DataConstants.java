@@ -33,9 +33,10 @@ public abstract class DataConstants {
     protected static final String VOLUNTEER_FIRST_RESPONDER = "firstResponder";
     protected static final String VOLUNTEER_CAN_SWIM = "canSwim";
     protected static final String VOLUNTEER_IS_SHELTER_OWNER = "isShelterOwner";
+    protected static final String PARTY_MEMBER_NAME = "name";
     protected static final String PARTY_MEMBER_YEAR_BORN = "yearBorn";
     protected static final String PARTY_MEMBER_NEEDS_MEDICAL_ASSISTANCE = "needsMedicalAssistance";
-    protected static final String PARTY_MEMBER_TYPE = "partyMemberType";
+    protected static final String PARTY_MEMBER_TYPE = "type";
 
     protected static final String RELIEF_REQUEST_FILE_NAME = "json_files/reliefRequest.json";
     protected static final String RELIEF_REQUEST_USER_UUID = "userUUID";
@@ -52,6 +53,7 @@ public abstract class DataConstants {
     protected static final String RELIEF_REQUEST_PRIORITY = "priority";
     protected static final String RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES = "estimatedArrivalMinutes";
     protected static final String RELIEF_REQUEST_STAYING_HOME = "stayingHome";
+    protected static final String RELIEF_REQUEST_ARRAY_TEST = "test";
 
     /*
     protected static final String VOLUNTEER_FILE_NAME = "json_files/volunteer.json";

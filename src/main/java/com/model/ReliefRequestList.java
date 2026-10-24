@@ -1,11 +1,6 @@
 package com.model;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.HashMap;
-
-import com.location.Address;
-import com.location.MapTools;
 
 
 /**
@@ -14,6 +9,7 @@ import com.location.MapTools;
  */
 public class ReliefRequestList {
     private static ReliefRequestList reliefRequestList;
+
     private ArrayList<ReliefRequest> reliefRequests;
 
     /**
@@ -24,10 +20,6 @@ public class ReliefRequestList {
         //reliefRequests = (loaded != null) ? loaded : new ArrayList<ReliefRequest>();
     }
 
-    /**
-     * getInstance returns an instance of the relief request list
-     * @return instance of relief request
-     */
     public static ReliefRequestList getInstance() {
         if (reliefRequestList == null) {
             reliefRequestList = new ReliefRequestList();
@@ -136,7 +128,7 @@ public class ReliefRequestList {
         // list length gets to 0? just return the closest shelter
         // may need one version for isAdmin, another for isVolunteer
         
-    }
+  //  }
 
     /**
      * save method saves the relief requests

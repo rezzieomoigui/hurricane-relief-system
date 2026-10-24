@@ -10,8 +10,8 @@ import java.util.HashMap;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
-        savePeople();
-        saveShelters();
+        //savePeople();
+        //saveShelters();
         saveReliefRequests();
     }
 
@@ -103,12 +103,13 @@ public class DataWriter extends DataConstants {
 
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
-        userDetails.put(USER_UUID, user.getUuid().toString());
-        userDetails.put(USER_FIRST_NAME, user.getFirstName());
-        userDetails.put(USER_LAST_NAME, user.getLastName());
+        userDetails.put(PERSON_UUID, user.getUuid().toString());
+        userDetails.put(PERSON_FIRST_NAME, user.getFirstName());
+        userDetails.put(PERSON_LAST_NAME, user.getLastName());
+        userDetails.put(PERSON_EMAIL, user.getEmail());
+        userDetails.put(PERSON_TYPE, user.getPersonType());
         userDetails.put(USER_USERNAME, user.getUsername());
         userDetails.put(USER_PASSWORD, user.getPassword());
-        userDetails.put(USER_EMAIL, user.getEmail());
         userDetails.put(USER_DATE_OF_BIRTH, user.getDateOfBirth());
         userDetails.put(USER_ADDRESS, user.getAddress());
         userDetails.put(USER_CITY, user.getCity());
@@ -116,7 +117,6 @@ public class DataWriter extends DataConstants {
         userDetails.put(USER_ZIP_CODE, user.getZipCode());
         userDetails.put(USER_LANGUAGE, user.getLanguage());
         userDetails.put(USER_IS_ADMIN, Boolean.toString(user.isAdmin()));
-        userDetails.put(USER_TYPE, user.getUserType());
         if (user.getUserType().equals("Volunteer")) {
             Volunteer volunteer = (Volunteer) user;
             userDetails.put(VOLUNTEER_SKILLS, volunteer.getSkills().str);
@@ -128,15 +128,20 @@ public class DataWriter extends DataConstants {
     }
 
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
-        HashMap<String, String> partyMembers = convertPartyMembers(request.getPartyMembers());
         JSONObject requestDetails = new JSONObject();
+        //HashMap<String, String> partyMembers = convertPartyMembers(request.getPartyMembers());
+        JSONArray partyMemberArr = new JSONArray();
+        ArrayList<PartyMember> partyMembers = request.getPartyMembers();
+        for (int i = 0; i < partyMembers.size(); ++i) {
+            partyMemberArr.add(getPartyMemberJSON(partyMembers.get(i)));
+        }
         requestDetails.put(RELIEF_REQUEST_USER_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_ADDRESS, request.getAddress());
         requestDetails.put(RELIEF_REQUEST_CITY, request.getCity());
         requestDetails.put(RELIEF_REQUEST_STATE, request.getState());
         requestDetails.put(RELIEF_REQUEST_ZIP_CODE, request.getZipCode());
-        requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMembers);
+        requestDetails.put(RELIEF_REQUEST_PARTY_MEMBERS, partyMemberArr);
         requestDetails.put(RELIEF_REQUEST_IS_INDOORS, Boolean.toString(request.isIndoors()));
         requestDetails.put(RELIEF_REQUEST_IS_MOBILE, Boolean.toString(request.isMobile()));
         requestDetails.put(RELIEF_REQUEST_NEEDS_MEDICAL_ASSISTANCE, Boolean.toString(request.needsMedicalAssistance()));
@@ -154,5 +159,12 @@ public class DataWriter extends DataConstants {
         return partyMembersMap;
     }
 
-
+    private static JSONObject getPartyMemberJSON(PartyMember partyMember) {
+        JSONObject partyMemberDetails = new JSONObject();
+        partyMemberDetails.put(PARTY_MEMBER_NAME, partyMember.getName());
+        partyMemberDetails.put(PARTY_MEMBER_YEAR_BORN, partyMember.getYearBorn());
+        partyMemberDetails.put(PARTY_MEMBER_NEEDS_MEDICAL_ASSISTANCE, Boolean.toString(partyMember.needsMedicalAssistance()));
+        partyMemberDetails.put(PARTY_MEMBER_TYPE, partyMember.getType().str);
+        return partyMemberDetails;
+    }
 }

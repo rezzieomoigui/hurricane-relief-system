@@ -1,16 +1,14 @@
 package com.model;
 
-import java.util.UUID;
-
 /**
  * PartyMember Class creates party members of type person
  * Prevents all party members from having to be users of system
  * @author Fantastic Four
  */
-public class PartyMember extends Person {
+public class PartyMember {
     //private UUID partyMemberID;
     //private String firstName;
-    //private String lastName;
+    private String name;
     private String yearBorn;
     private boolean needsMedicalAssistance;
     private Being type;
@@ -27,11 +25,16 @@ public class PartyMember extends Person {
      * @param email party member email
      * @param personType person Type
      */
-    public PartyMember(UUID personID, String firstName, String lastName, String yearBorn, boolean needsMedicalAssistance, Being type, String email, PersonType personType) {
-        super(personID, firstName, lastName, email, personType);
+    public PartyMember(String name, String yearBorn, boolean needsMedicalAssistance, Being type) {
+        //super(personID, firstName, lastName, email, personType);
+        this.name = name;
         this.yearBorn = yearBorn;
         this.needsMedicalAssistance = needsMedicalAssistance;
         this.type = type;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     /**
@@ -46,7 +49,7 @@ public class PartyMember extends Person {
      * getNeedsMedicalAssistance checks if the specific party member needs medical assitance
      * @return boolean based on whether or not the specific party member needs medical assistance
      */
-    public boolean getNeedsMedicalAssistance() {
+    public boolean needsMedicalAssistance() {
         return needsMedicalAssistance;
     }
 

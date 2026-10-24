@@ -23,40 +23,22 @@ public class User extends Person{
     private PersonType personType;
 
     /**
-     * User constructor creates user
+     * User constructor creates user from DataLoader
      * @param uuid user id number 
      * @param username user username
      * @param firstName user first name
      * @param lastName user last name
      * @param password user password
-<<<<<<< HEAD
-     * @param personType person type
-     */
-    public User(UUID uuid, String username, String firstName, String lastName, String password, String email, PersonType personType) {
-        super(uuid, firstName, lastName, email, personType);
-        this.username = username;
-        this.password = password;
-    }
-
-    /**
-     * User constructor creates user
-     * @param uuid user id number 
-     * @param username user username
-     * @param firstName user first name
-     * @param lastName user last name
-     * @param password user password
-=======
->>>>>>> branch-Abagail
      * @param email user email
      * @param dateOfBirth user birthday
      * @param address user address
      * @param zipCode user zip code
      * @param language user language
-     * @param isAdmin checks if user is an administrator
      * @param personType person type
+     * @param isAdmin Whether the user is an admin
      */
     public User(UUID uuid, String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String zipCode, String language, boolean isAdmin, PersonType personType) {
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, PersonType personType, boolean isAdmin) {
         super(uuid, firstName, lastName, email, personType);
         this.username = username;
         this.password = password;
@@ -66,8 +48,8 @@ public class User extends Person{
         this.state = state;
         this.zipCode = zipCode;
         this.language = language;
+        this.personType = personType;
         this.isAdmin = isAdmin;
-        this.userType = userType;
     }
 
     /**
@@ -81,10 +63,11 @@ public class User extends Person{
      * @param address user address
      * @param zipCode user zip code
      * @param language user language
-     * @param isAdmin checks if user is an administrator
+     * @param isAdmin
      */
     public User(String firstName, String lastName, String username, String password,
-    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, String userType) {
+    String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, PersonType personType, boolean isAdmin) {
+        super(firstName, lastName, email, personType);
         this.uuid = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
@@ -97,8 +80,8 @@ public class User extends Person{
         this.state = state;
         this.zipCode = zipCode;
         this.language = language;
+        this.personType = personType;
         this.isAdmin = isAdmin;
-        this.userType = userType;
     }
 
     /**
@@ -155,6 +138,7 @@ public class User extends Person{
         return this.uuid;
     }
 
+    @Override
     /**
      * getFirstName returns the first name
      * @return user first name
@@ -163,6 +147,7 @@ public class User extends Person{
         return firstName;
     }
 
+    @Override
     /**
      * getLastName returns the last name    
      * @return user last name
@@ -187,7 +172,8 @@ public class User extends Person{
         return password;
     }
 
-    /**
+    @Override
+    /** 
      * getEmail returns the email
      * @return user email
      */
@@ -251,6 +237,7 @@ public class User extends Person{
         return isAdmin;
     }
 
+    @Override 
     public PersonType getPersonType() {
         return this.personType;
     }

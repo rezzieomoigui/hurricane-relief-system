@@ -15,7 +15,7 @@ public class Person {
     private PersonType personType;
 
     /**
-     * Person constructor initializes person object
+     * Person constructor initializes person object from DataLoader
      * @param personID person id
      * @param firstName person first name
      * @param lastName person last name
@@ -24,6 +24,21 @@ public class Person {
      */
     public Person(UUID personID, String firstName, String lastName, String email, PersonType personType) {
         this.personID = personID;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.personType = personType;
+    }
+
+   /**
+    * Constructs a new Person
+    * @param firstName Person's first name
+    * @param lastName Person's last name
+    * @param email The person's email address
+    * @param personType The person's type
+    */ 
+    public Person(String firstName, String lastName, String email, PersonType personType) {
+        this.personID = UUID.randomUUID();
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;

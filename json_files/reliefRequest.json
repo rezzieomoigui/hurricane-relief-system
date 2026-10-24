@@ -1,20 +1,58 @@
 [
     {
         "zipCode": "29218",
+        "needsMedicalAssistance": "false",
         "address": "10 Branch Road",
         "city": "Charleston",
         "uuid": "7b2fb4fe-0eec-4165-8328-ff8b69dafdbd",
         "estimatedArrivalMinutes": "45",
-        "isInjured": "false",
         "stayingHome": "true",
         "userUUID": "7b2fb4fe-0eec-4165-8328-ff8b69dafdbd",
         "state": "South Carolina",
         "isMobile": "true",
-        "partyMembers": {
-            "Anderson Peters": "Child",
-            "Sarah Samuels": "Adult"
-        },
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Sam Coulter",
+                "yearBorn": "2007",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Elijah Brown",
+                "yearBorn": "1967",
+                "type": "PERSON"
+            }
+        ],
         "isIndoors": "false",
-        "status": "Submitted"
+        "status": "SUBMITTED"
+    },
+    {
+        "zipCode": "29211",
+        "needsMedicalAssistance": "false",
+        "address": "11 Hopkins Road",
+        "city": "Charleston",
+        "uuid": "5fd7a87f-4d67-43a3-90e5-cb80c4e632e3",
+        "estimatedArrivalMinutes": "31",
+        "stayingHome": "true",
+        "userUUID": "5fd7a87f-4d67-43a3-90e5-cb80c4e632e3",
+        "state": "South Carolina",
+        "isMobile": "true",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Mitchell O'Connor",
+                "yearBorn": "2001",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Sparky",
+                "yearBorn": "2023",
+                "type": "DOG"
+            }
+        ],
+        "isIndoors": "true",
+        "status": "IN_PROGRESS"
     }
 ]

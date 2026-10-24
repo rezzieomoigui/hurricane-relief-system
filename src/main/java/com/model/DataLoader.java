@@ -55,8 +55,10 @@ public class DataLoader extends DataConstants {
                     String dateOfBirth = (String)personJSON.get(USER_DATE_OF_BIRTH);
                     String language = (String)personJSON.get(USER_LANGUAGE);
                     String address = (String)personJSON.get(USER_ADDRESS);
+                    String city = (String)personJSON.get(USER_CITY);
+                    String state = (String)personJSON.get(USER_STATE);
                     boolean isAdmin = Boolean.parseBoolean((String)personJSON.get(USER_IS_ADMIN));
-                    people.add(new User(personID, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, personType));
+                    people.add(new User(personID, firstName, lastName, userName, password, email, dateOfBirth, address, city, state, zipCode, language, isAdmin, personType));
                 }
                 if (personType == PersonType.VOLUNTEER) {
                     String userName = (String)personJSON.get(USER_USERNAME);
@@ -65,12 +67,14 @@ public class DataLoader extends DataConstants {
                     String dateOfBirth = (String)personJSON.get(USER_DATE_OF_BIRTH);
                     String language = (String)personJSON.get(USER_LANGUAGE);
                     String address = (String)personJSON.get(USER_ADDRESS);
+                    String city = (String)personJSON.get(USER_CITY);
+                    String state = (String)personJSON.get(USER_STATE);
                     boolean isAdmin = Boolean.parseBoolean((String)personJSON.get(USER_IS_ADMIN));
                     boolean firstResponder = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_FIRST_RESPONDER));
                     boolean canSwim = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_CAN_SWIM));
                     boolean isShelterOwner = Boolean.parseBoolean((String)personJSON.get(VOLUNTEER_IS_SHELTER_OWNER));
                     Skills skills = Skills.valueOf(((String)personJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
-                    people.add(new Volunteer(personID, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, personType, skills, firstResponder, canSwim, isShelterOwner));
+                    people.add(new Volunteer(personID, firstName, lastName, userName, password, email, dateOfBirth, address, city, state, zipCode, language, isAdmin, personType, skills, firstResponder, canSwim, isShelterOwner));
                 }
                 if (personType == PersonType.PARTY_MEMBER) {
                     String yearBorn = (String)personJSON.get(PARTY_MEMBER_YEAR_BORN);
@@ -137,13 +141,14 @@ public class DataLoader extends DataConstants {
             JSONArray reliefRequestArray = (JSONArray)new JSONParser().parse(reader);
             for (int i = 0; i < reliefRequestArray.size(); i++) {
                 JSONObject reliefRequestJSON = (JSONObject)reliefRequestArray.get(i);
-                UUID id = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
+                UUID uuid = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_UUID));
                 UUID userUUID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_USER_UUID));
                 String address = (String)reliefRequestJSON.get(RELIEF_REQUEST_ADDRESS);
                 String city = (String)reliefRequestJSON.get(RELIEF_REQUEST_CITY);
                 String state = (String)reliefRequestJSON.get(RELIEF_REQUEST_STATE);
                 String zipCode = (String)reliefRequestJSON.get(RELIEF_REQUEST_ZIP_CODE);
-                JSONObject partyMembers = (JSONObject)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
+                JSONArray partyMembers = (JSONArray)reliefRequestJSON.get(RELIEF_REQUEST_PARTY_MEMBERS);
+                ArrayList<PartyMember> partyMemberArr = convertPartyMembers(partyMembers);
                 /*ArrayList<PartyMember> partyMembersArray = new ArrayList<PartyMember>();
                 for (Object key: partyMembers.keySet()) {
                     String name = (String) key;
@@ -154,11 +159,11 @@ public class DataLoader extends DataConstants {
                 }*/
                 boolean isIndoors = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INDOORS));
                 boolean isMobile = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_MOBILE));
-                boolean isInjured = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_IS_INJURED));
+                boolean needsMedicalAssistance = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_NEEDS_MEDICAL_ASSISTANCE));
                 ReliefRequestStatus status = ReliefRequestStatus.valueOf(((String)reliefRequestJSON.get(RELIEF_REQUEST_STATUS)).toUpperCase());
                 int estimatedArrivalMinutes = Integer.parseInt((String)reliefRequestJSON.get(RELIEF_REQUEST_ESTIMATED_ARRIVAL_MINUTES));
                 boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
-                reliefRequests.add(new ReliefRequest(userUUID, address, city, state, zipCode, partyMembersArray, isIndoors, isMobile, isInjured, status, estimatedArrivalMinutes, estimatedArrivalMinutes, stayingHome));
+                reliefRequests.add(new ReliefRequest(userUUID, uuid, address, city, state, zipCode, partyMemberArr, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, estimatedArrivalMinutes, stayingHome));
             }
         return reliefRequests;
         }catch (Exception e) {
@@ -235,5 +240,18 @@ public class DataLoader extends DataConstants {
             e.printStackTrace();
         }
         return null;
+    }
+
+    private static ArrayList<PartyMember> convertPartyMembers(JSONArray partyMembers) {
+        ArrayList<PartyMember> partyMemberArr = new ArrayList<>();
+        for( int i = 0; i < partyMembers.size(); ++i ) {
+            JSONObject partyMemberJSON = (JSONObject)partyMembers.get(i);
+            String name = (String)(partyMemberJSON.get(PARTY_MEMBER_NAME));
+            String yearBorn = (String)(partyMemberJSON.get(PARTY_MEMBER_YEAR_BORN));
+            boolean needsMedicalAssistance = Boolean.parseBoolean((String)(partyMemberJSON.get(PARTY_MEMBER_NEEDS_MEDICAL_ASSISTANCE)));
+            Being type = Being.valueOf((String)partyMemberJSON.get(PARTY_MEMBER_TYPE));
+            partyMemberArr.add(new PartyMember(name, yearBorn, needsMedicalAssistance, type));
+        }
+        return partyMemberArr;
     }
 }

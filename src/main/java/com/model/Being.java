@@ -1,7 +1,7 @@
 package com.model;
 
 public enum Being {
-    CAT("Cat"), DOG("Dog"), PERSON("Person");
+    CAT("CAT"), DOG("DOG"), PERSON("PERSON");
 
     public String str;  
 

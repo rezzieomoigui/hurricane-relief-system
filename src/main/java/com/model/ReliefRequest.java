@@ -22,7 +22,7 @@ public class ReliefRequest {
     private int estimatedArrivalMinutes;
     private boolean stayingHome;
 
-    public ReliefRequest(UUID userUUID, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, int estimatedArrivalMinutes1, boolean stayingHome) {
+    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, int estimatedArrivalMinutes1, boolean stayingHome) {
         this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
