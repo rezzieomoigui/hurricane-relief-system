@@ -8,7 +8,7 @@ import java.util.UUID;
  * @author Fantastic Four
  */
 public class Shelter {
-    private UUID uuid;
+    private UUID id;
     private String address;
     private String zipCode;
     private ShelterType shelterType;
@@ -17,47 +17,52 @@ public class Shelter {
     private String visualDescription;
     private int numberOfOccupants;
     private int maxNumberOfOccupants;
+    private boolean medicalStaffAvailable;
 
     /**
-     * Creates a new shelter and generates its id.
+     * Creates a new shelter and generates its id
+     * @param shelterType shelter type
+     * @param address shelter address
+     * @param zipCode shelter zip code
+     * @param shelterResources shelter resources
+     * @param shelterStatus shelter status
+     * @param visualDescription shelter visual description
+     * @param numberOfOccupants number of people currently at shelter
+     * @param maxNumberOfOccupants maximum number of people shelter can hold
+     * @param medicalStaffAvailable checks if shelter has medical staff available
      */
     public Shelter(ShelterType shelterType, String address, String zipCode,
                    ArrayList<ShelterResources> shelterResources,
-                   ShelterStatus shelterStatus, String visualDescription) {
-        this(UUID.randomUUID(), shelterType, address, zipCode,
-                shelterResources, shelterStatus, visualDescription, 0, 10);
+                   ShelterStatus shelterStatus, String visualDescription,int numberOfOccupants,
+                   int maxNumberOfOccupants, boolean medicalStaffAvailable) {
+        UUID.randomUUID();
+        this.shelterType = shelterType;
+        this.address = address;
+        this.shelterResources = shelterResources;
+        this.shelterStatus = shelterStatus;
+        this.visualDescription = visualDescription;
+        this.numberOfOccupants = numberOfOccupants;
+        this.maxNumberOfOccupants = maxNumberOfOccupants;
+        this.medicalStaffAvailable = medicalStaffAvailable;
     }
 
     /**
-     * Recreates an existing shelter with a known id (used when loading from JSON).
+     * Recreates an existing shelter with a known id and occupant counts (used when loading frm JSON)
+     * @param id shelter id
+     * @param shelterType shelter type
+     * @param address shelter address
+     * @param zipCode shelter zip code
+     * @param shelterResources shelter resources
+     * @param shelterStatus shelter status
+     * @param visualDescription shelter visual description
+     * @param numberOfOccupants number of people currently at shelter
+     * @param maxNumberOfOccupants maximum number of people shelter can hold
+     * @param medicalStaffAvailable checks if shelter has medical staff available
      */
     public Shelter(UUID id, ShelterType shelterType, String address,
-                   String zipCode,
-                   ArrayList<ShelterResources> shelterResources,
-                   ShelterStatus shelterStatus, String visualDescription) {
-        this(id, shelterType, address, zipCode, shelterResources,
-                shelterStatus, visualDescription, 0, 10);
-    }
-
-    /**     * Creates a new shelter with occupant counts.
-     */
-    public Shelter(ShelterType shelterType, String address, String zipCode,
-                   ArrayList<ShelterResources> shelterResources,
+                   String zipCode, ArrayList<ShelterResources> shelterResources,
                    ShelterStatus shelterStatus, String visualDescription,
-                   int numberOfOccupants, int maxNumberOfOccupants) {
-        this(UUID.randomUUID(), shelterType, address, zipCode,
-                shelterResources, shelterStatus, visualDescription,
-                numberOfOccupants, maxNumberOfOccupants);
-    }
-
-    /**
-     * Recreates an existing shelter with its id and occupant counts.
-     */
-    public Shelter(UUID id, ShelterType shelterType, String address,
-                   String zipCode,
-                   ArrayList<ShelterResources> shelterResources,
-                   ShelterStatus shelterStatus, String visualDescription,
-                   int numberOfOccupants, int maxNumberOfOccupants) {
+                   int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable) {
 
         if (numberOfOccupants < 0 || maxNumberOfOccupants < 0
                 || numberOfOccupants > maxNumberOfOccupants) {
@@ -65,7 +70,7 @@ public class Shelter {
                     "Invalid shelter occupancy.");
         }
 
-        this.uuid = id;
+        this.id = id;
         this.shelterType = shelterType;
         this.address = address;
         this.zipCode = zipCode;
@@ -74,6 +79,7 @@ public class Shelter {
         this.visualDescription = visualDescription;
         this.numberOfOccupants = numberOfOccupants;
         this.maxNumberOfOccupants = maxNumberOfOccupants;
+        this.medicalStaffAvailable = medicalStaffAvailable;
     }
 
     /**
@@ -94,7 +100,7 @@ public class Shelter {
      * @return shelter UUID
      */
     public UUID getId() {
-        return uuid;
+        return id;
     }
 
     /**
