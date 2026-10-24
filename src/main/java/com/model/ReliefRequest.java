@@ -162,6 +162,10 @@ public class ReliefRequest {
         return UserList.getInstance().getUser(userUUID);
     }
 
+    public UUID getUserUUID() {
+        return this.userUUID;
+    }
+
     /**
      * getZipCode gets the zip code of the user who wrote this request
      * @return zip code of user location

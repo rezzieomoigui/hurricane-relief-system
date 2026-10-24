@@ -1,15 +1,13 @@
 [
     {
-        "zipCode": "29218",
+        "hasPet": "false",
         "needsMedicalAssistance": "false",
         "address": "10 Branch Road",
-        "city": "Charleston",
-        "uuid": "7b2fb4fe-0eec-4165-8328-ff8b69dafdbd",
-        "estimatedArrivalMinutes": "45",
         "stayingHome": "true",
         "userUUID": "7b2fb4fe-0eec-4165-8328-ff8b69dafdbd",
-        "state": "South Carolina",
         "isMobile": "true",
+        "uuid": "7b2fb4fe-0eec-4165-8328-ff8b69dafdbd",
+        "estimatedArrivalMinutes": "45",
         "partyMembers": [
             {
                 "needsMedicalAssistance": "false",
@@ -28,16 +26,14 @@
         "status": "SUBMITTED"
     },
     {
-        "zipCode": "29211",
+        "hasPet": "true",
         "needsMedicalAssistance": "false",
         "address": "11 Hopkins Road",
-        "city": "Charleston",
-        "uuid": "5fd7a87f-4d67-43a3-90e5-cb80c4e632e3",
-        "estimatedArrivalMinutes": "31",
         "stayingHome": "true",
         "userUUID": "5fd7a87f-4d67-43a3-90e5-cb80c4e632e3",
-        "state": "South Carolina",
         "isMobile": "true",
+        "uuid": "5fd7a87f-4d67-43a3-90e5-cb80c4e632e3",
+        "estimatedArrivalMinutes": "31",
         "partyMembers": [
             {
                 "needsMedicalAssistance": "false",
