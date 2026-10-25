@@ -129,6 +129,7 @@ public class ShelterList {
      */
     public ArrayList<Shelter> matchingShelters(int numPeople, ReliefRequest reliefRequest) {
         ArrayList<Shelter> matchingShelters = new ArrayList<>();
+        System.out.println("Shelters Loaded: " + shelters.size());
         for (Shelter shelter : shelters) {
             if (shelter.isAvailable() && spaceLeft(shelter, numPeople) && meetsMedicalRequirement(shelter, reliefRequest) && meetsPetRequirement(shelter, reliefRequest)) {
                 matchingShelters.add(shelter);
@@ -139,7 +140,7 @@ public class ShelterList {
 
     public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) throws IOException, InterruptedException {
         ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
-        System.out.println("Matching Shelter Found: " + matchingShelters.size());
+        // System.out.println("Matching Shelter Found: " + matchingShelters.size());
         if (matchingShelters.isEmpty()) {
             return null;
         }

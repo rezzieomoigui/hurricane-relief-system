@@ -52,7 +52,7 @@ public class HurricaneReliefDriver {
         System.out.println();
         System.out.println("Scenario 3: Rosa Finds a Shelter and Accepts the Relief Request");
         ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
-        System.out.println("Found " + (carterRequest != null));
+        // System.out.println("Found " + (carterRequest != null));
         Volunteer rosa = (Volunteer) application.getCurrentUser();
         Shelter closestShelter = application.closestMatchingShelter(3, carterRequest);
         if (closestShelter == null) {
