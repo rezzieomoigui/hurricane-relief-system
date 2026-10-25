@@ -23,6 +23,7 @@ public class ReliefRequest {
     private boolean stayingHome;
     private boolean hasPet;
     private Skills skillsNeed;
+    private UUID assignedVolunteerID;
 
     /**
      * ReliefRequest constructor creates an instance of a relief request object from DataLoader
@@ -57,6 +58,7 @@ public class ReliefRequest {
         this.stayingHome = stayingHome;
         this.hasPet = hasPet;
         this.skillsNeed = skillsNeed;
+        this.assignedVolunteerID = null;
     }
 
     /**
@@ -91,6 +93,7 @@ public class ReliefRequest {
         this.stayingHome = stayingHome;
         this.hasPet = hasPet;
         this.skillsNeed = skillsNeed;
+        this.assignedVolunteerID = null;
     }
     
     /**
@@ -117,6 +120,7 @@ public class ReliefRequest {
         this.stayingHome = false;
         this.hasPet = false;
         this.skillsNeed = Skills.NONE;
+        this.assignedVolunteerID = null;
     }
 
     /**
@@ -146,6 +150,10 @@ public class ReliefRequest {
         return UserList.getInstance().getUser(userUUID);
     }
 
+    /**
+     * getUserUUID gets the users id
+     * @return user id
+     */
     public UUID getUserUUID() {
         return this.userUUID;
     }
@@ -166,6 +174,10 @@ public class ReliefRequest {
         this.status = status;
     }
 
+    /**
+     * setPartyMembers sets the party members to the party members parameter
+     * @param partyMembers party members to add
+     */
     public void setPartyMembers(ArrayList<PartyMember> partyMembers) {
         this.partyMembers = partyMembers;
     }
@@ -277,6 +289,22 @@ public class ReliefRequest {
      */
     public String getRequestId() {
         return uuid.toString();
+    }
+
+    /**
+     * getAssignedVolunteerID gets the id of the assigned volunteer
+     * @return id of assigned volunteer
+     */
+    public UUID getAssignedVolunteerID() {
+        return assignedVolunteerID;
+    }
+
+    public boolean setAssignedVolunteer(Volunteer volunteer) {
+        if (volunteer == null) {
+            return false;
+        }
+        this.assignedVolunteerID = volunteer.getUuid();
+        return true;
     }
 
     @Override

@@ -35,9 +35,10 @@ public class Shelter {
                    ArrayList<ShelterResources> shelterResources,
                    ShelterStatus shelterStatus, String visualDescription,int numberOfOccupants,
                    int maxNumberOfOccupants, boolean medicalStaffAvailable) {
-        UUID.randomUUID();
+        this.id = UUID.randomUUID();
         this.shelterType = shelterType;
         this.address = address;
+        this.zipCode = zipCode;
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
         this.visualDescription = visualDescription;
@@ -242,6 +243,13 @@ public class Shelter {
         this.maxNumberOfOccupants = maxNumberOfOccupants;
     }
 
+    /**
+     * getMedicalStaffAvailable checks if medical staff are available
+     * @return boolean depending on if there are medical staff available at the shelter
+     */
+    public boolean getMedicalStaffAvailable() {
+        return medicalStaffAvailable;
+    }
     /**
      * Checks if the shelter is available.
      * @return true if the shelter is open or near capacity
