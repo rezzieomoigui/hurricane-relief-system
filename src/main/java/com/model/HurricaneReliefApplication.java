@@ -191,12 +191,6 @@ public class HurricaneReliefApplication {
         shelter.setNumberOfOccupants(numberOfOccupants, isAdmin);
     }
 
-    private String describeHurricane(Hurricane hurricane, String state) {
-        return "Hurricane " + hurricane.getName() + " (Category " + hurricane.getCategory() + ") "
-                + state + " your area. Expected landfall: "
-                + hurricane.getExpectedLandfall().format(Hurricane.LANDFALL_FORMAT) + ".";
-    }
-
     /**
      * save saves the users, shelters, relief requests and hurricanes
      * @return true if everything was saved
