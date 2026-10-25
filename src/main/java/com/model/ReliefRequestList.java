@@ -21,9 +21,7 @@ public class ReliefRequestList {
      */
     private ReliefRequestList() {
         ArrayList<ReliefRequest> loaded = DataLoader.getReliefRequests();
-        if (loaded != null && !loaded.isEmpty()) {
-            this.reliefRequests = loaded;
-        }
+        reliefRequests = (loaded != null) ? loaded : new ArrayList<ReliefRequest>();
     }
 
     public static ReliefRequestList getInstance() {
@@ -52,7 +50,7 @@ public class ReliefRequestList {
      * @return arrayList of relief requests
      */
     public ArrayList<ReliefRequest> getReliefRequests() {
-        return this.reliefRequests;
+        return DataLoader.getReliefRequests();
     }
 
     /**
@@ -62,6 +60,8 @@ public class ReliefRequestList {
      * @return boolean of if request was added or not
      */
     public ReliefRequest addReliefRequest(User user, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         ReliefRequest request = new ReliefRequest(user.getUuid(), user.getAddress(), user.getCity(), user.getState(), user.getZipCode(), isIndoors, isMobile, needsMedicalAssistance, ReliefRequestStatus.SUBMITTED, 0, stayingHome, hasPet, skillsNeed);
         reliefRequests.add(request);
         return request;
@@ -73,6 +73,8 @@ public class ReliefRequestList {
      * @return boolean true if the request was added (false if it was already in the list)
      */
     public boolean addReliefRequest(ReliefRequest request) {
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         if (request == null || getReliefRequestById(request.getUuid()) != null) {
             return false;
         }
@@ -127,14 +129,6 @@ public class ReliefRequestList {
         return matchingRequest;
     }
     
-    public String toString() {
-        String str = "";
-        for (ReliefRequest reliefRequest : reliefRequests) {
-            if (reliefRequest.getStatus() == ReliefRequestStatus.SUBMITTED)
-                str += "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" + reliefRequest.toString() + "\n";
-        }
-        return str;
-    }
 
     /**
      * save method saves the relief requests
@@ -144,6 +138,12 @@ public class ReliefRequestList {
         return DataWriter.saveReliefRequests();
     }
 
+    /**
+     * markCompleteRequest marks a relief request as completed
+     * @param request relief request
+     * @param isAdmin checks if the user is an administrator
+     * @return boolean based on if the request was marked as completed
+     */
     public String markCompleteRequest(ReliefRequest request, boolean isAdmin) {
         if (!isAdmin) {
             return "Error: only admin can mark request as completed!";
@@ -152,8 +152,15 @@ public class ReliefRequestList {
         return "Request marked complete";
     }
 
+    /**
+     * matchingSkillReliefRequest adds relief requests with that skill to an array list
+     * @param skill user skill
+     * @return arrayList of relief requests containing given skill
+     */
     private ArrayList<ReliefRequest> matchingSkillReliefRequest(Skills skill) {
         ArrayList<ReliefRequest> matchingRequests = new ArrayList<ReliefRequest>();
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         for( ReliefRequest reliefRequest : reliefRequests ) {
             if ( reliefRequest.getSkillsNeed() == skill )
                 matchingRequests.add(reliefRequest);
@@ -161,6 +168,11 @@ public class ReliefRequestList {
         return matchingRequests;
     }
 
+    /**
+     * ReliefRequestAddresses gets the addresses of the relief requests
+     * @param reliefRequests relief requests
+     * @return array of addresses of the relief requests
+     */
     private Address[] ReliefRequestAddresses(ArrayList<ReliefRequest> reliefRequests) {
         Address[] addresses = new Address[reliefRequests.size()];
         for (int i = 0; i < reliefRequests.size(); ++i) {
@@ -170,7 +182,14 @@ public class ReliefRequestList {
         return addresses;
     }
 
+    /**
+     * getReliefRequest gets the relief request based on address
+     * @param address user address
+     * @return relief request with provided address
+     */
     private ReliefRequest getReliefRequest(Address address) {
+        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         for ( ReliefRequest reliefRequest : reliefRequests ) {
             if (reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
                 return reliefRequest;
@@ -178,6 +197,16 @@ public class ReliefRequestList {
         return null;
     }
 
+    /**
+     * getReliefRequest gets the relief request 
+     * @param address user address
+     * @param city user city
+     * @param state user state
+     * @param zipCode user zip code
+     * @param submitterFirstName first name of person submitting request
+     * @param submitterLastName last name of person submitting request
+     * @return relief request matching given parameters
+     */
     public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
         for ( ReliefRequest reliefRequest : reliefRequests ) {
             if ( reliefRequest.getAddress().equals(address) && 

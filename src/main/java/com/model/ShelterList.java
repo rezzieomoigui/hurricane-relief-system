@@ -79,6 +79,82 @@ public class ShelterList {
     }
 
     /**
+     * spaceLeft method checks if there is enough space for a given number of people at a shelter
+     * @param shelter shelter being looked at
+     * @param num number of people needing space at shelter
+     * @return boolean based on if there is space at the given shelter
+     */
+    public boolean spaceLeft(Shelter shelter, int num) {
+        if (shelter.getMaxNumberOfOccupants() - shelter.getNumberOfOccupants() >= num && num > 0) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * meetsPetRequirement checks if the shelter is pet friendly if the user has pets
+     * @param shelter shelter being looked at
+     * @param reliefRequest relief request showing if user has pets
+     * @return boolean depending on if the shelter is pet friendly and they have pets or not
+     */
+    public boolean meetsPetRequirement(Shelter shelter, ReliefRequest reliefRequest) {
+        if (!reliefRequest.getHasPet()) {
+            return true;
+        }
+        return shelter.getShelterResources().contains(ShelterResources.PET_FRIENDLY);
+    }
+
+    /**
+     * meetsMedicalRequirement checks if the shelter has medical staff available and if that is needed by the user
+     * @param shelter shelter being looked at
+     * @param reliefRequest relief request showing if the user needs medical assistance
+     * @return boolean depending on if the shelter has medical staff and if they are needed by the user or not
+     */
+    public boolean meetsMedicalRequirement(Shelter shelter, ReliefRequest reliefRequest) {
+        if (!reliefRequest.getNeedsMedicalAssistance()) {
+            return true;
+        }
+        return shelter.getMedicalStaffAvailable();
+    }
+
+    /**
+     * matchingShelters checks requirements and then adds shelters that fit those requirements to an arrayList
+     * @param numPeople number of people needing space at a shelter
+     * @param reliefRequest relief request
+     * @return arrayList of shelters that fit the requirements
+     */
+    public ArrayList<Shelter> matchingShelters(int numPeople, ReliefRequest reliefRequest) {
+        ArrayList<Shelter> matchingShelters = new ArrayList<>();
+        for (Shelter shelter : shelters) {
+            if (shelter.isAvailable() && spaceLeft(shelter, numPeople) && meetsMedicalRequirement(shelter, reliefRequest) && meetsPetRequirement(shelter, reliefRequest)) {
+                matchingShelters.add(shelter);
+            }
+        }
+        return matchingShelters;
+    }
+
+    public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) {
+        ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
+        Shelter closest = null;
+        double shortestTime = Double.MAX_VALUE;
+        for (Shelter shelter : matchingShelters) {
+            double travellingTime = getDrivingTime()
+            if (travellingTime < shortestTime) {
+                shortestTime = travellingTime;
+                closest = shelter;
+            }
+        }
+        return closest;
+    }
+    
+    // working with this later 
+        int newOccupacy = shelter.getNumberOfOccupants() + numPeople;
+        shelter.setNumberOfOccupants(newOccupacy);
+        reliefRequest.setAssignedVolunteer(volunteer);
+        reliefRequest.setStatus(ReliefRequestStatus.ASSIGNED);
+        return true;
+
+    /**
      * addShelter method adds a shelter
      * @param shelterType type of shelter
      * @param address address of shelter
