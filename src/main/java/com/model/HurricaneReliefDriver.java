@@ -11,11 +11,11 @@ public class HurricaneReliefDriver {
 
  
     public void run() throws IOException, InterruptedException {
-        //scenario1();
-        //scenario2();
+        scenario1();
+        scenario2();
         scenario3();
-        //scenario5();
-        //scenario6();
+        scenario5();
+        scenario6();
     }
 
     public void scenario1() {
@@ -61,6 +61,10 @@ public class HurricaneReliefDriver {
         }
         System.out.println("Closest suitable shelter: ");
         System.out.println(closestShelter);
+        // System.out.println("Got here");
+        //System.out.println("Request null " + (carterRequest == null));
+        //System.out.println("Rosa null " + (rosa == null));
+        //System.out.println("Current user null " + (application.getCurrentUser() == null));
         boolean assigned = application.assignReliefRequest(3, carterRequest, rosa, application.getCurrentUser().isAdmin());
         System.out.println("Assignment successful? " + assigned);
         System.out.println("Updated relief request:");
