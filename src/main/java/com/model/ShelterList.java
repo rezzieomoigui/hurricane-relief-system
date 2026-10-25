@@ -146,7 +146,7 @@ public class ShelterList {
         }
         return closest;
     }
-    
+
     // working with this later 
         int newOccupacy = shelter.getNumberOfOccupants() + numPeople;
         shelter.setNumberOfOccupants(newOccupacy);
