@@ -53,6 +53,16 @@ public class ShelterList {
         return null;
     }
 
+    public Shelter getShelter(String address, String city, String state, String zipCode) {
+        for (Shelter shelter : this.shelters) {
+            if (shelter.getAddress().equals(address) && shelter.getCity().equals(city) &&
+                shelter.getState().equals(state) && shelter.getZipCode().equals(zipCode)) {
+                return shelter;
+            }
+        }
+        return null;
+    }
+
     /**
      * geShelters returns arraylist of shelters with a specific zip code
      * @param zipCode shelter zip code

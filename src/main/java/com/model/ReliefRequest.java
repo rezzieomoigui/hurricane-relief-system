@@ -119,24 +119,6 @@ public class ReliefRequest {
         this.skillsNeed = Skills.NONE;
     }
 
-    /**
-     * removePartyMember removes a user from the relief request
-     * @param user account user
-     * @return boolean based on if party member was correctly removed
-     */
-    public boolean removePartyMember(PartyMember partyMember) {
-        // Implement logic to remove a party member
-        return false;
-    }
-
-
-    /**
-     * notifyShelter method lets the shelter know when a relief request has been made
-     * @param shelter shelter
-     */
-    public void notifyShelter(Shelter shelter) {
-        // Implement logic to notify shelter
-    }
 
     /**
      * getUser looks up the user who wrote this relief request
@@ -283,7 +265,7 @@ public class ReliefRequest {
     public String toString() {
         String partyMemberStr = partyMembersToString();
         return "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" +
-        "Indoors? "+this.isIndoors + "\n" + "Able to move from location? " + this.isMobile + "\n" +
+        "Status: "+this.getStatus().str+"\nIndoors? "+this.isIndoors + "\n" + "Able to move from location? " + this.isMobile + "\n" +
         "Need medical assistance? " + this.needsMedicalAssistance + "\n" + "Staying home? " + 
         this.stayingHome + "\n" + "Have a pet? " + this.hasPet + "\nRescuer skills needed: "+this.skillsNeed+"\n"+partyMemberStr;
     }

@@ -171,6 +171,10 @@ public class Shelter {
         return shelterType;
     }
 
+    public ShelterStatus getStatus() {
+        return this.shelterStatus;
+    }
+
     /**
      * Sets the shelter type.
      * @param shelterType shelter type
@@ -244,7 +248,9 @@ public class Shelter {
      * Sets the current number of occupants.
      * @param numberOfOccupants number of occupants
      */
-    public void setNumberOfOccupants(int numberOfOccupants) {
+    public void setNumberOfOccupants(int numberOfOccupants, boolean isAdmin) {
+        if (!isAdmin)
+            return;
         if (numberOfOccupants < 0
                 || numberOfOccupants > maxNumberOfOccupants) {
             throw new IllegalArgumentException(
@@ -298,10 +304,22 @@ public class Shelter {
      */
     @Override
     public String toString() {
-        return shelterType + " at " + address + " " + zipCode
-                + " [" + shelterStatus
-                + ", Occupants: " + numberOfOccupants
-                + "/" + maxNumberOfOccupants
-                + ", Resources: " + shelterResources + "]";
+        return "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
+        "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" + this.shelterType +
+        "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of occupants: "+this.numberOfOccupants+
+        "\nMaximum number of occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
+        "\nShelter Resources: "+this.shelterResources.toString()+occupantsToString() + 
+        "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
+
+    }
+
+    private String occupantsToString() {
+        String str = "\n\nOCCUPANTS\n";
+        int age;
+        for ( PartyMember partyMember : this.occupants ) {
+            age = 2026 - Integer.parseInt(partyMember.getYearBorn());
+            str += "----------------------------------------------" + "\nname: "+partyMember.getName()+"\nage: "+age+"\nneeds medical assistance? "+partyMember.needsMedicalAssistance()+"\nI am a: "+partyMember.getType().str+"\n";
+        }
+        return str;
     }
 }

@@ -144,6 +144,14 @@ public class ReliefRequestList {
         return DataWriter.saveReliefRequests();
     }
 
+    public boolean markCompleteRequest(ReliefRequest request, boolean isAdmin) {
+        if (!isAdmin) {
+            return false;
+        }
+        request.setStatus(ReliefRequestStatus.COMPLETED);
+        return true;
+    }
+
     private ArrayList<ReliefRequest> matchingSkillReliefRequest(Skills skill) {
         ArrayList<ReliefRequest> matchingRequests = new ArrayList<ReliefRequest>();
         for( ReliefRequest reliefRequest : reliefRequests ) {
@@ -164,7 +172,17 @@ public class ReliefRequestList {
 
     private ReliefRequest getReliefRequest(Address address) {
         for ( ReliefRequest reliefRequest : reliefRequests ) {
-            if ( reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
+            if (reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
+                return reliefRequest;
+        }
+        return null;
+    }
+
+    public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
+        for ( ReliefRequest reliefRequest : reliefRequests ) {
+            if ( reliefRequest.getAddress().equals(address) && 
+            reliefRequest.getCity().equals(city) && reliefRequest.getState().equals(state) && 
+            reliefRequest.getZipCode().equals(zipCode) && reliefRequest.getUser().getFirstName().equals(submitterFirstName) && reliefRequest.getUser().getLastName().equals(submitterLastName)) 
                 return reliefRequest;
         }
         return null;

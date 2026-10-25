@@ -146,23 +146,6 @@ public class HurricaneReliefApplication {
 
 
     /**
-     * viewReliefRequest gets the details of a relief request.
-     * Only volunteers and administrators can view any request; other users can view their own.
-     * @param id relief request id
-     * @return the relief request, or null if it doesn't exist or can't be viewed
-     */
-    public ReliefRequest viewReliefRequest(UUID id) {
-        ReliefRequest request = reliefRequestList.getReliefRequestById(id);
-        if (request == null || currentUser == null) {
-            return null;
-        }
-        if (canManageRequests() || request.getUserUUID().equals(currentUser.getUuid())) {
-            return request;
-        }
-        return null;
-    }
-
-    /**
      * acceptRequest lets the logged in volunteer accept a submitted relief request
      * @param id relief request id
      * @return message saying what happened
@@ -183,39 +166,28 @@ public class HurricaneReliefApplication {
     }
 
     /**
-     * markCompleteRequest lets the logged in volunteer mark an accepted relief request as complete
+     * markCompleteRequest lets the logged in admin mark an accepted relief request as complete
      * @param id relief request id
-     * @return message saying what happened
+     * @param isAdmin 
+     * @return Whether marking as complete was successful
      */
-    public String markCompleteRequest(UUID id) {
-        if (!(currentUser instanceof Volunteer)) {
-            return "Only volunteers can complete relief requests.";
-        }
-        ReliefRequest request = reliefRequestList.getReliefRequestById(id);
-        if (request == null) {
-            return "Relief request not found.";
-        }
-        if (request.getStatus() != ReliefRequestStatus.IN_PROGRESS) {
-            return "Only accepted relief requests can be marked complete.";
-        }
-        ((Volunteer)currentUser).markCompleteRequest(request);
-        return "Relief request marked complete.";
+    public boolean markCompleteRequest(ReliefRequest request, boolean isAdmin) {
+        return reliefRequestList.markCompleteRequest(request, isAdmin);
     }
 
-    private boolean canManageRequests() {
-        return currentUser instanceof Volunteer || (currentUser != null && currentUser.isAdmin());
+    public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
+        return reliefRequestList.getReliefRequest(address, city, state, zipCode, submitterFirstName, submitterLastName);
     }
 
+    public Shelter getShelter(String address, String city, String state, String zipCode) {
+        return shelterList.getShelter(address, city, state, zipCode);
+    }
 
     private String describeHurricane(Hurricane hurricane, String state) {
         return "Hurricane " + hurricane.getName() + " (Category " + hurricane.getCategory() + ") "
                 + state + " your area. Expected landfall: "
                 + hurricane.getExpectedLandfall().format(Hurricane.LANDFALL_FORMAT) + ".";
     }
-
-    // ------------------------------------------------------------------
-    // Saving
-    // ------------------------------------------------------------------
 
     /**
      * save saves the users, shelters, relief requests and hurricanes

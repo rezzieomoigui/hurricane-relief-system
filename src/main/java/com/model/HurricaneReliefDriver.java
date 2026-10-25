@@ -13,28 +13,8 @@ public class HurricaneReliefDriver {
     public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
+        scenario6();
     }
- 
-    /**public void scenario1() {
-        System.out.println();
-        System.out.println("Scenario 1: Create an account");
-
-        application.createAccount(
-            "Amy",
-            "Smith",
-            "asmith",
-            "12345",
-            "amy@example.com",
-            "2000-05-15",
-            "123 Example Street",
-            "29201",
-            "English",
-            false,
-            "User"
-        );
-
-        System.out.println("Account information submitted for Amy Smith.");
-    }*/
 
     public void scenario1() {
         System.out.println();
@@ -69,7 +49,18 @@ public class HurricaneReliefDriver {
         System.out.println("Scenario 3: Shelters");
     }
 
-
+    public void scenario6() {
+        System.out.println();
+        application.logout();
+        boolean loggedIn = application.login("felixh", "treeSpeaks@1");
+        System.out.println("Scenario 6: Check the family in");
+        System.out.println("loggedIn? "+loggedIn);
+        Shelter myShelter = application.getShelter("100 Broad Street", "Charleston", "South Carolina", "29401");
+        System.out.println(myShelter.toString());
+        ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
+        boolean markedComplete = application.markCompleteRequest(carterRequest, application.getCurrentUser().isAdmin());
+        System.out.println(carterRequest.toString());
+    }
 
     public static void main(String[] args) throws IOException, InterruptedException {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();
