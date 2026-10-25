@@ -64,6 +64,11 @@ public class HurricaneReliefDriver {
         System.out.println(application.requestsToString(rosa));
     }
 
+    public void scenario3() {
+        System.out.println();
+        System.out.println("Scenario 3: Shelters");
+    }
+
 
 
     public static void main(String[] args) throws IOException, InterruptedException {
