@@ -52,7 +52,7 @@ public class ReliefRequestList {
      * @return arrayList of relief requests
      */
     public ArrayList<ReliefRequest> getReliefRequests() {
-        return DataLoader.getReliefRequests();
+        return this.reliefRequests;
     }
 
     /**

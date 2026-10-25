@@ -197,7 +197,7 @@ public class HurricaneReliefApplication {
      */
     public boolean save() {
         boolean saved = userList.save();
-        //saved = shelterList.save() && saved;
+        saved = shelterList.save() && saved;
         saved = reliefRequestList.save() && saved;
         return saved;
     }

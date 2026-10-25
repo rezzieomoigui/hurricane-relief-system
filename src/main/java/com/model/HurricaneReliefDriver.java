@@ -25,6 +25,8 @@ public class HurricaneReliefDriver {
         boolean loggedIn = application.login("ccollin", "7snailBrook&");
         System.out.println("Collin Carter logged in? "+loggedIn);
         ReliefRequest request = application.createReliefRequest(application.getCurrentUser(), true, false, true, true, true, Skills.TRANSPORTATION);
+        //ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
+        //ArrayList<ReliefRequest> rr = reliefRequestList.getReliefRequests();
         application.addPartyMember(request, "Collin Carter", "1978", false, Being.PERSON);
         application.addPartyMember(request, "Sophie Carter", "2012", true, Being.PERSON);
         application.addPartyMember(request, "Connie Carter", "1979", false, Being.PERSON);
