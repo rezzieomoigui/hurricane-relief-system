@@ -24,6 +24,7 @@ public class ReliefRequest {
     private boolean hasPet;
     private Skills skillsNeed;
     private UUID assignedVolunteerID;
+    private UUID assignedShelterID;
 
     /**
      * ReliefRequest constructor creates an instance of a relief request object from DataLoader
@@ -59,6 +60,7 @@ public class ReliefRequest {
         this.hasPet = hasPet;
         this.skillsNeed = skillsNeed;
         this.assignedVolunteerID = null;
+        this.assignedShelterID = null;
     }
 
     /**
@@ -94,6 +96,7 @@ public class ReliefRequest {
         this.hasPet = hasPet;
         this.skillsNeed = skillsNeed;
         this.assignedVolunteerID = null;
+        this.assignedShelterID = null;
     }
     
     /**
@@ -121,8 +124,8 @@ public class ReliefRequest {
         this.hasPet = false;
         this.skillsNeed = Skills.NONE;
         this.assignedVolunteerID = null;
+        this.assignedShelterID = null;
     }
-
 
     /**
      * getUser looks up the user who wrote this relief request
@@ -294,8 +297,7 @@ public class ReliefRequest {
         String partyMemberStr = partyMembersToString();
         return "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" +
         "Status: "+this.getStatus().str+"\nIndoors? "+this.isIndoors + "\n" + "Able to move from location? " + this.isMobile + "\n" +
-        "Need medical assistance? " + this.needsMedicalAssistance + "\n" + "Staying home? " + 
-        this.stayingHome + "\n" + "Have a pet? " + this.hasPet + "\nRescuer skills needed: "+this.skillsNeed+"\n"+partyMemberStr;
+        "Need medical assistance? " + this.needsMedicalAssistance + "\n" + "Staying home? " + this.stayingHome + "\n" + "Have a pet? " + this.hasPet + partyMemberStr;
     }
 
     private String partyMembersToString() {
