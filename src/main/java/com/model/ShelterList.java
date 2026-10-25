@@ -169,14 +169,14 @@ public class ShelterList {
     }
 
     public boolean assignReliefRequest(int numPeople, ReliefRequest reliefRequest, Volunteer volunteer, boolean isAdmin) throws InterruptedException {
-        System.out.println("Made it to assignment");
+        // System.out.println("Made it to assignment");
         Shelter shelter = null;
         try {
             shelter = closestMatchingShelter(numPeople, reliefRequest);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println("Shelter found? " + (shelter != null));
+        // System.out.println("Shelter found? " + (shelter != null));
         if (shelter == null) {
             return false;
         }
