@@ -2,6 +2,10 @@ package com.model;
 
 import java.util.ArrayList;
 import java.util.UUID;
+import java.io.IOException;
+
+import com.location.Address;
+import com.location.MapTools;
 
 /**
  * ShelterList method contains the shelter methods
@@ -133,26 +137,51 @@ public class ShelterList {
         return matchingShelters;
     }
 
-    public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) {
+    public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) throws IOException, InterruptedException {
         ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
-        Shelter closest = null;
-        double shortestTime = Double.MAX_VALUE;
-        for (Shelter shelter : matchingShelters) {
-            double travellingTime = getDrivingTime()
-            if (travellingTime < shortestTime) {
-                shortestTime = travellingTime;
-                closest = shelter;
+        if (matchingShelters.isEmpty()) {
+            return null;
+        }
+        Address[] addresses = ShelterAddresses(matchingShelters);
+        Address closestAddress = MapTools.getInstance().findClosestAddress(new Address(reliefRequest.getAddress(), reliefRequest.getCity(), reliefRequest.getState(), reliefRequest.getZipCode()), addresses);
+        for (int i = 0; i < addresses.length; ++i) {
+            if (addresses[i] == closestAddress) {
+                return matchingShelters.get(i);
             }
         }
-        return closest;
+        return null;
     }
 
-    // working with this later 
+    /**
+     * ShelterAddresses gets the addresses of the shelters
+     * @param shelters arrayList of shelters
+     * @return array of shelter addresses
+     */
+    private Address[] ShelterAddresses(ArrayList<Shelter> shelters) {
+        Address[] addresses = new Address[shelters.size()];
+        for (int i = 0; i < shelters.size(); ++i) {
+            Shelter shelter = shelters.get(i);
+            addresses[i] = new Address(shelter.getAddress(), shelter.getCity(), shelter.getState(), shelter.getZipCode());
+        }
+        return addresses;
+    }
+
+    public boolean assignReliefRequest(int numPeople, ReliefRequest reliefRequest, Volunteer volunteer, boolean isAdmin) throws InterruptedException {
+        Shelter shelter = null;
+        try {
+            shelter = closestMatchingShelter(numPeople, reliefRequest);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        if (shelter == null) {
+            return false;
+        }
         int newOccupacy = shelter.getNumberOfOccupants() + numPeople;
-        shelter.setNumberOfOccupants(newOccupacy);
+        shelter.setNumberOfOccupants(newOccupacy, isAdmin);
         reliefRequest.setAssignedVolunteer(volunteer);
         reliefRequest.setStatus(ReliefRequestStatus.ASSIGNED);
         return true;
+    }
 
     /**
      * addShelter method adds a shelter
