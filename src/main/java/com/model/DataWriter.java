@@ -11,7 +11,7 @@ import java.util.HashMap;
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
         saveUsers();
-        //saveShelters();
+        saveShelters();
         saveReliefRequests();
     }
 
@@ -77,25 +77,33 @@ public class DataWriter extends DataConstants {
 
 
     public static JSONObject getShelterJSON(Shelter shelter) {
-        ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
         JSONObject shelterDetails = new JSONObject();
+        ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
+        JSONArray occupantArr = new JSONArray();
+        ArrayList<PartyMember> partyMembers = shelter.getOccupants();
+        for (int i = 0; i < partyMembers.size(); ++i) {
+            occupantArr.add(getPartyMemberJSON(partyMembers.get(i)));
+        }
         shelterDetails.put(SHELTER_UUID, shelter.getId().toString());
         shelterDetails.put(SHELTER_ADDRESS, shelter.getAddress());
+        shelterDetails.put(SHELTER_CITY, shelter.getCity());
+        shelterDetails.put(SHELTER_STATE, shelter.getState());
         shelterDetails.put(SHELTER_ZIP_CODE, shelter.getZipCode());
         shelterDetails.put(SHELTER_SHELTER_TYPE, shelter.getShelterType().str);
         shelterDetails.put(SHELTER_SHELTER_STATUS, shelter.getShelterStatus().str);
         shelterDetails.put(SHELTER_SHELTER_RESOURCES, shelterResources);
         shelterDetails.put(SHELTER_VISUAL_DESCRIPTION, shelter.getVisualDescription());
+        shelterDetails.put(SHELTER_NUMBER_OF_OCCUPANTS, Integer.toString(shelter.getNumberOfOccupants()));
+        shelterDetails.put(SHELTER_MAX_NUMBER_OF_OCCUPANTS, Integer.toString(shelter.getMaxNumberOfOccupants()));
+        shelterDetails.put(SHELTER_MEDICAL_STAFF_AVAILABLE, Boolean.toString(shelter.medicalStaffAvailable()));
+        shelterDetails.put(SHELTER_OCCUPANTS, occupantArr);
+        shelterDetails.put(SHELTER_IS_PET_FRIENDLY, Boolean.toString(shelter.isPetFriendly()));
         return shelterDetails;
     }
 
     private static ArrayList<String> convertShelterResources(ArrayList<ShelterResources> shelterResources) {
         ArrayList<String> shelterResourcesStr = new ArrayList<String>();
         for (int i = 0; i < shelterResources.size(); ++i) {
-            /**ShelterResources temp = shelterResources.get(i);
-            String temp1 = temp.toString();
-            String temp2 = temp.str;**/
-
             shelterResourcesStr.add(shelterResources.get(i).name());
         }
         return shelterResourcesStr;

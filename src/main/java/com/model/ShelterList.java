@@ -72,18 +72,24 @@ public class ShelterList {
      * addShelter method adds a shelter
      * @param shelterType type of shelter
      * @param address address of shelter
+     * @param city the shelter's city
+     * @param state the state the shelter is in
      * @param zipCode zip code of shelter
      * @param shelterResources shelter resources
+     * @param occupants All occupants of shelter
+     * @param numberOfOccupants Total number of occupants
+     * @param maxNumberOfOccupants Max occupants allowed
      * @param shelterStatus shelter status
      * @param visualDescription shelter visual description
      * @return boolean true if shelter was added correctly
      */
-    public boolean addShelter(UUID id, ShelterType shelterType, String address, String zipCode, ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable) {
+    public boolean addShelter(UUID id, ShelterType shelterType, String address, String city, String state, String zipCode, ArrayList<ShelterResources> shelterResources, 
+        ShelterStatus shelterStatus, String visualDescription, ArrayList<PartyMember> occupants, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
         if (getShelter(id) != null) {
             System.out.println("Shelter already exists");
             return false;
         }
-        shelters.add(new Shelter(shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable));
+        shelters.add(new Shelter(shelterType, address, city, state, zipCode, shelterResources, shelterStatus, visualDescription, occupants, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly));
         return true;
     }
 

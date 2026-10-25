@@ -91,6 +91,8 @@ public class DataLoader extends DataConstants {
                 JSONObject shelterJSON = (JSONObject)shelterArray.get(i);
                 UUID id = UUID.fromString((String)shelterJSON.get(SHELTER_UUID));
                 String address = (String)shelterJSON.get(SHELTER_ADDRESS);
+                String city = (String)shelterJSON.get(SHELTER_CITY);
+                String state = (String)shelterJSON.get(SHELTER_STATE);
                 String zipCode = (String)shelterJSON.get(SHELTER_ZIP_CODE);
                 ShelterType shelterType = ShelterType.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_TYPE)));
                 ShelterStatus shelterStatus = ShelterStatus.valueOf(((String)shelterJSON.get(SHELTER_SHELTER_STATUS)));
@@ -102,7 +104,13 @@ public class DataLoader extends DataConstants {
                     shelterResourcesArray.add(shelterResource);
                 } 
                 String visualDescription = (String)shelterJSON.get(SHELTER_VISUAL_DESCRIPTION);
-               // shelters.add(new Shelter(id, shelterType, address, zipCode, shelterResourcesArray, shelterStatus, visualDescription, numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable));
+                int numberOfOccupants = Integer.parseInt((String)shelterJSON.get(SHELTER_NUMBER_OF_OCCUPANTS));
+                int maxNumberOfOccupants = Integer.parseInt((String)shelterJSON.get(SHELTER_MAX_NUMBER_OF_OCCUPANTS));
+                JSONArray occupants = (JSONArray)shelterJSON.get(SHELTER_OCCUPANTS);
+                ArrayList<PartyMember> occupantsArr = convertPartyMembers(occupants);
+                boolean medicalStaffAvailable = Boolean.parseBoolean((String)(shelterJSON.get(SHELTER_MEDICAL_STAFF_AVAILABLE)));
+                boolean isPetFriendly = Boolean.parseBoolean((String)shelterJSON.get(SHELTER_IS_PET_FRIENDLY));
+                shelters.add(new Shelter(id, shelterType, address, city, state, zipCode, shelterResourcesArray, shelterStatus, visualDescription, occupantsArr, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly));
             }
         return shelters;
         }catch (Exception e) {
@@ -147,45 +155,6 @@ public class DataLoader extends DataConstants {
         }
         return null;
     }
-
-    
-    /**
-     * getVolunteer reads in data from the volunteer json file and adds a volunteer from the data that is read in
-     * @return ArrayList of type volunteer containing volunteer data
-     */
-    /*
-    public static ArrayList<Volunteer> getVolunteer() {
-        ArrayList<Volunteer> volunteer = new ArrayList<Volunteer>();
-        try {
-            FileReader reader = new FileReader(VOLUNTEER_FILE_NAME);
-            JSONParser parser = new JSONParser();
-            JSONArray reliefRequestArray = (JSONArray)new JSONParser().parse(reader);
-            for (int i = 0; i < reliefRequestArray.size(); i++) {
-                JSONObject volunteerJSON = (JSONObject)reliefRequestArray.get(i);
-                UUID id = UUID.fromString((String)volunteerJSON.get(USER_UUID));
-                String userName = (String)volunteerJSON.get(USER_USERNAME);
-                String firstName = (String)volunteerJSON.get(USER_FIRST_NAME);
-                String lastName = (String)volunteerJSON.get(USER_LAST_NAME);
-                String password = (String)volunteerJSON.get(USER_PASSWORD);
-                String zipCode = (String)volunteerJSON.get(USER_ZIP_CODE);
-                String email = (String)volunteerJSON.get(USER_EMAIL);
-                String dateOfBirth = (String)volunteerJSON.get(USER_DATE_OF_BIRTH);
-                String language = (String)volunteerJSON.get(USER_LANGUAGE);
-                String address = (String)volunteerJSON.get(USER_ADDRESS);
-                Boolean isAdmin = (Boolean)volunteerJSON.get(USER_IS_ADMIN);
-                boolean firstResponder = (Boolean)volunteerJSON.get(VOLUNTEER_FIRST_RESPONDER);
-                boolean canSwim = (Boolean)volunteerJSON.get(VOLUNTEER_CAN_SWIM);
-                boolean isShelterOwner = (Boolean)volunteerJSON.get(VOLUNTEER_IS_SHELTER_OWNER);
-                Skills skills = Skills.valueOf(((String)volunteerJSON.get(VOLUNTEER_SKILLS)).toUpperCase());
-                volunteer.add(new Volunteer(id, firstName, lastName, userName, password, email, dateOfBirth, address, zipCode, language, isAdmin, skills, firstResponder, canSwim, isShelterOwner));
-            }
-        return volunteer;
-        }catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
-    */
 
     /**
      * getHurricane reads in data from the hurricane json file and adds a hurricane from the data that is read in
