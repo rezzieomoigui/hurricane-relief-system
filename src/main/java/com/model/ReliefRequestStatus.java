@@ -7,7 +7,8 @@ package com.model;
 public enum ReliefRequestStatus {
     SUBMITTED("SUBMITTED"),
     IN_PROGRESS("IN_PROGRESS"),
-    COMPLETED("COMPLETED");
+    COMPLETED("COMPLETED"),
+    ASSIGNED("ASSIGNED");
 
     public String str;
     /**

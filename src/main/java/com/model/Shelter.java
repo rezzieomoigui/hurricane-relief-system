@@ -10,52 +10,47 @@ import java.util.UUID;
 public class Shelter {
     private UUID id;
     private String address;
-    private String city;
     private String state;
+    private String city;
     private String zipCode;
     private ShelterType shelterType;
     private ShelterStatus shelterStatus;
     private ArrayList<ShelterResources> shelterResources;
     private String visualDescription;
-    private ArrayList<PartyMember> occupants;
     private int numberOfOccupants;
     private int maxNumberOfOccupants;
     private boolean medicalStaffAvailable;
-    private boolean isPetFriendly;
 
     /**
      * Creates a new shelter and generates its id
      * @param shelterType shelter type
      * @param address shelter address
-     * @param city The city the shelter is in
-     * @param state The state the shelter is in
+     * @param state shelter state
+     * @param city shelter city
      * @param zipCode shelter zip code
      * @param shelterResources shelter resources
      * @param shelterStatus shelter status
      * @param visualDescription shelter visual description
-     * @param occupants Occupants of the shelter
      * @param numberOfOccupants number of people currently at shelter
      * @param maxNumberOfOccupants maximum number of people shelter can hold
      * @param medicalStaffAvailable checks if shelter has medical staff available
-     * @param isPetFriendly checks if pets are allowed
      */
-    public Shelter(ShelterType shelterType, String address, String city, String state, String zipCode,
+    public Shelter(ShelterType shelterType, String address, String state, String city, String zipCode,
                    ArrayList<ShelterResources> shelterResources,
-                   ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants,
-                   int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
-        UUID.randomUUID();
+                   ShelterStatus shelterStatus, String visualDescription,int numberOfOccupants,
+                   int maxNumberOfOccupants, boolean medicalStaffAvailable) {
+        this.id = UUID.randomUUID();
         this.shelterType = shelterType;
         this.address = address;
-        this.city = city;
         this.state = state;
+        this.city = city;
+        this.zipCode = zipCode;
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
         this.visualDescription = visualDescription;
-        this.occupants = new ArrayList<PartyMember>();
         this.numberOfOccupants = numberOfOccupants;
         this.maxNumberOfOccupants = maxNumberOfOccupants;
         this.medicalStaffAvailable = medicalStaffAvailable;
-        this.isPetFriendly = isPetFriendly;
     }
 
     /**
@@ -63,22 +58,20 @@ public class Shelter {
      * @param id shelter id
      * @param shelterType shelter type
      * @param address shelter address
-     * @param city The city the shelter is in
-     * @param state The state the shelter is in
+     * @param state shelter state
+     * @param city shelter city
      * @param zipCode shelter zip code
      * @param shelterResources shelter resources
      * @param shelterStatus shelter status
      * @param visualDescription shelter visual description
-     * @param occupants Occupants of the shelter
      * @param numberOfOccupants number of people currently at shelter
      * @param maxNumberOfOccupants maximum number of people shelter can hold
      * @param medicalStaffAvailable checks if shelter has medical staff available
-     * @param isPetFriendly checks if pets are allowed
      */
-    public Shelter(UUID id, ShelterType shelterType, String address, String city, String state,
+    public Shelter(UUID id, ShelterType shelterType, String address, String state, String city,
                    String zipCode, ArrayList<ShelterResources> shelterResources,
-                   ShelterStatus shelterStatus, String visualDescription, ArrayList<PartyMember> occupants,
-                   int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
+                   ShelterStatus shelterStatus, String visualDescription,
+                   int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable) {
 
         if (numberOfOccupants < 0 || maxNumberOfOccupants < 0
                 || numberOfOccupants > maxNumberOfOccupants) {
@@ -89,17 +82,15 @@ public class Shelter {
         this.id = id;
         this.shelterType = shelterType;
         this.address = address;
-        this.city = city;
         this.state = state;
+        this.city = city;
         this.zipCode = zipCode;
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
         this.visualDescription = visualDescription;
-        this.occupants = occupants;
         this.numberOfOccupants = numberOfOccupants;
         this.maxNumberOfOccupants = maxNumberOfOccupants;
         this.medicalStaffAvailable = medicalStaffAvailable;
-        this.isPetFriendly = isPetFriendly;
     }
 
     /**
@@ -131,20 +122,28 @@ public class Shelter {
         return address;
     }
 
-    public String getCity() {
-        return this.city;
-    }
-
-    public String getState() {
-        return this.state;
-    }
-
     /**
      * Sets the shelter address.
      * @param address shelter address
      */
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    /**
+     * getState gets the state of the shelter
+     * @return string representing the state of the shelter
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * getCity gets the city of the shelter
+     * @return string representing the city of the shelter
+     */
+    public String getCity() {
+        return city;
     }
 
     /**
@@ -169,10 +168,6 @@ public class Shelter {
      */
     public ShelterType getShelterType() {
         return shelterType;
-    }
-
-    public ShelterStatus getStatus() {
-        return this.shelterStatus;
     }
 
     /**
@@ -216,10 +211,6 @@ public class Shelter {
         this.shelterResources = shelterResources;
     }
 
-    public void setOccupants(ArrayList<PartyMember> occupants) {
-        this.occupants = occupants;
-    }
-
     /**
      * Returns the shelter visual description.
      * @return visual description
@@ -236,10 +227,6 @@ public class Shelter {
         this.visualDescription = visualDescription;
     }
 
-    public boolean medicalStaffAvailable() {
-        return this.medicalStaffAvailable;
-    }
-
     /**
      * Returns the current number of occupants.
      * @return number of occupants
@@ -252,18 +239,12 @@ public class Shelter {
      * Sets the current number of occupants.
      * @param numberOfOccupants number of occupants
      */
-    public void setNumberOfOccupants(int numberOfOccupants, boolean isAdmin) {
-        // we do not set the number of occupants using the occupant list because 
-        // some occupants in the occupany list are pets
-        if (!isAdmin)
-            return;
+    public void setNumberOfOccupants(int numberOfOccupants) {
         if (numberOfOccupants < 0
                 || numberOfOccupants > maxNumberOfOccupants) {
             throw new IllegalArgumentException(
                     "Occupants must be between 0 and maximum capacity.");
         }
-        else if (numberOfOccupants == this.maxNumberOfOccupants) 
-            setShelterStatus(ShelterStatus.FULL);
         this.numberOfOccupants = numberOfOccupants;
     }
 
@@ -288,20 +269,20 @@ public class Shelter {
         this.maxNumberOfOccupants = maxNumberOfOccupants;
     }
 
-    public ArrayList<PartyMember> getOccupants() {
-        return this.occupants;
+    /**
+     * getMedicalStaffAvailable checks if medical staff are available
+     * @return boolean depending on if there are medical staff available at the shelter
+     */
+    public boolean getMedicalStaffAvailable() {
+        return medicalStaffAvailable;
     }
-
     /**
      * Checks if the shelter is available.
      * @return true if the shelter is open or near capacity
      */
     public boolean isAvailable() {
-        return shelterStatus == ShelterStatus.OPEN;
-    }
-
-    public boolean isPetFriendly() {
-        return this.isPetFriendly;
+        return shelterStatus == ShelterStatus.OPEN
+                || shelterStatus == ShelterStatus.NEAR_CAPACITY;
     }
 
     /**
@@ -310,22 +291,10 @@ public class Shelter {
      */
     @Override
     public String toString() {
-        return "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
-        "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" + this.shelterType +
-        "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of human occupants: "+this.numberOfOccupants+
-        "\nMaximum number of human occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
-        "\nShelter Resources: "+this.shelterResources.toString()+occupantsToString() + 
-        "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
-
-    }
-
-    private String occupantsToString() {
-        String str = "\n\nALL OCCUPANTS\n";
-        int age;
-        for ( PartyMember partyMember : this.occupants ) {
-            age = 2026 - Integer.parseInt(partyMember.getYearBorn());
-            str += "----------------------------------------------" + "\nname: "+partyMember.getName()+"\nage: "+age+"\nneeds medical assistance? "+partyMember.needsMedicalAssistance()+"\nI am a: "+partyMember.getType().str+"\n";
-        }
-        return str;
+        return shelterType + " at " + address + " " + zipCode
+                + " [" + shelterStatus
+                + ", Occupants: " + numberOfOccupants
+                + "/" + maxNumberOfOccupants
+                + ", Resources: " + shelterResources + "]";
     }
 }
