@@ -57,7 +57,7 @@
             }
         ],
         "isIndoors": "false",
-        "status": "IN_PROGRESS"
+        "status": "SUBMITTED"
     },
     {
         "zipCode": "29401",
@@ -117,7 +117,7 @@
             }
         ],
         "isIndoors": "false",
-        "status": "IN_PROGRESS"
+        "status": "SUBMITTED"
     },
     {
         "zipCode": "29401",
@@ -177,7 +177,7 @@
             }
         ],
         "isIndoors": "true",
-        "status": "IN_PROGRESS"
+        "status": "SUBMITTED"
     },
     {
         "zipCode": "29401",
@@ -207,6 +207,90 @@
             }
         ],
         "isIndoors": "false",
+        "status": "SUBMITTED"
+    },
+    {
+        "zipCode": "29407",
+        "hasPet": "true",
+        "skillsNeed": "TRANSPORTATION",
+        "needsMedicalAssistance": "true",
+        "address": "1735 Vassar Dr",
+        "city": "Charleston",
+        "uuid": "9be52560-dc4b-4b5f-b977-769cdb256a84",
+        "estimatedArrivalMinutes": "0",
+        "stayingHome": "true",
+        "userUUID": "b4a1a6de-ae9d-4c17-aabf-521a2e46c785",
+        "state": "South Carolina",
+        "isMobile": "false",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Collin Carter",
+                "yearBorn": "1978",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "true",
+                "name": "Sophie Carter",
+                "yearBorn": "2012",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Connie Carter",
+                "yearBorn": "1979",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Spot",
+                "yearBorn": "2023",
+                "type": "DOG"
+            }
+        ],
+        "isIndoors": "true",
+        "status": "SUBMITTED"
+    },
+    {
+        "zipCode": "29407",
+        "hasPet": "true",
+        "skillsNeed": "TRANSPORTATION",
+        "needsMedicalAssistance": "true",
+        "address": "1735 Vassar Dr",
+        "city": "Charleston",
+        "uuid": "6bf5e95d-0e2e-4fe4-9b2e-64ff7db3fdf8",
+        "estimatedArrivalMinutes": "0",
+        "stayingHome": "true",
+        "userUUID": "7d91f51e-d25d-4182-b7ac-207e86a758c5",
+        "state": "South Carolina",
+        "isMobile": "false",
+        "partyMembers": [
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Collin Carter",
+                "yearBorn": "1978",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "true",
+                "name": "Sophie Carter",
+                "yearBorn": "2012",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Connie Carter",
+                "yearBorn": "1979",
+                "type": "PERSON"
+            },
+            {
+                "needsMedicalAssistance": "false",
+                "name": "Buddy",
+                "yearBorn": "2023",
+                "type": "DOG"
+            }
+        ],
+        "isIndoors": "true",
         "status": "SUBMITTED"
     }
 ]

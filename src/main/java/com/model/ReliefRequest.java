@@ -284,7 +284,8 @@ public class ReliefRequest {
         String partyMemberStr = partyMembersToString();
         return "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" +
         "Indoors? "+this.isIndoors + "\n" + "Able to move from location? " + this.isMobile + "\n" +
-        "Need medical assistance? " + this.needsMedicalAssistance + "\n" + "Staying home? " + this.stayingHome + "\n" + "Have a pet? " + this.hasPet + partyMemberStr;
+        "Need medical assistance? " + this.needsMedicalAssistance + "\n" + "Staying home? " + 
+        this.stayingHome + "\n" + "Have a pet? " + this.hasPet + "\nRescuer skills needed: "+this.skillsNeed+"\n"+partyMemberStr;
     }
 
     private String partyMembersToString() {

@@ -1,5 +1,5 @@
 package com.model;
-import java.util.ArrayList; 
+import java.io.IOException;
 
 public class HurricaneReliefDriver {
     private HurricaneReliefApplication application;
@@ -10,7 +10,7 @@ public class HurricaneReliefDriver {
     }
 
  
-    public void run() {
+    public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
     }
@@ -43,36 +43,30 @@ public class HurricaneReliefDriver {
         System.out.println("Collin Carter's account created? "+accountCreated);
         boolean loggedIn = application.login("ccollin", "7snailBrook&");
         System.out.println("Collin Carter logged in? "+loggedIn);
-        ArrayList<PartyMember> collinFamily = new ArrayList<PartyMember>();
         ReliefRequest request = application.createReliefRequest(application.getCurrentUser(), true, false, true, true, true, Skills.TRANSPORTATION);
         application.addPartyMember(request, "Collin Carter", "1978", false, Being.PERSON);
         application.addPartyMember(request, "Sophie Carter", "2012", true, Being.PERSON);
         application.addPartyMember(request, "Connie Carter", "1979", false, Being.PERSON);
-        application.addPartyMember(request, "Spot", "2023", false, Being.DOG);
+        application.addPartyMember(request, "Buddy", "2023", false, Being.DOG);
         System.out.println(request.toString());
+        boolean saved = application.save();
+        System.out.println(saved);
+        application.logout();
     }
 
    
-    public void scenario2() {
+    public void scenario2() throws IOException, InterruptedException {
         System.out.println();
-        System.out.println("Scenario 2: Log in and log out");
-
-        boolean loginResult = application.login("asmith", "12345");
-        System.out.println("Logging in Amy Smith: "+loginResult);
-        boolean logout = application.logout();
-        System.out.println("Logging out: "+logout);
-        System.out.println(application.getCurrentUser());
-
-        boolean loginResult2 = application.login("probinson", "goodPassword5");
-        System.out.println("Logging in Petra Robinson: "+loginResult2);
-        boolean logout2 = application.logout();
-        System.out.println("Logging out: "+logout2);
-        System.out.println(application.getCurrentUser());
+        System.out.println("Scenario 2");
+        boolean loggedIn = application.login("rdelgado", "potted9Oak*");
+        Volunteer rosa = (Volunteer) application.getCurrentUser();
+        System.out.println("logged in? "+loggedIn);
+        System.out.println(application.requestsToString(rosa));
     }
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, InterruptedException {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();
         driver.run();
     }

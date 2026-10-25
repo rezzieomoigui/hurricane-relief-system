@@ -134,64 +134,16 @@ public class HurricaneReliefApplication {
         return shelterList.getShelter(zipCode);
     }
 
-    // ------------------------------------------------------------------
-    // Relief requests
-    // ------------------------------------------------------------------
 
-    /**
-     * submitReliefRequest creates a relief request for the logged in user
-     * @param address address where help is needed
-     * @return the new relief request, or null if nobody is logged in
-     */
-    public ReliefRequest submitReliefRequest(String address) {
-        if (currentUser == null) {
-            return null;
-        }
-        ReliefRequest request = new ReliefRequest(currentUser.getUuid(), address);
-        reliefRequestList.addReliefRequest(request);
-        hurricaneList.addReliefRequest(request);
-        return request;
+    public String requestsToString(Volunteer volunteer) throws IOException, InterruptedException {
+        return "\nSUGGESTED REQUEST BY LOCATION AND SKILLS NEEDED: \n" + getSuggestedRequest(volunteer).toString() + "\n\nALL REQUESTS: \n" + reliefRequestList.toString();
     }
 
-
-    /**
-     * cancelReliefRequest removes one of the logged in user's own relief requests (administrators can remove any)
-     * @param id relief request id
-     * @return true if the request was removed
-     */
-    public boolean cancelReliefRequest(UUID id) {
-        ReliefRequest request = reliefRequestList.getReliefRequestById(id);
-        if (currentUser == null || request == null) {
-            return false;
-        }
-        if (!request.getUserUUID().equals(currentUser.getUuid()) && !currentUser.isAdmin()) {
-            return false;
-        }
-        hurricaneList.removeReliefRequest(request);
-        return reliefRequestList.removeReliefRequest(id);
-    }
 
     // ------------------------------------------------------------------
     // Volunteer actions
     // ------------------------------------------------------------------
 
-    /**
-     * getAvailableRequests gets the relief requests that have not been accepted yet.
-     * Only volunteers and administrators can see them.
-     * @return ArrayList of submitted relief requests (empty if the user isn't a volunteer or admin)
-     */
-    public ArrayList<ReliefRequest> getAvailableRequests() {
-        ArrayList<ReliefRequest> available = new ArrayList<ReliefRequest>();
-        if (!canManageRequests()) {
-            return available;
-        }
-        for (ReliefRequest request : reliefRequestList.getReliefRequests()) {
-            if (request.getStatus() == ReliefRequestStatus.SUBMITTED) {
-                available.add(request);
-            }
-        }
-        return available;
-    }
 
     /**
      * viewReliefRequest gets the details of a relief request.
@@ -271,7 +223,7 @@ public class HurricaneReliefApplication {
      */
     public boolean save() {
         boolean saved = userList.save();
-        saved = shelterList.save() && saved;
+        //saved = shelterList.save() && saved;
         saved = reliefRequestList.save() && saved;
         return saved;
     }
