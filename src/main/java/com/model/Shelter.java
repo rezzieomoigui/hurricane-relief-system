@@ -327,6 +327,9 @@ public class Shelter {
 
     private String occupantsToString() {
         String str = "\n\nALL OCCUPANTS\n";
+        if (getNumberOfOccupants() == 0) {
+            return "No current occupants";
+        }
         int age;
         for ( PartyMember partyMember : this.occupants ) {
             age = 2026 - Integer.parseInt(partyMember.getYearBorn());

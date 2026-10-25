@@ -75,6 +75,7 @@ public class HurricaneReliefApplication {
     }
 
     public boolean assignReliefRequest(int numPeople, ReliefRequest reliefRequest, Volunteer volunteer, boolean isAdmin) throws InterruptedException {
+        // System.out.println("Made it to facade");
         return ShelterList.getInstance().assignReliefRequest(numPeople, reliefRequest, volunteer, isAdmin);
     }
 
