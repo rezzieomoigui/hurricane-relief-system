@@ -88,10 +88,10 @@ public class ShelterList {
      * @return boolean depending on if the shelter is pet friendly and they have pets or not
      */
     public boolean meetsPetRequirement(Shelter shelter, ReliefRequest reliefRequest) {
-        if (reliefRequest.getHasPet() && shelter.getShelterResources().contains(ShelterResources.PET_FRIENDLY)) {
+        if (!reliefRequest.getHasPet()) {
             return true;
         }
-        return false;
+        return shelter.getShelterResources().contains(ShelterResources.PET_FRIENDLY);
     }
 
     /**
@@ -101,36 +101,46 @@ public class ShelterList {
      * @return boolean depending on if the shelter has medical staff and if they are needed by the user or not
      */
     public boolean meetsMedicalRequirement(Shelter shelter, ReliefRequest reliefRequest) {
-        if (reliefRequest.getNeedsMedicalAssistance() && shelter.getMedicalStaffAvailable()) {
+        if (reliefRequest.getNeedsMedicalAssistance()) {
             return true;
         }
-        return false;
+        return shelter.getMedicalStaffAvailable();
     }
 
     /**
-     * assignShelter checks requirements and then starts assigning a shelter that fits those requirements to the relief request
-     * @param shelter shelter
+     * matchingShelters checks requirements and then adds shelters that fit those requirements to an arrayList
      * @param numPeople number of people needing space at a shelter
-     * @param volunteer volunteer being assigned to shelter
      * @param reliefRequest relief request
-     * @return boolean based on if shelter was assigned or not
+     * @return arrayList of shelters that fit the requirements
      */
-    public boolean assignShelter(Shelter shelter, int numPeople, Volunteer volunteer, ReliefRequest reliefRequest) {
-        if (shelter == null || volunteer == null || reliefRequest == null) {
-            return false;
+    public ArrayList<Shelter> matchingShelters(int numPeople, ReliefRequest reliefRequest) {
+        ArrayList<Shelter> matchingShelters = new ArrayList<>();
+        for (Shelter shelter : shelters) {
+            if (shelter.isAvailable() && spaceLeft(shelter, numPeople) && meetsMedicalRequirement(shelter, reliefRequest) && meetsPetRequirement(shelter, reliefRequest)) {
+                matchingShelters.add(shelter);
+            }
         }
-        if (!shelter.isAvailable()) {
-            return false;
+        return matchingShelters;
+    }
+
+    public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) {
+        ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
+        Shelter closest = null;
+        double shortestDistance = Double.MAX_VALUE;
+        for (Shelter shelter : matchingShelters) {
+            double distance = getDrivingDistance()
+            if (distance < shortestDistance) {
+                shortestDistance = distance;
+                closest = shelter;
+            }
         }
-        if (!spaceLeft(shelter, numPeople)) {
-            return false;
-        }
-        int newOccupacy = shelter.getNumberOfOccupants() - numPeople;
+        return closest;
+    }
+        int newOccupacy = shelter.getNumberOfOccupants() + numPeople;
         shelter.setNumberOfOccupants(newOccupacy);
         reliefRequest.setAssignedVolunteer(volunteer);
         reliefRequest.setStatus(ReliefRequestStatus.ASSIGNED);
         return true;
-    }
 
     /**
      * addShelter method adds a shelter
