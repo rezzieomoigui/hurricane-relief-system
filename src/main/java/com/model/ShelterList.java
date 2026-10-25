@@ -101,7 +101,7 @@ public class ShelterList {
      * @return boolean depending on if the shelter has medical staff and if they are needed by the user or not
      */
     public boolean meetsMedicalRequirement(Shelter shelter, ReliefRequest reliefRequest) {
-        if (reliefRequest.getNeedsMedicalAssistance()) {
+        if (!reliefRequest.getNeedsMedicalAssistance()) {
             return true;
         }
         return shelter.getMedicalStaffAvailable();
@@ -126,11 +126,11 @@ public class ShelterList {
     public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) {
         ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
         Shelter closest = null;
-        double shortestDistance = Double.MAX_VALUE;
+        double shortestTime = Double.MAX_VALUE;
         for (Shelter shelter : matchingShelters) {
-            double distance = getDrivingDistance()
-            if (distance < shortestDistance) {
-                shortestDistance = distance;
+            double travellingTime = getDrivingTime()
+            if (travellingTime < shortestTime) {
+                shortestTime = travellingTime;
                 closest = shelter;
             }
         }

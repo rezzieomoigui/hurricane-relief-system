@@ -10,6 +10,8 @@ import java.util.UUID;
 public class Shelter {
     private UUID id;
     private String address;
+    private String state;
+    private String city;
     private String zipCode;
     private ShelterType shelterType;
     private ShelterStatus shelterStatus;
@@ -23,6 +25,8 @@ public class Shelter {
      * Creates a new shelter and generates its id
      * @param shelterType shelter type
      * @param address shelter address
+     * @param state shelter state
+     * @param city shelter city
      * @param zipCode shelter zip code
      * @param shelterResources shelter resources
      * @param shelterStatus shelter status
@@ -31,13 +35,15 @@ public class Shelter {
      * @param maxNumberOfOccupants maximum number of people shelter can hold
      * @param medicalStaffAvailable checks if shelter has medical staff available
      */
-    public Shelter(ShelterType shelterType, String address, String zipCode,
+    public Shelter(ShelterType shelterType, String address, String state, String city, String zipCode,
                    ArrayList<ShelterResources> shelterResources,
                    ShelterStatus shelterStatus, String visualDescription,int numberOfOccupants,
                    int maxNumberOfOccupants, boolean medicalStaffAvailable) {
         this.id = UUID.randomUUID();
         this.shelterType = shelterType;
         this.address = address;
+        this.state = state;
+        this.city = city;
         this.zipCode = zipCode;
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
@@ -52,6 +58,8 @@ public class Shelter {
      * @param id shelter id
      * @param shelterType shelter type
      * @param address shelter address
+     * @param state shelter state
+     * @param city shelter city
      * @param zipCode shelter zip code
      * @param shelterResources shelter resources
      * @param shelterStatus shelter status
@@ -60,7 +68,7 @@ public class Shelter {
      * @param maxNumberOfOccupants maximum number of people shelter can hold
      * @param medicalStaffAvailable checks if shelter has medical staff available
      */
-    public Shelter(UUID id, ShelterType shelterType, String address,
+    public Shelter(UUID id, ShelterType shelterType, String address, String state, String city,
                    String zipCode, ArrayList<ShelterResources> shelterResources,
                    ShelterStatus shelterStatus, String visualDescription,
                    int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable) {
@@ -74,6 +82,8 @@ public class Shelter {
         this.id = id;
         this.shelterType = shelterType;
         this.address = address;
+        this.state = state;
+        this.city = city;
         this.zipCode = zipCode;
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
@@ -118,6 +128,22 @@ public class Shelter {
      */
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    /**
+     * getState gets the state of the shelter
+     * @return string representing the state of the shelter
+     */
+    public String getState() {
+        return state;
+    }
+
+    /**
+     * getCity gets the city of the shelter
+     * @return string representing the city of the shelter
+     */
+    public String getCity() {
+        return city;
     }
 
     /**

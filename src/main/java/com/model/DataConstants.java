@@ -6,13 +6,18 @@ package com.model;
  */
 public abstract class DataConstants {
     protected static final String SHELTER_FILE_NAME = "json_files/shelter.json";
-    protected static final String SHELTER_UUID = "uuid";
+    protected static final String SHELTER_UUID = "id";
     protected static final String SHELTER_ADDRESS = "address";
+    protected static final String SHELTER_STATE = "state";
+    protected static final String SHELTER_CITY = "city";
     protected static final String SHELTER_ZIP_CODE = "zipCode";
     protected static final String SHELTER_SHELTER_TYPE = "shelterType";
     protected static final String SHELTER_SHELTER_STATUS = "shelterStatus";
     protected static final String SHELTER_SHELTER_RESOURCES = "shelterResources";
     protected static final String SHELTER_VISUAL_DESCRIPTION = "visualDescription";
+    protected static final String SHELTER_NUMBER_OF_OCCUPANTS = "numberOfOccupants";
+    protected static final String SHELTER_MAX_NUMBER_OF_OCCUPANTS = "maxNumberOfOccupants";
+    protected static final String SHELTER_MEDICAL_STAFF_AVAILABLE = "medicalStaffAvailable";
 
     protected static final String USER_FILE_NAME = "json_files/user.json";
     protected static final String USER_UUID = "uuid";
