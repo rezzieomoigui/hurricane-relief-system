@@ -45,9 +45,22 @@ public class HurricaneReliefDriver {
         System.out.println(application.requestsToString(rosa));
     }
 
-    public void scenario3() {
+    public void scenario3() throws IOException, InterruptedException {
         System.out.println();
-        System.out.println("Scenario 3: Shelters");
+        System.out.println("Scenario 3: Rosa Finds a Shelter and Accepts the Relief Request");
+        ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
+        Volunteer rosa = (Volunteer) application.getCurrentUser();
+        Shelter closestShelter = application.closestMatchingShelter(3, carterRequest);
+        if (closestShelter == null) {
+            System.out.println("No suitable shelter found.");
+            return;
+        }
+        System.out.println("Closest suitable shelter: ");
+        System.out.println(closestShelter);
+        boolean assigned = application.assignReliefRequest(3, carterRequest, rosa, application.getCurrentUser().isAdmin());
+        System.out.println("Assignment successful? " + assigned);
+        System.out.println("Updated relief request:");
+        System.out.println(carterRequest);
     }
 
     public void scenario5() {

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
+import com.location.Address;
+import com.location.MapTools;
+
 /**
  * HurricaneReliefApplication is the facade for the system. The UI and driver talk to this class
  * instead of reaching into the user, shelter, relief request and hurricane lists directly.
@@ -65,6 +68,14 @@ public class HurricaneReliefApplication {
 
     public void addShelterOccupants(Shelter shelter, ArrayList<PartyMember> newOccupants) {
         shelterList.addOccupants(shelter, newOccupants);
+    }
+
+    public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) throws IOException, InterruptedException {
+        return ShelterList.getInstance().closestMatchingShelter(numPeople, reliefRequest);
+    }
+
+    public boolean assignReliefRequest(int numPeople, ReliefRequest reliefRequest, Volunteer volunteer, boolean isAdmin) throws InterruptedException {
+        return ShelterList.getInstance().assignReliefRequest(numPeople, reliefRequest, volunteer, isAdmin);
     }
 
     /**

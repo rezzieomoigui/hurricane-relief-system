@@ -7,7 +7,8 @@ package com.model;
 public enum ShelterStatus {
     FULL("FULL"),
     OPEN("OPEN"),
-    CLOSED("CLOSED");
+    CLOSED("CLOSED"),
+    NEAR_CAPACITY("NEAR_CAPACITY");
 
     public String str;
 

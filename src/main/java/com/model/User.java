@@ -237,6 +237,10 @@ public class User {
         return isAdmin;
     }
 
+    /**
+     * getUserType gets the user type
+     * @return UserType of volunteer or regular user
+     */
     public UserType getUserType() {
         return this.userType;
     }
