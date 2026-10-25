@@ -138,6 +138,25 @@ public class ReliefRequestList {
         return DataWriter.saveReliefRequests();
     }
 
+    /**
+     * markCompleteRequest marks a relief request as completed
+     * @param request relief request
+     * @param isAdmin checks if the user is an administrator
+     * @return boolean based on if the request was marked as completed
+     */
+    public boolean markCompleteRequest(ReliefRequest request, boolean isAdmin) {
+        if (!isAdmin) {
+            return false;
+        }
+        request.setStatus(ReliefRequestStatus.COMPLETED);
+        return true;
+    }
+
+    /**
+     * matchingSkillReliefRequest adds relief requests with that skill to an array list
+     * @param skill user skill
+     * @return arrayList of relief requests containing given skill
+     */
     private ArrayList<ReliefRequest> matchingSkillReliefRequest(Skills skill) {
         ArrayList<ReliefRequest> matchingRequests = new ArrayList<ReliefRequest>();
         ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
@@ -149,6 +168,11 @@ public class ReliefRequestList {
         return matchingRequests;
     }
 
+    /**
+     * ReliefRequestAddresses gets the addresses of the relief requests
+     * @param reliefRequests relief requests
+     * @return array of addresses of the relief requests
+     */
     private Address[] ReliefRequestAddresses(ArrayList<ReliefRequest> reliefRequests) {
         Address[] addresses = new Address[reliefRequests.size()];
         for (int i = 0; i < reliefRequests.size(); ++i) {
@@ -158,11 +182,36 @@ public class ReliefRequestList {
         return addresses;
     }
 
+    /**
+     * getReliefRequest gets the relief request based on address
+     * @param address user address
+     * @return relief request with provided address
+     */
     private ReliefRequest getReliefRequest(Address address) {
         ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
         ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         for ( ReliefRequest reliefRequest : reliefRequests ) {
-            if ( reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
+            if (reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
+                return reliefRequest;
+        }
+        return null;
+    }
+
+    /**
+     * getReliefRequest gets the relief request 
+     * @param address user address
+     * @param city user city
+     * @param state user state
+     * @param zipCode user zip code
+     * @param submitterFirstName first name of person submitting request
+     * @param submitterLastName last name of person submitting request
+     * @return relief request matching given parameters
+     */
+    public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
+        for ( ReliefRequest reliefRequest : reliefRequests ) {
+            if ( reliefRequest.getAddress().equals(address) && 
+            reliefRequest.getCity().equals(city) && reliefRequest.getState().equals(state) && 
+            reliefRequest.getZipCode().equals(zipCode) && reliefRequest.getUser().getFirstName().equals(submitterFirstName) && reliefRequest.getUser().getLastName().equals(submitterLastName)) 
                 return reliefRequest;
         }
         return null;
