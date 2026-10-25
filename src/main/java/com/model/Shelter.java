@@ -17,6 +17,7 @@ public class Shelter {
     private ShelterStatus shelterStatus;
     private ArrayList<ShelterResources> shelterResources;
     private String visualDescription;
+    private ArrayList<PartyMember> occupants;
     private int numberOfOccupants;
     private int maxNumberOfOccupants;
     private boolean medicalStaffAvailable;
@@ -48,6 +49,7 @@ public class Shelter {
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
         this.visualDescription = visualDescription;
+        this.occupants = new ArrayList<PartyMember>();
         this.numberOfOccupants = numberOfOccupants;
         this.maxNumberOfOccupants = maxNumberOfOccupants;
         this.medicalStaffAvailable = medicalStaffAvailable;
@@ -228,6 +230,14 @@ public class Shelter {
     }
 
     /**
+     * setOccupants sets the occupants as a party member array
+     * @param occupants occupants
+     */
+    public void setOccupants(ArrayList<PartyMember> occupants) {
+        this.occupants = occupants;
+    }
+
+    /**
      * Returns the current number of occupants.
      * @return number of occupants
      */
@@ -240,6 +250,8 @@ public class Shelter {
      * @param numberOfOccupants number of occupants
      */
     public void setNumberOfOccupants(int numberOfOccupants, boolean isAdmin) {
+        // we do not set the number of occupants using the occupant list because
+        // some occupants in the occupy list are pets
         if (!isAdmin) {
             return;
         }
@@ -293,15 +305,15 @@ public class Shelter {
     public String toString() {
         return "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
         "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" + this.shelterType +
-        "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of occupants: "+this.numberOfOccupants+
-        "\nMaximum number of occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
+        "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of human occupants: "+this.numberOfOccupants+
+        "\nMaximum number of human occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
         "\nShelter Resources: "+this.shelterResources.toString()+occupantsToString() + 
         "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
 
     }
 
     private String occupantsToString() {
-        String str = "\n\nOCCUPANTS\n";
+        String str = "\n\nALL OCCUPANTS\n";
         int age;
         for ( PartyMember partyMember : this.occupants ) {
             age = 2026 - Integer.parseInt(partyMember.getYearBorn());

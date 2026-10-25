@@ -144,12 +144,12 @@ public class ReliefRequestList {
      * @param isAdmin checks if the user is an administrator
      * @return boolean based on if the request was marked as completed
      */
-    public boolean markCompleteRequest(ReliefRequest request, boolean isAdmin) {
+    public String markCompleteRequest(ReliefRequest request, boolean isAdmin) {
         if (!isAdmin) {
-            return false;
+            return "Error: only admin can mark request as completed!";
         }
         request.setStatus(ReliefRequestStatus.COMPLETED);
-        return true;
+        return "Request marked complete";
     }
 
     /**
