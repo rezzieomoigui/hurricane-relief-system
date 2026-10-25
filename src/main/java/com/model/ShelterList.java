@@ -78,12 +78,19 @@ public class ShelterList {
      * @param visualDescription shelter visual description
      * @return boolean true if shelter was added correctly
      */
-    public boolean addShelter(ShelterType shelterType, String address, String zipCode, ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus, String visualDescription) {
-        this.shelters.add(new Shelter(shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription));
+    public boolean addShelter(UUID id, ShelterType shelterType, String address, String zipCode, ArrayList<ShelterResources> shelterResources, ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable) {
+        if (getShelter(id) != null) {
+            System.out.println("Shelter already exists");
+            return false;
+        }
+        shelters.add(new Shelter(shelterType, address, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable));
         return true;
-        // add case for if shelter doesn't exist
     }
 
+    /**
+     * save method saves shelters
+     * @return boolean depending on if it saved properly or not
+     */
     public boolean save() {
         return DataWriter.saveShelters();
     }
