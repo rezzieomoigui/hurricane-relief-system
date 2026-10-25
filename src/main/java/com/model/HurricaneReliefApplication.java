@@ -63,6 +63,10 @@ public class HurricaneReliefApplication {
         reliefRequestList.addPartyMember(request, name, yearBorn, needsMedicalAssistance, type);
     }
 
+    public void addShelterOccupants(Shelter shelter, ArrayList<PartyMember> newOccupants) {
+        shelterList.addOccupants(shelter, newOccupants);
+    }
+
     /**
      * getCurrentUser gets the current user
      * @return current user, or null if nobody is logged in
@@ -181,6 +185,10 @@ public class HurricaneReliefApplication {
 
     public Shelter getShelter(String address, String city, String state, String zipCode) {
         return shelterList.getShelter(address, city, state, zipCode);
+    }
+
+    public void setNumberOfOccupants(Shelter shelter, int numberOfOccupants, boolean isAdmin) {
+        shelter.setNumberOfOccupants(numberOfOccupants, isAdmin);
     }
 
     private String describeHurricane(Hurricane hurricane, String state) {

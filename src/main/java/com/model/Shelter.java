@@ -41,7 +41,7 @@ public class Shelter {
      */
     public Shelter(ShelterType shelterType, String address, String city, String state, String zipCode,
                    ArrayList<ShelterResources> shelterResources,
-                   ShelterStatus shelterStatus, String visualDescription, ArrayList<PartyMember> occupants, int numberOfOccupants,
+                   ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants,
                    int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
         UUID.randomUUID();
         this.shelterType = shelterType;
@@ -51,7 +51,7 @@ public class Shelter {
         this.shelterResources = shelterResources;
         this.shelterStatus = shelterStatus;
         this.visualDescription = visualDescription;
-        this.occupants = occupants;
+        this.occupants = new ArrayList<PartyMember>();
         this.numberOfOccupants = numberOfOccupants;
         this.maxNumberOfOccupants = maxNumberOfOccupants;
         this.medicalStaffAvailable = medicalStaffAvailable;
@@ -216,6 +216,10 @@ public class Shelter {
         this.shelterResources = shelterResources;
     }
 
+    public void setOccupants(ArrayList<PartyMember> occupants) {
+        this.occupants = occupants;
+    }
+
     /**
      * Returns the shelter visual description.
      * @return visual description
@@ -249,6 +253,8 @@ public class Shelter {
      * @param numberOfOccupants number of occupants
      */
     public void setNumberOfOccupants(int numberOfOccupants, boolean isAdmin) {
+        // we do not set the number of occupants using the occupant list because 
+        // some occupants in the occupany list are pets
         if (!isAdmin)
             return;
         if (numberOfOccupants < 0
@@ -306,15 +312,15 @@ public class Shelter {
     public String toString() {
         return "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
         "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" + this.shelterType +
-        "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of occupants: "+this.numberOfOccupants+
-        "\nMaximum number of occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
+        "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of human occupants: "+this.numberOfOccupants+
+        "\nMaximum number of human occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
         "\nShelter Resources: "+this.shelterResources.toString()+occupantsToString() + 
         "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
 
     }
 
     private String occupantsToString() {
-        String str = "\n\nOCCUPANTS\n";
+        String str = "\n\nALL OCCUPANTS\n";
         int age;
         for ( PartyMember partyMember : this.occupants ) {
             age = 2026 - Integer.parseInt(partyMember.getYearBorn());

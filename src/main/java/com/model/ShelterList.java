@@ -93,14 +93,24 @@ public class ShelterList {
      * @param visualDescription shelter visual description
      * @return boolean true if shelter was added correctly
      */
-    public boolean addShelter(UUID id, ShelterType shelterType, String address, String city, String state, String zipCode, ArrayList<ShelterResources> shelterResources, 
-        ShelterStatus shelterStatus, String visualDescription, ArrayList<PartyMember> occupants, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
-        if (getShelter(id) != null) {
-            System.out.println("Shelter already exists");
-            return false;
+    public Shelter addShelter(ShelterType shelterType, String address, String city, String state, String zipCode, ArrayList<ShelterResources> shelterResources, 
+        ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
+        Shelter shelter = new Shelter(shelterType, address, city, state, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly);
+        shelters.add(shelter);
+        return shelter;
+    }
+
+    /**
+     * addPartyMember adds a user to the relief request
+     * @param user account user
+     * @return boolean based on if party member was correctly added
+     */
+    public void addOccupants(Shelter shelter, ArrayList<PartyMember> newOccupants) {
+        ArrayList<PartyMember> occupants = shelter.getOccupants();
+        for (PartyMember occupant : newOccupants) {
+            occupants.add(new PartyMember(occupant.getName(), occupant.getYearBorn(), occupant.needsMedicalAssistance(), occupant.getType()));
         }
-        shelters.add(new Shelter(shelterType, address, city, state, zipCode, shelterResources, shelterStatus, visualDescription, occupants, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly));
-        return true;
+        shelter.setOccupants(occupants);
     }
 
     /**

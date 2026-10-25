@@ -58,6 +58,9 @@ public class HurricaneReliefDriver {
         Shelter myShelter = application.getShelter("100 Broad Street", "Charleston", "South Carolina", "29401");
         System.out.println(myShelter.toString());
         ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
+        application.addShelterOccupants(myShelter, carterRequest.getPartyMembers());
+        myShelter.setNumberOfOccupants(myShelter.getNumberOfOccupants()+3, application.getCurrentUser().isAdmin());
+        System.out.println(myShelter.toString());
         boolean markedComplete = application.markCompleteRequest(carterRequest, application.getCurrentUser().isAdmin());
         System.out.println(carterRequest.toString());
     }
