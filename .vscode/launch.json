@@ -33,10 +33,7 @@
       "projectName": "hurricane-relief-system",
       "cwd": "${workspaceFolder}",
       "console": "integratedTerminal",
-      "envFile": "${workspaceFolder}/.env",
-      "env": {
-        "MAP_API_KEY": "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImU2ZWNhYTYzYzliODQwNTVhNTFmZTRiODBlMjUzMjhhIiwiaCI6Im11cm11cjY0In0="
-      }
+      "envFile": "${workspaceFolder}/.env"
     },
     {
       "type": "java",
