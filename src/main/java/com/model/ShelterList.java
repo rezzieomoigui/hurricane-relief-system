@@ -146,7 +146,7 @@ public class ShelterList {
         }
         return closest;
     }
-    
+
     // working with this later 
         int newOccupacy = shelter.getNumberOfOccupants() + numPeople;
         shelter.setNumberOfOccupants(newOccupacy);
@@ -171,7 +171,7 @@ public class ShelterList {
      */
     public Shelter addShelter(ShelterType shelterType, String address, String city, String state, String zipCode, ArrayList<ShelterResources> shelterResources, 
         ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
-        Shelter shelter = new Shelter(shelterType, address, city, state, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly);
+        Shelter shelter = new Shelter(shelterType, address, state, city, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly);
         shelters.add(shelter);
         return shelter;
     }

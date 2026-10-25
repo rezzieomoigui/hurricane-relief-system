@@ -258,6 +258,7 @@ public class Shelter {
         if (numberOfOccupants < 0 || numberOfOccupants > maxNumberOfOccupants) {
             throw new IllegalArgumentException();
         }
+        this.numberOfOccupants = numberOfOccupants;
     }
 
     /**
@@ -305,7 +306,7 @@ public class Shelter {
     public String toString() {
         return "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
         "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" + this.shelterType +
-        "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of human occupants: "+this.numberOfOccupants+
+        "\nStatus: "+this.getShelterStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of human occupants: "+this.numberOfOccupants+
         "\nMaximum number of human occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
         "\nShelter Resources: "+this.shelterResources.toString()+occupantsToString() + 
         "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
