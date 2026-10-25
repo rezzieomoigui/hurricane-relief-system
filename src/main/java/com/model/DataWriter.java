@@ -83,9 +83,8 @@ public class DataWriter extends DataConstants {
         shelterDetails.put(SHELTER_VISUAL_DESCRIPTION, shelter.getVisualDescription());
         shelterDetails.put(SHELTER_NUMBER_OF_OCCUPANTS, Integer.toString(shelter.getNumberOfOccupants()));
         shelterDetails.put(SHELTER_MAX_NUMBER_OF_OCCUPANTS, Integer.toString(shelter.getMaxNumberOfOccupants()));
-        shelterDetails.put(SHELTER_MEDICAL_STAFF_AVAILABLE, Boolean.toString(shelter.medicalStaffAvailable()));
+        shelterDetails.put(SHELTER_MEDICAL_STAFF_AVAILABLE, Boolean.toString(shelter.getMedicalStaffAvailable()));
         shelterDetails.put(SHELTER_OCCUPANTS, occupantArr);
-        shelterDetails.put(SHELTER_IS_PET_FRIENDLY, Boolean.toString(shelter.isPetFriendly()));
         return shelterDetails;
     }
 

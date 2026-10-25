@@ -19,7 +19,6 @@ public abstract class DataConstants {
     protected static final String SHELTER_OCCUPANTS = "occupants";
     protected static final String SHELTER_VISUAL_DESCRIPTION = "visualDescription";
     protected static final String SHELTER_MEDICAL_STAFF_AVAILABLE = "medicalStaffAvailable";
-    protected static final String SHELTER_IS_PET_FRIENDLY = "isPetFriendly";
 
     protected static final String USER_FILE_NAME = "json_files/user.json";
     protected static final String USER_UUID = "uuid";

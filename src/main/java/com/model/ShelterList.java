@@ -170,7 +170,7 @@ public class ShelterList {
         Shelter shelter = null;
         try {
             shelter = closestMatchingShelter(numPeople, reliefRequest);
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         if (shelter == null) {
@@ -199,8 +199,8 @@ public class ShelterList {
      * @return boolean true if shelter was added correctly
      */
     public Shelter addShelter(ShelterType shelterType, String address, String city, String state, String zipCode, ArrayList<ShelterResources> shelterResources, 
-        ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
-        Shelter shelter = new Shelter(shelterType, address, state, city, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly);
+        ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable) {
+        Shelter shelter = new Shelter(shelterType, address, city, state, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable);
         shelters.add(shelter);
         return shelter;
     }
