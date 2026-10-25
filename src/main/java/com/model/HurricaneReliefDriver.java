@@ -13,6 +13,7 @@ public class HurricaneReliefDriver {
     public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
+        scenario3();
         scenario5();
         scenario6();
     }
