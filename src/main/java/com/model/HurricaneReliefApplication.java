@@ -175,7 +175,7 @@ public class HurricaneReliefApplication {
      * @param isAdmin 
      * @return Whether marking as complete was successful
      */
-    public boolean markCompleteRequest(ReliefRequest request, boolean isAdmin) {
+    public String markCompleteRequest(ReliefRequest request, boolean isAdmin) {
         return reliefRequestList.markCompleteRequest(request, isAdmin);
     }
 

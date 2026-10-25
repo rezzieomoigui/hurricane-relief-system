@@ -144,12 +144,12 @@ public class ReliefRequestList {
         return DataWriter.saveReliefRequests();
     }
 
-    public boolean markCompleteRequest(ReliefRequest request, boolean isAdmin) {
+    public String markCompleteRequest(ReliefRequest request, boolean isAdmin) {
         if (!isAdmin) {
-            return false;
+            return "Error: only admin can mark request as completed!";
         }
         request.setStatus(ReliefRequestStatus.COMPLETED);
-        return true;
+        return "Request marked complete";
     }
 
     private ArrayList<ReliefRequest> matchingSkillReliefRequest(Skills skill) {

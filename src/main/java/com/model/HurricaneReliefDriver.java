@@ -13,6 +13,7 @@ public class HurricaneReliefDriver {
     public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
+        scenario5();
         scenario6();
     }
 
@@ -49,6 +50,15 @@ public class HurricaneReliefDriver {
         System.out.println("Scenario 3: Shelters");
     }
 
+    public void scenario5() {
+        System.out.println();
+        System.out.println("Scenario 5: Rosa tries to mark request complete");
+        ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
+        String message = application.markCompleteRequest(carterRequest, application.getCurrentUser().isAdmin());
+        System.out.println(message);
+        System.out.println(carterRequest);
+    }
+
     public void scenario6() {
         System.out.println();
         application.logout();
@@ -61,7 +71,7 @@ public class HurricaneReliefDriver {
         application.addShelterOccupants(myShelter, carterRequest.getPartyMembers());
         myShelter.setNumberOfOccupants(myShelter.getNumberOfOccupants()+3, application.getCurrentUser().isAdmin());
         System.out.println(myShelter.toString());
-        boolean markedComplete = application.markCompleteRequest(carterRequest, application.getCurrentUser().isAdmin());
+        application.markCompleteRequest(carterRequest, application.getCurrentUser().isAdmin());
         System.out.println(carterRequest.toString());
     }
 

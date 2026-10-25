@@ -1,12 +1,9 @@
 package com.model;
 
 import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import java.util.UUID;
-import java.util.HashMap;
 
 public class DataWriter extends DataConstants {
     public static void main(String[] args) {
