@@ -16,20 +16,6 @@ public class DataLoader extends DataConstants {
      /**
       * main method created to test data loader
       */
-    public static void main(String[] args) {
-        ArrayList<User> users = getUsers();
-        for (User user : users) {
-            System.out.println(user.getEmail());
-        }
-        ArrayList<Shelter> shelters = getShelters();
-        for (Shelter shelter : shelters) {
-            System.out.println(shelter.getAddress());
-        }
-        ArrayList<ReliefRequest> reliefRequests = getReliefRequests();
-        for (ReliefRequest reliefRequest : reliefRequests) {
-            System.out.println(reliefRequest.getStatus());
-        }
-    }
     
     /**
      * getUsers reads in data from the users json file and adds a user from the data that is read in
@@ -127,7 +113,6 @@ public class DataLoader extends DataConstants {
         ArrayList<ReliefRequest> reliefRequests = new ArrayList<ReliefRequest>();
         try {
             FileReader reader = new FileReader(RELIEF_REQUEST_FILE_NAME);
-            JSONParser parser = new JSONParser();
             JSONArray reliefRequestArray = (JSONArray)new JSONParser().parse(reader);
             for (int i = 0; i < reliefRequestArray.size(); i++) {
                 JSONObject reliefRequestJSON = (JSONObject)reliefRequestArray.get(i);
@@ -160,35 +145,32 @@ public class DataLoader extends DataConstants {
      * getHurricane reads in data from the hurricane json file and adds a hurricane from the data that is read in
      * @return ArrayList of type hurricane containing hurricane data
      */
-    public static ArrayList<Hurricane> getHurricane() {
-        ArrayList<Hurricane> hurricane = new ArrayList<Hurricane>();
+    public static Hurricane getHurricane() {
+        Hurricane hurricane;
         try {
             FileReader reader = new FileReader(HURRICANE_FILE_NAME);
             JSONParser parser = new JSONParser();
-            JSONArray hurricaneArray = (JSONArray)new JSONParser().parse(reader);
-            for (int i = 0; i < hurricaneArray.size(); i++) {
-                JSONObject hurricaneJSON = (JSONObject)hurricaneArray.get(i);
-                UUID id = UUID.fromString((String)hurricaneJSON.get(HURRICANE_UUID));
-                String name = (String)hurricaneJSON.get(HURRICANE_NAME);
-                String eyeOfStormZip = (String)hurricaneJSON.get(HURRICANE_EYE_OF_STORM);
-                int category = (int)hurricaneJSON.get(HURRICANE_CATEGORY);
-                HurricaneStatus status = HurricaneStatus.valueOf(((String)hurricaneJSON.get(HURRICANE_STATUS)).toUpperCase());
-                JSONArray affectedZipCodes = (JSONArray)hurricaneJSON.get(HURRICANE_AFFECTED_ZIP_CODES);
-                JSONObject preparationGuide = (JSONObject)hurricaneJSON.get(HURRICANE_PREPARATION_GUIDE);
-                double windSpeed = (double)hurricaneJSON.get(HURRICANE_WIND_SPEED);
-                double movementSpeed = (double)hurricaneJSON.get(HURRICANE_MOVEMENT_SPEED);
-                String expectedLandfall = (String)hurricaneJSON.get(HURRICANE_LOCAL_DATE_TIME);
-                hurricane.add(new Hurricane(name, id, eyeOfStormZip, category, status, affectedZipCodes, preparationGuide, windSpeed, movementSpeed, expectedLandfall));
-            }
-        return hurricane;
-        }catch (Exception e) {
+            Object obj = parser.parse(reader);
+            JSONObject hurricaneJSON = (JSONObject) obj;
+            UUID id = UUID.fromString((String)hurricaneJSON.get(HURRICANE_UUID));
+            String name = (String)hurricaneJSON.get(HURRICANE_NAME);
+            String eyeOfStormZip = (String)hurricaneJSON.get(HURRICANE_EYE_OF_STORM);
+            int category = Integer.parseInt((String)hurricaneJSON.get(HURRICANE_CATEGORY));
+            HurricaneStatus status = HurricaneStatus.valueOf(((String)hurricaneJSON.get(HURRICANE_STATUS)).toUpperCase());
+            JSONArray affectedZipCodes = (JSONArray)hurricaneJSON.get(HURRICANE_AFFECTED_ZIP_CODES);
+            ArrayList<String> affectedZipCodesStr = convertZipCodes(affectedZipCodes);
+            double windSpeed = Double.parseDouble((String)hurricaneJSON.get(HURRICANE_WIND_SPEED));
+            double movementSpeed = Double.parseDouble((String)hurricaneJSON.get(HURRICANE_MOVEMENT_SPEED));
+            hurricane = new Hurricane(name, id, eyeOfStormZip, category, status, affectedZipCodesStr, windSpeed, movementSpeed);
+            return hurricane;    
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return null;
     }
 
     private static ArrayList<PartyMember> convertPartyMembers(JSONArray partyMembers) {
-        ArrayList<PartyMember> partyMemberArr = new ArrayList<>();
+        ArrayList<PartyMember> partyMemberArr = new ArrayList<PartyMember>();
         for( int i = 0; i < partyMembers.size(); ++i ) {
             JSONObject partyMemberJSON = (JSONObject)partyMembers.get(i);
             String name = (String)(partyMemberJSON.get(PARTY_MEMBER_NAME));
@@ -198,5 +180,14 @@ public class DataLoader extends DataConstants {
             partyMemberArr.add(new PartyMember(name, yearBorn, needsMedicalAssistance, type));
         }
         return partyMemberArr;
+    }
+
+    private static ArrayList<String> convertZipCodes(JSONArray affectedZipCodes) {
+        ArrayList<String> zipCodesArr = new ArrayList<String>();
+        for ( int i = 0; i < affectedZipCodes.size(); ++i ) {
+            String zipCode = (String)(affectedZipCodes.get(i));
+            zipCodesArr.add(zipCode);
+        }
+        return zipCodesArr;
     }
 }

@@ -6,11 +6,6 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class DataWriter extends DataConstants {
-    public static void main(String[] args) {
-        saveUsers();
-        saveShelters();
-        saveReliefRequests();
-    }
 
     public static boolean saveUsers() {
         UserList userList = UserList.getInstance();
@@ -66,10 +61,6 @@ public class DataWriter extends DataConstants {
             e.printStackTrace();
             return false;
         }
-    }
-
-    public static void saveHurricane() {
-        
     }
 
 
@@ -165,6 +156,5 @@ public class DataWriter extends DataConstants {
         partyMemberDetails.put(PARTY_MEMBER_TYPE, partyMember.getType().str);
         return partyMemberDetails;
     }
-
 
 }

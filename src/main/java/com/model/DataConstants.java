@@ -64,16 +64,12 @@ public abstract class DataConstants {
     protected static final String PARTY_MEMBER_TYPE = "type";
 
     protected static final String HURRICANE_FILE_NAME = "json_files/hurricane.json";
-    protected static final String HURRICANE_UUID = "uuid";
+    protected static final String HURRICANE_UUID = "id";
     protected static final String HURRICANE_NAME = "name";
     protected static final String HURRICANE_EYE_OF_STORM = "eyeOfStormZip";
     protected static final String HURRICANE_CATEGORY = "category";
     protected static final String HURRICANE_STATUS = "status";
     protected static final String HURRICANE_AFFECTED_ZIP_CODES = "affectedZipCodes";
-    protected static final String HURRICANE_PREPARATION_GUIDE = "preparationGuide";
-    protected static final String PREPARATION_GUIDE_TIPS = "tips";
-    protected static final String PREPARATION_GUIDE_PHONE_NUMBERS = "emergencyPhoneNumbers";
     protected static final String HURRICANE_WIND_SPEED = "windSpeed";
     protected static final String HURRICANE_MOVEMENT_SPEED = "movementSpeed";
-    protected static final String HURRICANE_LOCAL_DATE_TIME = "expectedLandfall";
 }

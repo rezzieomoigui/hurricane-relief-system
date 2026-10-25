@@ -1,52 +1,33 @@
-[
-    {
-        "uuid": "fae8f434-5e8e-4367-aa3e-2c07adf8aa09",
-        "name": "Arthur",
+{
+        "id": "fae8f434-5e8e-4367-aa3e-2c07adf8aa09",
+        "name": "Scarlet",
         "eyeOfStormZip": "29401",
-        "category": 3,
+        "category": "3",
         "status": "ACTIVE",
         "affectedZipCodes": [
             "29401",
             "29402",
-            "29403"
+            "29403",
+            "29404",
+            "29405",
+            "29406",
+            "29407",
+            "29412",
+            "29413",
+            "29414",
+            "29415",
+            "29416",
+            "29417",
+            "29418",
+            "29419",
+            "29422",
+            "29423",
+            "29424",
+            "29425",
+            "29426",
+            "29429",
+            "29439"
         ],
-        "preparationGuide": {
-            "tips": [
-                "Stay away from windows",
-                "Stock up on water and canned goods"
-            ],
-            "emergencyPhoneNumbers": [
-                "8035649089",
-                "9087651358"
-            ]
-        },
-        "windSpeed": 55.0,
-        "movementSpeed": 30.0,
-        "expectedLandfall": "2026-11-01 11:30:00"
-    },
-    {
-        "uuid": "f75871a3-a208-4add-9568-1ee5f08eee8f",
-        "name": "Maria",
-        "eyeOfStormZip": "77002",
-        "category": 2,
-        "status": "APPROACHING",
-        "affectedZipCodes": [
-            "77002",
-            "77003",
-            "77004"
-        ],
-        "preparationGuide": {
-            "tips": [
-                "Stay away from windows",
-                "Stock up on water and canned goods"
-            ],
-            "emergencyPhoneNumbers": [
-                "6759082388",
-                "9903478910"
-            ]
-        },
-        "windSpeed": 100.0,
-        "movementSpeed": 50.0,
-        "expectedLandfall": "2026-11-02 08:12:00"
-    }
-]
+        "windSpeed": "55.0",
+        "movementSpeed": "30.0"
+}
