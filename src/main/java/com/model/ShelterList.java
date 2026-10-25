@@ -139,6 +139,7 @@ public class ShelterList {
 
     public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) throws IOException, InterruptedException {
         ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
+        System.out.println("Matching Shelter Found: " + matchingShelters.size());
         if (matchingShelters.isEmpty()) {
             return null;
         }
