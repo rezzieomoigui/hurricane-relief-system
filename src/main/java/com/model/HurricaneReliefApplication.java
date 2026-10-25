@@ -191,6 +191,11 @@ public class HurricaneReliefApplication {
         shelter.setNumberOfOccupants(numberOfOccupants, isAdmin);
     }
 
+    public void write(ReliefRequest request, String victimAddress, String victimCity, String victimState, String victimZipCode, Shelter shelter) throws IOException, InterruptedException {
+        ExportFile export = new ExportFile();
+        export.write(request, victimAddress, victimCity, victimState, victimZipCode, shelter);
+    }
+
     /**
      * save saves the users, shelters, relief requests and hurricanes
      * @return true if everything was saved

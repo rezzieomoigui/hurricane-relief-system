@@ -13,8 +13,9 @@ public class HurricaneReliefDriver {
     public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
-        scenario5();
-        scenario6();
+        scenario4();
+        //scenario5();
+        //scenario6();
     }
 
     public void scenario1() {
@@ -25,8 +26,6 @@ public class HurricaneReliefDriver {
         boolean loggedIn = application.login("ccollin", "7snailBrook&");
         System.out.println("Collin Carter logged in? "+loggedIn);
         ReliefRequest request = application.createReliefRequest(application.getCurrentUser(), true, false, true, true, true, Skills.TRANSPORTATION);
-        //ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        //ArrayList<ReliefRequest> rr = reliefRequestList.getReliefRequests();
         application.addPartyMember(request, "Collin Carter", "1978", false, Being.PERSON);
         application.addPartyMember(request, "Sophie Carter", "2012", true, Being.PERSON);
         application.addPartyMember(request, "Connie Carter", "1979", false, Being.PERSON);
@@ -50,6 +49,15 @@ public class HurricaneReliefDriver {
     public void scenario3() {
         System.out.println();
         System.out.println("Scenario 3: Shelters");
+    }
+
+    public void scenario4() throws IOException, InterruptedException {
+        System.out.println();
+        System.out.println("Scenario 4: Exporting .txt file");
+        Volunteer rosa = (Volunteer) application.getCurrentUser();
+        ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
+        Shelter shelter = application.getShelter("100 Broad Street", "Charleston", "South Carolina", "29401");
+        application.write(carterRequest, rosa.getAddress(), rosa.getCity(), rosa.getState(), rosa.getZipCode(), shelter);
     }
 
     public void scenario5() {

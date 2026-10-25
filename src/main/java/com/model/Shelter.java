@@ -56,7 +56,7 @@ public class Shelter {
     }
 
     /**
-     * Recreates an existing shelter with a known id and occupant counts (used when loading frm JSON)
+     * Recreates an existing shelter with a known id and occupant counts (used when loading from JSON)
      * @param id shelter id
      * @param shelterType shelter type
      * @param address shelter address
@@ -96,18 +96,6 @@ public class Shelter {
         this.medicalStaffAvailable = medicalStaffAvailable;
     }
 
-    /**
-     * Returns shelters matching a specific zip code.
-     * @param zipCode zip code to search for
-     * @return list of matching shelters
-     */
-    public ArrayList<Shelter> searchByZip(String zipCode) {
-        ArrayList<Shelter> results = new ArrayList<>();
-        if (zipCode != null && zipCode.equals(this.zipCode)) {
-            results.add(this);
-        }
-        return results;
-    }
 
     /**
      * Returns the shelter id.
@@ -134,19 +122,19 @@ public class Shelter {
     }
 
     /**
-     * getState gets the state of the shelter
-     * @return string representing the state of the shelter
-     */
-    public String getState() {
-        return state;
-    }
-
-    /**
      * getCity gets the city of the shelter
      * @return string representing the city of the shelter
      */
     public String getCity() {
         return city;
+    }
+
+    /**
+     * getState gets the state of the shelter
+     * @return string representing the state of the shelter
+     */
+    public String getState() {
+        return state;
     }
 
     /**
@@ -307,6 +295,19 @@ public class Shelter {
 
     public ShelterStatus getStatus() {
         return this.shelterStatus;
+    }
+
+    /**
+     * Returns shelters matching a specific zip code.
+     * @param zipCode zip code to search for
+     * @return list of matching shelters
+     */
+    public ArrayList<Shelter> searchByZip(String zipCode) {
+        ArrayList<Shelter> results = new ArrayList<>();
+        if (zipCode != null && zipCode.equals(this.zipCode)) {
+            results.add(this);
+        }
+        return results;
     }
 
     /**

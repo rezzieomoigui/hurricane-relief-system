@@ -1,5 +1,4 @@
 package com.model;
-import java.util.Scanner;
 import java.util.UUID;
 
 /**
@@ -345,19 +344,4 @@ public class User {
         this.userType = userType;
     }
 
-    /**
-     * main scans in the information and tests creating an account
-     * @param args command line arguments
-     */
-    public static void main(String[] args) {
-        Scanner keyboard = new Scanner(System.in);
-        System.out.println("----- Creating An Account -----");
-        System.out.println("Enter your first name: ");
-        String firstName = keyboard.nextLine();
-        System.out.println("Enter your last name: ");
-        String lastName = keyboard.nextLine();
-        System.out.println("Enter your username: ");
-        String username = keyboard.nextLine();
-
-    }
 }

@@ -34,6 +34,14 @@ public class ReliefRequestList {
     }
 
     /**
+     * getReliefRequests method gets the relief requests 
+     * @return arrayList of relief requests
+     */
+    public ArrayList<ReliefRequest> getReliefRequests() {
+        return this.reliefRequests;
+    }
+
+    /**
      * getReliefRequestById gets the relief request that matches the prodived id
      * @param id relief request uuid
      * @return relief request associated with specific uuid
@@ -48,11 +56,46 @@ public class ReliefRequestList {
     }
 
     /**
-     * getReliefRequests method gets the relief requests 
-     * @return arrayList of relief requests
+     * getReliefRequest gets the relief request 
+     * @param address user address
+     * @param city user city
+     * @param state user state
+     * @param zipCode user zip code
+     * @param submitterFirstName first name of person submitting request
+     * @param submitterLastName last name of person submitting request
+     * @return relief request matching given parameters
      */
-    public ArrayList<ReliefRequest> getReliefRequests() {
-        return this.reliefRequests;
+    public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
+        for ( ReliefRequest reliefRequest : reliefRequests ) {
+            if ( reliefRequest.getAddress().equals(address) && 
+            reliefRequest.getCity().equals(city) && reliefRequest.getState().equals(state) && 
+            reliefRequest.getZipCode().equals(zipCode) && reliefRequest.getUser().getFirstName().equals(submitterFirstName) && reliefRequest.getUser().getLastName().equals(submitterLastName)) 
+                return reliefRequest;
+        }
+        return null;
+    }
+
+    /**
+     * Gives suggested request based on location
+     * @param User the user who needs a suggested request
+     */
+    public ReliefRequest getSuggestedRequest(Volunteer volunteer) // only Volunteers need a suggested request
+            throws IOException, InterruptedException {
+        String address = volunteer.getAddress();
+        String city = volunteer.getCity();
+        String state = volunteer.getState();
+        String zipCode = volunteer.getZipCode();
+        Address userAddress = new Address(address, city, state, zipCode);
+        // first select requests with needed Skills that match the Volunteer's 
+        ArrayList<ReliefRequest> matchingRequests = matchingSkillReliefRequest(volunteer.getSkills());
+        if (matchingRequests.isEmpty())
+            matchingRequests = reliefRequests;
+        Address[] addresses = ReliefRequestAddresses(matchingRequests);
+        MapTools mapTools = MapTools.getInstance();
+        // then select the closest address out of the matching requests
+        Address closestAddress = mapTools.findClosestAddress(userAddress, addresses);
+        ReliefRequest matchingRequest = getReliefRequest(closestAddress);
+        return matchingRequest;
     }
 
     /**
@@ -85,8 +128,7 @@ public class ReliefRequestList {
      * @param id user uuid
      * @return boolean if request was properly removed
      */
-    public boolean removeReliefRequest(UUID id) {
-        ReliefRequest request = getReliefRequestById(id);
+    public boolean removeReliefRequest(ReliefRequest request) {
         if (request == null) {
             return false;
         }
@@ -105,38 +147,6 @@ public class ReliefRequestList {
     }
 
     /**
-     * Gives suggested request based on location
-     * @param User the user who needs a suggested request
-     */
-    public ReliefRequest getSuggestedRequest(Volunteer volunteer) // only Volunteers need a suggested request
-            throws IOException, InterruptedException {
-        String address = volunteer.getAddress();
-        String city = volunteer.getCity();
-        String state = volunteer.getState();
-        String zipCode = volunteer.getZipCode();
-        Address userAddress = new Address(address, city, state, zipCode);
-        // first select requests with needed Skills that match the Volunteer's 
-        ArrayList<ReliefRequest> matchingRequests = matchingSkillReliefRequest(volunteer.getSkills());
-        if (matchingRequests.isEmpty())
-            matchingRequests = reliefRequests;
-        Address[] addresses = ReliefRequestAddresses(matchingRequests);
-        MapTools mapTools = MapTools.getInstance();
-        // then select the closest address out of the matching requests
-        Address closestAddress = mapTools.findClosestAddress(userAddress, addresses);
-        ReliefRequest matchingRequest = getReliefRequest(closestAddress);
-        return matchingRequest;
-    }
-    
-
-    /**
-     * save method saves the relief requests
-     * @return boolean for if the relief requests were properly saved
-     */
-    public boolean save() {
-        return DataWriter.saveReliefRequests();
-    }
-
-    /**
      * markCompleteRequest marks a relief request as completed
      * @param request relief request
      * @param isAdmin checks if the user is an administrator
@@ -148,6 +158,15 @@ public class ReliefRequestList {
         }
         request.setStatus(ReliefRequestStatus.COMPLETED);
         return "Request marked complete";
+    }
+
+    public String toString() {
+        String str = "";
+        for (ReliefRequest reliefRequest : reliefRequests) {
+            if (reliefRequest.getStatus() == ReliefRequestStatus.SUBMITTED)
+                str += "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" + reliefRequest.toString() + "\n";
+        }
+        return str;
     }
 
     /**
@@ -192,45 +211,10 @@ public class ReliefRequestList {
     }
 
     /**
-     * getReliefRequest gets the relief request 
-     * @param address user address
-     * @param city user city
-     * @param state user state
-     * @param zipCode user zip code
-     * @param submitterFirstName first name of person submitting request
-     * @param submitterLastName last name of person submitting request
-     * @return relief request matching given parameters
+     * save method saves the relief requests
+     * @return boolean for if the relief requests were properly saved
      */
-    public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
-        for ( ReliefRequest reliefRequest : reliefRequests ) {
-            if ( reliefRequest.getAddress().equals(address) && 
-            reliefRequest.getCity().equals(city) && reliefRequest.getState().equals(state) && 
-            reliefRequest.getZipCode().equals(zipCode) && reliefRequest.getUser().getFirstName().equals(submitterFirstName) && reliefRequest.getUser().getLastName().equals(submitterLastName)) 
-                return reliefRequest;
-        }
-        return null;
-    }
-
-    public String toString() {
-        String str = "";
-        for (ReliefRequest reliefRequest : reliefRequests) {
-            if (reliefRequest.getStatus() == ReliefRequestStatus.SUBMITTED)
-                str += "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" + reliefRequest.toString() + "\n";
-        }
-        return str;
-    }
-
-    public static void main(String[] args) {
-        ReliefRequestList reliefRequestList = new ReliefRequestList();
-        UserList userList = UserList.getInstance();
-        User user = userList.getUser("jgrey");
-        Volunteer volunteer = (Volunteer) user;
-        try {
-            ReliefRequest r = reliefRequestList.getSuggestedRequest(volunteer);
-            System.out.println(r.getAddress());
-        } catch (Exception e) {
-            System.out.println(e);
-            System.out.print(e.getStackTrace()[0].getLineNumber());
-        }
+    public boolean save() {
+        return DataWriter.saveReliefRequests();
     }
 }

@@ -128,19 +128,12 @@ public class ReliefRequest {
     }
 
     /**
-     * getUser looks up the user who wrote this relief request
+     * getUser looks up the user who wrote this rselief request
      * @return the user that owns the request, or null if not found
      */
     public User getUser() {
-        return UserList.getInstance().getUser(userUUID);
-    }
-
-    /**
-     * getUserUUID gets the users id
-     * @return user id
-     */
-    public UUID getUserUUID() {
-        return this.userUUID;
+        UserList userList = UserList.getInstance();
+        return userList.getUser(this.userUUID);
     }
 
     /**
@@ -165,6 +158,10 @@ public class ReliefRequest {
      */
     public void setPartyMembers(ArrayList<PartyMember> partyMembers) {
         this.partyMembers = partyMembers;
+    }
+
+    public UUID getUserUuid() {
+        return this.userUUID;
     }
 
     /**

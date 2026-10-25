@@ -129,7 +129,7 @@ public class DataWriter extends DataConstants {
         for (int i = 0; i < partyMembers.size(); ++i) {
             partyMemberArr.add(getPartyMemberJSON(partyMembers.get(i)));
         }
-        requestDetails.put(RELIEF_REQUEST_USER_UUID, request.getUserUUID().toString());
+        requestDetails.put(RELIEF_REQUEST_USER_UUID, request.getUserUuid().toString());
         requestDetails.put(RELIEF_REQUEST_UUID, request.getUuid().toString());
         requestDetails.put(RELIEF_REQUEST_ADDRESS, request.getAddress());
         requestDetails.put(RELIEF_REQUEST_CITY, request.getCity());

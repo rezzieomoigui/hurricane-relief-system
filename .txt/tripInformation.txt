@@ -1,0 +1,77 @@
+
+RELIEF REQUEST INFORMATION
+Address: 1735 Vassar Dr, Charleston, South Carolina, 29407
+Status: SUBMITTED
+Indoors? true
+Able to move from location? false
+Need medical assistance? true
+Staying home? true
+Have a pet? true
+PARTY MEMBERS
+----------------------------------------------
+name: Collin Carter
+age: 48
+needs medical assistance? false
+I am a: PERSON
+----------------------------------------------
+name: Sophie Carter
+age: 14
+needs medical assistance? true
+I am a: PERSON
+----------------------------------------------
+name: Connie Carter
+age: 47
+needs medical assistance? false
+I am a: PERSON
+----------------------------------------------
+name: Buddy
+age: 3
+needs medical assistance? false
+I am a: DOG
+
+DIRECTIONS TO VICTIM
+
+Head southwest on Culpepper Circle
+Turn left onto Donahue Drive
+Turn left onto Carterett Avenue
+Turn right onto Southgate Drive
+Turn sharp left onto Vassar Drive
+Arrive at Vassar Drive, straight ahead
+
+DIRECTIONS TO SHELTER
+
+Head southwest on Vassar Drive
+Turn sharp right onto Southgate Drive
+Keep left onto Southgate Drive
+Turn right onto Old Towne Road, SC 171
+Keep right
+Keep left
+Turn right onto Meeting Street, US 52
+Turn right onto Calhoun Street, S-404
+Turn left onto King Street, S-104
+Arrive at King Street, S-104, on the left
+
+SHELTER INFORMATION
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Address: 100 Broad Street, Charleston, South Carolina, 29401
+BUSINESS
+Status: OPEN
+Description: Brick building with a marked entrance
+Number of human occupants: 1
+Maximum number of human occupants: 15
+Medical staff available? true
+Shelter Resources: [WATER, MEDICAL_EQUIPMENT]
+
+ALL OCCUPANTS
+----------------------------------------------
+name: Emily Shaeffer
+age: 34
+needs medical assistance? false
+I am a: PERSON
+----------------------------------------------
+name: Biscuit
+age: 6
+needs medical assistance? false
+I am a: DOG
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
