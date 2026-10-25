@@ -21,7 +21,9 @@ public class ReliefRequestList {
      */
     private ReliefRequestList() {
         ArrayList<ReliefRequest> loaded = DataLoader.getReliefRequests();
-        reliefRequests = (loaded != null) ? loaded : new ArrayList<ReliefRequest>();
+        if (loaded != null && !loaded.isEmpty()) {
+            this.reliefRequests = loaded;
+        }
     }
 
     public static ReliefRequestList getInstance() {
@@ -60,8 +62,6 @@ public class ReliefRequestList {
      * @return boolean of if request was added or not
      */
     public ReliefRequest addReliefRequest(User user, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
-        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         ReliefRequest request = new ReliefRequest(user.getUuid(), user.getAddress(), user.getCity(), user.getState(), user.getZipCode(), isIndoors, isMobile, needsMedicalAssistance, ReliefRequestStatus.SUBMITTED, 0, stayingHome, hasPet, skillsNeed);
         reliefRequests.add(request);
         return request;
@@ -73,8 +73,6 @@ public class ReliefRequestList {
      * @return boolean true if the request was added (false if it was already in the list)
      */
     public boolean addReliefRequest(ReliefRequest request) {
-        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         if (request == null || getReliefRequestById(request.getUuid()) != null) {
             return false;
         }
@@ -159,8 +157,6 @@ public class ReliefRequestList {
      */
     private ArrayList<ReliefRequest> matchingSkillReliefRequest(Skills skill) {
         ArrayList<ReliefRequest> matchingRequests = new ArrayList<ReliefRequest>();
-        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         for( ReliefRequest reliefRequest : reliefRequests ) {
             if ( reliefRequest.getSkillsNeed() == skill )
                 matchingRequests.add(reliefRequest);
@@ -188,8 +184,6 @@ public class ReliefRequestList {
      * @return relief request with provided address
      */
     private ReliefRequest getReliefRequest(Address address) {
-        ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
-        ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
         for ( ReliefRequest reliefRequest : reliefRequests ) {
             if (reliefRequest.getAddress().equals(address.getStreet()) && reliefRequest.getCity().equals(address.getCity()) && reliefRequest.getState().equals(address.getState()) && reliefRequest.getZipCode().equals(address.getZip())) 
                 return reliefRequest;
@@ -215,6 +209,15 @@ public class ReliefRequestList {
                 return reliefRequest;
         }
         return null;
+    }
+
+    public String toString() {
+        String str = "";
+        for (ReliefRequest reliefRequest : reliefRequests) {
+            if (reliefRequest.getStatus() == ReliefRequestStatus.SUBMITTED)
+                str += "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" + reliefRequest.toString() + "\n";
+        }
+        return str;
     }
 
     public static void main(String[] args) {

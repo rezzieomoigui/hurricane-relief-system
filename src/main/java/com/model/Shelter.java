@@ -36,9 +36,9 @@ public class Shelter {
      * @param maxNumberOfOccupants maximum number of people shelter can hold
      * @param medicalStaffAvailable checks if shelter has medical staff available
      */
-    public Shelter(ShelterType shelterType, String address, String state, String city, String zipCode,
+    public Shelter(ShelterType shelterType, String address, String city, String state, String zipCode,
                    ArrayList<ShelterResources> shelterResources,
-                   ShelterStatus shelterStatus, String visualDescription,int numberOfOccupants,
+                   ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants,
                    int maxNumberOfOccupants, boolean medicalStaffAvailable) {
         this.id = UUID.randomUUID();
         this.shelterType = shelterType;
@@ -70,10 +70,10 @@ public class Shelter {
      * @param maxNumberOfOccupants maximum number of people shelter can hold
      * @param medicalStaffAvailable checks if shelter has medical staff available
      */
-    public Shelter(UUID id, ShelterType shelterType, String address, String state, String city,
+    public Shelter(UUID id, ShelterType shelterType, String address, String city, String state,
                    String zipCode, ArrayList<ShelterResources> shelterResources,
                    ShelterStatus shelterStatus, String visualDescription,
-                   int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable) {
+                   int numberOfOccupants, int maxNumberOfOccupants, ArrayList<PartyMember> occupants, boolean medicalStaffAvailable) {
 
         if (numberOfOccupants < 0 || maxNumberOfOccupants < 0
                 || numberOfOccupants > maxNumberOfOccupants) {
@@ -92,6 +92,7 @@ public class Shelter {
         this.visualDescription = visualDescription;
         this.numberOfOccupants = numberOfOccupants;
         this.maxNumberOfOccupants = maxNumberOfOccupants;
+        this.occupants = occupants;
         this.medicalStaffAvailable = medicalStaffAvailable;
     }
 
@@ -237,6 +238,10 @@ public class Shelter {
         this.occupants = occupants;
     }
 
+    public ArrayList<PartyMember> getOccupants() {
+        return this.occupants;
+    }
+
     /**
      * Returns the current number of occupants.
      * @return number of occupants
@@ -250,14 +255,18 @@ public class Shelter {
      * @param numberOfOccupants number of occupants
      */
     public void setNumberOfOccupants(int numberOfOccupants, boolean isAdmin) {
-        // we do not set the number of occupants using the occupant list because
-        // some occupants in the occupy list are pets
-        if (!isAdmin) {
+        // we do not set the number of occupants using the occupant list because 
+        // some occupants in the occupany list are pets
+        if (!isAdmin)
             return;
+        if (numberOfOccupants < 0
+                || numberOfOccupants > maxNumberOfOccupants) {
+            throw new IllegalArgumentException(
+                    "Occupants must be between 0 and maximum capacity.");
         }
-        if (numberOfOccupants < 0 || numberOfOccupants > maxNumberOfOccupants) {
-            throw new IllegalArgumentException();
-        }
+        else if (numberOfOccupants == this.maxNumberOfOccupants) 
+            setShelterStatus(ShelterStatus.FULL);
+        this.numberOfOccupants = numberOfOccupants;
     }
 
     /**
@@ -293,8 +302,11 @@ public class Shelter {
      * @return true if the shelter is open or near capacity
      */
     public boolean isAvailable() {
-        return shelterStatus == ShelterStatus.OPEN
-                || shelterStatus == ShelterStatus.NEAR_CAPACITY;
+        return shelterStatus == ShelterStatus.OPEN;
+    }
+
+    public ShelterStatus getStatus() {
+        return this.shelterStatus;
     }
 
     /**
@@ -306,7 +318,7 @@ public class Shelter {
         return "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n" +
         "Address: "+this.address+", "+this.city+", "+ this.state+", "+this.zipCode + "\n" + this.shelterType +
         "\nStatus: "+this.getStatus().str+"\nDescription: "+this.visualDescription+"\nNumber of human occupants: "+this.numberOfOccupants+
-        "\nMaximum number of human occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+"\nPet friendly? "+this.isPetFriendly()+
+        "\nMaximum number of human occupants: "+this.maxNumberOfOccupants+"\nMedical staff available? "+this.medicalStaffAvailable+
         "\nShelter Resources: "+this.shelterResources.toString()+occupantsToString() + 
         "\n+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n";
 

@@ -133,12 +133,12 @@ public class ShelterList {
         return matchingShelters;
     }
 
-    public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) {
+    /**public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) {
         ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
         Shelter closest = null;
         double shortestTime = Double.MAX_VALUE;
         for (Shelter shelter : matchingShelters) {
-            double travellingTime = getDrivingTime()
+            double travellingTime = getDrivingTime();
             if (travellingTime < shortestTime) {
                 shortestTime = travellingTime;
                 closest = shelter;
@@ -152,7 +152,7 @@ public class ShelterList {
         shelter.setNumberOfOccupants(newOccupacy);
         reliefRequest.setAssignedVolunteer(volunteer);
         reliefRequest.setStatus(ReliefRequestStatus.ASSIGNED);
-        return true;
+        return true;*/
 
     /**
      * addShelter method adds a shelter
@@ -171,7 +171,7 @@ public class ShelterList {
      */
     public Shelter addShelter(ShelterType shelterType, String address, String city, String state, String zipCode, ArrayList<ShelterResources> shelterResources, 
         ShelterStatus shelterStatus, String visualDescription, int numberOfOccupants, int maxNumberOfOccupants, boolean medicalStaffAvailable, boolean isPetFriendly) {
-        Shelter shelter = new Shelter(shelterType, address, city, state, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly);
+        Shelter shelter = new Shelter(shelterType, address, city, state, zipCode, shelterResources, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable);
         shelters.add(shelter);
         return shelter;
     }

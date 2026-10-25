@@ -95,8 +95,7 @@ public class DataLoader extends DataConstants {
                 JSONArray occupants = (JSONArray)shelterJSON.get(SHELTER_OCCUPANTS);
                 ArrayList<PartyMember> occupantsArr = convertPartyMembers(occupants);
                 boolean medicalStaffAvailable = Boolean.parseBoolean((String)(shelterJSON.get(SHELTER_MEDICAL_STAFF_AVAILABLE)));
-                boolean isPetFriendly = Boolean.parseBoolean((String)shelterJSON.get(SHELTER_IS_PET_FRIENDLY));
-                shelters.add(new Shelter(id, shelterType, address, city, state, zipCode, shelterResourcesArray, shelterStatus, visualDescription, occupantsArr, numberOfOccupants, maxNumberOfOccupants, medicalStaffAvailable, isPetFriendly));
+                shelters.add(new Shelter(id, shelterType, address, city, state, zipCode, shelterResourcesArray, shelterStatus, visualDescription, numberOfOccupants, maxNumberOfOccupants, occupantsArr, medicalStaffAvailable));
             }
         return shelters;
         }catch (Exception e) {
