@@ -5,7 +5,22 @@ import java.io.IOException;
 import com.location.Address;
 import com.location.MapTools;
 
+/**
+ * ExportFile creates .txt file to summarize important information for users
+ * @author Fantastic Four
+ */
 public class ExportFile {
+    /**
+     * write method writes in information to .txt file
+     * @param request relief request
+     * @param startingAddress starting address
+     * @param startingCity starting city
+     * @param startingState starting state
+     * @param startingZipCode starting zip code
+     * @param shelter shelter
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void write(ReliefRequest request, String startingAddress, String startingCity, String startingState, String startingZipCode, 
         Shelter shelter) throws IOException, InterruptedException {
         try (FileWriter writer = new FileWriter(".txt/tripInformation.txt")) {
@@ -30,6 +45,11 @@ public class ExportFile {
         }
     }
 
+    /**
+     * toString method writes out the directions 
+     * @param directions directions to shelter
+     * @return String representing directions to shelter
+     */
     private String toString(String[] directions) {
         String str = "\n\n";
         for (String direction : directions) {
@@ -39,6 +59,20 @@ public class ExportFile {
 
     }
 
+    /**
+     * getDrivingDirections method provides the driving directions for someone to get to the shelter
+     * @param startingAddress starting address
+     * @param startingCity starting city
+     * @param startingState starting state
+     * @param startingZip starting zip code
+     * @param endingAddress shelter address
+     * @param endingCity shelter city
+     * @param endingState shelter state
+     * @param endingZip shelter zip code
+     * @return String array of driving directions
+     * @throws IOException
+     * @throws InterruptedException
+     */
     private String[] getDrivingDirections(String startingAddress, String startingCity, String startingState, String startingZip, 
         String endingAddress, String endingCity, String endingState, String endingZip) throws IOException, InterruptedException {
         MapTools mapTools = MapTools.getInstance();

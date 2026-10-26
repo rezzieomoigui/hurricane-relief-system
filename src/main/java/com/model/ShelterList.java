@@ -57,6 +57,14 @@ public class ShelterList {
         return null;
     }
 
+    /**
+     * getShelter gets a shelter with the following parameters
+     * @param address shelter address
+     * @param city
+     * @param state
+     * @param zipCode
+     * @return
+     */
     public Shelter getShelter(String address, String city, String state, String zipCode) {
         for (Shelter shelter : this.shelters) {
             if (shelter.getAddress().equals(address) && shelter.getCity().equals(city) &&

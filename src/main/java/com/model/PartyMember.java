@@ -25,6 +25,10 @@ public class PartyMember {
         this.type = type;
     }
 
+    /**
+     * getName gets the name of the party member
+     * @return name of party member
+     */
     public String getName() {
         return this.name;
     }

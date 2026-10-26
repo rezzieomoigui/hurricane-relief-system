@@ -43,6 +43,12 @@ public class HurricaneReliefApplication {
                 email, dateOfBirth, address, city, state, zipCode, language, isAdmin, userType);
     }
 
+    /**
+     * login method logs in a user
+     * @param username user username
+     * @param password user password
+     * @return boolean representing if the user was able to log in
+     */
     public boolean login(String username, String password) {
         User user = userList.getUser(username);
         if (user == null) {
@@ -53,27 +59,72 @@ public class HurricaneReliefApplication {
         return user.login(username, password);
     }
 
+    /**
+     * logout logs a user out
+     * @return boolean represenging if the user was properly logged out
+     */
     public boolean logout() {
         currentUser = null;
         return true;
     }
 
+    /**
+     * createReliefRequest creates a relief requests with the following parameteres
+     * @param user user
+     * @param isIndoors checks if user is indoors
+     * @param isMobile checks if user is mobile
+     * @param needsMedicalAssistance checks if user needs medical assistance
+     * @param stayingHome checks if user is is staying home
+     * @param hasPet checks if user has a pet
+     * @param skillsNeed skills user requires
+     * @return relief request created
+     */
     public ReliefRequest createReliefRequest(User user, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
         return reliefRequestList.addReliefRequest(user, isIndoors, isMobile, needsMedicalAssistance, stayingHome, hasPet, skillsNeed);
     }
 
+    /**
+     * addPartyMember adds a party member to the relief request
+     * @param request relief request
+     * @param name party member name
+     * @param yearBorn year party member was born
+     * @param needsMedicalAssistance checks if party member needs medical assistance
+     * @param type type of being
+     */
     public void addPartyMember(ReliefRequest request, String name, String yearBorn, boolean needsMedicalAssistance, Being type) {
         reliefRequestList.addPartyMember(request, name, yearBorn, needsMedicalAssistance, type);
     }
 
+    /**
+     * addShelterOccupants adds shelter occupants to the shelter
+     * @param shelter shelter occupants are at
+     * @param newOccupants new occupants being added
+     */
     public void addShelterOccupants(Shelter shelter, ArrayList<PartyMember> newOccupants) {
         shelterList.addOccupants(shelter, newOccupants);
     }
 
+    /**
+     * closestMatchingShelter finds the shelter closest to the relief request address
+     * @param numPeople number of people in request
+     * @param reliefRequest relief request
+     * @return Shelter that is closest to relief request address
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) throws IOException, InterruptedException {
         return ShelterList.getInstance().closestMatchingShelter(numPeople, reliefRequest);
     }
 
+    /**
+     * assignReliefRequest assigns a relief request to a specific volunteer
+     * @param numPeople number of people in relief request
+     * @param reliefRequest relief request
+     * @param volunteer volunteer to assign to request
+     * @param isAdmin checks if they are admin
+     * @return boolean representing if the relief request was assigned properly
+     * @throws InterruptedException
+     */
     public boolean assignReliefRequest(int numPeople, ReliefRequest reliefRequest, Volunteer volunteer, boolean isAdmin) throws InterruptedException {
         // System.out.println("Made it to facade");
         return ShelterList.getInstance().assignReliefRequest(numPeople, reliefRequest, volunteer, isAdmin);
@@ -124,7 +175,13 @@ public class HurricaneReliefApplication {
                 dateOfBirth, address, city, state, zipCode, language, isAdmin, userType);
     }
 
-
+    /**
+     * getSuggestedRequest gets the suggested request
+     * @param volunteer volunteer for relief request
+     * @return suggested relief request
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public ReliefRequest getSuggestedRequest(Volunteer volunteer) 
     throws IOException, InterruptedException {
         return reliefRequestList.getSuggestedRequest(volunteer);
@@ -150,16 +207,16 @@ public class HurricaneReliefApplication {
         return shelterList.getShelter(zipCode);
     }
 
-
+    /**
+     * requestsToString prints relief requests
+     * @param volunteer volunteer for relief request
+     * @return String representing relief requests
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public String requestsToString(Volunteer volunteer) throws IOException, InterruptedException {
         return "\nSUGGESTED REQUEST BY LOCATION AND SKILLS NEEDED: \n" + getSuggestedRequest(volunteer).toString() + "\n\nALL REQUESTS: \n" + reliefRequestList.toString();
     }
-
-
-    // ------------------------------------------------------------------
-    // Volunteer actions
-    // ------------------------------------------------------------------
-
 
     /**
      * acceptRequest lets the logged in volunteer accept a submitted relief request
@@ -191,18 +248,53 @@ public class HurricaneReliefApplication {
         return reliefRequestList.markCompleteRequest(request, isAdmin);
     }
 
+    /**
+     * getReliefRequest gets the relief request with the following parameters
+     * @param address relief request address
+     * @param city relief request city
+     * @param state relief request state
+     * @param zipCode relief request zip code
+     * @param submitterFirstName first name of person who submitted request
+     * @param submitterLastName last name of person who submitted request
+     * @return relief request matching parameters
+     */
     public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
         return reliefRequestList.getReliefRequest(address, city, state, zipCode, submitterFirstName, submitterLastName);
     }
 
+    /**
+     * getShelter gets the shelter with the following parameters
+     * @param address shelter address
+     * @param city shelter city
+     * @param state shelter state
+     * @param zipCode shelter zipCode
+     * @return Shelter mathching parameters
+     */
     public Shelter getShelter(String address, String city, String state, String zipCode) {
         return shelterList.getShelter(address, city, state, zipCode);
     }
 
+    /**
+     * setNumberOfOccupants sets the number of occupants
+     * @param shelter shelter
+     * @param numberOfOccupants number of occupants at shelter
+     * @param isAdmin checks if they are an administrator 
+     */
     public void setNumberOfOccupants(Shelter shelter, int numberOfOccupants, boolean isAdmin) {
         shelter.setNumberOfOccupants(numberOfOccupants, isAdmin);
     }
 
+    /**
+     * write method writes a file of important information for user
+     * @param request relief request
+     * @param victimAddress victim address
+     * @param victimCity victim city
+     * @param victimState victim state
+     * @param victimZipCode victim zip code
+     * @param shelter shelter
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void write(ReliefRequest request, String victimAddress, String victimCity, String victimState, String victimZipCode, Shelter shelter) throws IOException, InterruptedException {
         ExportFile export = new ExportFile();
         export.write(request, victimAddress, victimCity, victimState, victimZipCode, shelter);

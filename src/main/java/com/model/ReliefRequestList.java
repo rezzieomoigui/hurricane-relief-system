@@ -26,6 +26,10 @@ public class ReliefRequestList {
         }
     }
 
+    /**
+     * getInstance gets an instance of relief request
+     * @return ReliefRequestList representing instance of relief request
+     */
     public static ReliefRequestList getInstance() {
         if (reliefRequestList == null) {
             reliefRequestList = new ReliefRequestList();
@@ -160,6 +164,10 @@ public class ReliefRequestList {
         return "Request marked complete";
     }
 
+    /**
+     * toString method prints relief request information
+     * @return String representing organized relief request information
+     */
     public String toString() {
         String str = "";
         for (ReliefRequest reliefRequest : reliefRequests) {
