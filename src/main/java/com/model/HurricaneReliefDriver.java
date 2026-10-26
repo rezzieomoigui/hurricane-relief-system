@@ -114,7 +114,7 @@ public class HurricaneReliefDriver {
         ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
         String message = application.markCompleteRequest(carterRequest, application.getCurrentUser().isAdmin());
         System.out.println(message);
-        System.out.println(carterRequest);
+        System.out.println("\n" + carterRequest);
     }
 
     /**
