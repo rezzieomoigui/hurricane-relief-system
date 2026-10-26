@@ -92,6 +92,27 @@ public class UserList {
         return true;
     }
 
+    /**
+     * addVolunteer adds a volunteer 
+     * @param firstName volunteer first name
+     * @param lastName volunteer last name
+     * @param username volunteer username
+     * @param password volunteer password
+     * @param email volunteer email
+     * @param dateOfBirth volunteer date of birth
+     * @param address volunteer address
+     * @param city volunteer city
+     * @param state volunteer state
+     * @param zipCode volunteer zip code
+     * @param language volunteer language
+     * @param isAdmin checkes if volunteer is an administrator
+     * @param userType user type
+     * @param skills volunteer skills
+     * @param firstResponder checks if volunteer is a first responder
+     * @param canSwim checks if the volunteer can swim
+     * @param isShelterOwner checks if the volunteer is a shelter owner
+     * @return boolean representing whether or not the volunteer was added
+     */
     public boolean addVolunteer(String firstName, String lastName, String username, String password, String email, String dateOfBirth, String address, String city, String state, String zipCode, String language, boolean isAdmin, UserType userType, Skills skills, boolean firstResponder, boolean canSwim, boolean isShelterOwner) {
         if (getUser(username) != null)
             return false;
