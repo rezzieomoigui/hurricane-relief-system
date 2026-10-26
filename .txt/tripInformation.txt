@@ -1,7 +1,7 @@
 
 RELIEF REQUEST INFORMATION
 Address: 1735 Vassar Dr, Charleston, South Carolina, 29407
-Status: SUBMITTED
+Status: ASSIGNED
 Indoors? true
 Able to move from location? false
 Need medical assistance? true

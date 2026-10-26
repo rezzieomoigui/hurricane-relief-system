@@ -13,7 +13,7 @@ public class HurricaneReliefDriver {
     public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
-        //scenario3();
+        scenario3();
         scenario4();
         scenario5();
         scenario6();
@@ -49,9 +49,23 @@ public class HurricaneReliefDriver {
         System.out.println(application.requestsToString(rosa));
     }
 
-    public void scenario3() {
+    public Shelter scenario3() throws IOException, InterruptedException {
         System.out.println();
-        System.out.println("Scenario 3: Shelters");
+        System.out.println("Scenario 3: Rosa Finds a Shelter and Accepts the Relief Request");
+        ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
+        Volunteer rosa = (Volunteer) application.getCurrentUser();
+        Shelter closestShelter = application.closestMatchingShelter(3, carterRequest);
+        if (closestShelter == null) {
+            System.out.println("No suitable shelter found.");
+            return null;
+        }
+        System.out.println("Closest suitable shelter: ");
+        System.out.println(closestShelter);
+        boolean assigned = application.assignReliefRequest(3, carterRequest, rosa, application.getCurrentUser().isAdmin());
+        System.out.println("Assignment successful? " + assigned);
+        System.out.println("Updated relief request:");
+        System.out.println(carterRequest);
+        return closestShelter;
     }
 
     public void scenario4() throws IOException, InterruptedException {
@@ -72,15 +86,17 @@ public class HurricaneReliefDriver {
         System.out.println("\n" + carterRequest);
     }
 
-    public void scenario6() {
+    public void scenario6() throws IOException, InterruptedException {
         System.out.println();
         application.logout();
         boolean loggedIn = application.login("felixh", "treeSpeaks@1");
         System.out.println("Scenario 6: Check the family in");
         System.out.println("loggedIn? "+loggedIn);
-        Shelter myShelter = application.getShelter("100 Broad Street", "Charleston", "South Carolina", "29401");
-        System.out.println(myShelter.toString());
         ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
+        Shelter closestShelter = application.closestMatchingShelter(3, carterRequest);
+        Shelter myShelter = application.getShelter(closestShelter.getAddress(), closestShelter.getCity(), closestShelter.getState(), closestShelter.getZipCode());
+        System.out.println(myShelter.toString());
+        // ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
         application.addShelterOccupants(myShelter, carterRequest.getPartyMembers());
         myShelter.setNumberOfOccupants(myShelter.getNumberOfOccupants()+3, application.getCurrentUser().isAdmin());
         System.out.println(myShelter.toString());
