@@ -13,10 +13,10 @@ public class HurricaneReliefDriver {
     public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
-        scenario3();
+        //scenario3();
+        scenario4();
         scenario5();
         scenario6();
-        scenario4();
         //scenario5();
         //scenario6();
     }
@@ -69,7 +69,7 @@ public class HurricaneReliefDriver {
         ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
         String message = application.markCompleteRequest(carterRequest, application.getCurrentUser().isAdmin());
         System.out.println(message);
-        System.out.println(carterRequest);
+        System.out.println("\n" + carterRequest);
     }
 
     public void scenario6() {

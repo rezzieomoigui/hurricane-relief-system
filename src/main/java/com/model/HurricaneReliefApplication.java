@@ -4,9 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.UUID;
 
-import com.location.Address;
-import com.location.MapTools;
-
 /**
  * HurricaneReliefApplication is the facade for the system. The UI and driver talk to this class
  * instead of reaching into the user, shelter, relief request and hurricane lists directly.
@@ -130,36 +127,10 @@ public class HurricaneReliefApplication {
         return reliefRequestList.getSuggestedRequest(volunteer);
     }
 
-    /**
-     * seeNearbyShelters finds the shelters in the logged in user's zip code
-     * @return ArrayList of shelters in the user's zip code (empty if nobody is logged in)
-     */
-    public ArrayList<Shelter> seeNearbyShelters() {
-        if (currentUser == null) {
-            return new ArrayList<Shelter>();
-        }
-        return shelterList.getShelter(currentUser.getZipCode());
-    }
-
-    /**
-     * getSheltersByZip finds the shelters in a zip code
-     * @param zipCode zip code to search
-     * @return ArrayList of shelters in that zip code
-     */
-    public ArrayList<Shelter> getSheltersByZip(String zipCode) {
-        return shelterList.getShelter(zipCode);
-    }
-
 
     public String requestsToString(Volunteer volunteer) throws IOException, InterruptedException {
         return "\nSUGGESTED REQUEST BY LOCATION AND SKILLS NEEDED: \n" + getSuggestedRequest(volunteer).toString() + "\n\nALL REQUESTS: \n" + reliefRequestList.toString();
     }
-
-
-    // ------------------------------------------------------------------
-    // Volunteer actions
-    // ------------------------------------------------------------------
-
 
     /**
      * acceptRequest lets the logged in volunteer accept a submitted relief request
