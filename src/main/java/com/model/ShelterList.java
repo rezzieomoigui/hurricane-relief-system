@@ -60,10 +60,10 @@ public class ShelterList {
     /**
      * getShelter gets a shelter with the following parameters
      * @param address shelter address
-     * @param city
-     * @param state
-     * @param zipCode
-     * @return
+     * @param city shelter city 
+     * @param state shelter state
+     * @param zipCode shelter zip code
+     * @return Shelter with matching parameters
      */
     public Shelter getShelter(String address, String city, String state, String zipCode) {
         for (Shelter shelter : this.shelters) {
@@ -146,6 +146,14 @@ public class ShelterList {
         return matchingShelters;
     }
 
+    /**
+     * closestMatchingShelter gets the shelter that matches the relief request specifications and is the closest
+     * @param numPeople number of people in request
+     * @param reliefRequest relif request
+     * @return Shelter closest that matches relief request specifications
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public Shelter closestMatchingShelter(int numPeople, ReliefRequest reliefRequest) throws IOException, InterruptedException {
         ArrayList<Shelter> matchingShelters = matchingShelters(numPeople, reliefRequest);
         // System.out.println("Matching Shelter Found: " + matchingShelters.size());
@@ -176,6 +184,15 @@ public class ShelterList {
         return addresses;
     }
 
+    /**
+     * assignReliefRequest assigns a relief request to a volunteer
+     * @param numPeople number of people in relief request
+     * @param reliefRequest relief request
+     * @param volunteer volunteer for relief request
+     * @param isAdmin checks if they are an administrator
+     * @return boolean for is the relief request was properly assigned to a relief request
+     * @throws InterruptedException
+     */
     public boolean assignReliefRequest(int numPeople, ReliefRequest reliefRequest, Volunteer volunteer, boolean isAdmin) throws InterruptedException {
         // System.out.println("Made it to assignment");
         Shelter shelter = null;
