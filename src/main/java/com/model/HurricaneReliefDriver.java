@@ -17,8 +17,6 @@ public class HurricaneReliefDriver {
         scenario4();
         scenario5();
         scenario6();
-        //scenario5();
-        //scenario6();
     }
 
     public void scenario1() {
@@ -96,7 +94,6 @@ public class HurricaneReliefDriver {
         Shelter closestShelter = application.closestMatchingShelter(3, carterRequest);
         Shelter myShelter = application.getShelter(closestShelter.getAddress(), closestShelter.getCity(), closestShelter.getState(), closestShelter.getZipCode());
         System.out.println(myShelter.toString());
-        // ReliefRequest carterRequest = application.getReliefRequest("1735 Vassar Dr", "Charleston", "South Carolina", "29407", "Collin", "Carter");
         application.addShelterOccupants(myShelter, carterRequest.getPartyMembers());
         myShelter.setNumberOfOccupants(myShelter.getNumberOfOccupants()+3, application.getCurrentUser().isAdmin());
         System.out.println(myShelter.toString());
