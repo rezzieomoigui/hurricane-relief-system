@@ -165,6 +165,11 @@ public class DataLoader extends DataConstants {
         return null;
     }
 
+    /**
+     * convertPartyMembers converts the party members from a JSONArray to an arrayList of party members
+     * @param partyMembers JSON array of party members
+     * @return ArrayList of party members
+     */
     private static ArrayList<PartyMember> convertPartyMembers(JSONArray partyMembers) {
         ArrayList<PartyMember> partyMemberArr = new ArrayList<PartyMember>();
         for( int i = 0; i < partyMembers.size(); ++i ) {
@@ -178,6 +183,11 @@ public class DataLoader extends DataConstants {
         return partyMemberArr;
     }
 
+    /**
+     * convertZipCodes converts the zip codes from a JSONArray format to an array list of Strings
+     * @param affectedZipCodes JSONArray of affected zip codes
+     * @return Array List of strings representing zip codes
+     */
     private static ArrayList<String> convertZipCodes(JSONArray affectedZipCodes) {
         ArrayList<String> zipCodesArr = new ArrayList<String>();
         for ( int i = 0; i < affectedZipCodes.size(); ++i ) {

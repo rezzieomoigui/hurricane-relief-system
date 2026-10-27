@@ -5,8 +5,16 @@ import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+/**
+ * DataWriter class extends data constants and writes in data to the json files
+ * @author Fantastic Four
+ */
 public class DataWriter extends DataConstants {
 
+    /**
+     * saveUsers saves the users by writing them into the user JSON file
+     * @return boolean representing if the users were properly saved to the JSON file
+     */
     public static boolean saveUsers() {
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
@@ -26,6 +34,10 @@ public class DataWriter extends DataConstants {
         }
     }
 
+    /**
+     * saveShelters saves the shelters by writing them into the shelter JSON file
+     * @return boolean representing if the shelters were properly saved to the JSON file
+     */
     public static boolean saveShelters() {
         ShelterList shelterList = ShelterList.getInstance();
         ArrayList<Shelter> shelters = shelterList.getShelters();
@@ -46,6 +58,10 @@ public class DataWriter extends DataConstants {
 
     }
 
+    /**
+     * saveReliefRequests saves the relief requests by writing them into the relief request JSON file
+     * @return boolean representing if the relief requests were properly saved to the JSON file
+     */
     public static boolean saveReliefRequests() {
         ReliefRequestList reliefRequestList = ReliefRequestList.getInstance();
         ArrayList<ReliefRequest> reliefRequests = reliefRequestList.getReliefRequests();
@@ -63,7 +79,11 @@ public class DataWriter extends DataConstants {
         }
     }
 
-
+    /**
+     * getShelterJSON gets the JSON object for an individual shelter
+     * @param shelter shelter being found in JSON
+     * @return JSONObject for individual shelter
+     */
     public static JSONObject getShelterJSON(Shelter shelter) {
         JSONObject shelterDetails = new JSONObject();
         ArrayList<String> shelterResources = convertShelterResources(shelter.getShelterResources());
@@ -88,6 +108,11 @@ public class DataWriter extends DataConstants {
         return shelterDetails;
     }
 
+    /**
+     * convertShelterResources converts the shelter resources from an array list of type shelter resources to type String
+     * @param shelterResources array list of shelter resources of type shelter resources
+     * @return array list of string representing shelter resources
+     */
     private static ArrayList<String> convertShelterResources(ArrayList<ShelterResources> shelterResources) {
         ArrayList<String> shelterResourcesStr = new ArrayList<String>();
         for (int i = 0; i < shelterResources.size(); ++i) {
@@ -96,6 +121,11 @@ public class DataWriter extends DataConstants {
         return shelterResourcesStr;
     }
 
+    /**
+     * getUserJSON gets the JSON object for an individual user
+     * @param user user being found in JSON
+     * @return JSONObject for individual user
+     */
     public static JSONObject getUserJSON(User user) {
         JSONObject userDetails = new JSONObject();
         userDetails.put(USER_UUID, user.getUuid().toString());
@@ -122,6 +152,11 @@ public class DataWriter extends DataConstants {
         return userDetails;
     }
 
+    /**
+     * getReliefRequestJSON gets the JSON object for an individual relief request
+     * @param request relief request being found in JSON
+     * @return JSONObject for individual relief request
+     */
     public static JSONObject getReliefRequestJSON(ReliefRequest request) {
         JSONObject requestDetails = new JSONObject();
         JSONArray partyMemberArr = new JSONArray();
@@ -147,6 +182,11 @@ public class DataWriter extends DataConstants {
         return requestDetails;
     }
 
+    /**
+     * getPartyMemberJSON gets the JSON object for an individual party member
+     * @param partyMember party member being found in JSON
+     * @return JSONObject for individual party member
+     */
     private static JSONObject getPartyMemberJSON(PartyMember partyMember) {
         JSONObject partyMemberDetails = new JSONObject();
         partyMemberDetails.put(PARTY_MEMBER_NAME, partyMember.getName());

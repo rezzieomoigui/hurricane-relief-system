@@ -226,6 +226,10 @@ public class Shelter {
         this.occupants = occupants;
     }
 
+    /**
+     * getOccupants gets the human occupants
+     * @return ArrayList of human occupants as type party member
+     */
     public ArrayList<PartyMember> getOccupants() {
         return this.occupants;
     }
@@ -293,6 +297,10 @@ public class Shelter {
         return shelterStatus == ShelterStatus.OPEN;
     }
 
+    /**
+     * getStatus gets the status of the relief request
+     * @return ShelterStatus
+     */
     public ShelterStatus getStatus() {
         return this.shelterStatus;
     }
@@ -325,6 +333,10 @@ public class Shelter {
 
     }
 
+    /**
+     * occupantsToString prints the occupants information
+     * @return String represening the organizaed infromation of the occupants
+     */
     private String occupantsToString() {
         String str = "\n\nALL OCCUPANTS\n";
         if (getNumberOfOccupants() == 0) {

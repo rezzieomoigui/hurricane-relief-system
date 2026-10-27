@@ -103,38 +103,74 @@ public class Hurricane {
         }
     }
 
+    /**
+     * getHurricane gets the hurricane
+     * @return Hurricane
+     */
     public Hurricane getHurricane() {
         return this;
     }
 
+    /**
+     * getName gets the name of the hurricane
+     * @return name of hurricane
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * getID gets the id of the hurricane
+     * @return UUID of hurricane
+     */
     public UUID getId() {
         return id;
     }
 
+    /**
+     * getEyeOfStormZip gets the zip code of the eye of the storm
+     * @return String representing the zip code of the eye of the storm
+     */
     public String getEyeOfStormZip() {
         return eyeOfStormZip;
     }
 
+    /**
+     * getStatus gets the status of the hurricane
+     * @return HurricaneStatus
+     */
     public HurricaneStatus getStatus() {
         return status;
     }
 
+    /**
+     * getAffectedZipCodes gets the zip codes that the hurricane has affected
+     * @return ArrayList of strings representing the zip codes that the hurricane has affected
+     */
     public ArrayList<String> getAffectedZipCodes() {
         return affectedZipCodes;
     }
 
+    /**
+     * getWindSpeed gets the wind speed of the hurricane
+     * @return double representing the hurricane's wind speed
+     */
     public double getWindSpeed() {
         return windSpeed;
     }
 
+    /**
+     * getMovementSpeed gets the speed represening how fast the hurricane is moving
+     * @return double represening the speed at which the hurricane is moving
+     */
     public double getMovementSpeed() {
         return movementSpeed;
     }
 
+    /**
+     * toString method prints the hurricane information
+     * @return String representing organized hurricane infromation
+     */
     @Override
     public String toString() {
         return "Hurricane " + name + " (Category " + category + ", " + status + ")";

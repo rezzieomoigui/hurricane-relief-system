@@ -1,15 +1,25 @@
 package com.model;
 import java.io.IOException;
 
+/**
+ * HurricaneReliefDriver runs scenarios representing possibile situations a user could experience
+ * @author Fantastic Four
+ */
 public class HurricaneReliefDriver {
     private HurricaneReliefApplication application;
 
- 
+    /**
+     * HurricaneReliefDriver sets application to the facade to be able to access facade methods
+     */
     public HurricaneReliefDriver() {
         application = new HurricaneReliefApplication();
     }
 
- 
+    /**
+     * run method runs the scenarios
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void run() throws IOException, InterruptedException {
         scenario1();
         scenario2();
@@ -19,6 +29,9 @@ public class HurricaneReliefDriver {
         scenario6();
     }
 
+    /**
+     * scenario1 creates account for user and adds party members
+     */
     public void scenario1() {
         System.out.println();
         System.out.println("Scenario 1");
@@ -37,7 +50,11 @@ public class HurricaneReliefDriver {
         application.logout();
     }
 
-   
+    /**
+     * scenario2 logs user in and sets volunteer
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void scenario2() throws IOException, InterruptedException {
         System.out.println();
         System.out.println("Scenario 2");
@@ -47,6 +64,12 @@ public class HurricaneReliefDriver {
         System.out.println(application.requestsToString(rosa));
     }
 
+    /**
+     * scenario3 finds shelter that matches relief request parameters and the closest one and then assigns the relief request
+     * @return
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public Shelter scenario3() throws IOException, InterruptedException {
         System.out.println();
         System.out.println("Scenario 3: Rosa Finds a Shelter and Accepts the Relief Request");
@@ -66,6 +89,11 @@ public class HurricaneReliefDriver {
         return closestShelter;
     }
 
+    /**
+     * scenario4 exports .txt file with shelter and relief request information
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void scenario4() throws IOException, InterruptedException {
         System.out.println();
         System.out.println("Scenario 4: Exporting .txt file");
@@ -75,6 +103,9 @@ public class HurricaneReliefDriver {
         application.write(carterRequest, rosa.getAddress(), rosa.getCity(), rosa.getState(), rosa.getZipCode(), shelter);
     }
 
+    /**
+     * scenario5 shows that a volunteer can not mark a relief request as complete
+     */
     public void scenario5() {
         System.out.println();
         System.out.println("Scenario 5: Rosa tries to mark request complete");
@@ -84,6 +115,11 @@ public class HurricaneReliefDriver {
         System.out.println("\n" + carterRequest);
     }
 
+    /**
+     * scenario6 checks the family into the shelter and adjusts occupancy
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public void scenario6() throws IOException, InterruptedException {
         System.out.println();
         application.logout();
@@ -101,6 +137,12 @@ public class HurricaneReliefDriver {
         System.out.println(carterRequest.toString());
     }
 
+    /**
+     * main method runs the driver class
+     * @param args String array of standard arguments
+     * @throws IOException
+     * @throws InterruptedException
+     */
     public static void main(String[] args) throws IOException, InterruptedException {
         HurricaneReliefDriver driver = new HurricaneReliefDriver();
         driver.run();

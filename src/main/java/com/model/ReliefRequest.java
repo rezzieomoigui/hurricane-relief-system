@@ -16,7 +16,7 @@ public class ReliefRequest {
     private String zipCode;
     private ArrayList<PartyMember> partyMembers;
     private boolean isIndoors;
-    private boolean isMobile;
+    private boolean isMobile; // user is able to physically move
     private boolean needsMedicalAssistance;
     private ReliefRequestStatus status;
     private int estimatedArrivalMinutes;
@@ -160,6 +160,10 @@ public class ReliefRequest {
         this.partyMembers = partyMembers;
     }
 
+    /**
+     * getUserUUID gets the user's uuid
+     * @return UUID of user
+     */
     public UUID getUserUuid() {
         return this.userUUID;
     }
@@ -261,6 +265,10 @@ public class ReliefRequest {
         return hasPet;
     }
 
+    /**
+     * getSkillsNeed gets the needed skill
+     * @return Skill needed by requester
+     */
     public Skills getSkillsNeed() {
         return this.skillsNeed;
     }
@@ -281,6 +289,11 @@ public class ReliefRequest {
         return assignedVolunteerID;
     }
 
+    /**
+     * setAssignedVolunteer sets the assigned volunteer to specific relief request
+     * @param volunteer volunteer assigned to relief request
+     * @return boolean representing if volunteer was properly assigned to the specific relief request
+     */
     public boolean setAssignedVolunteer(Volunteer volunteer) {
         if (volunteer == null) {
             return false;
@@ -289,6 +302,10 @@ public class ReliefRequest {
         return true;
     }
 
+    /**
+     * toString method prints the relief request in a readable manner
+     * @return String of organized relief request information 
+     */
     @Override
     public String toString() {
         String partyMemberStr = partyMembersToString();
@@ -297,6 +314,10 @@ public class ReliefRequest {
         "Need medical assistance? " + this.needsMedicalAssistance + "\n" + "Staying home? " + this.stayingHome + "\n" + "Have a pet? " + this.hasPet + partyMemberStr;
     }
 
+    /**
+     * partyMembersToString method prints the relief request party members
+     * @return String of organized party members
+     */
     private String partyMembersToString() {
         String str = "\nPARTY MEMBERS\n";
         int age;
