@@ -1,6 +1,9 @@
 package com.model;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -196,4 +199,20 @@ public class DataLoader extends DataConstants {
         }
         return zipCodesArr;
     }
+    private static BufferedReader getReaderFromFile(String fileName, String jsonFileName){
+		try {
+			if(isJUnitTest()){
+				InputStream inputStream = DataLoader.class.getResourceAsStream(jsonFileName);
+				InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+				return new BufferedReader(inputStreamReader);
+			} else {
+				FileReader reader = new FileReader(fileName);
+				return new BufferedReader(reader);
+			}
+		} catch(Exception e){
+			System.out.println("Can't load");
+			return null;
+		}
+			
+	}
 }
