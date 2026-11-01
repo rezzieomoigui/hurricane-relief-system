@@ -8,6 +8,8 @@ package com.model;
  * testGetUsersSizeWrong()   | 
  * testGetUsersSizeZero()    | This test checks that the size of the user list is zero when the list is cleared and no users are listed
  * testGetUserFirstUserName()|
+ * testGetUsersFirstName()   |
+ * testGetUsersLastName()    |
  * testGetUsersNotNull()     |
  */
 import static org.junit.jupiter.api.Assertions.*;
