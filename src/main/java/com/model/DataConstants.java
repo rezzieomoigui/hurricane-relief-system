@@ -71,4 +71,13 @@ public abstract class DataConstants {
     protected static final String HURRICANE_AFFECTED_ZIP_CODES = "affectedZipCodes";
     protected static final String HURRICANE_WIND_SPEED = "windSpeed";
     protected static final String HURRICANE_MOVEMENT_SPEED = "movementSpeed";
+
+    public static boolean isJUnitTest() {  
+		for (StackTraceElement element : Thread.currentThread().getStackTrace()) {
+		  if (element.getClassName().startsWith("org.junit.")) {
+			return true;
+		  }           
+		}
+		return false;
+	}
 }

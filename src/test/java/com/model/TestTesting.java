@@ -8,3 +8,25 @@ public class TestTesting {
         assertTrue(true);
     }
 }
+
+// setup code, run before code
+@BeforeClass
+public void oneTimeSetup() {
+
+}
+
+@AfterClass
+public void oneTImeTearDown() {
+
+}
+
+@BeforeEach
+public void setup() {
+    // runs before each test
+    Users.getInstance().getUsers().clear();
+}
+
+@AfterEach
+public void tearDown() {
+    // runs after each test
+}

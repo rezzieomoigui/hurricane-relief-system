@@ -197,5 +197,17 @@ public class DataWriter extends DataConstants {
         partyMemberDetails.put(PARTY_MEMBER_TYPE, partyMember.getType().str);
         return partyMemberDetails;
     }
-
+    private static String getFileWritingPath(String PATH_NAME, String JUNIT_PATH_NAME) {
+		try {
+			if(isJUnitTest()){
+				URI url = DataWriter.class.getResource(JUNIT_PATH_NAME).toURI();
+				return url.getPath();
+			} else {
+				return PATH_NAME;
+			}
+		} catch(Exception e){
+			System.out.println("Difficulty getting resource path");
+			return "";
+		}
+	}
 }
