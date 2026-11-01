@@ -5,7 +5,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-
+// json_files\hurricane.json
 /**
  * DataWriter class extends data constants and writes in data to the json files
  * @author Fantastic Four

@@ -1,0 +1,54 @@
+-------------------------------------------------------------------------------
+Test set: com.model.DataWriterTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 5, Skipped: 0, Time elapsed: 0.098 s <<< FAILURE! -- in com.model.DataWriterTest
+com.model.DataWriterTest.testWritingUsers -- Time elapsed: 0.039 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+	at com.relief_system/com.model.DataWriterTest.setup(DataWriterTest.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+		at com.relief_system/com.model.DataWriterTest.tearDown(DataWriterTest.java:21)
+		... 3 more
+
+com.model.DataWriterTest.testWritingNullUser -- Time elapsed: 0.003 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+	at com.relief_system/com.model.DataWriterTest.setup(DataWriterTest.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+		at com.relief_system/com.model.DataWriterTest.tearDown(DataWriterTest.java:21)
+		... 3 more
+
+com.model.DataWriterTest.testWritingEmptyUser -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+	at com.relief_system/com.model.DataWriterTest.setup(DataWriterTest.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+		at com.relief_system/com.model.DataWriterTest.tearDown(DataWriterTest.java:21)
+		... 3 more
+
+com.model.DataWriterTest.testWritingFiveUsers -- Time elapsed: 0.001 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+	at com.relief_system/com.model.DataWriterTest.setup(DataWriterTest.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+		at com.relief_system/com.model.DataWriterTest.tearDown(DataWriterTest.java:21)
+		... 3 more
+
+com.model.DataWriterTest.testWritingOneUser -- Time elapsed: 0.002 s <<< ERROR!
+java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+	at com.relief_system/com.model.DataWriterTest.setup(DataWriterTest.java:15)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1612)
+	Suppressed: java.lang.NullPointerException: Cannot invoke "java.util.ArrayList.clear()" because the return value of "com.model.UserList.getUsers()" is null
+		at com.relief_system/com.model.DataWriterTest.tearDown(DataWriterTest.java:21)
+		... 3 more
+

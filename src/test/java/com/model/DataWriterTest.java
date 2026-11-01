@@ -1,21 +1,22 @@
 package com.model;
 import java.util.ArrayList;
 
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-public class DataWriterTest {
+class DataWriterTest {
     private UserList userList = UserList.getInstance();
-    private ArrayList<User> users= userList.getUsers();
+    private ArrayList<User> users = userList.getUsers();
 
-    @Before
+    @BeforeEach
     public void setup() {
         UserList.getInstance().getUsers().clear();
 		DataWriter.saveUsers();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         UserList.getInstance().getUsers().clear();
         DataWriter.saveUsers();
@@ -23,7 +24,8 @@ public class DataWriterTest {
 
     @Test
     public void testWritingUsers() {
-
+        users = DataLoader.getUsers();
+		assertEquals(0, users.size());
     }
 
     @Test
