@@ -12,13 +12,13 @@ class DataWriterTest {
 
     @BeforeEach
     public void setup() {
-        UserList.getInstance().getUsers().clear();
+        userList.getUsers().clear();
 		DataWriter.saveUsers();
     }
 
     @AfterEach
     public void tearDown() {
-        UserList.getInstance().getUsers().clear();
+        userList.getUsers().clear();
         DataWriter.saveUsers();
     }
 
@@ -30,7 +30,9 @@ class DataWriterTest {
 
     @Test
     public void testWritingOneUser() {
-
+        users.add(new User("Kate", "Blyth", "kblyth", "antlerPush12", "kblyth@gmail.com", "11-09-2000", "42 Brook Dr", "Charleston", "South Carolina", "29218", "English", true, UserType.USER));
+		DataWriter.saveUsers();
+		assertEquals("kblyth", DataLoader.getUsers().get(0).getUsername());
     }
 
     @Test

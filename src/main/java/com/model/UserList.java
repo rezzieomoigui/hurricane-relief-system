@@ -16,7 +16,7 @@ public class UserList {
      */
     private UserList() {
         ArrayList<User> loaded = DataLoader.getUsers();
-        if (loaded != null && !loaded.isEmpty()) {
+        if (loaded != null) {
             this.users = loaded;
         }
     }
