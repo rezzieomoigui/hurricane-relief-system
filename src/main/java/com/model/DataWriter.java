@@ -1,6 +1,7 @@
 package com.model;
 
 import java.io.FileWriter;
+import java.net.URI;
 import java.util.ArrayList;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -15,6 +16,7 @@ public class DataWriter extends DataConstants {
      * saveUsers saves the users by writing them into the user JSON file
      * @return boolean representing if the users were properly saved to the JSON file
      */
+
     public static boolean saveUsers() {
         UserList userList = UserList.getInstance();
         ArrayList<User> users = userList.getUsers();
