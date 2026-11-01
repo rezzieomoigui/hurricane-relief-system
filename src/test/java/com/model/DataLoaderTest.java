@@ -2,15 +2,20 @@ package com.model;
 /*
  * Used AI to assist with test implementation.
  *
- * Test                      | Reasoning
- * --------------------------|--------------------
- * testGetUsersSize()        | This test checks that the user list is properly adjusting and reflecting the correct number of users that are added to the userList
- * testGetUsersSizeWrong()   | 
- * testGetUsersSizeZero()    | This test checks that the size of the user list is zero when the list is cleared and no users are listed
- * testGetUserFirstUserName()|
- * testGetUsersFirstName()   |
- * testGetUsersLastName()    |
- * testGetUsersNotNull()     |
+ * Test                                 | Reasoning
+ * -------------------------------------|--------------------
+ * testGetUsersSize()                   | This test checks that the user list is properly adjusting and reflecting the correct number of users that are added to the userList
+ * testGetUsersSizeWrongZero()          | This test checks that the user list size is not equal to zero when it is supposed to have users listed in it
+ * testGetUsersSizeZero()               | This test checks that the size of the user list is zero when the list is cleared and no users are listed
+ * testGetUsersInvalidUUID()            | This test checks that the user uuid value matches the correct value
+ * testGetUsersInvalidUserType()        | This test checks that the user type is set correctly
+ * testGetUsersMissingFile()            |
+ * testGetUsersMalformedJSON()          |
+ * testGetUsersMissingRequiredField()   |
+ * testGetUsersRegularUserInstane()     | This test checks that the user is set to a user if their they aren't specified to be a volunteer s that the users don't end up with volunteer attributes
+ * testGetUsersAdmin()                  | 
+ * testGetUsersVolunteerInstance()      | This test checks that the volunteers are identified properly and not just considered users alone because they have additional attributes and responsibilities
+ * testGetUsersNotNull()                | This test checks that the userList returns a list of users and not null even when the array list contains no users since it is not null, rather it is empty
  */
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.AfterEach;
@@ -53,6 +58,6 @@ public class DataLoaderTest {
     @Test
     void testGetUserFirstUserName() {
         userList = DataLoader.getUsers();
-        assertEquals("bbowen", userList.get(0).getUserName());
+        assertEquals("bbowen", userList.get(0).getUsername());
     }
 }
