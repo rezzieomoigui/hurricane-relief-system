@@ -37,17 +37,27 @@ class DataWriterTest {
 
     @Test
     public void testWritingFiveUsers() {
-
+        users.add(new User("Kate", "Blyth", "kblyth", "antlerPush12", "kblyth@gmail.com", "11-09-2000", "42 Brook Dr", "Charleston", "South Carolina", "29218", "English", true, UserType.USER));
+        users.add(new User("John", "Blyth", "jblyth", "88blindSnake12", "jblyth@gmail.com", "12-09-1998", "42 Brook Dr", "Charleston", "South Carolina", "29218", "English", true, UserType.USER));
+        users.add(new User("Sam", "Blyth", "sblyth", "oldShoeBloom12", "sblyth@gmail.com", "08-09-1964", "42 Brook Dr", "Charleston", "South Carolina", "29218", "English", true, UserType.USER));
+        users.add(new User("Susan", "Johnson", "sjohnson", "windingRoad98", "sjohn@gmail.com", "02-12-2001", "45 Brook Dr", "Charleston", "South Carolina", "29218", "English", true, UserType.USER));
+        users.add(new User("Marcilla", "Johnson", "mjohnson", "blueSky8", "mj@gmail.com", "02-28-2000", "45 Brook Dr", "Charleston", "South Carolina", "29218", "English", true, UserType.USER));
+        DataWriter.saveUsers();
+        assertEquals("mjohnson", DataLoader.getUsers().get(4).getUsername());
     }
 
     @Test
     public void testWritingEmptyUser() {
-
+        users.add(new User("", "", "", "", "", "", "", "", "", "", "", true, UserType.USER));
+		DataWriter.saveUsers();
+		assertEquals(0, DataLoader.getUsers().size());
     }
 
     @Test
     public void testWritingNullUser() {
-        
+        users.add(new User(null, null, null, null, null, null, null, null, null, null, null, true, UserType.USER));
+        DataWriter.saveUsers();
+        assertEquals(0, DataLoader.getUsers().size());
     }
 
     
