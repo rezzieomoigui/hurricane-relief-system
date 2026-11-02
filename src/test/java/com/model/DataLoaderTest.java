@@ -1,6 +1,6 @@
 package com.model;
 /*
- * Used AI to assist with test implementation.
+ * Used AI to assist with some test implementation.
  *
  * Test                                 | Reasoning
  * -------------------------------------|--------------------
@@ -9,6 +9,9 @@ package com.model;
  * testGetRemoveUser()                  | This test checks that when a user is removed, the size of the user list decreases properly 
  * testGetUsersSizeZero()               | This test checks that the size of the user list is zero when the list is cleared and no users are listed
  * testGetUsersNotNull()                | This test checks that the userList returns a list of users and not null even when the array list contains no users since it is not null, rather it is empty
+ * testLoadingNullUser()                | This test checks that when a user is loaded in with all null properties they are not added to the user list
+ * testLoadingEmptyUser()               | This test checks that when a user is loaded in with empty data they are not added to the user list
+ * testLoadingEmptyUsersName            | This test checks that when a user is loaded in with an empty first and last name they are not added to the user list
  * testGetUsersInvalidUserType()        | This test checks that the user type is correctly loaded and set correctly
  * testGetUsersMissingFile()            | This test checks that the missing file returns null and prints a try-catch exception
  * testGetUsersMalformedJSON()          | This test checks that if the JSON file is incorrectly formatted and can't be read that it will return null and print a try-catch exception
@@ -79,6 +82,27 @@ public class DataLoaderTest {
     void testGetUsersNotNull() {
         users = DataLoader.getUsers();
         assertNotNull(userList);
+    }
+
+    @Test
+    public void testLoadingEmptyUser() {
+        users.add(new User("", "", "", "", "", "", "", "", "", "", "", true, UserType.USER));
+		DataWriter.saveUsers();
+		assertEquals(2, DataLoader.getUsers().size());
+    }
+
+    @Test
+    public void testLoadingNullUser() {
+        users.add(new User(null, null, null, null, null, null, null, null, null, null, null, true, UserType.USER));
+        DataWriter.saveUsers();
+        assertEquals(2, DataLoader.getUsers().size());
+    }
+
+    @Test
+    public void testLoadingEmptyUsersName() {
+        users.add(new User( "", "", "sconner", "FipH0;d94", "sconner@gmail.com", "08/10/2014", "8873 Garden Road", "Atlanta", "Georgia", "49739", "Spanish", false, UserType.USER));
+        DataWriter.saveUsers();
+        assertEquals(2, DataLoader.getUsers().size());
     }
 
     @Test 
