@@ -5,17 +5,17 @@ package com.model;
  * Test                                 | Reasoning
  * -------------------------------------|--------------------
  * testGetUsersSize()                   | This test checks that the user list is properly adjusting and reflecting the correct number of users that are added to the userList
- * testGetUsersSizeWrongZero()          | This test checks that the user list size is not equal to zero when it is supposed to have users listed in it
+ * testGetUsersSizeIncrease()           | This test checks that when a new user is added the size of the array increases correctly
+ * testGetRemoveUser()                  | This test checks that when a user is removed, the size of the user list decreases properly 
  * testGetUsersSizeZero()               | This test checks that the size of the user list is zero when the list is cleared and no users are listed
- * testGetUsersInvalidUUID()            | This test checks that the user uuid is correctly loaded and matches the expected value
+ * testGetUsersNotNull()                | This test checks that the userList returns a list of users and not null even when the array list contains no users since it is not null, rather it is empty
  * testGetUsersInvalidUserType()        | This test checks that the user type is correctly loaded and set correctly
  * testGetUsersMissingFile()            | This test checks that the missing file returns null and prints a try-catch exception
  * testGetUsersMalformedJSON()          | This test checks that if the JSON file is incorrectly formatted and can't be read that it will return null and print a try-catch exception
- * testGetUsersMissingRequiredField()   | This test checks that if the JSON file is missing needed information and can't be read in that it will return null and print a try-catch exception
- * testGetUsersRegularUserInstane()     | This test checks that the user is set to a user if they aren't specified to be a volunteer so that the users don't end up with volunteer attributes
- * testGetUsersAdmin()                  | This test checks that the user is correctly showing administrator status so that they know if they can give the specific user administrator privileges
+ * testGetUsersRegularUserInstance()    | This test checks that the user is set to a user if they aren't specified to be a volunteer so that the users don't end up with volunteer attributes
+ * testGetUsersAdminTrue()              | This test checks that the user is correctly showing administrator status so that they know if they can give the specific user administrator privileges
+ * testGetUsersAdminFalse()             | This test checks that the user isn't incorrectly showing administrator status when they shouldn't have that status so that they don't have access to administrator privileges they shouldn't have
  * testGetUsersVolunteerInstance()      | This test checks that the volunteers are identified properly and not just considered users alone because they have additional attributes and responsibilities
- * testGetUsersNotNull()                | This test checks that the userList returns a list of users and not null even when the array list contains no users since it is not null, rather it is empty
  */
 import java.util.ArrayList;
 
@@ -60,6 +60,12 @@ public class DataLoaderTest {
         assertEquals(3, users.size());
     }
 
+    @Test 
+    void testGetRemoveUser() {
+        users.remove(1);
+        DataWriter.saveUsers();
+        assertEquals(1, users.size());
+    }
     
     @Test
     void testGetUsersSizeZero() {
