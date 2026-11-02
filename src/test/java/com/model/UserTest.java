@@ -72,4 +72,12 @@ public class UserTest {
         String password = user.getPassword();
         assertEquals(null, password);
     }
+
+    @Test
+    public void resetPasswordProtected() {
+        users.add(new User("Kate", "Blyth", "kblyth", "!Seabrook81", "kblyth@gmail.com", "11-09-2000", "42 Brook Dr", "Charleston", "South Carolina", "29218", "English", true, UserType.USER));
+        User user = users.get(0);
+        user.resetPassword("newPassword");
+        assertEquals("!Seabrook81", user.getPassword());
+    }
 }
