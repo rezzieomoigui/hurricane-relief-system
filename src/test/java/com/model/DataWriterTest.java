@@ -73,6 +73,7 @@ class DataWriterTest {
         assertEquals(0, DataLoader.getUsers().size());
     }
 
+    // tests constructor used to create user from json file
     @Test
     public void testWritingUserWithUUID() {
         UUID uuid = UUID.randomUUID();
