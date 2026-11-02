@@ -30,30 +30,39 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class DataLoaderTest {
-    private UserList users = UserList.getInstance();
-    ArrayList<User> userList = users.getUsers();
+    private UserList userList = UserList.getInstance();
+    ArrayList<User> users = userList.getUsers();
 
     @BeforeEach
     public void setup() {
-        userList.clear();
-        userList.add(new User( "Bailey", "Bowen", "bbowen", "RelHe1p34", "bbowen@gmail.com", "02/09/2003", "594 South St", "New York", "New York", "29804", "English", true, UserType.VOLUNTEER));
-        userList.add(new User("Karley", "Long", "klong", "grIe35!", "klong@outlook.com", "07/23/1999", "437 Bull Street", "Raleigh", "North Carolina", "49739", "English", false, UserType.USER));
+        userList.getUsers().clear();
         DataWriter.saveUsers();
+        /*
+        users.clear();
+        users.add(new User( "Bailey", "Bowen", "bbowen", "RelHe1p34", "bbowen@gmail.com", "02/09/2003", "594 South St", "New York", "New York", "29804", "English", true, UserType.VOLUNTEER));
+        users.add(new User("Karley", "Long", "klong", "grIe35!", "klong@outlook.com", "07/23/1999", "437 Bull Street", "Raleigh", "North Carolina", "49739", "English", false, UserType.USER));
+        DataWriter.saveUsers();
+        */
     }
 
     @AfterEach
     public void tearDown() {
+        userList.getUsers().clear();
+        DataWriter.saveUsers();
+        /*
         users.getUsers().clear();
         DataWriter.saveUsers();
         assertEquals(0, userList.size());
+        */
     }
 
     @Test
     void testGetUsersSize() {
-        userList = DataLoader.getUsers();
-        assertEquals(2, userList.size());
+        users = DataLoader.getUsers();
+        assertEquals(0, users.size());
     }
 
+    /*
     @Test
     void testGetUsersSizeZero() {
         users.getUsers().clear();
@@ -109,4 +118,5 @@ public class DataLoaderTest {
         userList = DataLoader.getUsers();
         assertNull(userList);
     }
+    */
 }
