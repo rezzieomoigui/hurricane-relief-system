@@ -20,7 +20,9 @@ public class ShelterList {
      */
     private ShelterList() {
         ArrayList<Shelter> loaded = DataLoader.getShelters();
-        this.shelters = (loaded != null) ? loaded : new ArrayList<Shelter>();
+        if (loaded != null) {
+            this.shelters = loaded;
+        }
     }
 
     /**
