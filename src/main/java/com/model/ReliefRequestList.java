@@ -21,7 +21,7 @@ public class ReliefRequestList {
      */
     private ReliefRequestList() {
         ArrayList<ReliefRequest> loaded = DataLoader.getReliefRequests();
-        if (loaded != null && !loaded.isEmpty()) {
+        if (loaded != null) {
             this.reliefRequests = loaded;
         }
     }
