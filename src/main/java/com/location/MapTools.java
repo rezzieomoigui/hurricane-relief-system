@@ -1,5 +1,8 @@
 package com.location;
-
+/**
+ * Provides map API tools for geocoding, routing, and driving directions.
+ * @author Fantastic Four
+ */
 import java.io.IOException;
 import java.net.URI;
 import java.net.URLEncoder;
@@ -9,7 +12,10 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
-
+/**
+ * Provides map API tools for geocoding, routing, and driving directions.
+ * @author Fantastic Four
+ */
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -30,7 +36,9 @@ public class MapTools {
     private final String apiKey = System.getenv("MAP_API_KEY");
     private final HttpClient httpClient;
     private final ObjectMapper objectMapper;
-
+/**
+     * Constructs a MapTools object and initializes the HTTP client and JSON object mapper.
+     */
     private MapTools() {
         httpClient = HttpClient.newBuilder()
                 .connectTimeout(Duration.ofSeconds(10))
@@ -38,7 +46,11 @@ public class MapTools {
 
         objectMapper = new ObjectMapper();
     }
-
+/**
+     * Returns the singleton instance of MapTools.
+     *
+     * @return the singleton instance of MapTools
+     */
     public static MapTools getInstance() {
         if(mapTools == null){
             mapTools = new MapTools();
@@ -81,7 +93,7 @@ public class MapTools {
                 request,
                 HttpResponse.BodyHandlers.ofString()
         );
-
+        
         if (response.statusCode() != 200) {
             throw new IOException(
                     "Could not convert: " + address
