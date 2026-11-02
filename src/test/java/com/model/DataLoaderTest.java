@@ -11,7 +11,7 @@ package com.model;
  * testGetUsersNotNull()                | This test checks that the userList returns a list of users and not null even when the array list contains no users since it is not null, rather it is empty
  * testLoadingNullUser()                | This test checks that when a user is loaded in with all null properties they are not added to the user list
  * testLoadingEmptyUser()               | This test checks that when a user is loaded in with empty data they are not added to the user list
- * testLoadingEmptyUsersName            | This test checks that when a user is loaded in with an empty first and last name they are not added to the user list
+ * testLoadingEmptyUsersName()          | This test checks that when a user is loaded in with an empty first and last name they are not added to the user list
  * testGetUsersInvalidUserType()        | This test checks that the user type is correctly loaded and set correctly
  * testGetUsersMissingFile()            | This test checks that the missing file returns null and prints a try-catch exception
  * testGetUsersMalformedJSON()          | This test checks that if the JSON file is incorrectly formatted and can't be read that it will return null and print a try-catch exception
