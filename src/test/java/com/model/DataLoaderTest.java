@@ -36,87 +36,85 @@ public class DataLoaderTest {
     @BeforeEach
     public void setup() {
         userList.getUsers().clear();
-        DataWriter.saveUsers();
-        /*
-        users.clear();
-        users.add(new User( "Bailey", "Bowen", "bbowen", "RelHe1p34", "bbowen@gmail.com", "02/09/2003", "594 South St", "New York", "New York", "29804", "English", true, UserType.VOLUNTEER));
+        users.add(new User( "Bailey", "Bowen", "bbowen", "RelHe1p34", "bbowen@gmail.com", "02/09/2003", "594 South St", "New York", "New York", "29804", "English", true, UserType.USER));
         users.add(new User("Karley", "Long", "klong", "grIe35!", "klong@outlook.com", "07/23/1999", "437 Bull Street", "Raleigh", "North Carolina", "49739", "English", false, UserType.USER));
         DataWriter.saveUsers();
-        */
     }
 
     @AfterEach
     public void tearDown() {
         userList.getUsers().clear();
         DataWriter.saveUsers();
-        /*
-        users.getUsers().clear();
-        DataWriter.saveUsers();
-        assertEquals(0, userList.size());
-        */
     }
 
     @Test
     void testGetUsersSize() {
         users = DataLoader.getUsers();
-        assertEquals(0, users.size());
+        assertEquals(2, users.size());
     }
 
-    /*
+    @Test
+    void testGetUsersSizeIncrease() {
+        users.add(new User( "Savannah", "Conner", "sconner", "FipH0;d94", "sconner@gmail.com", "08/10/2014", "8873 Garden Road", "Atlanta", "Georgia", "49739", "Spanish", false, UserType.USER));
+        DataWriter.saveUsers();
+        assertEquals(3, users.size());
+    }
+
+    
     @Test
     void testGetUsersSizeZero() {
-        users.getUsers().clear();
+        userList.getUsers().clear();
         DataWriter.saveUsers();
-        userList = DataLoader.getUsers();
-        assertEquals(0, userList.size());
+        users = DataLoader.getUsers();
+        assertEquals(0, users.size());
     }
 
     @Test 
     void testGetUsersNotNull() {
-        userList = DataLoader.getUsers();
+        users = DataLoader.getUsers();
         assertNotNull(userList);
     }
 
     @Test 
     void testGetUsersVolunteerInstance() {
-        userList = DataLoader.getUsers();
-        assertTrue(userList.get(0) instanceof Volunteer);
+        users.add(new Volunteer( "Emmie", "Grand", "egrand", "listyFRI93", "egrand@gmail.com", "01/12/2018", "98 Crest Street", "Atlanta", "Georgia", "49739", "English", true, UserType.VOLUNTEER, Skills.WOUND_CARE, true, true, false));
+        users = DataLoader.getUsers();
+        assertTrue(users.get(0) instanceof Volunteer);
     }
 
     @Test 
     void testGetUsersRegularUserInstance() {
-        userList = DataLoader.getUsers();
-        assertTrue(userList.get(0) instanceof User);
+        users = DataLoader.getUsers();
+        assertTrue(users.get(0) instanceof User);
     }
 
     @Test 
     void testGetUsersAdminTrue() {
-        userList = DataLoader.getUsers();
-        assertTrue(userList.get(0).isAdmin());
+        users = DataLoader.getUsers();
+        assertTrue(users.get(0).isAdmin());
     }
 
     @Test 
     void testGetUsersAdminFalse() {
-        userList = DataLoader.getUsers();
-        assertFalse(userList.get(1).isAdmin());
+        users = DataLoader.getUsers();
+        assertFalse(users.get(1).isAdmin());
     }
 
     @Test 
     void testGetUsersInvalidUserType() {
-        userList = DataLoader.getUsers();
+        users = DataLoader.getUsers();
         assertNull(userList);
     }
 
     @Test 
     void testGetUsersMissingFile() {
-        userList = DataLoader.getUsers();
+        users = DataLoader.getUsers();
         assertNull(userList);
     }
 
     @Test 
     void testGetUsersMalformedJSON() {
-        userList = DataLoader.getUsers();
+        users = DataLoader.getUsers();
         assertNull(userList);
     }
-    */
 }
