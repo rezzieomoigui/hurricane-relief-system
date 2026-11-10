@@ -1,0 +1,59 @@
+/* Primary teal buttons: Get help, Sign in, Submit request */
+.button {
+    -fx-background-color: #087F78;
+    -fx-text-fill: #FFFFFF;
+
+    -fx-font-family: "Inter";
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+
+    -fx-background-radius: 8px;
+    -fx-background-insets: 0;
+    -fx-border-radius: 8px;
+    -fx-border-color: transparent;
+    -fx-border-width: 2px;
+
+    -fx-padding: 12px 24px;
+    -fx-min-height: 48px;
+    -fx-cursor: hand;
+}
+
+/* Mouse hovering */
+.button:hover {
+    -fx-background-color: #066B65;
+}
+
+/* Button being clicked */
+.button:pressed {
+    -fx-background-color: #055953;
+}
+
+/* Keyboard focus */
+.button:focused {
+    -fx-border-color: #155EEF;
+}
+
+/* Secondary outlined buttons: Give help, Edit request */
+.button.secondary {
+    -fx-background-color: #FFFFFF;
+    -fx-text-fill: #087F78;
+    -fx-border-color: #087F78;
+}
+
+.button.secondary:hover {
+    -fx-background-color: #F2F8F7;
+}
+
+.button.secondary:pressed {
+    -fx-background-color: #DDEEEB;
+}
+
+.button.secondary:focused {
+    -fx-border-color: #155EEF;
+}
+
+/* Disabled buttons */
+.button:disabled {
+    -fx-opacity: 0.5;
+    -fx-cursor: default;
+}
