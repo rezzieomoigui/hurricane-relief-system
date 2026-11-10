@@ -11,7 +11,7 @@ import com.relief_system.App;
  * SecondaryController class handles the secondary view of the application
  * @author Fantastic Four
  */
-public class SecondaryController {
+public class LoginController {
 
     @FXML
     private void switchToPrimary() throws IOException {

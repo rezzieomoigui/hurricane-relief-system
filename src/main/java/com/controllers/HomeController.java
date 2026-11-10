@@ -10,7 +10,7 @@ import com.relief_system.App;
  * PrimaryController class handles the primary view of the application
  * @author Fantastic Four
  */
-public class PrimaryController {
+public class HomeController {
 
     @FXML
     private void switchToSecondary() throws IOException {

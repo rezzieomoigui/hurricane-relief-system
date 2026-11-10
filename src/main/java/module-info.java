@@ -11,5 +11,6 @@ module com.relief_system {
     //exports com.library; 
 
     opens com.relief_system to javafx.fxml;
+    opens com.controllers to javafx.fxml;
     exports com.relief_system;
 }
