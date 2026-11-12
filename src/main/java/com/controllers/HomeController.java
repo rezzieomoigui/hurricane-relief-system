@@ -5,6 +5,8 @@ package com.controllers;
  */
 import java.io.IOException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+
 import com.relief_system.App;
 /**
  * PrimaryController class handles the primary view of the application
@@ -13,7 +15,7 @@ import com.relief_system.App;
 public class HomeController {
 
     @FXML
-    private void switchToSecondary() throws IOException {
+    private void switchToLogin() throws IOException {
         App.setRoot("login");
     }
 }

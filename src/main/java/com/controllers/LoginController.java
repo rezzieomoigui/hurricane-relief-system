@@ -14,7 +14,7 @@ import com.relief_system.App;
 public class LoginController {
 
     @FXML
-    private void switchToPrimary() throws IOException {
+    private void switchToHome() throws IOException {
         App.setRoot("home");
     }
 }
