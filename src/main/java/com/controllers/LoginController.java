@@ -28,6 +28,9 @@ public class LoginController {
 
     @FXML
     private PasswordField txt_password;
+
+    @FXML
+    private Label lbl_error;
     
     @FXML 
     void login(ActionEvent event) {
@@ -48,7 +51,7 @@ public class LoginController {
         HurricaneReliefApplication app = new HurricaneReliefApplication();
 
         if (!app.login(username, password)) {
-            lbl_error.setTxt("Invalid login credentials.");
+            lbl_error.setText("Invalid login credentials.");
             return;
         }
 
