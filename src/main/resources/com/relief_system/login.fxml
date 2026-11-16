@@ -12,8 +12,9 @@
     <children>
       <Label text="Username" />
       <TextField fx:id="txt_username" promptText="Enter your username" text="a" />
-      <Label onMouseClicked="#btnLoginClicked" text="Password" />
-      <PasswordField onMouseClicked="#btnLoginClicked" text="12" />
+      <Label text="Password" />
+      <PasswordField fx:id="txt_password" promptText="Enter your password" />
+      <Label fx:id="lbl_error" textFill="RED" />
       <Button mnemonicParsing="false" onMouseClicked="#btnLoginClicked" text="Login" />
        <!-- <Button fx:id="loginButton" onAction="#switchToPrimary" text="Sign in" /> -->
     </children>
