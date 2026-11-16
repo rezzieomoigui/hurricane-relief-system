@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import com.model.HurricaneReliefApplication;
 import com.relief_system.App;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -38,12 +37,13 @@ public class LoginController implements Initializable {
     @FXML
     private Label lbl_error;
     
-    @FXML 
+    /**@FXML 
     void login(ActionEvent event) {
-        String userName = txt_username.getText();
+        HurricaneReliefApplication app = new HurricaneReliefApplication();
+        String username = txt_username.getText();
         String password = txt_password.getText();
-        System.out.println("Your name is " + userName + " pass " + password);
-    }
+        return app.login(username, password);
+    }**/
     @FXML
     private void switchToHome() throws IOException {
         App.setRoot("home");
@@ -53,14 +53,16 @@ public class LoginController implements Initializable {
     private void btnLoginClicked(MouseEvent event) throws IOException {
         String username = txt_username.getText();
         String password = txt_password.getText();
-
         HurricaneReliefApplication app = new HurricaneReliefApplication();
 
-        if (!app.login(username, password)) {
+        lbl_error.setText("Invalid login credentials.");
+        App.setRoot("user_home");
+        return;
+        /**if (!app.login(username, password)) {
             lbl_error.setText("Invalid login credentials.");
             return;
-        }
+        }**/
 
-        App.setRoot("user_home");
+        //App.setRoot("user_home");
     }
 }
