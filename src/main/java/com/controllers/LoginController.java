@@ -21,7 +21,12 @@ import com.relief_system.App;
  * SecondaryController class handles the secondary view of the application
  * @author Fantastic Four
  */
-public class LoginController {
+public class LoginController implements Initializable {
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+        // No initialization is required.
+    }
 
     @FXML
     private TextField txt_username;
