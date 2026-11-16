@@ -4,10 +4,10 @@ package com.controllers;
  * @author Fantastic Four
  */
 import java.io.IOException;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 
 import com.relief_system.App;
+
+import javafx.fxml.FXML;
 /**
  * PrimaryController class handles the primary view of the application
  * @author Fantastic Four
