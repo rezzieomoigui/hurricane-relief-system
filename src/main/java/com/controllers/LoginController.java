@@ -56,8 +56,8 @@ public class LoginController implements Initializable {
         HurricaneReliefApplication app = new HurricaneReliefApplication();
 
         lbl_error.setText("Invalid login credentials.");
-        App.setRoot("user_home");
-        return;
+        //App.setRoot("user_home");
+        //return;
         /**if (!app.login(username, password)) {
             lbl_error.setText("Invalid login credentials.");
             return;
