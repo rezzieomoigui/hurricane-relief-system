@@ -4,8 +4,10 @@ package com.controllers;
  * @author Fantastic Four
  */
 import java.io.IOException;
-import javafx.fxml.FXML;
+
 import com.relief_system.App;
+
+import javafx.fxml.FXML;
 
 /**
  * SecondaryController class handles the secondary view of the application
@@ -17,4 +19,6 @@ public class LoginController {
     private void switchToPrimary() throws IOException {
         App.setRoot("home");
     }
+
+
 }
