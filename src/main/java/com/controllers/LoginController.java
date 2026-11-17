@@ -60,6 +60,6 @@ public class LoginController implements Initializable {
             return;
         }
 
-        App.setRoot("user_home");
+        App.setRoot("home");
     }
 }
