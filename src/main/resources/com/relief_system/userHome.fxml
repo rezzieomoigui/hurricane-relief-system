@@ -30,27 +30,27 @@
             <Button layoutX="362.0" layoutY="12.0" mnemonicParsing="false" text="Sign in" />
             <Button layoutX="481.0" layoutY="12.0" mnemonicParsing="false" text="Get help" />
             <Button layoutX="612.0" layoutY="12.0" mnemonicParsing="false" text="Give help" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="208.0" layoutX="43.0" layoutY="123.0" stroke="BLACK" strokeType="INSIDE" width="577.0" />
-            <Line endX="68.33334350585938" layoutX="244.0" layoutY="154.0" startX="-100.0" />
-            <Line endX="68.33334350585938" layoutX="443.0" layoutY="154.0" startX="-100.0" />
-            <Circle fx:id="circle_assigned" fill="WHITE" layoutX="328.0" layoutY="155.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="circle_submitted" fill="WHITE" layoutX="136.0" layoutY="155.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-            <Circle fx:id="circle_completed" fill="WHITE" layoutX="527.0" layoutY="154.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
-            <Label layoutX="109.0" layoutY="173.0" text="Submitted" />
-            <Label layoutX="277.0" layoutY="172.0" text="Volunteer assigned" />
-            <Label layoutX="476.0" layoutY="172.0" text="Volunteer arrived" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="121.0" layoutY="214.0" stroke="BLACK" strokeType="INSIDE" width="418.0" />
-            <Line endX="-44.99998474121094" endY="35.333343505859375" layoutX="292.0" layoutY="244.0" startX="-44.99998474121094" startY="-12.333343505859375" />
-            <Line endX="-44.99998474121094" endY="35.333343505859375" layoutX="449.0" layoutY="243.0" startX="-44.99998474121094" startY="-12.333343505859375" />
-            <Label layoutX="133.0" layoutY="225.0" text="Assigned volunteer" />
-            <Label layoutX="269.0" layoutY="225.0" text="Estimated Arrival Time" />
-            <Label layoutX="421.0" layoutY="224.0" text="Requested support" />
-            <Label fx:id="lbl_volunteer" layoutX="137.0" layoutY="252.0" text="Label" />
-            <Label fx:id="lbl_arrival" layoutX="314.0" layoutY="252.0" text="Label" />
-            <Label fx:id="lbl_support" layoutX="424.0" layoutY="251.0" text="Label" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="42.0" layoutY="348.0" stroke="BLACK" strokeType="INSIDE" width="577.0" />
-            <Label layoutX="72.0" layoutY="363.0" text="Find nearby shelters" />
-            <Label layoutX="72.0" layoutY="389.0" text="Explore shelters in your area." />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="208.0" layoutX="90.0" layoutY="120.0" stroke="BLACK" strokeType="INSIDE" width="577.0" />
+            <Line endX="68.33334350585938" layoutX="306.0" layoutY="154.0" startX="-100.0" />
+            <Line endX="68.33334350585938" layoutX="504.0" layoutY="154.0" startX="-100.0" />
+            <Circle fx:id="circle_assigned" fill="WHITE" layoutX="389.0" layoutY="155.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="circle_submitted" fill="WHITE" layoutX="191.0" layoutY="155.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+            <Circle fx:id="circle_completed" fill="WHITE" layoutX="587.0" layoutY="154.0" radius="15.0" stroke="BLACK" strokeType="INSIDE" />
+            <Label layoutX="164.0" layoutY="173.0" text="Submitted" />
+            <Label layoutX="341.0" layoutY="172.0" text="Volunteer assigned" />
+            <Label layoutX="543.0" layoutY="172.0" text="Volunteer arrived" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="180.0" layoutY="211.0" stroke="BLACK" strokeType="INSIDE" width="418.0" />
+            <Line endX="-44.99998474121094" endY="35.333343505859375" layoutX="354.0" layoutY="243.0" startX="-44.99998474121094" startY="-12.333343505859375" />
+            <Line endX="-44.99998474121094" endY="35.333343505859375" layoutX="511.0" layoutY="243.0" startX="-44.99998474121094" startY="-12.333343505859375" />
+            <Label layoutX="197.0" layoutY="224.0" text="Assigned volunteer" />
+            <Label layoutX="330.0" layoutY="224.0" text="Estimated Arrival Time" />
+            <Label layoutX="482.0" layoutY="224.0" text="Requested support" />
+            <Label fx:id="lbl_volunteer" layoutX="198.0" layoutY="252.0" text="Label" />
+            <Label fx:id="lbl_arrival" layoutX="377.0" layoutY="252.0" text="Label" />
+            <Label fx:id="lbl_support" layoutX="484.0" layoutY="252.0" text="Label" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="82.0" layoutX="86.0" layoutY="348.0" stroke="BLACK" strokeType="INSIDE" width="577.0" />
+            <Label layoutX="112.0" layoutY="363.0" text="Find nearby shelters" />
+            <Label layoutX="112.0" layoutY="389.0" text="Explore shelters in your area." />
             <Button layoutX="438.0" layoutY="363.0" mnemonicParsing="false" text="Find shelters" />
          </children>
       </Pane>
