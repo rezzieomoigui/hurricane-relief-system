@@ -220,7 +220,7 @@ public class ReliefRequestList {
 
     public ReliefRequest getReliefRequest(User user) {
         for ( ReliefRequest reliefRequest : reliefRequests ) {
-            if (reliefRequest.getUserUuid() == user.getUuid()) 
+            if (reliefRequest.getUserUuid().equals(user.getUuid())) 
                 return reliefRequest;
         }
         return null;

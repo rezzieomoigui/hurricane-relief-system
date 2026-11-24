@@ -12,7 +12,7 @@ public class HurricaneReliefDriver {
      * HurricaneReliefDriver sets application to the facade to be able to access facade methods
      */
     public HurricaneReliefDriver() {
-        application = new HurricaneReliefApplication();
+        application = HurricaneReliefApplication.getInstance();
     }
 
     /**

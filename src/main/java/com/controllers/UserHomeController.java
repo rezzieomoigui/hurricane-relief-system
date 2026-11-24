@@ -21,7 +21,7 @@ public class UserHomeController implements Initializable {
     private Label lbl_volunteer; 
 
     @FXML 
-    private Label lbl_assigned; 
+    private Label lbl_arrival; 
 
     @FXML
     private Label lbl_support; 
@@ -37,20 +37,25 @@ public class UserHomeController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // No initialization is required.
+        HurricaneReliefApplication application = HurricaneReliefApplication.getInstance();
+        displayRequest(application);
     }
 
-    private void displayRequest(User currentUser, HurricaneReliefApplication application) {
+    private void displayRequest(HurricaneReliefApplication application) {
         // what to do if user does not already have a request?
+        User currentUser = application.getCurrentUser();
+        System.out.println(currentUser.getUsername());
         ReliefRequest request = application.getReliefRequest(currentUser);
         UserList userList = application.getUserList();
-        if (request.getAssignedVolunteerID() == null)
-            lbl_assigned.setText("Pending");
+        if (request.getAssignedVolunteerID() == null) {
+            lbl_volunteer.setText("Pending");
+            lbl_arrival.setText("...");
+        }
         else {
             Volunteer volunteer = (Volunteer)userList.getUser(request.getAssignedVolunteerID());
             lbl_volunteer.setText(volunteer.getFirstName() + " " + volunteer.getLastName());
+            lbl_arrival.setText(Integer.toString(request.getEstimatedArrivalMinutes()));
         }
-        lbl_assigned.setText(request.getStatus().str);
         lbl_support.setText(request.getSkillsNeed().str);
         circle_submitted.setFill(Color.BLACK); //black for now; need to coordinate w/ style sheet
         if (request.getStatus().str.equals("Assigned")) {

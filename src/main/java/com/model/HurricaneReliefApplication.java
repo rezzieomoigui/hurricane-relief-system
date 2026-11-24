@@ -13,6 +13,7 @@ import com.location.MapTools;
  * @author Fantastic Four
  */
 public class HurricaneReliefApplication {
+    private static HurricaneReliefApplication application;
     private UserList userList;
     private ShelterList shelterList;
     private ReliefRequestList reliefRequestList;
@@ -21,12 +22,18 @@ public class HurricaneReliefApplication {
     /**
      * HurricaneReliefApplication constructor loads the lists of users, shelters, relief requests and hurricanes
      */
-    public HurricaneReliefApplication() {
+    private HurricaneReliefApplication() {
         userList = UserList.getInstance();
         shelterList = ShelterList.getInstance();
         reliefRequestList = ReliefRequestList.getInstance();
     }
 
+    public static HurricaneReliefApplication getInstance() {
+        if (application == null) {
+            application = new HurricaneReliefApplication();
+        }
+        return application;
+    }
 
     /**
      * Logs in and remembers the user if the credentials match.

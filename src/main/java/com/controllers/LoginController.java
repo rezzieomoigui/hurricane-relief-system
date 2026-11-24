@@ -53,14 +53,15 @@ public class LoginController implements Initializable {
     private void btnLoginClicked(MouseEvent event) throws IOException {
         String username = txt_username.getText();
         String password = txt_password.getText();
-        HurricaneReliefApplication app = new HurricaneReliefApplication();
+        HurricaneReliefApplication app = HurricaneReliefApplication.getInstance();
 
         if (!app.login(username, password)) {
             lbl_error.setText("Invalid login credentials.");
             return;
         }
 
-        App.setRoot("home");
+        App.setRoot("userHome");
+        return;
     }
-    
+
 }
