@@ -39,6 +39,7 @@
             }
         ],
         "isIndoors": "true",
-        "status": "SUBMITTED"
+        "status": "SUBMITTED",
+        "assignedVolunteerID": "ab877ba6-9f5b-4a33-b2d1-2b7c179a852e"
     }
 ]

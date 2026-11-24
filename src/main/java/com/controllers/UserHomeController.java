@@ -49,14 +49,14 @@ public class UserHomeController implements Initializable {
         UserList userList = application.getUserList();
         if (request.getAssignedVolunteerID() == null) {
             lbl_volunteer.setText("Pending");
-            lbl_arrival.setText("...");
+            lbl_arrival.setText(".....");
         }
         else {
             Volunteer volunteer = (Volunteer)userList.getUser(request.getAssignedVolunteerID());
             lbl_volunteer.setText(volunteer.getFirstName() + " " + volunteer.getLastName());
             lbl_arrival.setText(Integer.toString(request.getEstimatedArrivalMinutes()));
         }
-        lbl_support.setText(request.getSkillsNeed().str);
+        lbl_support.setText(request.getSkillsNeed().str.toLowerCase());
         circle_submitted.setFill(Color.BLACK); //black for now; need to coordinate w/ style sheet
         if (request.getStatus().str.equals("Assigned")) {
             circle_assigned.setFill(Color.BLACK);

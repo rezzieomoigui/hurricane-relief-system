@@ -43,7 +43,7 @@ public class ReliefRequest {
      * @param stayingHome checks if user is staying home
      * @param hasPet checks if user has a pet
      */
-    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed) {
+    public ReliefRequest(UUID userUUID, UUID uuid, String address, String city, String state, String zipCode, ArrayList<PartyMember> partyMembers, boolean isIndoors, boolean isMobile, boolean needsMedicalAssistance, ReliefRequestStatus status, int estimatedArrivalMinutes, boolean stayingHome, boolean hasPet, Skills skillsNeed, UUID assignedVolunteerID) {
         this.userUUID = userUUID;
         this.uuid = uuid;
         this.address = address;
@@ -59,7 +59,7 @@ public class ReliefRequest {
         this.stayingHome = stayingHome;
         this.hasPet = hasPet;
         this.skillsNeed = skillsNeed;
-        this.assignedVolunteerID = null;
+        this.assignedVolunteerID = assignedVolunteerID;
         this.assignedShelterID = null;
     }
 

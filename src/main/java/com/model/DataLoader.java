@@ -130,7 +130,12 @@ public class DataLoader extends DataConstants {
                 boolean stayingHome = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_STAYING_HOME));
                 boolean hasPet = Boolean.parseBoolean((String)reliefRequestJSON.get(RELIEF_REQUEST_HAS_PET));
                 Skills skillsNeed = Skills.valueOf((String)reliefRequestJSON.get(RELIEF_REQUEST_SKILLS_NEED));
-                reliefRequests.add(new ReliefRequest(userUUID, uuid, address, city, state, zipCode, partyMemberArr, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet, skillsNeed));
+                UUID assignedVolunteerID;
+                if (reliefRequestJSON.get(RELIEF_REQUEST_ASSIGNED_VOLUNTEER_ID).equals("null"))
+                    assignedVolunteerID = null;
+                else
+                    assignedVolunteerID = UUID.fromString((String)reliefRequestJSON.get(RELIEF_REQUEST_ASSIGNED_VOLUNTEER_ID));
+                reliefRequests.add(new ReliefRequest(userUUID, uuid, address, city, state, zipCode, partyMemberArr, isIndoors, isMobile, needsMedicalAssistance, status, estimatedArrivalMinutes, stayingHome, hasPet, skillsNeed, assignedVolunteerID));
             }
         return reliefRequests;
         }catch (Exception e) {

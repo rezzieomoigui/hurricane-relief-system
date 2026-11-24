@@ -181,6 +181,10 @@ public class DataWriter extends DataConstants {
         requestDetails.put(RELIEF_REQUEST_STAYING_HOME, Boolean.toString(request.getIsStayingHome()));
         requestDetails.put(RELIEF_REQUEST_HAS_PET, Boolean.toString(request.getHasPet()));
         requestDetails.put(RELIEF_REQUEST_SKILLS_NEED, request.getSkillsNeed().str);
+        if (request.getAssignedVolunteerID() == null)
+            requestDetails.put(RELIEF_REQUEST_ASSIGNED_VOLUNTEER_ID, "null");
+        else
+            requestDetails.put(RELIEF_REQUEST_ASSIGNED_VOLUNTEER_ID, request.getAssignedVolunteerID().toString());
         return requestDetails;
     }
 
