@@ -14,7 +14,7 @@
 
 <VBox alignment="CENTER" prefHeight="600.0" prefWidth="800.0" spacing="20.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.controllers.UserHomeController">
    <children>
-      <Pane prefHeight="628.0" prefWidth="760.0">
+      <Pane prefHeight="630.0" prefWidth="760.0">
          <children>
             <Label layoutX="14.0" layoutY="8.0" text="ReliefReach">
                <font>

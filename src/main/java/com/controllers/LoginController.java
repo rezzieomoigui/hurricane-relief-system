@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import com.model.HurricaneReliefApplication;
+import com.model.UserType;
 import com.relief_system.App;
 
 import javafx.fxml.FXML;
@@ -60,8 +61,10 @@ public class LoginController implements Initializable {
             return;
         }
 
-        App.setRoot("userHome");
-        return;
+        if (app.getCurrentUser().getUserType() == UserType.USER)
+            App.setRoot("userHome");
+        else
+            App.setRoot("volunteerDashboard");
     }
 
 }
