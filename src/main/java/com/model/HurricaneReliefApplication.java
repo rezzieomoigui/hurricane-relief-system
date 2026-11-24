@@ -126,7 +126,6 @@ public class HurricaneReliefApplication {
      * @throws InterruptedException
      */
     public boolean assignReliefRequest(int numPeople, ReliefRequest reliefRequest, Volunteer volunteer, boolean isAdmin) throws InterruptedException {
-        // System.out.println("Made it to facade");
         return ShelterList.getInstance().assignReliefRequest(numPeople, reliefRequest, volunteer, isAdmin);
     }
 
@@ -145,6 +144,10 @@ public class HurricaneReliefApplication {
      */
     public User getUser(String username) {
         return userList.getUser(username);
+    }
+
+    public UserList getUserList() {
+        return this.userList;
     }
 
     /**
@@ -261,6 +264,10 @@ public class HurricaneReliefApplication {
     public ReliefRequest getReliefRequest(String address, String city, String state, String zipCode, String submitterFirstName, String submitterLastName) {
         return reliefRequestList.getReliefRequest(address, city, state, zipCode, submitterFirstName, submitterLastName);
     }
+
+    public ReliefRequest getReliefRequest(User user) {
+        return reliefRequestList.getReliefRequest(user);
+    } 
 
     /**
      * getShelter gets the shelter with the following parameters

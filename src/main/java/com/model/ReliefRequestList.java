@@ -218,6 +218,14 @@ public class ReliefRequestList {
         return null;
     }
 
+    public ReliefRequest getReliefRequest(User user) {
+        for ( ReliefRequest reliefRequest : reliefRequests ) {
+            if (reliefRequest.getUserUuid() == user.getUuid()) 
+                return reliefRequest;
+        }
+        return null;
+    }
+
     /**
      * save method saves the relief requests
      * @return boolean for if the relief requests were properly saved

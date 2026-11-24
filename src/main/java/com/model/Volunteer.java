@@ -88,6 +88,7 @@ public class Volunteer extends User {
      */
     public void acceptRequest(ReliefRequest request) { 
         request.setStatus(ReliefRequestStatus.IN_PROGRESS);
+        request.setAssignedVolunteer(this);
         System.out.println("Request accepted: " + request.getRequestId());
     }
 
