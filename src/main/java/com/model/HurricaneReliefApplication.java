@@ -157,6 +157,10 @@ public class HurricaneReliefApplication {
         return this.userList;
     }
 
+    public ReliefRequestList getReliefRequestList() {
+        return this.reliefRequestList;
+    }
+
     /**
      * getUsers returns users
      * @return ArrayList of users
@@ -275,6 +279,10 @@ public class HurricaneReliefApplication {
     public ReliefRequest getReliefRequest(User user) {
         return reliefRequestList.getReliefRequest(user);
     } 
+
+    public ArrayList<ReliefRequest> getReliefRequests() {
+        return reliefRequestList.getReliefRequests();
+    }
 
     /**
      * getShelter gets the shelter with the following parameters
