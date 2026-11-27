@@ -50,14 +50,7 @@ public class AssignedRequestController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         HurricaneReliefApplication application = HurricaneReliefApplication.getInstance();
-        displayGeneralInfo(application);
-        
-    }
-
-    private void displayGeneralInfo(HurricaneReliefApplication application) {
-        // consider fixing spacing
         ArrayList<ReliefRequest> reliefRequests = application.getReliefRequests();
-        System.out.println(reliefRequests.get(0).getAssignedVolunteerID());
         User currentUser = application.getCurrentUser();
         ReliefRequest assignedRequest = null;
         for ( ReliefRequest reliefRequest : reliefRequests ) {
@@ -70,19 +63,29 @@ public class AssignedRequestController implements Initializable {
             System.out.println("request is null");
             return;
         }
+        displayGeneralInfo(currentUser, assignedRequest);
+        prepareTable();
+        displayPartyMembers(assignedRequest);
+        
+    }
+
+    private void displayGeneralInfo(User currentUser, ReliefRequest assignedRequest) {
         lbl_submitter.setText(currentUser.getFirstName()+" "+currentUser.getLastName());
         lbl_support.setText(assignedRequest.getSkillsNeed().str);
         lbl_address.setText(assignedRequest.getAddress() + ", " + assignedRequest.getCity() + ", \n" + assignedRequest.getState() + ", " + assignedRequest.getZipCode());
 
     }
 
-    private void displayPartyMembers() {
+    private void displayPartyMembers(ReliefRequest request) {
+        ArrayList<PartyMember> partyMembers = request.getPartyMembers();
+        partyMembersTable.getItems().setAll(partyMembers);
+    }
+
+    private void prepareTable() {
         nameColumn.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getName()));
-        /**categoryColumn.setCellValueFactory(cell.getValue().getType().str);
-        if (cell.getValue().needsMedicalAssistance() == true)
-            injuredColumn.setCellValueFactory("Yes");
-        else
-            injuredColumn.setCellValueFactory("No");**/
+        categoryColumn.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getType().str));
+        injuredColumn.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().needsMedicalAssistance() ? "Yes" : "No"));
+        ageColumn.setCellValueFactory(cell -> new ReadOnlyIntegerWrapper(2026 - Integer.parseInt(cell.getValue().getYearBorn())));
     }
 
     //back to requests button
