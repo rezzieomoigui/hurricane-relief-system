@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.gluonhq.charm.glisten.control.DropdownButton?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Pane prefHeight="100.0" prefWidth="800.0">
+         <children>
+            <Rectangle fill="#102f42" height="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="800.0" />
+            <Text fill="WHITE" layoutX="14.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CREATE ACCOUNT">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Rectangle fill="WHITE" height="60.0" layoutY="40.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.5" width="800.0" />
+            <Text fill="#102f42" layoutX="46.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ReliefReach">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutY="125.0" prefHeight="400.0" prefWidth="400.0">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="372.0" layoutX="14.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" width="372.0" />
+            <Text fill="#102f42" layoutX="25.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Create your account">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="25.0" layoutY="70.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Provide help to those who need it most.">
+               <font>
+                  <Font size="13.0" />
+               </font>
+            </Text>
+            <TextField layoutX="25.0" layoutY="120.0" prefWidth="150.0" />
+            <TextField layoutX="200.0" layoutY="120.0" prefWidth="150.0" />
+            <DropdownButton layoutX="35.0" layoutY="124.0">
+                <items>
+                    <MenuItem text="Wound Care" />
+                    <MenuItem text="CPR" />
+                    <MenuItem text="Search and Rescue" />
+                  <MenuItem text="Flood Rescue" />
+                  <MenuItem text="Transportation" />
+                  <MenuItem text="Other" />
+                </items>
+            </DropdownButton>
+            <Label layoutX="25.0" layoutY="95.0" text="Volunteer Skills:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="200.0" layoutY="95.0" text="Other Skills:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="25.0" layoutY="160.0" text="Are you a first responder?">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="252.0" layoutY="160.0" text="Can you swim?">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="24.0" layoutY="237.0" text="Are you a shelter owner?">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="252.0" layoutY="185.0" mnemonicParsing="false" text="Yes" />
+            <RadioButton layoutX="23.0" layoutY="203.0" mnemonicParsing="false" text="No" />
+            <RadioButton layoutX="23.0" layoutY="185.0" mnemonicParsing="false" text="Yes" />
+            <RadioButton layoutX="252.0" layoutY="203.0" mnemonicParsing="false" text="No" />
+            <RadioButton layoutX="23.0" layoutY="262.0" mnemonicParsing="false" text="Yes" />
+            <RadioButton layoutX="23.0" layoutY="280.0" mnemonicParsing="false" text="No" />
+            <Button layoutX="48.0" layoutY="326.0" mnemonicParsing="false" onMouseClicked="#btnLoginClicked" prefHeight="35.0" prefWidth="300.0" text="Create Account" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Button>
+         </children>
+      </Pane>
+      <Pane layoutY="525.0" prefHeight="75.0" prefWidth="800.0">
+         <children>
+            <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#f2f8f7" height="50.0" layoutX="50.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.05" width="700.0" />
+            <Text layoutX="211.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Emergency resources are available without an account.">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <Pane layoutX="400.0" layoutY="125.0" prefHeight="400.0" prefWidth="400.0">
+         <children>
+            <Text layoutX="60.0" layoutY="369.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Already have an account?">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Text>
+            <Button layoutX="247.0" layoutY="348.0" mnemonicParsing="false" text="Sign in" textFill="#087f78" underline="true">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Button>
+            <Line endX="187.199951171875" layoutX="200.0" layoutY="333.0" startX="-200.0" strokeWidth="0.5" />
+         </children>
+      </Pane>
+   </children>
+</Pane>
